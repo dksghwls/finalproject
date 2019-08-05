@@ -5,15 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<style>
-		p {
-			margin: 0px;
-		}
-	    footer {
-	      background-color: #f2f2f2;
-	      padding: 25px;
-	    }
-	</style>
+<style>
+	p {
+		margin: 0px;
+	}
+</style>
 </head>
 <body>
 	

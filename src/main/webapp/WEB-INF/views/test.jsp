@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	test
+	<p>test</p>
 	
 </body>
 </html>
