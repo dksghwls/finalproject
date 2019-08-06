@@ -12,4 +12,9 @@ public class AllCategoryController {
 		return "templete.jsp?page=AllCategory";
 	}
 	
+	@RequestMapping(value = "/Payment", method = RequestMethod.GET)
+	public String payment()
+	{
+		return "templete.jsp?page=Payment";
+	}
 }
