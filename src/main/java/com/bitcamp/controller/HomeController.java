@@ -9,7 +9,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		return "templete.jsp?page=main";
+		return "templete.jsp?page=home";
 	}
 	
 }
