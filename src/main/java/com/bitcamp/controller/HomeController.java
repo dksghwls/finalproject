@@ -12,4 +12,30 @@ public class HomeController {
 		return "templete.jsp?page=home";
 	}
 	
+	@RequestMapping("/join")
+	public String join() {
+		return "templete.jsp?page=join";
+	}
+	
+	@RequestMapping("/joinOK")
+	public String joinOK() {
+		
+		
+		
+		return "templete.jsp?page=home";
+	}
+	
+	@RequestMapping("/login")
+	public String login() {
+		return "templete.jsp?page=login";
+	}
+	
+	@RequestMapping("/loginOK")
+	public String loginOK() {
+		
+		
+		
+		return "templete.jsp?page=home";
+	}
+	
 }
