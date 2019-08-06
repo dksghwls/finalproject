@@ -34,12 +34,12 @@
       {
           background-color: silver;
       }
-    img
+     #imgbox img
       {
-        width: 350px;
-        height: 350px;
+          margin: 10px;
+          width: 350px;
+      	  height: 350px;
       }
-    
     
   </style>
 </head>
@@ -59,7 +59,7 @@
         <li><a href="#section3">Health food</a></li>
       </ul><br>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9" id="imgbox">
         <img src="img/Jellyfish.jpg" alt="a">
         <img src="img/Jellyfish.jpg" alt="a">
         <img src="img/Jellyfish.jpg" alt="a">
