@@ -72,11 +72,9 @@
         <img src="img/Jellyfish.jpg" alt="a">
         <img src="img/Jellyfish.jpg" alt="a">
         <img src="img/Jellyfish.jpg" alt="a">
-      <div class="row">
-        
-      </div>
     </div>
   </div>
 </div>
+<a href="coding">상품 추가하기</a>
 </body>
 </html>
