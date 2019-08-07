@@ -36,10 +36,11 @@
 </script>
 </head>
 <body>
-	<form action="./insertBoard.do" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+	<form action="./insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
         <textarea name="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
         <input type="button" id="insertBoard" value="등록" />
     </form> 
 
 </body>
+
 </html>
