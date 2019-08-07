@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,13 +51,18 @@
     <div class="col-sm-3 sidenav">
      
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">All Category</a></li>
-        <li><a href="#section2">Watch</a></li>
+      <li class="active"><a href="#section1">All Category</a></li>
+      	<c:forEach var="item" items="${list }">
+      	
+      	<li><a href="#section3"><c:out value="${item.cname }"></c:out></a></li>
+      	</c:forEach>
+        
+<!--         <li><a href="#section2">Watch</a></li>
         <li><a href="#section3">Sport Equipment</a></li>
         <li><a href="#section3">Office Supplies</a></li>
         <li><a href="#section3">Accessory</a></li>
         <li><a href="#section3">Clothing goods</a></li>
-        <li><a href="#section3">Health food</a></li>
+        <li><a href="#section3">Health food</a></li> -->
       </ul><br>
     </div>
     <div class="col-sm-9" id="imgbox">

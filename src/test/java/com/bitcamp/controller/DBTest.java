@@ -16,17 +16,17 @@ import com.bitcamp.conf.DBConf;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=DBConf.class)
 public class DBTest {
-	
-	@Autowired
-	private DataSource ds;
-	
 	/*
 	@Autowired
-	private SqlSessionFactoryBean fact;
+	private DataSource ds;
 	*/
+	
+	@Autowired
+	private SqlSessionFactoryBean fact;
+	
 	@Test
 	public void test() {
-		assertNotNull(ds);
+		assertNotNull(fact);
 	}
 	
 }

@@ -16,5 +16,4 @@ public class Editor
 		Filedata = filedata; 
 		
 	} 
-	
 }

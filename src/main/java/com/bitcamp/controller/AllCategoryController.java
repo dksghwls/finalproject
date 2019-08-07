@@ -1,23 +1,31 @@
 package com.bitcamp.controller;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.UUID;
+import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.Service.CategoryService;
 
 @Controller
 public class AllCategoryController {
 
+	@Resource
+	private CategoryService service;
+	
+	
 	@RequestMapping(value = "/AllCategory", method = RequestMethod.GET)
-	public String category() {
+	public String category(Model model) {
+		
+		List<CategoryDTO> clist = service.AllList();
+		
+		model.addAttribute("list", clist);
+		
 		return "templete.jsp?page=AllCategory";
 	}
 	
@@ -26,4 +34,7 @@ public class AllCategoryController {
 	{
 		return "templete.jsp?page=Payment";
 	}
+	
+	
+	
 }
