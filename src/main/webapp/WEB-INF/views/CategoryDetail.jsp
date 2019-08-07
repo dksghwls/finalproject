@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <style>
+<style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
     
@@ -51,19 +51,16 @@
     <div class="col-sm-3 sidenav">
      
       <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="#section1">All Category</a></li>
+      <li class="active"><a href="../AllCategory">All Category</a></li>
       	<c:forEach var="item" items="${list }">
-      	<li>
-      		<a href="CategoryDetail/${item.cno }">
-      		${item.cname }</a>
-      	</li>
+      	<li><a href="../CategoryDetail/${item.cno }">${item.cname }</a></li>
       	</c:forEach>
         
       </ul><br>
     </div>
     <div class="col-sm-9" id="imgbox">
       <c:forEach var="dto" items="${dto }">
-        <img src="img/Jellyfish.jpg" alt="a"><br>
+        <img src="../img/Jellyfish.jpg" alt="a"><br>
         <p>상품이름:<c:out value="${dto.pname }"></c:out></p>
         <p>할인가:<c:out value="${dto.dprice }"></c:out></p>
         <p>원가:<c:out value="${dto.oprice }"></c:out></p><br>

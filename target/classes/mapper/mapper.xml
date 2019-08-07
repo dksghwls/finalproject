@@ -6,9 +6,29 @@
     
     	<select id="AllList" resultType="com.bitcamp.DTO.CategoryDTO">
     		
-    		select cname from category
+    		select cno,cname from category
     		
     	</select>
-    
-    
+    	<select id="pList" resultType="com.bitcamp.DTO.CategoryDTO">
+    		
+    		select pname, oprice, dprice from product
+    	
+    	
+    	</select>
+    	<select id="allList" resultType="com.bitcamp.DTO.CategoryDTO">
+    	
+    		select cno,cname from category
+    	
+    	</select>
+    	
+    	
+    	<select id="cpList" resultType="com.bitcamp.DTO.CategoryDTO" parameterType="int">
+    	
+    		select p.pname, p.dprice, p.oprice
+    		from category c, product p 
+    		where c.cno = p.cno 
+    		and p.cno = #{cno}
+    	
+    	</select>
+    	
     </mapper>

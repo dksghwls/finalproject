@@ -17,8 +17,32 @@ public class CategoryServiceImple implements CategoryService{
 	
 	@Override
 	public List<CategoryDTO> AllList() {
-		
 		return mapper.AllList();
 	}
+
+
+	@Override
+	public List<CategoryDTO> pList() {
+		
+		return mapper.pList();
+	}
+	@Override
+	public List<CategoryDTO> allList() {
+		
+		return mapper.allList();
+	}
+	
+
+	@Override
+	public List<CategoryDTO> cpList(int cno) {
+		
+		return mapper.cpList(cno);
+	}
+
+
+	
+
+
+	
 
 }
