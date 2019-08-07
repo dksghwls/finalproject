@@ -33,22 +33,37 @@
     }
     .row
       {
-          background-color: silver;
+          background-color: white;
       }
      #imgbox img
       {
           margin: 10px;
-          width: 350px;
-      	  height: 350px;
+          width: 300px;
+      	  height: 300px;
+      	  position: relative;
+          left: 150px;
       }
-    
+     #sidemenu
+      {
+          width: 300px;
+      }
+      #imgbox
+      {
+          width: 80%;
+      }
+      p
+      {
+      	margin: 10px;
+      	position: relative;
+        left: 160px;
+      }
   </style>
 </head>
 <body>
 
 <div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-3 sidenav">
+    <div class="col-sm-3 sidenav" id="sidemenu">
      
       <ul class="nav nav-pills nav-stacked">
       <li class="active"><a href="../AllCategory">All Category</a></li>
