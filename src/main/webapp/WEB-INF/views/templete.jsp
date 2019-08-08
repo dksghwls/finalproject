@@ -25,10 +25,10 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<c:set var="page" value="${ param.page }"></c:set>
-	<c:if test="${page!=null }">
+	<c:if test="${ page!=null }">
 		<jsp:include page="${ page }"></jsp:include>
 	</c:if>
-	<c:if test="${page==null }">
+	<c:if test="${ page==null }">
 		
 	</c:if>
 	<jsp:include page="footer.jsp"></jsp:include>
