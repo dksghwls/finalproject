@@ -79,13 +79,13 @@
         
       </ul><br>
     </div>
-    <div id="imgbox">
-      <c:forEach var="dto" items="${dto }">
+   <div id="imgbox">
+      <c:forEach var="dto" items="${dto}">
       <div class="col-sm-3" id="iimg">
         <img src="../img/Jellyfish.jpg" alt="a"><br>
-        <p>상품이름:<c:out value="${dto.pname }"></c:out></p>
-        <p>할인가:<c:out value="${dto.dprice }"></c:out></p>
-        <p>원가:<c:out value="${dto.oprice }"></c:out></p><br>
+        <p><c:out value="${dto.pname}"></c:out></p>
+        <p><c:out value="${dto.dprice}"></c:out></p>
+        <p><c:out value="${dto.oprice}"></c:out></p><br>
       </div>   
       </c:forEach> 
         
