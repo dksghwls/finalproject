@@ -92,6 +92,6 @@
     </div>
   </div>
 </div>
-<a href="coding">상품 추가하기</a>
+<a href="../coding">상품 추가하기</a>
 </body>
 </html>
