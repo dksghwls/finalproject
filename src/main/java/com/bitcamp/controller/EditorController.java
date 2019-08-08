@@ -23,11 +23,7 @@ public class EditorController {
 	{
 		return "coding";
 	}
-	@RequestMapping(value = "/insertBoard", method = RequestMethod.POST)
-    public String insertBoard(String editor) {
-        System.err.println("저장할 내용 : " + editor);
-        return "templete.jsp?page=AllCategory";
-    }
+	
 	
 	@RequestMapping("/file_uploader_html5") 
 	public void file_uploader_html5(HttpServletRequest request, HttpServletResponse response){

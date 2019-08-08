@@ -36,7 +36,8 @@
 </script>
 </head>
 <body>
-	<form action="./insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+	<form action="../AllCategory" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+		<input type="text" name="title">
         <textarea name="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
         <input type="button" id="insertBoard" value="등록" />
     </form> 

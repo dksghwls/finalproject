@@ -40,8 +40,7 @@
           margin: 10px;
           width: 300px;
       	  height: 300px;
-      	  position: relative;
-          left: 150px;
+      	 
       }
      #sidemenu
       {
@@ -55,7 +54,11 @@
       {
       	margin: 10px;
       	position: relative;
-        left: 160px;
+        left: 10px;
+      }
+      #iimg
+      {
+      	margin-left: 20px;
       }
   </style>
 </head>
@@ -66,23 +69,24 @@
     <div class="col-sm-3 sidenav" id="sidemenu">
      
       <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="AllCategory">All Category</a></li>
+      <li class="active"><a href="../AllCategory">All Category</a></li>
       	<c:forEach var="item" items="${list }">
       	<li>
-      		<a href="CategoryDetail/${item.cno }">
+      		<a href="../AllCategory/${item.cno }">
       		${item.cname }</a>
       	</li>
       	</c:forEach>
         
       </ul><br>
     </div>
-    <div class="col-sm-9" id="imgbox">
+    <div id="imgbox">
       <c:forEach var="dto" items="${dto }">
-        <img src="img/Jellyfish.jpg" alt="a"><br>
+      <div class="col-sm-3" id="iimg">
+        <img src="../img/Jellyfish.jpg" alt="a"><br>
         <p>상품이름:<c:out value="${dto.pname }"></c:out></p>
         <p>할인가:<c:out value="${dto.dprice }"></c:out></p>
         <p>원가:<c:out value="${dto.oprice }"></c:out></p><br>
-         
+      </div>   
       </c:forEach> 
         
     </div>

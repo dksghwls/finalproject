@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.DTO.CategoryDTO;
 import com.bitcamp.Service.CategoryService;
@@ -20,8 +21,11 @@ public class AllCategoryController {
 	private CategoryService service;
 	
 	
-	@RequestMapping(value = "/AllCategory", method = RequestMethod.GET)
-	public String category(Model model) {
+	@RequestMapping(value = "/AllCategory")
+	public String category(@RequestParam(required=false)String title
+							,@RequestParam(required=false)String editor
+							, Model model)
+	{
 		
 		List<CategoryDTO> clist = service.AllList();
 		
@@ -31,10 +35,12 @@ public class AllCategoryController {
 		
 		model.addAttribute("dto", plist );
 		
+		
+		
 		return "templete.jsp?page=AllCategory";
 	}
 	
-	@RequestMapping("CategoryDetail/{cno}")
+	@RequestMapping("/AllCategory/{cno}")
 	public String Cdetail(@PathVariable int cno, Model model)
 	{
 		List<CategoryDTO> calist = service.allList();
@@ -45,7 +51,7 @@ public class AllCategoryController {
 		
 		model.addAttribute("dto", pclist );
 		
-		return "templete.jsp?page=CategoryDetail";
+		return "templete.jsp?page=AllCategory";
 		
 	}
 	
