@@ -40,6 +40,13 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
+	@Override
+	public int addresult(CategoryDTO dto) {
+		
+		return mapper.addresult(dto);
+	}
+
+
 	
 
 

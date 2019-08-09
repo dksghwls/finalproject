@@ -16,4 +16,6 @@ public interface CategoryMapper {
 	public List<CategoryDTO> cpList(int cno);
 
 	public List<CategoryDTO> allList();
+
+	public int addresult(CategoryDTO dto);
 }

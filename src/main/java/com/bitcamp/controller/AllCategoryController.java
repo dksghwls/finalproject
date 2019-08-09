@@ -22,9 +22,7 @@ public class AllCategoryController {
 	
 	
 	@RequestMapping(value = "/AllCategory")
-	public String category(@RequestParam(required=false)String title
-							,@RequestParam(required=false)String editor
-							, Model model)
+	public String category(Model model)
 	{
 		
 		List<CategoryDTO> clist = service.AllList();
@@ -35,10 +33,31 @@ public class AllCategoryController {
 		
 		model.addAttribute("dto", plist );
 		
-		
-		
 		return "templete.jsp?page=AllCategory";
 	}
+	
+	@RequestMapping(value="insertBoard")
+	public String addresult(@RequestParam String pname
+							,@RequestParam int dprice
+							,@RequestParam int oprice
+							,@RequestParam int cno
+							,@RequestParam(required=false) String editor
+								,CategoryDTO dto)
+	{
+		dto.setPname(pname);
+		dto.setDprice(dprice);
+		dto.setOprice(oprice);
+		dto.setCno(cno);
+		
+		int result =  service.addresult(dto);
+		
+		
+		return "redirect:/AllCategory";
+		
+	}
+	
+	
+	
 	
 	@RequestMapping("/AllCategory/{cno}")
 	public String Cdetail(@PathVariable int cno, Model model)

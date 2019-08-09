@@ -36,8 +36,11 @@
 </script>
 </head>
 <body>
-	<form action="../AllCategory" method="post" id="insertBoardFrm" enctype="multipart/form-data">
-		<input type="text" name="title">
+	<form action="insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+		상품이름:<input type="text" name="pname" id="pname">
+		원가:<input type="text" name="oprice" id="oprice">
+		할인가:<input type="text" name="dprice" id="dprice">
+		카테고리번호:<input type="text" name="cno" id="cno">
         <textarea name="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
         <input type="button" id="insertBoard" value="등록" />
     </form> 

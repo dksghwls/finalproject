@@ -10,6 +10,7 @@ public class CategoryDTO {
 	private int dprice;
 	private int oprice;
 	
+
 	public int getPno() {
 		return pno;
 	}
@@ -46,6 +47,7 @@ public class CategoryDTO {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
+	
 	
 	
 	

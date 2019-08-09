@@ -30,5 +30,15 @@
     		and p.cno = #{cno}
     	
     	</select>
+    	<insert id="addresult" parameterType="com.bitcamp.DTO.CategoryDTO">
+    	
+    		insert into product(pname, dprice, oprice,cno)
+    		 values(#{pname}, #{dprice}, #{oprice}, #{cno}) 
+    	
+    	</insert>
+    	
+    	
+    	
+    	
     	
     </mapper>

@@ -14,4 +14,6 @@ public interface CategoryService {
 
 	public List<CategoryDTO> allList();
 
+	public int addresult(CategoryDTO dto);
+
 }
