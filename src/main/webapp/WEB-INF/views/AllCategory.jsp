@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
  <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
@@ -58,9 +59,17 @@
       }
       #iimg
       {
-      	margin-left: 20px;
+      	margin-left: 10px;
       }
   </style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<script>
+function del(pno)
+{
+	location.href="delete/"+pno
+}
+</script>
 </head>
 <body>
 
@@ -79,16 +88,22 @@
         
       </ul><br>
     </div>
-   <div id="imgbox">
+   
+   <div id="imgbox" class="container">
+   <div class="row">
       <c:forEach var="dto" items="${dto}">
       <div class="col-sm-3" id="iimg">
-        <img src="../img/Jellyfish.jpg" alt="a"><br>
+
+        <%-- <img src="resources/editor/multiupload/"+${ dto.imgname }><br> --%>
+        <img alt="a" src="img/Penguins.jpg">
+        <p><c:out value="${dto.pno}"></c:out></p>
         <p><c:out value="${dto.pname}"></c:out></p>
         <p><c:out value="${dto.dprice}"></c:out></p>
         <p><c:out value="${dto.oprice}"></c:out></p><br>
+        <input type="button" value="삭제" onclick="del(${dto.pno})">
       </div>   
       </c:forEach> 
-        
+      </div>
     </div>
   </div>
 </div>

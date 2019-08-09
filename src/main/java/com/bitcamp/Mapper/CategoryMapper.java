@@ -18,4 +18,6 @@ public interface CategoryMapper {
 	public List<CategoryDTO> allList();
 
 	public int addresult(CategoryDTO dto);
+
+	public int delete(int pno);
 }

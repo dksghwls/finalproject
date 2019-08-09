@@ -47,6 +47,13 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
+	@Override
+	public int delete(int pno) {
+		
+		return mapper.delete(pno);
+	}
+
+
 	
 
 

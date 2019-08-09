@@ -56,7 +56,13 @@ public class AllCategoryController {
 		
 	}
 	
-	
+	@RequestMapping("delete/{pno}")
+	public String delete(@PathVariable int pno)
+	{
+		int result = service.delete(pno);
+		
+		return "redirect:/AllCategory";
+	}
 	
 	
 	@RequestMapping("/AllCategory/{cno}")

@@ -11,7 +11,7 @@
     	</select>
     	<select id="pList" resultType="com.bitcamp.DTO.CategoryDTO">
     		
-    		select pname, oprice, dprice from product
+    		select pno, pname, oprice, dprice from product
     	
     	
     	</select>
@@ -36,6 +36,16 @@
     		 values(#{pname}, #{dprice}, #{oprice}, #{cno}) 
     	
     	</insert>
+    	
+    	<delete id="delete" parameterType="int">
+    	
+    		delete from product where pno = #{pno}
+    	
+    	</delete>
+    	
+    	
+    	
+    	
     	
     	
     	

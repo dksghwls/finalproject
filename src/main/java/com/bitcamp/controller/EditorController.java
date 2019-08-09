@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EditorController {
@@ -23,8 +24,6 @@ public class EditorController {
 	{
 		return "coding";
 	}
-	
-	
 	@RequestMapping("/file_uploader_html5") 
 	public void file_uploader_html5(HttpServletRequest request, HttpServletResponse response){
 		try {
@@ -53,8 +52,11 @@ public class EditorController {
 				
 				String filePath = dftFilePath + "resources" + File.separator + "editor" + File.separator +"multiupload" + File.separator;
 				File file = new File(filePath); 
-				if(!file.exists()) { file.mkdirs();
-				} String realFileNm = "";
+				if(!file.exists())
+				{ 
+					file.mkdirs();
+				}
+				String realFileNm = "";
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
 				String today= formatter.format(new java.util.Date());
 				realFileNm = today+UUID.randomUUID().toString() + filename.substring(filename.lastIndexOf("."));
@@ -76,6 +78,7 @@ public class EditorController {
 				print.print(sFileInfo);
 				print.flush();
 				print.close();
+		
 				}	
 			} 
 		
@@ -84,6 +87,4 @@ public class EditorController {
 				e.printStackTrace(); }
 		
 	}
-	
-	
 }

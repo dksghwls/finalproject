@@ -16,4 +16,6 @@ public interface CategoryService {
 
 	public int addresult(CategoryDTO dto);
 
+	public int delete(int pno);
+
 }
