@@ -54,9 +54,19 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	
+	@Override
+	public int addimg(String imgname) {
+		
+		return mapper.addimg(imgname);
+	}
 
 
-	
+	@Override
+	public List<CategoryDTO> adpList() {
+		
+		return mapper.adplist();
+	}
+
+
 
 }

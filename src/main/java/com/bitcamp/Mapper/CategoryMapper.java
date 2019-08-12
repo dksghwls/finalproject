@@ -20,4 +20,8 @@ public interface CategoryMapper {
 	public int addresult(CategoryDTO dto);
 
 	public int delete(int pno);
+
+	public int addimg(String imgname);
+
+	public List<CategoryDTO> adplist();
 }

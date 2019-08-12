@@ -32,10 +32,20 @@
     	</select>
     	<insert id="addresult" parameterType="com.bitcamp.DTO.CategoryDTO">
     	
-    		insert into product(pname, dprice, oprice,cno)
+    		insert into product(pname, dprice, oprice, cno, content, deadline, regist, stock)
     		 values(#{pname}, #{dprice}, #{oprice}, #{cno}) 
     	
     	</insert>
+    	
+    <!-- 	<insert id="addimg" parameterType="int">
+    	
+    		insert into img(imgname)
+    		values(#{imgname})
+    	
+    	</insert>
+    	 -->
+    	
+    	
     	
     	<delete id="delete" parameterType="int">
     	
@@ -43,6 +53,13 @@
     	
     	</delete>
     	
+    	<select id="adplist" resultType="com.bitcamp.DTO.CategoryDTO">
+    	
+    	select pno, pname, oprice, dprice, stock, regist, deadline
+    	from product
+    	
+    	
+    	</select>
     	
     	
     	

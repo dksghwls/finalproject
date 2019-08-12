@@ -62,14 +62,7 @@
       	margin-left: 10px;
       }
   </style>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js">
-</script>
-<script>
-function del(pno)
-{
-	location.href="delete/"+pno
-}
-</script>
+
 </head>
 <body>
 
@@ -95,18 +88,17 @@ function del(pno)
       <div class="col-sm-3" id="iimg">
 
         <%-- <img src="resources/editor/multiupload/"+${ dto.imgname }><br> --%>
-        <img alt="a" src="img/Penguins.jpg">
+        <img alt="a" src="../img/Penguins.jpg">
         <p><c:out value="${dto.pno}"></c:out></p>
         <p><c:out value="${dto.pname}"></c:out></p>
         <p><c:out value="${dto.dprice}"></c:out></p>
         <p><c:out value="${dto.oprice}"></c:out></p><br>
-        <input type="button" value="삭제" onclick="del(${dto.pno})">
+        
       </div>   
       </c:forEach> 
       </div>
     </div>
   </div>
 </div>
-<a href="../coding">상품 추가하기</a>
 </body>
 </html>
