@@ -20,6 +20,9 @@ public interface CategoryService {
 
 	//public int addimg(String imgname);
 
-	public List<CategoryDTO> adpList();
+	public int totalCount(String search, String searchtxt);
 
+	public List<CategoryDTO> adpList(String search, String searchtxt, int startRow, int endRow);
+
+	
 }

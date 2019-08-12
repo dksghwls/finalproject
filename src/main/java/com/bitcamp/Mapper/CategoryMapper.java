@@ -1,5 +1,6 @@
 package com.bitcamp.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -24,4 +25,8 @@ public interface CategoryMapper {
 	//public int addimg(String imgname);
 
 	public List<CategoryDTO> adplist();
+
+	public int totalCount(HashMap<String, Object> o);
+
+	public List<CategoryDTO> list(HashMap<String, Object> o);
 }

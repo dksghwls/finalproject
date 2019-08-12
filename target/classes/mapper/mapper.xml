@@ -3,6 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="com.bitcamp.Mapper.CategoryMapper">
+    <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
     
     	<select id="AllList" resultType="com.bitcamp.DTO.CategoryDTO">
     		
@@ -45,27 +46,57 @@
     	</insert>
     	 -->
     	
-    	
-    	
     	<delete id="delete" parameterType="int">
     	
     		delete from product where pno = #{pno}
     	
     	</delete>
     	
-    	<select id="adplist" resultType="com.bitcamp.DTO.CategoryDTO">
-    	
-    	select pno, pname, oprice, dprice, stock, regist, deadline
-    	from product
-    	
-    	
-    	</select>
-    	
-    	
-    	
-    	
-    	
-    	
+    	 
+ <select id="totalCount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(*) from product
+  	<where>
+  		<if test="searchtxt!=null and searchtxt!=''">
+  			<choose>
+  				<when test="search=='pno'">
+  				and pno=#{searchtxt}
+  				</when>
+  				<when test="search=='pname'">
+  					and pname like '%'||upper(#{searchtxt})||'%'     
+  				</when>
+  				<when test="search=='cno'">
+  				and cno=#{searchtxt}
+  				</when>
+  			</choose>
+  		</if>
+  	</where>
+  </select>
+  
+  <select id="list" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
+  		select *
+  		from product
+  		order by pno 
+		limit 0, 5;
+  				
+              <where>
+				<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
+					<when test="search=='pno'">
+						and pno=#{searchtxt}
+					</when>
+					<when test="search=='pname'">
+						and pname like upper('%'|| #{searchtxt}||'%')
+					</when>
+					<when test="search=='cno'">
+						and cno=#{searchtxt}
+					</when>
+				</choose>
+			</if>
+			
+	</where>
+	
+  </select>
     	
     	
     </mapper>

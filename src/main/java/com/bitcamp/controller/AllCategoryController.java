@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.DTO.MakePage;
 import com.bitcamp.Service.CategoryService;
 
 @Controller
@@ -54,11 +55,25 @@ public class AllCategoryController {
 	}
 	
 	@RequestMapping(value="/adminproduct")
-	public String list(Model model)
+	public String list(@RequestParam(required=false, defaultValue="1") int currPage
+						,@RequestParam(required=false, defaultValue="") String search
+						,@RequestParam(required=false, defaultValue="") String searchtxt
+						,Model model)
 	{
-		List<CategoryDTO> plist = service.adpList();
+		int totalCount = service.totalCount(search, searchtxt);
 		
-		model.addAttribute("dto", plist );
+		int pageSize=5;
+		int blockSize=10;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		
+		List<CategoryDTO> plist = service.adpList(search, searchtxt, page.getStartRow(), page.getEndRow());
+		
+		
+		model.addAttribute("list",plist);
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
 		
 		return "templete.jsp?page=adminproduct";
 		

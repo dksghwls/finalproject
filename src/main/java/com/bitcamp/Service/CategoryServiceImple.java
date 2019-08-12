@@ -1,5 +1,6 @@
 package com.bitcamp.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,19 +55,35 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
+	@Override
+	public int totalCount(String search, String searchtxt) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		
+		return mapper.totalCount(hm);
+	}
+
+
+	@Override
+	public List<CategoryDTO> adpList(String search, String searchtxt, int startRow, int endRow) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow );
+		o.put("endRow", endRow);
+		
+		
+		return mapper.list(o);
+	}
+
+
 	/*@Override
 	public int addimg(String imgname) {
 		
 		return mapper.addimg(imgname);
 	}*/
-
-
-	@Override
-	public List<CategoryDTO> adpList() {
-		
-		return mapper.adplist();
-	}
-
 
 
 }
