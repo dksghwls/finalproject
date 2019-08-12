@@ -14,7 +14,7 @@
         //스마트에디터 프레임생성
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: obj,
-            elPlaceHolder: "imgname",
+            elPlaceHolder: "content",
             sSkinURI: "./resources/editor/SmartEditor2Skin.html",
             htParams : {
                 // 툴바 사용 여부
@@ -28,7 +28,7 @@
         //전송버튼
         $("#insertBoard").click(function(){
             //id가 smarteditor인 textarea에 에디터에서 대입
-            obj.getById["imgname"].exec("UPDATE_CONTENTS_FIELD", []);
+            obj.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
             //폼 submit
             $("#insertBoardFrm").submit();
         });
@@ -41,11 +41,7 @@
 		상품이름:<input type="text" name="pname" id="pname"><br>
 		원가:<input type="text" name="oprice" id="oprice"><br>
 		할인가:<input type="text" name="dprice" id="dprice"><br>
-		상품설명:<textarea name="content" id="content" style="width: 700px; height: 400px;"></textarea><br>
-		마감일:<input type="text" name="deadline" id="deadline"><br>
-		등록일:<input type="text" name="regist" id="regist"><br>
-		재고:<input type="text" name="stock" id="stock"><br>
-		이미지:<textarea name="imgname" id="imgname" style="width: 700px; height: 400px;"></textarea>
+		상품설명:<textarea name="content" id="content" style="width: 700px; height: 400px;"></textarea>
         <input type="button" id="insertBoard" value="등록" />
     </form> 
 </body>

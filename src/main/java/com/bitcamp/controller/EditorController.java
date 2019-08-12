@@ -8,17 +8,25 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.Service.CategoryService;
 
 @Controller
 public class EditorController {
 
+	@Resource
+	private CategoryService service;
+	
 	@RequestMapping(value = "/coding", method = RequestMethod.GET)
 	public String coding()
 	{
@@ -87,4 +95,19 @@ public class EditorController {
 				e.printStackTrace(); }
 		
 	}
+
+	@RequestMapping("insertBoard")
+	public String addresult(CategoryDTO dto)
+	{
+		
+		service.addresult(dto);
+		
+		return "redirect:/adminproduct";
+	}
+
+
+
+
+
+
 }

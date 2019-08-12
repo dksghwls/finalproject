@@ -30,14 +30,14 @@
     		and p.cno = #{cno}
     	
     	</select>
-    	<insert id="addresult" parameterType="com.bitcamp.DTO.CategoryDTO">
+  		<insert id="addresult" parameterType="com.bitcamp.DTO.CategoryDTO">
     	
-    		insert into product(pname, dprice, oprice, cno, content, deadline, regist, stock)
-    		 values(#{pname}, #{dprice}, #{oprice}, #{cno}) 
+    		insert into product(pname, dprice, oprice, cno, content)
+    		 values(#{pname}, #{dprice}, #{oprice}, #{cno}, #{content}) 
     	
-    	</insert>
+    	</insert> 
     	
-    <!-- 	<insert id="addimg" parameterType="int">
+  		<!-- <insert id="addimg" parameterType="int">
     	
     		insert into img(imgname)
     		values(#{imgname})

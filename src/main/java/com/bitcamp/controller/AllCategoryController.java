@@ -64,37 +64,6 @@ public class AllCategoryController {
 		
 	}
 	
-	
-	@RequestMapping(value="insertBoard")
-	public String addresult(@RequestParam String pname
-							,@RequestParam int dprice
-							,@RequestParam int oprice
-							,@RequestParam int cno
-							,@RequestParam(required=false) String imgname
-							,@RequestParam String content
-							,@RequestParam String deadline
-							,@RequestParam String regist
-							,@RequestParam int stock
-								,CategoryDTO dto)
-	{
-		dto.setPname(pname);
-		dto.setDprice(dprice);
-		dto.setOprice(oprice);
-		dto.setCno(cno);
-		dto.setImgname(imgname);
-		dto.setContent(content);
-		dto.setDeadline(deadline);
-		dto.setRegist(regist);
-		dto.setStock(stock);
-		
-		int result =  service.addresult(dto);
-		
-		int result2 = service.addimg(imgname);
-		
-		return "redirect:/adminproduct";
-		
-	}
-	
 	@RequestMapping("delete/{pno}")
 	public String delete(@PathVariable int pno)
 	{

@@ -54,11 +54,11 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	@Override
+	/*@Override
 	public int addimg(String imgname) {
 		
 		return mapper.addimg(imgname);
-	}
+	}*/
 
 
 	@Override
