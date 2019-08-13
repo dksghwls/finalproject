@@ -1,6 +1,8 @@
 package com.bitcamp.controller;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -60,10 +62,30 @@ public class AllCategoryController {
 						,@RequestParam(required=false, defaultValue="") String searchtxt
 						,Model model)
 	{
+
+		Pattern p = Pattern.compile("(^[0-9]*$)"); // 
+		
+		if(search=="pno"||search.equals("pno")
+				|| search=="cno"||search.equals("cno"))
+		{
+			Matcher m = p.matcher(searchtxt);
+			if(!m.find())
+			{
+				searchtxt="";
+				model.addAttribute("searchtxt", "");
+				
+			}
+			else
+			{
+				model.addAttribute("searchtxt", searchtxt);
+			}
+		}
+		
+		
 		int totalCount = service.totalCount(search, searchtxt);
 		
-		int pageSize=5;
-		int blockSize=10;
+		int pageSize=10;
+		int blockSize=5;
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		

@@ -74,6 +74,8 @@ public class CategoryServiceImple implements CategoryService{
 		o.put("startRow", startRow );
 		o.put("endRow", endRow);
 		
+		System.out.println(startRow);
+		System.out.println(endRow);
 		
 		return mapper.list(o);
 	}

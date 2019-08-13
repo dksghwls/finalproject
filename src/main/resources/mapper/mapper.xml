@@ -8,6 +8,7 @@
     	<select id="AllList" resultType="com.bitcamp.DTO.CategoryDTO">
     		
     		select cno,cname from category
+ 
     		
     	</select>
     	<select id="pList" resultType="com.bitcamp.DTO.CategoryDTO">
@@ -56,6 +57,7 @@
  <select id="totalCount" parameterMap="hashmap" resultType="int">
   	  		
   	  		select count(*) from product
+  	  		
   	<where>
   		<if test="searchtxt!=null and searchtxt!=''">
   			<choose>
@@ -76,9 +78,7 @@
   <select id="list" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
   		select *
   		from product
-  		order by pno 
-		limit 0, 5;
-  				
+  		
               <where>
 				<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
@@ -95,7 +95,8 @@
 			</if>
 			
 	</where>
-	
+	order by pno
+	limit #{startRow}, #{endRow}
   </select>
     	
     	

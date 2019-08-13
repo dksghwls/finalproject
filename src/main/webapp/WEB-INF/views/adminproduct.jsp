@@ -105,7 +105,7 @@ function del(pno)
     </tbody>
   </table>
   
-  <form method="post" action="${page.currPage }">
+  <form method="get" action="adminproduct?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option value="pno">상품번호</option>
 		<option value="pname">상품이름</option>
@@ -120,23 +120,22 @@ function del(pno)
   <div class="text-center">
   <ul class="pagination">
     <c:if test="${page.prev }">
-	<a href="list?currPage=${page.startBlock-1 }&search=${search}&searxhtxt=${searchtxt}">
+	<a href="adminproduct?currPage=${page.startBlock-1 }&search=${search}&searxhtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
   <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
   	
-		<a href="list?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
+		<a href="adminproduct?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
 		<c:out value="${index }"/>
 		</a>
 	
 </c:forEach>
   <c:if test="${page.next }">
-<a href="list?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
+<a href="adminproduct?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
 <c:out value="다음"/>
 </a>
 </c:if>
-   
   </ul>
   </div>
 </div>
