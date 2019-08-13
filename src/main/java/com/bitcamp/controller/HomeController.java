@@ -50,17 +50,6 @@ public class HomeController {
 		return "templete.jsp?page=login";
 	}
 	
-	@RequestMapping("/loginOK")
-	public String loginOK(MemberDTO dto) {
-		
-		System.out.println(dto.getEmail());
-		
-		MemberDTO member = service.getMember(dto);
-		System.out.println(member == null);
-		
-		return "redirect:/";
-	}
-	
 	@RequestMapping("/logout")
 	public String logout() {
 		return "redirect:/";

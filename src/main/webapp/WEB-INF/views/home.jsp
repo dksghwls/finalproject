@@ -13,7 +13,8 @@
 		로그아웃 상태
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
-		로그인 상태
+		<p><sec:authentication property="principal.username"/> 로그인</p>
+		<%-- <p>principal : <sec:authentication property="principal"/></p> --%>
 	</sec:authorize>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		관리자 로그인

@@ -8,7 +8,7 @@
 	<!-- 링크별 권한 -->
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/**" access="permitAll"/>
-		<security:form-login login-processing-url="/loginOK" login-page="/login" default-target-url="/" authentication-failure-url="/"
+		<security:form-login login-processing-url="/loginOK" login-page="/login" default-target-url="/" authentication-failure-url="/login"
 					username-parameter="email" password-parameter="pwd" />
 		<security:logout logout-url="/logout" logout-success-url="/" />
 	</security:http>
