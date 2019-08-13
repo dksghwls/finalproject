@@ -24,6 +24,9 @@
 	      </div>
 	    </div>
 	    <div class="form-group">
+	    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	    </div>
+	    <div class="form-group">
 	      <div class="col-sm-offset-5 col-sm-1">
 	        <button type="reset" class="btn btn-danger">Reset</button>
 	      </div>

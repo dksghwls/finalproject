@@ -23,7 +23,7 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="email">Email:</label>
 	      <div class="col-sm-8">
-	        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="" disabled="disabled">
+	        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="" readonly="readonly">
 	      </div>
 	    </div>
 	    <div class="form-group">
@@ -31,6 +31,9 @@
 	      <div class="col-sm-8">          
 	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
 	      </div>
+	    </div>
+	    <div class="form-group">
+	    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	    </div>
 	    <div class="form-group">        
 	      <div class="col-sm-offset-5 col-sm-1">
