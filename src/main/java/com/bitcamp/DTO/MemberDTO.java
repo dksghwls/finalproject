@@ -10,6 +10,7 @@ public class MemberDTO {
 	private String addr;
 	private String detailaddr;
 	private String phone;
+	private String auth;
 	
 	public int getNo() {
 		return no;
@@ -73,6 +74,14 @@ public class MemberDTO {
 	
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public String getAuth() {
+		return auth;
+	}
+
+	public void setAuth(String auth) {
+		this.auth = auth;
 	}
 	
 }

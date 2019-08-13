@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,13 +33,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/joinOK")
+	@Transactional
 	public String joinOK(MemberDTO dto) {
 		
 		String pwd = passwordEncoder.encode(dto.getPwd());
 		dto.setPwd(pwd);
 		
-		int result = service.MemberInsert(dto);
-		System.out.println(result);
+		service.MemberInsert(dto);
+		service.MemberAuthInsert(dto.getEmail());
 		
 		return "templete.jsp?page=login";
 	}
@@ -49,9 +51,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/loginOK")
-	public String loginOK() {
+	public String loginOK(MemberDTO dto) {
 		
+		System.out.println(dto.getEmail());
 		
+		MemberDTO member = service.getMember(dto);
+		System.out.println(member == null);
 		
 		return "redirect:/";
 	}

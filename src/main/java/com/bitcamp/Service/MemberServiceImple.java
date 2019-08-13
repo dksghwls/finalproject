@@ -17,4 +17,15 @@ public class MemberServiceImple implements MemberService {
 		return mapper.MemberInsert(dto);
 	}
 
+	@Override
+	public int MemberAuthInsert(String email) {
+		return mapper.MemberAuthInsert(email);
+	}
+
+	@Override
+	public MemberDTO getMember(MemberDTO dto) {
+		return mapper.getMember(dto);
+	}
+
+
 }

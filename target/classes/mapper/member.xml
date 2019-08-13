@@ -4,10 +4,27 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
     <mapper namespace="com.bitcamp.Mapper.MemberMapper">
-    
+	
 	    <insert id="MemberInsert" parameterType="com.bitcamp.DTO.MemberDTO">
 	    	insert into member(nickname, email, pwd)
 	    	values(#{nickname}, #{email}, #{pwd})
 	    </insert>
-    
+	    
+	    <insert id="MemberAuthInsert" parameterType="com.bitcamp.DTO.AuthDTO">
+	    	insert into auth(email, auth)
+	    	values(#{email}, 'ROLE_USER')
+	    </insert>
+	    
+	    <select id="MemberLogin" resultType="com.bitcamp.DTO.MemberDTO">
+	    	select no, nickname, email, pwd
+	    	where email = #{email} and pwd = #{pwd}
+	    </select>
+    	
+    	<select id="getMember">
+    		select no, nickname, member.email, pwd, auth
+    		from member left outer join auth
+    		on member.email = auth.email
+    		where member.email = #{email} and pwd = #{pwd}
+    	</select>
+    	
     </mapper>

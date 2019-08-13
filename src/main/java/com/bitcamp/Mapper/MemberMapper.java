@@ -8,5 +8,9 @@ import com.bitcamp.DTO.MemberDTO;
 public interface MemberMapper {
 
 	public int MemberInsert(MemberDTO dto);
+
+	public int MemberAuthInsert(String email);
+	
+	public MemberDTO getMember(MemberDTO dto);
 	
 }
