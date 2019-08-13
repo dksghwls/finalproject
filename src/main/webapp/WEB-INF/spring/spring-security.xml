@@ -20,5 +20,8 @@
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	<!-- 비밀번호 암호화 -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
 </beans>
