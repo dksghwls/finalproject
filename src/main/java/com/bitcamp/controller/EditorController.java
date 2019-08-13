@@ -100,14 +100,20 @@ public class EditorController {
 	public String addresult(CategoryDTO dto)
 	{
 		
-		service.addresult(dto);
+		int result = service.addresult(dto);
 		
 		return "redirect:/adminproduct";
 	}
-
-
-
-
-
+	
+	@RequestMapping("updateresult")
+	public String updateresult(CategoryDTO dto)
+	{
+		System.out.println("ok");
+		
+		int result = service.updateresult(dto);
+		
+		System.out.println(result);
+		return "redirect:/adminproduct";
+	}
 
 }

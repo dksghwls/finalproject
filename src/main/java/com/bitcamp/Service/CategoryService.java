@@ -24,5 +24,15 @@ public interface CategoryService {
 
 	public List<CategoryDTO> adpList(String search, String searchtxt, int startRow, int endRow);
 
+	public CategoryDTO update(int pno);
+
+	public int updateresult(CategoryDTO dto);
+
+	public List<CategoryDTO> adminAllList();
+
+	public List<CategoryDTO> adallList();
+
+	public List<CategoryDTO> adcpList(int cno);
+
 	
 }

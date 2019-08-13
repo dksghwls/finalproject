@@ -42,6 +42,7 @@
 		원가:<input type="text" name="oprice" id="oprice"><br>
 		할인가:<input type="text" name="dprice" id="dprice"><br>
 		상품설명:<textarea name="content" id="content" style="width: 700px; height: 400px;"></textarea>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <input type="button" id="insertBoard" value="등록" />
     </form> 
 </body>

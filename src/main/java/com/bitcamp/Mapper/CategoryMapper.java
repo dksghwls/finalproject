@@ -29,4 +29,14 @@ public interface CategoryMapper {
 	public int totalCount(HashMap<String, Object> o);
 
 	public List<CategoryDTO> list(HashMap<String, Object> o);
+
+	public CategoryDTO update(int pno);
+
+	public int updateresult(CategoryDTO dto);
+
+	public List<CategoryDTO> admincategorylist();
+
+	public List<CategoryDTO> adallList();
+
+	public List<CategoryDTO> adcpList(int cno);
 }

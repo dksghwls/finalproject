@@ -23,7 +23,11 @@
 <script>
 function del(pno)
 {
-	location.href="delete/"+pno
+	location.href="delete/"+pno;
+}
+function update(pno)
+{
+	location.href="update/"+pno;
 }
 </script>
 </head>
@@ -54,16 +58,13 @@ function del(pno)
   
 <form>
     <div class="form-group" style="width: 150px; float: right;">
-      <!--<label for="sel1">Select list (select one):</label>-->
+    
       <select class="form-control" id="sel1" onchange="location.href=this.value">
-        <option>전체</option>
-        <option value="result.html" id="default">시계</option>
-        <option>스포츠용품</option>
-        <option>컴퓨터</option>
-        <option>사무용품</option>
-        <option>액세서리</option>
-        <option>의류/잡화</option>
-        <option>건강식품</option>
+      	<option>선택하세요
+      	<option value="../adminproduct">전체
+        <c:forEach var="item" items="${clist }">
+        <option value="../adminproduct/${item.cno }">${item.cname }
+        </c:forEach>
       </select>
     </div>
     </form>
@@ -82,13 +83,14 @@ function del(pno)
         <th>등록일</th>
         <th>마감일</th>
         <th>삭제</th>
+        <th>수정</th>
       </tr>
     </thead>
     <tbody>
     <c:forEach var="dto" items="${list }">
       <tr>
       
-        <td><a href="main.html"><img src="img/Tulips.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
+        <td><a href="main.html"><img src="../img/Tulips.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
         <td><c:out value="${dto.pno }"></c:out></td>
         <td><c:out value="${dto.pname }"></c:out></td>
         <td><c:out value="${dto.oprice }"></c:out></td>
@@ -99,6 +101,7 @@ function del(pno)
         <td><c:out value="${dto.regist }"></c:out></td>
         <td><c:out value="${dto.deadline }"></c:out></td>
         <td><input type="button" value="삭제" onclick="del(${dto.pno})"></td>
+        <td><input type="button" value="수정" onclick="update(${dto.pno})"></td>
       </tr>
       
        </c:forEach>

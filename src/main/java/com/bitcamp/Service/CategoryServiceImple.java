@@ -81,6 +81,41 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
+	@Override
+	public CategoryDTO update(int pno) {
+		
+		return mapper.update(pno);
+	}
+
+
+	@Override
+	public int updateresult(CategoryDTO dto) {
+		
+		return mapper.updateresult(dto);
+	}
+
+
+	@Override
+	public List<CategoryDTO> adminAllList() {
+		
+		return mapper.admincategorylist();
+	}
+
+
+	@Override
+	public List<CategoryDTO> adallList() {
+		
+		return mapper.adallList();
+	}
+
+
+	@Override
+	public List<CategoryDTO> adcpList(int cno) {
+		
+		return mapper.adcpList(cno);
+	}
+
+
 	/*@Override
 	public int addimg(String imgname) {
 		
@@ -89,3 +124,4 @@ public class CategoryServiceImple implements CategoryService{
 
 
 }
+

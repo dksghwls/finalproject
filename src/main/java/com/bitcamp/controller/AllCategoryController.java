@@ -62,7 +62,11 @@ public class AllCategoryController {
 						,@RequestParam(required=false, defaultValue="") String searchtxt
 						,Model model)
 	{
-
+		List<CategoryDTO> clist = service.adminAllList();
+		
+		model.addAttribute("clist", clist);
+		
+		
 		Pattern p = Pattern.compile("(^[0-9]*$)"); // 
 		
 		if(search=="pno"||search.equals("pno")
@@ -107,6 +111,30 @@ public class AllCategoryController {
 		int result = service.delete(pno);
 		
 		return "redirect:/adminproduct";
+	}
+	
+	@RequestMapping("update/{pno}")
+	public String update(@PathVariable int pno, Model model)
+	{
+		CategoryDTO dto = service.update(pno);
+		model.addAttribute("dto", dto);
+		
+		
+		return "update";
+	}
+	@RequestMapping("adminproduct/{cno}")
+	public String adminselect(@PathVariable int cno, Model model)
+	{
+		List<CategoryDTO> scalist = service.adallList();
+		
+		model.addAttribute("clist", scalist);
+		
+		List<CategoryDTO> spclist = service.adcpList(cno);
+		
+		model.addAttribute("list", spclist );
+		
+		return "templete.jsp?page=adminproduct";
+		
 	}
 	
 	
