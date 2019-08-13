@@ -7,19 +7,18 @@
 
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/**" access="permitAll"/>
-		<security:form-login login-page="/" default-target-url="/" authentication-failure-url="/"
-					username-parameter="id" password-parameter="password" />
-		<security:logout/>
+		<security:form-login login-processing-url="/loginOK" login-page="/login" default-target-url="/" authentication-failure-url="/"
+					username-parameter="email" password-parameter="pwd" />
+		<security:logout logout-url="/logout" logout-success-url="/" />
 	</security:http>
 	
 	<!-- provider -->
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:user-service>
-				<security:user name="user" password="password" authorities="ROLE_USER" />
+				<security:user name="admin@bitcamp.com" password="admin" authorities="ROLE_ADMIN" />
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>
-
 
 </beans>

@@ -37,7 +37,12 @@ public class HomeController {
 		
 		
 		
-		return "templete.jsp?page=home";
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout() {
+		return "redirect:/";
 	}
 	
 }
