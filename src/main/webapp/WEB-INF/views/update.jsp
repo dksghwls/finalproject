@@ -8,8 +8,8 @@
 </head>
 <body>
 	
-	<form action="updateresult" method="post" id="insertBoardFrm" enctype="multipart/form-data">
-		카테고리번호:<input type="text" name="cno" id="cno"><br>
+	<form action="../updateresult" method="post" id="insertBoardFrm">
+		
 		상품이름:<input type="text" name="pname" id="pname"><br>
 		원가:<input type="text" name="oprice" id="oprice"><br>
 		할인가:<input type="text" name="dprice" id="dprice"><br>

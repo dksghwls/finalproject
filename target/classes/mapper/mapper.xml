@@ -110,8 +110,7 @@
     	<update id="updateresult" parameterType="com.bitcamp.DTO.CategoryDTO">
     	
     		update product
-    		set cno=#{cno}
-    			,pname=#{pname}
+    		set pname=#{pname}
     			,oprice=#{oprice}
     			,dprice=#{dprice}
     			,content=#{content}

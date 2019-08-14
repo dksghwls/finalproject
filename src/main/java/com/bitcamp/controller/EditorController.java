@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.DTO.CategoryDTO;
 import com.bitcamp.Service.CategoryService;
+import com.sun.istack.internal.logging.Logger;
 
 @Controller
 public class EditorController {
@@ -109,6 +110,11 @@ public class EditorController {
 	public String updateresult(CategoryDTO dto)
 	{
 		System.out.println("ok");
+		Logger.getLogger(EditorController.class).info("dto"+dto.getPname());
+		Logger.getLogger(EditorController.class).info("dto"+dto.getOprice());
+		Logger.getLogger(EditorController.class).info("dto"+dto.getDprice());
+		Logger.getLogger(EditorController.class).info("dto"+dto.getContent());
+		
 		
 		int result = service.updateresult(dto);
 		
