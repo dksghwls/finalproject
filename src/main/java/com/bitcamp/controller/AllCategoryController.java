@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bitcamp.DTO.CategoryDTO;
 import com.bitcamp.DTO.MakePage;
 import com.bitcamp.Service.CategoryService;
+import com.sun.istack.internal.logging.Logger;
 
 @Controller
 public class AllCategoryController {
@@ -122,6 +123,21 @@ public class AllCategoryController {
 		
 		return "update";
 	}
+	@RequestMapping("/updateresult")
+	public String updateresult(CategoryDTO dto)
+	{
+		
+		
+		int result = service.updateresult(dto);
+		
+		System.out.println(service);
+		System.out.println(result);
+		System.out.println("ok");
+		return "redirect:/adminproduct";
+	}
+	
+	
+	
 	@RequestMapping("adminproduct/{cno}")
 	public String adminselect(@PathVariable int cno, Model model)
 	{

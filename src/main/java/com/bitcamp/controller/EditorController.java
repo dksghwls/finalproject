@@ -106,20 +106,5 @@ public class EditorController {
 		return "redirect:/adminproduct";
 	}
 	
-	@RequestMapping("updateresult")
-	public String updateresult(CategoryDTO dto)
-	{
-		System.out.println("ok");
-		Logger.getLogger(EditorController.class).info("dto"+dto.getPname());
-		Logger.getLogger(EditorController.class).info("dto"+dto.getOprice());
-		Logger.getLogger(EditorController.class).info("dto"+dto.getDprice());
-		Logger.getLogger(EditorController.class).info("dto"+dto.getContent());
-		
-		
-		int result = service.updateresult(dto);
-		
-		System.out.println(result);
-		return "redirect:/adminproduct";
-	}
 
 }

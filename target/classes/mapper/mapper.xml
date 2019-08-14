@@ -108,12 +108,12 @@
     	</select>
     	
     	<update id="updateresult" parameterType="com.bitcamp.DTO.CategoryDTO">
-    	
     		update product
-    		set pname=#{pname}
-    			,oprice=#{oprice}
-    			,dprice=#{dprice}
-    			,content=#{content}
+    		set 
+    			 pname= #{pname}
+    			,oprice =#{oprice}
+    			,dprice =#{dprice}
+    			,content =#{content}
     		where 
     			pno=#{pno}
     			

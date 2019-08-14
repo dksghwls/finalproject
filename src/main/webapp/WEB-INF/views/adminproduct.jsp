@@ -98,8 +98,8 @@ function update(pno)
         <td>null</td>
         <td>null</td>
         <td>null</td>
-        <td><c:out value="${dto.regist }"></c:out></td>
-        <td><c:out value="${dto.deadline }"></c:out></td>
+        <td>null</td>
+        <td>null</td>
         <td><input type="button" value="삭제" onclick="del(${dto.pno})"></td>
         <td><input type="button" value="수정" onclick="update(${dto.pno})"></td>
       </tr>
