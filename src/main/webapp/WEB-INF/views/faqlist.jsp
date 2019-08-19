@@ -3,74 +3,319 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<style>
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#integration-list {
+	font-family: 'Open Sans', sans-serif;
+	width: 80%;
+	margin: 0 auto;
+	display: table;
+}
+
+#integration-list ul {
+	padding: 0;
+	margin: 20px 0;
+	color: #555;
+}
+
+#integration-list ul>li {
+	list-style: none;
+	border-top: 1px solid #ddd;
+	display: block;
+	padding: 15px;
+	overflow: hidden;
+}
+
+#integration-list ul:last-child {
+	border-bottom: 1px solid #ddd;
+}
+
+#integration-list ul>li:hover {
+	background: #efefef;
+}
+
+.expand {
+	display: block;
+	text-decoration: none;
+	color: #555;
+	cursor: pointer;
+}
+
+h2 {
+	padding: 0;
+	margin: 0;
+	font-size: 17px;
+	font-weight: 400;
+}
+
+span {
+	font-size: 12.5px;
+}
+
+#left, #right {
+	display: table;
+}
+
+#sup {
+	display: table-cell;
+	vertical-align: middle;
+	width: 80%;
+}
+
+.detail a {
+	text-decoration: none;
+	color: #C0392B;
+	border: 1px solid #C0392B;
+	padding: 6px 10px 5px;
+	font-size: 14px;
+}
+
+.detail {
+	margin: 10px 0 10px 0px;
+	display: none;
+	line-height: 22px;
+	height: 150px;
+}
+
+.detail span {
+	margin: 0;
+}
+
+.right-arrow {
+	margin-top: 12px;
+	margin-left: 20px;
+	width: 10px;
+	height: 100%;
+	float: right;
+	font-weight: bold;
+	font-size: 20px;
+}
+</style>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script>
- 
+	$(function() {
+		$(".expand").on("click", function() {
+			$(this).next().slideToggle(200);
+			$expand = $(this).find(">:first-child");
 
-
+			if ($expand.text() == "+") {
+				$expand.text("-");
+			} else {
+				$expand.text("+");
+			}
+		});
+	});
 </script>
 <title>Insert title here</title>
 
 </head>
 <body>
+	<div class="container">
+		<h2>
+			<a href="/helpcenter" data-toggle="tooltip" title="HelpCenter!">FAQ</a>
+		</h2>
+		<ul class="nav nav-pills">
+			<li class="active"><a data-toggle="pill" href="#home">전체</a></li>
+			<li><a data-toggle="pill" href="#menu1">배송</a></li>
+			<li><a data-toggle="pill" href="#menu2">주문</a></li>
+			<li><a data-toggle="pill" href="#menu3">회원</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<table class="table table-hover">
+					<!-- 아코디언 효과 -->
+					<tbody>
+						<div id="integration-list">
+							<ul>
+								<c:forEach var="i" items="${list }">
+									<li><a href="/faqdetail/${i.fno }"> <c:out
+												value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out>
+										<a class="expand">
+											<div class="right-arrow">+</div>
+											<div>
+												<h4>
+													<c:out value="${i.ftitle }"></c:out>
+												</h4>
+											</div>
+									</a>
 
-	
-<div class="container">
-  <h2>FAQ</h2>
-  <ul class="nav nav-pills">
-    <li class="active"><a data-toggle="pill" href="#home">배송</a></li>
-    <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
-    <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
-    <li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
-  </ul>
-  
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>내용</th>
-			</tr>
-		</thead>
+										<div class="detail">
+											<div id="left" style="width: 15%; float: left; height: 70%;">
+												<div id="sup"></div>
+											</div>
+											<div id="right"
+												style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+												<div id="sup">
+													<div>
+														<span><c:out value="${i.fcontent }"></c:out></span>
+													</div>
+												</div>
+											</div>
+										</div></li>
+								</c:forEach>
+							</ul>
+							</div>
+				</table>
+				<!-- block 처리 -->
+				<ul class="pager">
+					<li><c:if test="${page.prev }">
+							<a href="faq?currPage=${page.startBlock-1 }"><c:out
+									value="이전"></c:out></a>
+						</c:if></li>
 
-		<tbody>
-		<c:forEach var="i" items="${list }">
-			<tr>
-			<td><c:out value="${i.fno }"></c:out></td>
-			<td><c:out value="${i.ftitle }"></c:out></td>
-			<td><c:out value="${i.fcontent }"></c:out></td>
-			
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div>
-</div>
+					<c:forEach var="i" begin="${page.startBlock }"
+						end="${page.endBlock }">
+						<li><c:choose>
+								<c:when test="${i }==${page.currPage }">
+									<c:out value="${i }"></c:out>
+								</c:when>
+								<c:otherwise>
+									<a href="faq?currPage=${i }"> <c:out value="${i}"></c:out></a>
+								</c:otherwise>
+							</c:choose></li>
+					</c:forEach>
 
+					<li><c:if test="${page.next }">
+							<a href="faq?currPage=${page.endBlock+1 }"><c:out value="다음"></c:out></a>
+						</c:if></li>
+				</ul>
+			</div>
+			<div id="menu1" class="tab-pane fade">
+				<table class="table table-hover">
+					<!-- 아코디언 효과 -->
+					<tbody>
+						<div id="integration-list">
+							<ul>
+								<c:forEach var="i" items="${shiplist }">
 
- 
+									<c:if test="${i.fcno ==1 }">
+
+										<li><a href="/faqdetail/${i.fno }"><c:out
+													value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out><a
+											class="expand">
+												<div class="right-arrow">+</div>
+												<div>
+													<h4>
+														<c:out value="${i.ftitle }"></c:out>
+													</h4>
+												</div>
+										</a>
+											<div class="detail">
+												<div id="left" style="width: 15%; float: left; height: 70%;">
+													<div id="sup"></div>
+												</div>
+												<div id="right"
+													style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+													<div id="sup">
+														<div>
+															<span><c:out value="${i.fcontent }"></c:out></span>
+														</div>
+													</div>
+												</div>
+											</div>
+									</c:if>
+								</c:forEach>
+								</li>
+							</ul>
+						</div>
+				</table>
+			</div>
+			<div id="menu2" class="tab-pane fade">
+				<table class="table table-hover">
+					<!-- 아코디언 효과 -->
+					<tbody>
+						<div id="integration-list">
+							<ul>
+								<c:forEach var="i" items="${orderlist }">
+
+									<c:if test="${i.fcno ==2 }">
+										<li><a href="/faqdetail/${i.fno }"><c:out
+													value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out><a
+											class="expand">
+												<div class="right-arrow">+</div>
+												<div>
+													<h4>
+														<c:out value="${i.ftitle }"></c:out>
+													</h4>
+												</div>
+										</a>
+											<div class="detail">
+												<div id="left" style="width: 15%; float: left; height: 70%;">
+													<div id="sup"></div>
+												</div>
+												<div id="right"
+													style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+													<div id="sup">
+														<div>
+															<span><c:out value="${i.fcontent }"></c:out></span>
+														</div>
+													</div>
+												</div>
+											</div>
+									</c:if>
+								</c:forEach>
+								</li>
+							</ul>
+						</div>
+				</table>
+			</div>
+			<div id="menu3" class="tab-pane fade">
+				<table class="table table-hover">
+
+					<!-- 아코디언 효과 -->
+					<tbody>
+						<div id="integration-list">
+							<ul>
+								<c:forEach var="i" items="${cuslist }">
+									<c:if test="${i.fcno ==3 }">
+										<li><a href="/faqdetail/${i.fno }"><c:out
+													value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out><a
+											class="expand">
+												<div class="right-arrow">+</div>
+												<div>
+													<h4>
+														<c:out value="${i.ftitle }"></c:out>
+													</h4>
+												</div>
+										</a>
+											<div class="detail">
+												<div id="left" style="width: 15%; float: left; height: 70%;">
+													<div id="sup"></div>
+												</div>
+												<div id="right"
+													style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+													<div id="sup">
+														<div>
+															<span><c:out value="${i.fcontent }"></c:out></span>
+
+														</div>
+													</div>
+												</div>
+											</div>
+									</c:if>
+								</c:forEach>
+								</li>
+							</ul>
+						</div>
+				</table>
+			</div>
+		</div>
+	</div>
 	<a href="faqinsert"><input type="button" value="글쓰기"></a>
+
+
 
 </body>
 </html>
