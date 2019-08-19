@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div class="container">
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -16,7 +16,6 @@
 				<th>회원번호</th>
 				<th>글제목</th>
 				<th>작성일</th>
-				<th>파일명</th>
 			 
 			</tr>
 		</thead>
@@ -36,5 +35,7 @@
 
 	</table>
 	<a href="/contactinsert"><input type="button" value="글쓰기"></a>
+	</div>
+	
 </body>
 </html>
