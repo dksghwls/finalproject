@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -20,7 +21,7 @@ import com.bitcamp.Service.FaqService;
 @Controller
 public class FaqController {
 
-	@Resource
+	@Autowired
 	private FaqService faqservice;
 
 	@RequestMapping(value = "/helpcenter")

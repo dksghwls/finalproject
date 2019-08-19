@@ -39,7 +39,9 @@ public class MakePage {
 		startBlock = (((currPage-1)/blockSize)*blockSize)+1;
 		endBlock = startBlock+blockSize-1;
 		
-		int totalPage = (int) Math.ceil(totalCount/(double)pageSize);
+		//int totalPage = (int) Math.ceil(totalCount/(double)pageSize);
+		int totalPage=(totalCount-1)/pageSize+1;
+		System.out.println(totalPage);
 		if(endBlock>totalPage)
 		{
 			endBlock = totalPage;

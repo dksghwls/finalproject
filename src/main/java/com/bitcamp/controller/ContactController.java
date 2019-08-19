@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import com.bitcamp.Service.ContactService;
 @Controller
 public class ContactController {
 
-	@Resource
+	@Autowired
 	private ContactService contactservice;
 
 	@RequestMapping("/contact")

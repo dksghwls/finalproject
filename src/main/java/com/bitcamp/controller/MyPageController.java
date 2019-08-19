@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ import com.bitcamp.Service.MyPageService;
 @Controller
 public class MyPageController {
 
-	@Resource
+	@Autowired
 	private MyPageService myPageService;
 	
 	@RequestMapping(value = "/mypage")
