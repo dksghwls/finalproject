@@ -10,7 +10,7 @@
 <body>
 	<c:set var="member" value="${ sessionScope.user }"></c:set>
 	<c:if test="${ member != null }">
-		asdsad
+		${member.no }
 	</c:if>
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
