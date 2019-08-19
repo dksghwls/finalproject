@@ -22,7 +22,7 @@ import com.bitcamp.Service.MemberService;
 @Controller
 public class HomeController {
 	
-	@Inject
+	@Autowired
     PasswordEncoder passwordEncoder;
 	
 	@Autowired
@@ -32,10 +32,8 @@ public class HomeController {
 	public String home(HttpSession session) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    String email = authentication.getName();
-	    System.out.println(email);
 	    if(email != "anonymousUser") {
 	    	MemberDTO user = service.getMember(email);
-		    System.out.println(user.getNo());
 		    session.setAttribute("user", user);
 	    }
 		return "templete.jsp?page=home";
@@ -67,6 +65,18 @@ public class HomeController {
 	@RequestMapping("/logout")
 	public String logout() {
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/userCheck")
+	@ResponseBody
+	public String userCheck(String email) {
+		System.out.println(email);
+		MemberDTO user = service.getMember(email);
+		String result = null;
+		if(user != null) {
+			result = "1";
+		}
+		return result;
 	}
 	
 }

@@ -32,6 +32,10 @@
 	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
 	      </div>
 	    </div>
+	    <!-- 로그인 실패 메시지 -->
+	    <div class="col-sm-offset-6 col-sm-4">
+	        <div id="result"></div>
+	    </div>
 	    <div class="form-group">
 	    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	    </div>
@@ -80,10 +84,26 @@
 						        
 						$('input[name=nickname]').val(userNickName);
 						$('input[name=email]').val(userEmail);
-						        
+						
 						console.log(userID);
 						console.log(userEmail);
 						console.log(userNickName);
+						
+						$.ajax({
+					        url : "/userCheck",
+					        // 사용자가 입력하여 id로 넘어온 값을 서버로 보냅니다.
+					        data : {"email" : userEmail},
+					        // 성공적으로 값을 서버로 보냈을 경우 처리하는 코드입니다.
+					        success : function (data) {
+					            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
+					            if (data) {
+					            	$('#result').text('사용할 수 없는 아이디 입니다.');
+					            } else {
+					            	$('#result').text('카카오 로그인');
+					            }
+					        }
+					    });
+						
 		      		},
 		      		fail: function(error) {
 		       			alert(JSON.stringify(error));
@@ -123,10 +143,31 @@
 				
 				$('input[name=nickname]').val(name);
 				$('input[name=email]').val(email);
+				
+				
+				$.ajax({
+			        url : "/userCheck",
+			        // 사용자가 입력하여 id로 넘어온 값을 서버로 보냅니다.
+			        data : {"email" : email},
+			        // 성공적으로 값을 서버로 보냈을 경우 처리하는 코드입니다.
+			        success : function (data) {
+			            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
+			            if (data) {
+			            	$('#result').text('사용할 수 없는 아이디 입니다.');
+			            } else {
+			            	$('#result').text('네이버 로그인');
+			            }             
+			        }
+			    });
+				
 			}
 		});
 		
 		naverLogin.logout(); 
+	</script>
+	
+	<script>
+		
 	</script>
 
 </body>
