@@ -173,15 +173,23 @@ span {
 					</tbody>
 				</table>
 				<br>
+
 				<!-- 검색 -->
 				<form method="get" action="faq?currPage=${page.startBlock }">
-					<select name="search">
+					<select name="search" >
 						<option value="ftitle">제목</option>
 						<option value="fcontent">내용</option>
-					</select> <input type="text" name="keyword"> <input type="submit"
-						value="검색">
+					</select> 
+					<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
+					<!-- <input type="text" name="keyword" class="form-control" > -->
+					 <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search" name="keyword">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
 				</form>
 				<br>
+
 				<!-- block 처리 -->
 				<ul class="pager">
 					<li><c:if test="${page.prev }">
@@ -197,7 +205,8 @@ span {
 									<c:out value="${i }"></c:out>
 								</c:when>
 								<c:otherwise>
-									<a href="faq?currPage=${i }&search=${search}&keyword=${keyword}">
+									<a
+										href="faq?currPage=${i }&search=${search}&keyword=${keyword}">
 										<c:out value="${i}"></c:out>
 									</a>
 								</c:otherwise>
@@ -205,7 +214,8 @@ span {
 					</c:forEach>
 
 					<li><c:if test="${page.next }">
-							<a href="faq?currPage=${page.endBlock+1 }&search=${search}&keyword=${keyword}"><c:out
+							<a
+								href="faq?currPage=${page.endBlock+1 }&search=${search}&keyword=${keyword}"><c:out
 									value="다음"></c:out></a>
 						</c:if></li>
 				</ul>
