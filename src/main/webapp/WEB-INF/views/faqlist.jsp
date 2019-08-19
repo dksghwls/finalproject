@@ -156,7 +156,7 @@ span {
 												<div id="sup"></div>
 											</div>
 											<div id="right"
-												style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+												style="width: 55%; float: right; height: 50%; padding-left: 20px;">
 												<div id="sup">
 													<div>
 														<span><c:out value="${i.fcontent }"></c:out></span>
@@ -312,8 +312,9 @@ span {
 				</table>
 			</div>
 		</div>
+			<a href="faqinsert"><input type="button" value="글쓰기"></a>
 	</div>
-	<a href="faqinsert"><input type="button" value="글쓰기"></a>
+
 
 
 

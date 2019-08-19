@@ -21,7 +21,7 @@
 		GROUP BY
 		a.fno
 		ORDER BY SUM(a.fno)
-		LIMIT #{startRow}, #{endRow};
+		LIMIT #{startRow}, 5;
 
 
 	</select>
