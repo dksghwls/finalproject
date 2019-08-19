@@ -15,7 +15,7 @@
 		<thead>
 			<tr>
 				<th>글번호</th>
-				<th>회원번호</th>
+				<th>회원명</th>
 				<th>글제목</th>
 				<th>작성일</th>
 			</tr>
@@ -25,7 +25,7 @@
 			<tr>
 				<td><a href="/contactdetail/${i.hno }"> <c:out
 												value="${i.hno } "></c:out></a> </td>
-				<td><c:out value="${i.no }"></c:out></td>
+				<td><c:out value="${i.nickname }"></c:out></td>
 				<td><c:out value="${i.htitle }"></c:out></td>
 				<td><c:out value="${i.hdate }"></c:out></td>				
 			</tr>

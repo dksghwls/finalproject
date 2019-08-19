@@ -6,10 +6,11 @@
 <mapper namespace="com.bitcamp.Mapper.ContactMapper">
 
 	<select id="contactlist" resultType="com.bitcamp.DTO.ContactDTO">
-	select hno, b.no, htitle, hcontent, hdate
+		select b.nickname, hno, b.no, htitle, hcontent, hdate
 		from help as a
 		left join member as b
 		on a.no = b.no
+		order by hno desc
 	</select>
 
 	<insert id="contactinsert"

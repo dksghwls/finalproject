@@ -8,9 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:set var="member" value="${ sessionScope.user }"></c:set>
 	<form method="post" action="/contactok">
 
-		<label for="no">회원번호</label> <input type="text" name="no" id="no"><br>
+<input type="hidden" name="no" value="${member.no }">
+		<label for="no">회원명</label> 
+		<input type="text" name="nickname" id="nickname" value="${member.nickname }"><br>
 		<br> <label for="title">제목</label> <select name="htitle"
 			id="title">
 			<option value="계정문의">계정문의</option>

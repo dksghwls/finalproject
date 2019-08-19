@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <style>
@@ -176,19 +177,23 @@ span {
 
 				<!-- 검색 -->
 				<form method="get" action="faq?currPage=${page.startBlock }">
-					<select name="search" class="form-control" id="sel1" style="width: 15%;">
+					<select name="search" class="form-control" id="sel1"
+						style="width: 15%;">
 						<option value="ftitle">제목</option>
 						<option value="fcontent">내용</option>
-					</select> 
+					</select>
 					<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
 					<!-- <input type="text" name="keyword" class="form-control" > -->
-					
-       <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search" name="keyword">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"  ></i></button>
-      </div>
-      </div>
+
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search"
+							name="keyword">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
 				</form>
 				<br>
 
@@ -221,8 +226,17 @@ span {
 									value="다음"></c:out></a>
 						</c:if></li>
 				</ul>
+				<!-- 관리자일 경우 글쓰기 보여지는 것 -->
+				<%-- <sec:authorize access="hasRole('ROLE_ADMIN')">
+					<a href="faqinsert"><input type="button" value="글쓰기"></a>
+				</sec:authorize> --%>
+				
+				<!-- 사용자일 경우 글쓰기 보여지는 것 -->
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<a href="faqinsert"><input type="button" value="글쓰기"></a>
+				</sec:authorize>
 
-				<a href="faqinsert"><input type="button" value="글쓰기"></a>
+
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table class="table table-hover">
