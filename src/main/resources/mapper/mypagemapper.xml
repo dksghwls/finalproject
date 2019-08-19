@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.bitcamp.Mapper.MyPageMapper">
+    <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+    	
+    	<select id="productlist" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select imgname, pname, bno, bdate, pay, addr, paying
+    		from img i, product p1, member m, pay p2
+    		where p1.pno=p2.pno and m.no=p2.no and p1.pno=i.pno
+    		
+    	</select>
+    	
+    	<select id="memberlist" resultType="com.bitcamp.DTO.MemberDTO">
+    		
+    		select *
+    		from member
+    		where no=8;
+    		
+    	</select>
+    	
+    	<update id="modifylist" parameterType="com.bitcamp.DTO.MemberDTO">
+          update member
+           set  
+               nickname=#{nickname}
+              , name=#{name}
+              , addr=#{addr}
+              , detailaddr=#{detailaddr}
+              , phone=#{phone}    
+    	</update>
+    	
+    	<select id="reviewlist" resultType="com.bitcamp.DTO.ReviewDTO">
+    		select imgname, pname, dprice, deadline, rcontent
+    		from product p, img i, reply r
+    		where p.pno=r.pno and p.pno=i.pno
+    	</select>
+    	
+    	<delete id="deletelist" parameterType="int">
+    		delete from member
+    		where no=#{no}
+    	
+    	</delete>
+    	
+    	<select id="admincategorylist" resultType="com.bitcamp.DTO.ProductDTO" >
+    	
+    		select cno,cname from category
+    		
+    	</select>
+    	
+    	<select id="totalCount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(bno)
+  	  		from category c, product p1, pay p2, member m
+  	  		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
+  		<!-- 	<where> -->
+  				
+  				<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and pname like CONCAT('%', #{searchtxt}, '%')
+						
+					</when>
+					<when test="search=='bno'">
+						and bno=#{searchtxt}
+					</when>
+  					</choose>
+  				</if>
+  			<!-- /where> -->
+  		</select>
+    	
+    	<select id="list" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
+  			<!-- select *
+  			from product -->
+  			
+  			select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
+    		from category c, product p1, pay p2, member m
+  			where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
+            <!-- <where> -->
+           	<if test="searchtxt!=null">
+			<!-- <if test="searchtxt!=null and searchtxt!=''"> -->
+				<choose>
+					<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and pname like CONCAT('%', #{searchtxt}, '%')
+						
+					</when>
+					<when test="search=='bno'">
+						and bno=#{searchtxt}
+					</when>
+				</choose>
+			</if>
+			
+		<!-- </where> -->
+			order by p1.pno
+			limit #{startRow}, 10
+  		</select>
+  		
+  		<select id="adallList" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select cno, cname from category
+    		
+    	</select>
+    	
+    	<select id="ctotalCount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(pname)
+  	  		from category c, product p1, pay p2, member m
+  	  		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and p1.cno = #{cno}
+  		<!-- 	<where> -->
+  				
+  				<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and pname like CONCAT('%', #{searchtxt}, '%')
+						
+					</when>
+					<when test="search=='bno'">
+						and bno=#{searchtxt}
+					</when>
+  					</choose>
+  				</if>
+  			<!-- /where> -->
+  		</select>
+    	
+    	<select id="adcpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
+    		from category c, product p1, pay p2, member m
+    		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
+    			and p1.cno = #{cno}
+    		
+    		<where>
+    			
+				<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
+					<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and pname like CONCAT('%', #{searchtxt}, '%')
+					</when>
+					<when test="search=='bno'">
+						and bno=#{searchtxt}
+					</when>
+				</choose>
+			</if>
+			
+		</where>
+			order by p1.pno
+			limit #{startRow}, 10
+  		</select>
+    	
+    </mapper>

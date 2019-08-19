@@ -27,6 +27,8 @@
 	        <li><a href="../AllCategory">상품</a></li>
 	        <li><a href="../helpcenter">고객센터</a></li>
 	        <li><a href="../adminproduct">관리페이지</a></li>
+	        <li><a href="../adminpage">관리자 페이지</a></li>
+	        <li><a href="../mypage">마이 페이지</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	<li><a href="../join"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
