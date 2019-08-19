@@ -5,9 +5,25 @@
 
 <mapper namespace="com.bitcamp.Mapper.FaqMapper">
 
-	<select id="faqcount" resultType="int">
+	<select id="faqcount" resultType="int"
+		parameterType="java.util.HashMap">
 		select count(*)
 		from faq
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				<choose>
+					<when test="search=='ftitle'">
+						and ftitle like CONCAT('%',#{keyword},'%')
+
+					</when>
+					<when test="search=='fcontent'">
+						and fcontent like CONCAT('%',#{keyword},'%')
+					</when>
+				</choose>
+			</if>
+		</where>
+
+
 	</select>
 
 
@@ -16,14 +32,24 @@
 		SELECT b.*, a.fno, a.ftitle, a.fcontent
 		FROM faq a,
 		faqcategory b
-		WHERE b.fcno=a.fcno
+		WHERE
+		b.fcno=a.fcno
 		AND a.fcno BETWEEN 1 AND 3
-		GROUP BY
-		a.fno
-		ORDER BY SUM(a.fno)
+		<!-- GROUP BY a.fno ORDER BY SUM(a.fno) LIMIT #{startRow}, 5; -->
+		<if test="keyword!=null and keyword!=''">
+			<choose>
+				<when test="search=='ftitle'">
+					and ftitle like CONCAT('%',#{keyword},'%')
+
+				</when>
+				<when test="search=='fcontent'">
+					and fcontent like CONCAT('%',#{keyword},'%')
+				</when>
+			</choose>
+		</if>
+		
+		ORDER BY a.fno
 		LIMIT #{startRow}, 5;
-
-
 	</select>
 
 	<select id="shiplist" resultType="com.bitcamp.DTO.FaqDTO"
@@ -75,20 +101,22 @@
 		(fcno,ftitle,fcontent)
 		values (#{fcno},#{ftitle}, #{fcontent})
 	</insert>
- 
+
 
 	<select id="faqdetail" parameterType="int"
 		resultType="com.bitcamp.DTO.FaqDTO">
 		select b.fcname, fno, ftitle, fcontent
 		from faq as a
-		left join faqcategory as b
+		left
+		join faqcategory as b
 		on a.fcno = b.fcno
 		where fno=#{fno}
 	</select>
-	
+
 	<delete id="faqdelete" parameterType="int">
-	delete from faq 
-	where fno=#{fno}
+		delete from faq
+		where
+		fno=#{fno}
 	</delete>
 
 </mapper>

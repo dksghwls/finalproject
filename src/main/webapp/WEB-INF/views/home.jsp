@@ -9,22 +9,8 @@
 </head>
 <body>
 	
-	<c:out value="${ name }"></c:out>
-	<sec:authorize access="isAnonymous()">
-		로그아웃 상태
-	</sec:authorize>
-	<sec:authorize access="isAuthenticated()">
-		<p><sec:authentication property="principal.username"/> 로그인</p>
-		<%-- <p>principal : <sec:authentication property="principal"/></p> --%>
-	</sec:authorize>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		관리자 로그인
-	</sec:authorize>
-	<sec:authorize access="isAuthenticated()">
-	    <form action="/logout" method="POST">
-	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	        <button type="submit">LOGOUT</button>
-	    </form>
 	</sec:authorize>
 	
 	<div class="container">

@@ -16,16 +16,20 @@ public class FaqServiceImple implements FaqService {
 	private FaqMapper mapper;
 
 	@Override
-	public int faqcount() {
-
-		return mapper.faqcount();
+	public int faqcount(String search, String keyword) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("keyword", keyword);
+		return mapper.faqcount(hm);
 	}
 
 	@Override
-	public List<FaqDTO> faqlist(int startRow, int endRow) {
+	public List<FaqDTO> faqlist(String search,String keyword,int startRow, int endRow) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("startRow", startRow);
 		hm.put("endRow", endRow);
+		hm.put("search", search);
+		hm.put("keyword", keyword);
 
 		return mapper.faqlist(hm);
 	}
@@ -53,6 +57,7 @@ public class FaqServiceImple implements FaqService {
 		hm.put("endRow", endRow);
 		return mapper.cuslist(hm);
 	}
+
 	@Override
 	public int faqinsert(FaqDTO dto) {
 
@@ -61,17 +66,14 @@ public class FaqServiceImple implements FaqService {
 
 	@Override
 	public FaqDTO faqdetail(int no) {
-		 
+
 		return mapper.faqdetail(no);
 	}
 
 	@Override
 	public int faqdelete(int no) {
-		 
+
 		return mapper.faqdelete(no);
 	}
-
-	
-
 
 }

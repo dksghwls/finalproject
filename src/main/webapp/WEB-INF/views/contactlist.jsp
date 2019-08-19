@@ -9,6 +9,8 @@
 </head>
 <body>
 <div class="container">
+ <h2>Search</h2>
+<input class="form-control" id="myInput" type="text" placeholder="검색어를 입력하세요">
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -16,11 +18,9 @@
 				<th>회원번호</th>
 				<th>글제목</th>
 				<th>작성일</th>
-			 
 			</tr>
 		</thead>
-		<tbody>
-		
+		<tbody id="myTable">
 		<c:forEach var="i" items="${dto }">
 			<tr>
 				<td><a href="/contactdetail/${i.hno }"> <c:out
@@ -37,5 +37,15 @@
 	<a href="/contactinsert"><input type="button" value="글쓰기"></a>
 	</div>
 	
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </body>
 </html>
