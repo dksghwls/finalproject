@@ -28,7 +28,6 @@
 	        <li><a href="../helpcenter">고객센터</a></li>
 	        <li><a href="../adminproduct">관리페이지</a></li>
 	        <li><a href="../adminpage">관리자 페이지</a></li>
-	        <li><a href="../mypage">마이 페이지</a></li>
 	      </ul>
 	      
 	      
@@ -39,7 +38,7 @@
 		</sec:authorize>
 	    <sec:authorize access="isAuthenticated()">
 	    	<li>
-		    	<a href="#"><span class="glyphicon glyphicon-user"></span>
+		    	<a href="../mypage"><span class="glyphicon glyphicon-user"></span>
 		    		<c:if test="${ member != null }">
 						<c:out value="${ member.nickname }님"></c:out>
 					</c:if>

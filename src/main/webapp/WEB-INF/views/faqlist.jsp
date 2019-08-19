@@ -176,16 +176,18 @@ span {
 
 				<!-- 검색 -->
 				<form method="get" action="faq?currPage=${page.startBlock }">
-					<select name="search" >
+					<select name="search" class="form-control" id="sel1" style="width: 15%;">
 						<option value="ftitle">제목</option>
 						<option value="fcontent">내용</option>
 					</select> 
 					<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
 					<!-- <input type="text" name="keyword" class="form-control" > -->
-					 <div class="input-group">
+					
+       <div class="input-group">
       <input type="text" class="form-control" placeholder="Search" name="keyword">
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"  ></i></button>
+      </div>
       </div>
 				</form>
 				<br>

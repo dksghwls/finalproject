@@ -44,6 +44,9 @@
   
   </head>
 <body>
+	<c:set var="member" value="${ sessionScope.user }"></c:set>
+	<c:if test="${ member != null }">
+	</c:if>
 <div class="container">
       <!--<div class="row">
         <div class="col">-->
@@ -84,30 +87,30 @@
     </thead>-->
     <tbody>
     
-    <c:forEach var="item" items="${mlist }">
+   <%--  <c:forEach var="member" items="${sessionScope.user }"> --%>
       <tr>
         <td class="a">닉네임</td>
-        <td>${item.nickname }</td>
+        <td>${member.nickname }</td>
       </tr>
       <tr>
         <td class="a">이메일</td>
-        <td>${item.email }</td>
+        <td>${member.email }</td>
       </tr>
       <tr>
         <td class="a">이름</td>
-        <td>${item.name }</td>
+        <td>${member.name }</td>
       </tr>
       <tr>
         <td class="a">주소</td>
-        <td>${item.addr }</td>
+        <td>${member.addr }</td>
       </tr>
       <tr>
         <td class="a">상세주소</td>
-        <td>${item.detailaddr }</td>
+        <td>${member.detailaddr }</td>
       </tr>
       <tr>
         <td class="a">전화번호</td>
-        <td>${item.phone }</td>
+        <td>${member.phone }</td>
       </tr>
       
     </tbody>
@@ -140,7 +143,7 @@
       </div>
     </div>
   </div>
-  </c:forEach>
+  <%-- </c:forEach> --%>
 </div>
 </body>
 </html>
