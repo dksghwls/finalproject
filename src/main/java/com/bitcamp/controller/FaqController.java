@@ -24,7 +24,6 @@ public class FaqController {
 		return "templete.jsp?page=helpcenter";
 	}
 	
-	
 	@RequestMapping("/faq")
 	public String faqlist(Model model) {
 		List<FaqDTO> list = faqservice.faqlist();

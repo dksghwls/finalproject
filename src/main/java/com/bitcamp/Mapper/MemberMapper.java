@@ -11,6 +11,6 @@ public interface MemberMapper {
 
 	public int MemberAuthInsert(String email);
 	
-	public MemberDTO getMember(MemberDTO dto);
+	public MemberDTO getMember(String email);
 	
 }

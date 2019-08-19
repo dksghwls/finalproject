@@ -8,6 +8,6 @@ public interface MemberService {
 
 	public int MemberAuthInsert(String email);
 
-	public MemberDTO getMember(MemberDTO dto);
+	public MemberDTO getMember(String email);
 
 }

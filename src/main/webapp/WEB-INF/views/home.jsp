@@ -9,6 +9,7 @@
 </head>
 <body>
 	
+	<c:out value="${ name }"></c:out>
 	<sec:authorize access="isAnonymous()">
 		로그아웃 상태
 	</sec:authorize>

@@ -20,11 +20,10 @@
 	    	where email = #{email} and pwd = #{pwd}
 	    </select>
     	
-    	<select id="getMember">
-    		select no, nickname, member.email, pwd, auth
-    		from member left outer join auth
-    		on member.email = auth.email
-    		where member.email = #{email} and pwd = #{pwd}
+    	<select id="getMember" resultType="com.bitcamp.DTO.MemberDTO">
+    		select *
+    		from member
+    		where email = #{email}
     	</select>
     	
     </mapper>

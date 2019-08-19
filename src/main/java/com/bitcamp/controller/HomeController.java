@@ -1,14 +1,20 @@
 package com.bitcamp.controller;
 
+import java.security.Principal;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.DTO.MemberDTO;
 import com.bitcamp.Service.MemberService;
@@ -22,8 +28,16 @@ public class HomeController {
 	@Autowired
 	private MemberService service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	@RequestMapping(value = "/")
+	public String home(HttpSession session) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String email = authentication.getName();
+	    System.out.println(email);
+	    if(email != "anonymousUser") {
+	    	MemberDTO user = service.getMember(email);
+		    System.out.println(user.getNo());
+		    session.setAttribute("user", user);
+	    }
 		return "templete.jsp?page=home";
 	}
 	

@@ -23,9 +23,10 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	@Override
-	public MemberDTO getMember(MemberDTO dto) {
-		return mapper.getMember(dto);
+	public MemberDTO getMember(String email) {
+		return mapper.getMember(email);
 	}
+
 
 
 }
