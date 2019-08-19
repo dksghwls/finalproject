@@ -122,10 +122,13 @@ span {
 
 </head>
 <body>
+
 	<div class="container">
 		<h2>
 			<a href="/helpcenter" data-toggle="tooltip" title="HelpCenter!">FAQ</a>
 		</h2>
+
+		<br>
 		<ul class="nav nav-pills">
 			<li class="active"><a data-toggle="pill" href="#home">전체</a></li>
 			<li><a data-toggle="pill" href="#menu1">배송</a></li>
@@ -166,12 +169,24 @@ span {
 										</div></li>
 								</c:forEach>
 							</ul>
-							</div>
+						</div>
+					</tbody>
 				</table>
+				<br>
+				<!-- 검색 -->
+				<form method="get" action="faq?currPage=${page.startBlock }">
+					<select name="search">
+						<option value="ftitle">제목</option>
+						<option value="fcontent">내용</option>
+					</select> <input type="text" name="keyword"> <input type="submit"
+						value="검색">
+				</form>
+				<br>
 				<!-- block 처리 -->
 				<ul class="pager">
 					<li><c:if test="${page.prev }">
-							<a href="faq?currPage=${page.startBlock-1 }"><c:out
+							<a
+								href="faq?currPage=${page.startBlock-1 }&search=${search}&keyword=${keyword}"><c:out
 									value="이전"></c:out></a>
 						</c:if></li>
 
@@ -182,15 +197,20 @@ span {
 									<c:out value="${i }"></c:out>
 								</c:when>
 								<c:otherwise>
-									<a href="faq?currPage=${i }"> <c:out value="${i}"></c:out></a>
+									<a href="faq?currPage=${i }&search=${search}&keyword=${keyword}">
+										<c:out value="${i}"></c:out>
+									</a>
 								</c:otherwise>
 							</c:choose></li>
 					</c:forEach>
 
 					<li><c:if test="${page.next }">
-							<a href="faq?currPage=${page.endBlock+1 }"><c:out value="다음"></c:out></a>
+							<a href="faq?currPage=${page.endBlock+1 }&search=${search}&keyword=${keyword}"><c:out
+									value="다음"></c:out></a>
 						</c:if></li>
 				</ul>
+
+				<a href="faqinsert"><input type="button" value="글쓰기"></a>
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table class="table table-hover">
@@ -299,7 +319,6 @@ span {
 													<div id="sup">
 														<div>
 															<span><c:out value="${i.fcontent }"></c:out></span>
-
 														</div>
 													</div>
 												</div>
@@ -312,11 +331,7 @@ span {
 				</table>
 			</div>
 		</div>
-			<a href="faqinsert"><input type="button" value="글쓰기"></a>
+
 	</div>
-
-
-
-
 </body>
 </html>

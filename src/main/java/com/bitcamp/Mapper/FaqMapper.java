@@ -10,7 +10,7 @@ import com.bitcamp.DTO.FaqDTO;
 @Mapper
 public interface FaqMapper {
 
-	public int faqcount();
+	public int faqcount(HashMap<String, Object> hm);
 	public List<FaqDTO> faqlist(HashMap<String, Object> hm);
 	public List<FaqDTO> shiplist(HashMap<String, Object> hm);
 	public List<FaqDTO> orderlist(HashMap<String, Object> hm);

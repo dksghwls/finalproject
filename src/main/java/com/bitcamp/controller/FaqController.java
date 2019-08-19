@@ -30,9 +30,12 @@ public class FaqController {
 	}
 
 	@RequestMapping("/faq")
-	public String faqlist(@RequestParam(required = false, defaultValue = "1") int currPage, Model model) {
+	public String faqlist(@RequestParam(required = false, defaultValue = "1") int currPage
+						,@RequestParam(required=false, defaultValue="")String search
+						,@RequestParam(required=false, defaultValue="")String keyword,
+						Model model) {
 
-		int totalCount = faqservice.faqcount();
+		int totalCount = faqservice.faqcount(search, keyword);
 		System.out.println("totalCount: " + totalCount);
 
 		int pageSize = 5;
@@ -40,9 +43,11 @@ public class FaqController {
 
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 
-		List<FaqDTO> list = faqservice.faqlist(page.getStartRow(), page.getEndRow());
+		List<FaqDTO> list = faqservice.faqlist(search, keyword, page.getStartRow(), page.getEndRow());
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
+		model.addAttribute("search",search);
+		model.addAttribute("keyword",keyword);
 		System.out.println("listtest: " + list);
 		System.out.println("pagetest: " + page);
 
