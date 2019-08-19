@@ -3,42 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-   <meta charset="utf-8">
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title></title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <style>
-  body {
-    font:'돋움',Dotum, Helvetica,Sans-serif;
-    font-size:12px;
-    line-height: 1.5;
-    color: #f5f6f7;
-  }
-  p {font-size: 50px;}
-  .margin {margin-top:120px;,
-  margin-bottom: 120px;}
-  .bg-1 { 
-    background-color: #1abc9c; /* Green */
-    color: #ffffff;
-  }
-  .bg-2 { 
-    background-color: #474e5d; /* Dark Blue */
-    color: #ffffff;
-  }
-  .bg-3 { 
-    background-color: #ffffff; /* White */
-    color: #555555;
-  }
-=======
 <meta charset="utf-8">
 <!-- Theme Made By www.w3schools.com - No Copyright -->
 <title></title>
->>>>>>> branch 'master' of https://github.com/dksghwls/finalproject.git
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat"
 	rel="stylesheet">
 

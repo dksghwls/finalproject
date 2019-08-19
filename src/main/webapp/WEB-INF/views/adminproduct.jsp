@@ -10,7 +10,7 @@
       .dropdown-item{
           font-size: 15px;
       }
-      a { 
+      .nav-link { 
           font-size: 20px;
         }
 </style>
