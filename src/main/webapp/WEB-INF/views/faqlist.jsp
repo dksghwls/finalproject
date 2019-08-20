@@ -181,6 +181,7 @@ span {
 						style="width: 15%;">
 						<option value="ftitle">제목</option>
 						<option value="fcontent">내용</option>
+						<option value="all">제목+내용</option>
 					</select>
 					<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
 					<!-- <input type="text" name="keyword" class="form-control" > -->

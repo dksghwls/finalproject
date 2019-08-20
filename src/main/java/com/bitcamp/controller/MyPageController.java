@@ -157,14 +157,13 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("exit/{no}")
-	public String exit(@PathVariable int no, HttpSession session) {
+	public String exit(@PathVariable int no) {
 		myPageService.deletelist(no);
-		session.invalidate();
 		return "exit";
 	}
 	
 	@RequestMapping(value="/home")
-	public String home() {
+	public String home( HttpSession session) {
 		return "templete.jsp?page=home";
 	}
 	

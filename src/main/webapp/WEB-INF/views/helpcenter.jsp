@@ -50,8 +50,26 @@ p {
 	<div class="container-fluid bg-2 text-center">
 		<h3 class="margin">사람들이 시작하는 오늘의 혜택</h3>
 		<p>Help Center</p>
-		<a href="/helpsearch" class="btn btn-default btn-lg">
-		 <span class="glyphicon glyphicon-search"></span> Search </a>
+		<form method="get" action="faq?currPage=${page.startBlock }">
+		<select name="search" class="form-control" id="sel1"
+			style="width: 15%;">
+			<option value="ftitle">제목</option>
+			<option value="fcontent">내용</option>
+		</select>
+		<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
+		<!-- <input type="text" name="keyword" class="form-control" > -->
+
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="검색어를 입력하세요"
+				name="keyword">
+			<div class="input-group-btn">
+				<button class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div>
+	</form>
+		 
 	</div>
 
 	<!-- Third Container (Grid) -->
