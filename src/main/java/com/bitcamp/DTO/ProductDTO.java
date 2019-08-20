@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class ProductDTO {
 	
+	private int no;
 	private int cno;
 	private String cname;
 
@@ -21,6 +22,12 @@ public class ProductDTO {
 	private String paying;
 	private int pno;
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getImgname() {
 		return imgname;
 	}

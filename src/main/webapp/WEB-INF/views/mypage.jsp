@@ -45,8 +45,8 @@
   </head>
 <body>
 	<c:set var="member" value="${ sessionScope.user }"></c:set>
-	<c:if test="${ member != null }">
-	</c:if>
+	<%-- <c:if test="${ member != null }">
+	</c:if> --%>
 <div class="container">
       <!--<div class="row">
         <div class="col">-->
@@ -56,16 +56,16 @@
             <ul class="nav nav-pills">
       
           <li data-tab="info" class="nav-item" id="default">
-                <a class="nav-link" href="mypage">나의 정보</a>
+                <a class="nav-link" href="../mypage/${member.no }">나의 정보</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="product">나의 주문 내역</a>
+                <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
               <!-- <li data-tab="product2" class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
               </li> -->
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="review">나의 리뷰</a>
+                <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
               </li>
 
           </ul>
@@ -75,7 +75,7 @@
       </div> -->
 	
 <div class="container">
-  <p>회원 정보입니다.</p>
+  <p>${member.nickname } 님의 회원 정보입니다.</p>
   <br>            
   <table class="table">
     <!--<thead>
@@ -87,36 +87,36 @@
     </thead>-->
     <tbody>
     
-   <%--  <c:forEach var="member" items="${sessionScope.user }"> --%>
+   <c:forEach var="item" items="${mlist }">
       <tr>
         <td class="a">닉네임</td>
-        <td>${member.nickname }</td>
+        <td>${item.nickname }</td>
       </tr>
       <tr>
         <td class="a">이메일</td>
-        <td>${member.email }</td>
+        <td>${item.email }</td>
       </tr>
       <tr>
         <td class="a">이름</td>
-        <td>${member.name }</td>
+        <td>${item.name }</td>
       </tr>
       <tr>
         <td class="a">주소</td>
-        <td>${member.addr }</td>
+        <td>${item.addr }</td>
       </tr>
       <tr>
         <td class="a">상세주소</td>
-        <td>${member.detailaddr }</td>
+        <td>${item.detailaddr }</td>
       </tr>
       <tr>
         <td class="a">전화번호</td>
-        <td>${member.phone }</td>
+        <td>${item.phone }</td>
       </tr>
       
     </tbody>
   </table>
   <br>
-  <button type="button" class="btn btn-info" onclick="location.href='infomodify'">수정</button>
+  <button type="button" class="btn btn-info" onclick="location.href='../infomodify/${item.no}'">수정</button>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">탈퇴</button>
   
   <div class="modal fade" id="myModal">
@@ -136,14 +136,15 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='exit?no=${item.no }'">예</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='../exit/${item.no }'">예</button>
+          <a href="../mypage/${item.no }"><button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button></a>
+         <%--  <a href="../mypage/${item.no }" class="btn btn-secondary" data-dismiss="modal">아니오</a> --%>
         </div>
         
       </div>
     </div>
   </div>
-  <%-- </c:forEach> --%>
+  </c:forEach>
 </div>
 </body>
 </html>

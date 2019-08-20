@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +30,9 @@ public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
 	
-	@RequestMapping(value = "/mypage")
-	public String myPage(Model model) {
-		List<MemberDTO> mlist=myPageService.memberlist();
+	@RequestMapping("mypage/{no}")
+	public String myPage(@PathVariable int no, Model model) {
+		List<MemberDTO> mlist=myPageService.memberlist(no);
 		model.addAttribute("mlist", mlist);
 		
 		return "templete.jsp?page=mypage";
@@ -46,7 +47,7 @@ public class MyPageController {
 	 */
 	
 	@RequestMapping(value="/product")
-	public String list(@RequestParam(required=false, defaultValue="1") int currPage
+	public String list(@RequestParam int no, @RequestParam(required=false, defaultValue="1") int currPage
 						,@RequestParam(required=false, defaultValue="") String search
 						,@RequestParam(required=false, defaultValue="") String searchtxt
 						,Model model)
@@ -79,7 +80,7 @@ public class MyPageController {
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		
-		List<ProductDTO> plist = myPageService.adpList(search, searchtxt, page.getStartRow(), page.getEndRow());
+		List<ProductDTO> plist = myPageService.adpList(search, searchtxt, page.getStartRow(), page.getEndRow(), no);
 		
 		
 		model.addAttribute("plist",plist);
@@ -92,7 +93,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("product/{cno}")
-	public String adminselect(@PathVariable int cno, @RequestParam(required=false, defaultValue="1") int currPage
+	public String adminselect(@PathVariable int cno, @RequestParam int no, @RequestParam(required=false, defaultValue="1") int currPage
 			,@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,Model model)
@@ -126,24 +127,25 @@ public class MyPageController {
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		
-		List<ProductDTO> spclist = myPageService.adcpList(search, searchtxt, page.getStartRow(), page.getEndRow(), cno);
+		List<ProductDTO> spclist = myPageService.adcpList(search, searchtxt, page.getStartRow(), page.getEndRow(), cno, no);
 		model.addAttribute("plist", spclist );
 		
 		return "templete.jsp?page=product";
 		
 	}
 	
-	@RequestMapping(value ="/infomodify")
-	public String infomodify(Model model) {
-		 List<MemberDTO> mlist=myPageService.memberlist();
+	@RequestMapping("infomodify/{no}")
+	public String infomodify(@PathVariable int no, Model model) {
+		 List<MemberDTO> mlist=myPageService.memberlist(no);
 		 model.addAttribute("mlist", mlist);
 		
 		return "templete.jsp?page=infomodify";
 	}
 	
 	@RequestMapping(value ="/modifyresult")
-	public String modifyresult(@RequestParam String nickname, @RequestParam String name, @RequestParam String addr, @RequestParam String detailaddr, @RequestParam String phone, Model model) {
+	public String modifyresult(@RequestParam int no, @RequestParam String nickname, @RequestParam String name, @RequestParam String addr, @RequestParam String detailaddr, @RequestParam String phone) {
 		MemberDTO dto=new MemberDTO();
+		dto.setNo(no);
 		dto.setNickname(nickname);
 		dto.setName(name);
 		dto.setAddr(addr);
@@ -151,12 +153,13 @@ public class MyPageController {
 		dto.setPhone(phone);
 		myPageService.modifylist(dto);
 		
-		return "redirect:/mypage";
+		return "redirect:/mypage/"+no;
 	}
 	
-	@RequestMapping(value="/exit")
-	public String exit(@RequestParam int no, Model model) {
+	@RequestMapping("exit/{no}")
+	public String exit(@PathVariable int no, HttpSession session) {
 		myPageService.deletelist(no);
+		session.invalidate();
 		return "exit";
 	}
 	
@@ -170,10 +173,10 @@ public class MyPageController {
 		return "templete.jsp?page=mypage";
 	}
 	
-	@RequestMapping(value="/review")
-	public String review(Model model) {
+	@RequestMapping("review/{no}")
+	public String review(@PathVariable int no, Model model) {
 		
-		List<ReviewDTO> dlist=myPageService.reviewlist();
+		List<ReviewDTO> dlist=myPageService.reviewlist(no);
 		model.addAttribute("dlist", dlist);
 
 		return "templete.jsp?page=review";

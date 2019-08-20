@@ -22,7 +22,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-
+<c:set var="member" value="${ sessionScope.user }"></c:set>
 <div class="container">
       <!--<div class="row">
         <div class="col">-->
@@ -32,16 +32,16 @@
             <ul class="nav nav-pills">
       
           <li data-tab="info" class="nav-item" id="default">
-                <a class="nav-link active" href="../mypage">나의 정보</a>
+                <a class="nav-link active" href="../mypage/${member.no }">나의 정보</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../product">나의 주문 내역</a>
+                <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
               <!-- <li data-tab="product2" class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
               </li> -->
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../review">나의 리뷰</a>
+                <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
               </li>
 
           </ul>
@@ -49,15 +49,15 @@
           <br><br>
           
 <div class="container">
-  <p>주문 완료 상품을 확인할 수 있습니다(상품 이미지 클릭 시 해당 상품 페이지로 이동).</p>
+  <p>${member.nickname } 님의 주문 완료 상품입니다.</p>
 
 <form>
     <div class="form-group" style="width: 150px; float: right;">
       <select class="form-control" id="sel1" onchange="location.href=this.value">
         <option>카테고리</option>
-        <option value="../product">전체</option>
+        <option value="../product?no=${member.no }">전체</option>
         <c:forEach var="item" items="${clist }">
-        	<option value="../product/${item.cno }">${item.cname }</option>
+        	<option value="../product/${item.cno }?no=${member.no}">${item.cname }</option>
         </c:forEach>
       </select>
     </div>
@@ -97,6 +97,7 @@
 		<option value="pname">상품 이름</option>
 		<option value="bno">주문 번호</option>
 	</select>
+	<input type="hidden" id="no" name="no" value="${member.no }"/>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">
     </form>
@@ -106,7 +107,7 @@
   <li class="page-item">
     <c:if test="${page.prev }">
     <%-- <c:if test="${page.startBlock>1 }"> --%>
-	<a class="page-link" href="product?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+	<a class="page-link" href="product?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
@@ -135,7 +136,7 @@
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="product?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="product?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>
@@ -147,7 +148,7 @@
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="product?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+	<a  class="page-link" href="product?no=${member.no }&currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>

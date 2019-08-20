@@ -30,7 +30,6 @@
 	        <li><a href="../adminpage">관리자 페이지</a></li>
 	      </ul>
 	      
-	      
 	    <ul class="nav navbar-nav navbar-right">  
 	    <sec:authorize access="isAnonymous()">
 		    <li><a href="../join"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
@@ -38,7 +37,7 @@
 		</sec:authorize>
 	    <sec:authorize access="isAuthenticated()">
 	    	<li>
-		    	<a href="../mypage"><span class="glyphicon glyphicon-user"></span>
+		    	<a href="../mypage/${member.no }"><span class="glyphicon glyphicon-user"></span>
 		    		<c:if test="${ member != null }">
 						<c:out value="${ member.nickname }님"></c:out>
 					</c:if>
@@ -50,7 +49,6 @@
 			</form>
 		</sec:authorize>
 	    </ul>
-	      
 	    </div>
 	  </div>
 	</nav>

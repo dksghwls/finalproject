@@ -13,13 +13,13 @@ import com.bitcamp.DTO.ReviewDTO;
 public interface MyPageMapper {
 
 	
-	public List<MemberDTO> memberlist();
+	public List<MemberDTO> memberlist(int no);
 
 	public List<ProductDTO> productlist();
 
 	public void modifylist(MemberDTO dto);
 
-	public List<ReviewDTO> reviewlist();
+	public List<ReviewDTO> reviewlist(int no);
 
 	public void deletelist(int no);
 

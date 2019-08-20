@@ -13,28 +13,29 @@
     		
     	</select>
     	
-    	<select id="memberlist" resultType="com.bitcamp.DTO.MemberDTO">
+    	<select id="memberlist" parameterType="int" resultType="com.bitcamp.DTO.MemberDTO">
     		
     		select *
     		from member
-    		where no=8;
+    		where no=#{no};
     		
     	</select>
     	
-    	<update id="modifylist" parameterType="com.bitcamp.DTO.MemberDTO">
+    <update id="modifylist" parameterType="com.bitcamp.DTO.MemberDTO">
           update member
            set  
                nickname=#{nickname}
               , name=#{name}
               , addr=#{addr}
               , detailaddr=#{detailaddr}
-              , phone=#{phone}    
+              , phone=#{phone}
+           where no=#{no}    
     	</update>
     	
-    	<select id="reviewlist" resultType="com.bitcamp.DTO.ReviewDTO">
+    	<select id="reviewlist" parameterType="int" resultType="com.bitcamp.DTO.ReviewDTO">
     		select imgname, pname, dprice, deadline, rcontent
     		from product p, img i, reply r
-    		where p.pno=r.pno and p.pno=i.pno
+    		where p.pno=r.pno and p.pno=i.pno and no=#{no}
     	</select>
     	
     	<delete id="deletelist" parameterType="int">
@@ -77,7 +78,7 @@
   			
   			select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
     		from category c, product p1, pay p2, member m
-  			where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
+  			where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and m.no=#{no}
             <!-- <where> -->
            	<if test="searchtxt!=null">
 			<!-- <if test="searchtxt!=null and searchtxt!=''"> -->
@@ -131,7 +132,7 @@
     		select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
     		from category c, product p1, pay p2, member m
     		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
-    			and p1.cno = #{cno}
+    			and m.no=#{no} and p1.cno = #{cno}
     		
     		<where>
     			

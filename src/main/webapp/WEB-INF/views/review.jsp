@@ -35,7 +35,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<c:set var="member" value="${ sessionScope.user }"></c:set>
 <div class="container">
       <!--<div class="row">
         <div class="col">-->
@@ -45,16 +45,16 @@
             <ul class="nav nav-pills">
       
           <li data-tab="info" class="nav-item" id="default">
-                <a class="nav-link active" href="mypage">나의 정보</a>
+                <a class="nav-link active" href="../mypage/${member.no}">나의 정보</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="product">나의 주문 내역</a>
+                <a class="nav-link" href="../product?no=${member.no}">나의 주문 내역</a>
               </li>
               <!-- <li data-tab="product2" class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
               </li> -->
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="review">나의 리뷰</a>
+                <a class="nav-link" data-toggle="tab" href="../review/${member.no}">나의 리뷰</a>
               </li>
 
           </ul>
@@ -63,7 +63,7 @@
           
 <!--<h2>마이 리뷰</h2>-->
 <div class="container">
-  <p>구매 상품 리뷰 모음입니다.</p>
+  <p>${member.nickname } 님의 구매 상품 리뷰 모음입니다.</p>
   <br>
  
   <!--<ul>
@@ -73,7 +73,7 @@
         <c:forEach var="item" items="${dlist }">
          <tr>
             <td class="t">
-              <a href="#"><img src="img/Tulips.jpg" alt="Card image" class="img-rounded" style="width:100%"></a>
+              <a href="#"><img src="../img/Tulips.jpg" alt="Card image" class="img-rounded" style="width:100%"></a>
             </td>
             <td>
             	<div class="s">

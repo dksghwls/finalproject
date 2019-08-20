@@ -32,7 +32,7 @@ public class HomeController {
 	public String home(HttpSession session) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    String email = authentication.getName();
-	    System.out.println(email == null);
+	    System.out.println(email);
 	    if(email != "anonymousUser") {
 	    	MemberDTO user = service.getMember(email);
 		    session.setAttribute("user", user);
