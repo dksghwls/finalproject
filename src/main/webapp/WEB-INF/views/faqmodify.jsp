@@ -16,8 +16,8 @@
 	<label for="focusedInput">글번호</label>
 	<input type="text" name="fno" class="form-control" id="focusedInput" value="${dto.fno }" readonly="readonly"><br>
 	<br>
-	<label for="focusedInput">카테고리</label>
- 	<select name="fcno" class="form-control" id="focusedInput" value="${dto.fcname }"> 
+	<label for="sel1">카테고리</label>
+ 	<select name="fcno" class="form-control" id="sel1" value="${dto.fcname }"> 
 	<option value="1">1.배송</option>
 	<option value="2">2.주문</option>
 	<option value="3">3.회원</option>
