@@ -21,7 +21,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-${session.validate }
 <div class="container">
   <div class="jumbotron">
     <h2>회원 탈퇴가 완료되었습니다.</h2>      

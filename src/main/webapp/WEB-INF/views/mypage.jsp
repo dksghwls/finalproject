@@ -136,7 +136,7 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='../exit/${item.no }'">예</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='../exit/${item.no }?email=${item.email }'">예</button>
           <a href="../mypage/${item.no }"><button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button></a>
          <%--  <a href="../mypage/${item.no }" class="btn btn-secondary" data-dismiss="modal">아니오</a> --%>
         </div>

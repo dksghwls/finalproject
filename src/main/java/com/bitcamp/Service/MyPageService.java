@@ -33,6 +33,8 @@ public interface MyPageService {
 	public List<ProductDTO> adcpList(String search, String searchtxt, int startRow, int endRow, int cno, int no);
 
 	public int ctotalCount(String search, String searchtxt);
+
+	public void deleteauth(String email);
 	
 	
 }

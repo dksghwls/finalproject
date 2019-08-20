@@ -29,6 +29,7 @@
               , addr=#{addr}
               , detailaddr=#{detailaddr}
               , phone=#{phone}
+              , pwd=#{pwd}
            where no=#{no}    
     	</update>
     	
@@ -152,5 +153,11 @@
 			order by p1.pno
 			limit #{startRow}, 10
   		</select>
+  		
+  		<delete id="deleteauth" parameterType="String">
+    		delete from auth
+    		where email=#{email}
+    	
+    	</delete>
     	
     </mapper>

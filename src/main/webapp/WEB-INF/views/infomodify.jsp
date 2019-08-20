@@ -131,6 +131,10 @@
       <label for="phone">전화번호</label>
       <input type="phone" class="form-control" id="phone" value="${item.phone }" name="phone">
     </div>
+     <div class="form-group">
+      <label for="cpwd">비밀번호</label>
+      <input type="cpwd" class="form-control" id="cpwd" value="" name="cpwd" placeholder="새 비밀번호를 입력하세요">
+    </div>
     <!-- <div class="form-group form-check">
       <label class="form-check-label">
         <input class="form-check-input" type="checkbox" name="remember" required> 위 정보를 수정하겠습니다.

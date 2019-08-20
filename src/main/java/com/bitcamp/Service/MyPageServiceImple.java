@@ -110,4 +110,11 @@ public class MyPageServiceImple implements MyPageService {
 		return myPageMapper.ctotalCount(hm);
 	}
 
+	@Override
+	public void deleteauth(String email) {
+		
+		myPageMapper.deleteauth(email);
+		
+	}
+
 }

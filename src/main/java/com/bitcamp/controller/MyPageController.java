@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +27,10 @@ import com.bitcamp.Service.MyPageService;
 
 @Controller
 public class MyPageController {
-
+	
+	@Autowired
+    PasswordEncoder passwordEncoder;
+	
 	@Autowired
 	private MyPageService myPageService;
 	
@@ -143,7 +147,8 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value ="/modifyresult")
-	public String modifyresult(@RequestParam int no, @RequestParam String nickname, @RequestParam String name, @RequestParam String addr, @RequestParam String detailaddr, @RequestParam String phone) {
+	public String modifyresult(@RequestParam int no, @RequestParam String nickname, @RequestParam String name, @RequestParam String addr, @RequestParam String detailaddr, @RequestParam String phone, @RequestParam String cpwd) {
+		String pwd = passwordEncoder.encode(cpwd);
 		MemberDTO dto=new MemberDTO();
 		dto.setNo(no);
 		dto.setNickname(nickname);
@@ -151,14 +156,16 @@ public class MyPageController {
 		dto.setAddr(addr);
 		dto.setDetailaddr(detailaddr);
 		dto.setPhone(phone);
+		dto.setPwd(pwd);
 		myPageService.modifylist(dto);
 		
 		return "redirect:/mypage/"+no;
 	}
 	
 	@RequestMapping("exit/{no}")
-	public String exit(@PathVariable int no) {
+	public String exit(@PathVariable int no, @RequestParam String email) {
 		myPageService.deletelist(no);
+		myPageService.deleteauth(email);
 		return "exit";
 	}
 	
