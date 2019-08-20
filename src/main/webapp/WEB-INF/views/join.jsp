@@ -13,7 +13,7 @@
 	
 	<div class="container">
 	  <h1>회원가입</h1>
-	  <form class="form-horizontal" action="/joinOK" method="post">
+	  <form class="form-horizontal" action="/joinOK" method="post" onsubmit="return submitCheck()" name="frm">
 	   <div class="form-group">
 	      <label class="control-label col-sm-2" for="email">Nickname:</label>
 	      <div class="col-sm-8">
@@ -44,7 +44,7 @@
 	        <button type="reset" class="btn btn-danger">Reset</button>
 	      </div>
 	      <div class="col-sm-1">
-	        <button type="submit" class="btn btn-success">Submit</button>
+	        <button type="submit" class="btn btn-success" id="submit" >Submit</button>
 	      </div>
 	    </div>
 	  </form>
@@ -98,8 +98,10 @@
 					            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
 					            if (data) {
 					            	$('#result').text('사용할 수 없는 아이디 입니다.');
+					            	$("#submit").attr("disabled", "disabled");
 					            } else {
-					            	$('#result').text('카카오 로그인');
+					            	$('#result').text('사용할 수 있는 아이디 입니다.');
+					            	$("#submit").removeAttr("disabled");
 					            }
 					        }
 					    });
@@ -154,8 +156,10 @@
 			            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
 			            if (data) {
 			            	$('#result').text('사용할 수 없는 아이디 입니다.');
+			            	$("#submit").attr("disabled", "disabled");
 			            } else {
-			            	$('#result').text('네이버 로그인');
+			            	$('#result').text('사용할 수 있는 아이디 입니다.');
+			            	$("#submit").removeAttr("disabled");
 			            }             
 			        }
 			    });
@@ -167,7 +171,22 @@
 	</script>
 	
 	<script>
-		
+		function submitCheck(){
+			if(document.frm.email.value==""){
+		        $('#result').text('이메일을 입력하세요.');
+				return false;
+			} else if(document.frm.nickname.value=="") {
+				$('#result').text('닉네임을 입력하세요.');
+				frm.nickname.focus();
+				return false;
+	        } else if(document.frm.pwd.value==""){
+	        	$('#result').text('비밀번호를 입력하세요.');
+	        	frm.pwd.focus();
+				return false;
+	        } else {
+	         return true;
+	       }
+	    }
 	</script>
 
 </body>
