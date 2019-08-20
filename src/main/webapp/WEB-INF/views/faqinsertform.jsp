@@ -9,28 +9,32 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br>
+	<div class="container">
 <form method="post" action="/faqinsertok">
 
-<label for="fcno">카테고리</label>
- <select name="fcno" id="fcno"> 
+<label for="focusedInput">카테고리</label>
+ <select name="fcno"class="form-control" id="focusedInput"> 
 <option value="1">1.배송</option>
 <option value="2">2.주문</option>
 <option value="3">3.회원</option>
 </select><br>
 <br>
  
-<label for="title">제목</label>
-<input type="text" name="ftitle" id="title" required="required"><br>
+<label for="focusedInput">제목</label>
+<input type="text" name="ftitle" class="form-control" id="focusedInput" required="required"><br>
 <br>
-<label for="content">내용</label>
-<textarea rows="30" cols="100" name="fcontent" id="content" required="required"></textarea><br>
+<label for="comment">내용</label>
+<textarea class="form-control" rows="5" id="comment"name="fcontent" required="required">
+ </textarea><br>
 
 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 
-<input type="submit" value="등록">
+<input type="submit" class="btn btn-default" value="등록">
 
 
 </form>
+</div>
 
 
 </body>

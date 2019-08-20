@@ -189,7 +189,7 @@ span {
 						<input type="text" class="form-control" placeholder="검색어를 입력하세요"
 							name="keyword">
 						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
+							<button class="btn btn-default" type="submit" >
 								<i class="glyphicon glyphicon-search"></i>
 							</button>
 						</div>
@@ -233,7 +233,7 @@ span {
 				
 				<!-- 사용자일 경우 글쓰기 보여지는 것 -->
 				<sec:authorize access="hasRole('ROLE_USER')">
-					<a href="faqinsert"><input type="button" value="글쓰기"></a>
+					<a href="faqinsert"><input type="button" class="btn btn-default" value="글쓰기"></a>
 				</sec:authorize>
 
 

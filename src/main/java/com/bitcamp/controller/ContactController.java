@@ -37,7 +37,7 @@ public class ContactController {
 	@RequestMapping("/contactinsert")
 	public String contact(ContactDTO dto) {
 
-		return "contactform";
+		return "templete.jsp?page=contactform";
 	}
 
 	@RequestMapping("/contactok")
@@ -63,6 +63,21 @@ public class ContactController {
 		int result = contactservice.contactdelete(no);
 		return "redirect:/contact";
 	}
+	
+	@RequestMapping("/contactmodify/{no}")
+	public String contactmodify(@PathVariable int no, Model model) {
+		ContactDTO dto = contactservice.contactdetail(no);
+		model.addAttribute("dto",dto);
+		
+		return "templete.jsp?page=contactmodify";
+	}
+	
+	@RequestMapping("/contactmodifyok")
+	public String contactmodifyok(ContactDTO dto) {
+		int result = contactservice.contactmodify(dto);
+		return "redirect:/contact";
+	}
+	 
 	
 	//파일 업로드
 	 private String path = "temp";

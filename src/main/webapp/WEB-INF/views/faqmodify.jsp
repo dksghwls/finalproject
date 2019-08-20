@@ -8,15 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<div class="container">
+	<br>
 	<form method="post" action="/faqmodifyok">
 	
 	
-	<label for="fno">글번호</label>
-	<input type="text" name="fno" id="fno" value="${dto.fno }" readonly="readonly"><br>
+	<label for="focusedInput">글번호</label>
+	<input type="text" name="fno" class="form-control" id="focusedInput" value="${dto.fno }" readonly="readonly"><br>
 	<br>
-	<label for="fcno">카테고리</label>
- 	<select name="fcno" id="fcno" value="${dto.fcname }"> 
+	<label for="focusedInput">카테고리</label>
+ 	<select name="fcno" class="form-control" id="focusedInput" value="${dto.fcname }"> 
 	<option value="1">1.배송</option>
 	<option value="2">2.주문</option>
 	<option value="3">3.회원</option>
@@ -24,16 +25,17 @@
 	<%-- <label for="fcname">카테고리번호</label>
 	<input type="text" name="fcname" id="fcname" value="${dto.fcname }" readonly="readonly"><br> --%>
 	<br>
-	<label for="title">제목</label>
-	<input type="text" name="ftitle" id="title" value="${dto.ftitle }"><br>
+	<label for="focusedInput">제목</label>
+	<input type="text" name="ftitle" class="form-control" id="focusedInput" value="${dto.ftitle }"><br>
 	<br>
-	<label for="content">내용</label>
-	<input type="text" name="fcontent" id="fcontent" value="${dto.fcontent }"><br>
+	<label for="conmment">내용</label><br>
+	<textarea class="form-control" rows="5" id="comment"name="fcontent">${dto.fcontent }</textarea><br>
 	<br>
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
-	<input type="submit" value="수정완료">
-	<input type="reset" value="취소">
+	<input type="submit" class="btn btn-default" value="수정완료">
+	<input type="reset" class="btn btn-default" value="취소">
 	 
 	</form>
+	</div>
 </body>
 </html>

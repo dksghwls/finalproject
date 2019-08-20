@@ -38,7 +38,7 @@
 	<!-- 관리자일 경우 글쓰기 보여지는 것 -->
     <%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
 	<sec:authorize access="hasRole('ROLE_USER')">
-	<a href="/contactinsert"><input type="button" value="글쓰기"></a>
+	<a href="/contactinsert"><input type="button" class="btn btn-default" value="글쓰기"></a>
 		</sec:authorize>
 	</div>
 	

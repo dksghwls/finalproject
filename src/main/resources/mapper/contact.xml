@@ -27,9 +27,15 @@
 		where hno=#{hno}
 	</select>
 	
-<delete id="contactdelete" parameterType="int">
-delete from help
-where hno=#{hno}
-</delete>
+	<delete id="contactdelete" parameterType="int">
+	delete from help
+	where hno=#{hno}
+	</delete>
+	
+	<update id="contactmodify" parameterType="com.bitcamp.DTO.ContactDTO">
+	update help
+	set htitle=#{htitle}, hcontent=#{hcontent}
+	where hno=#{hno}
+	</update>
 
 </mapper>

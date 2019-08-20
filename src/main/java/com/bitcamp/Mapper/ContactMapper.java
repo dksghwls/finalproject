@@ -12,6 +12,7 @@ public interface ContactMapper {
 	public int contactinsert(ContactDTO dto);
 	public ContactDTO contactdetail(int no);
 	public int contactdelete(int no);
+	public int contactmodify(ContactDTO dto);
 
 	
  

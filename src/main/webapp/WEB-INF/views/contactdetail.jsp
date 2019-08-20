@@ -23,10 +23,10 @@
 			<div class="panel-body">내용: ${dto.hcontent }</div>
 		</div>
 
-		<a href=/contact><input type="button" value="목록"></a>
-		<a href="/contactmodify/${dto.hno }"><input type="button"
+		<a href=/contact><input type="button" class="btn btn-default" value="목록"></a>
+		<a href="/contactmodify/${dto.hno }"><input type="button" class="btn btn-default"
 			value="수정"></a>
-		<a href="/contactdelete/${dto.hno }"><input type="button"
+		<a href="/contactdelete/${dto.hno }"><input type="button" class="btn btn-default"
 			value="삭제"></a>
  </div>
  </sec:authorize>

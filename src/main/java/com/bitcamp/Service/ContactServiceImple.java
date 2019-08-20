@@ -34,6 +34,11 @@ public class ContactServiceImple implements ContactService {
 		 
 		return mapper.contactdelete(no);
 	}
+	@Override
+	public int contactmodify(ContactDTO dto) {
+		 
+		return mapper.contactmodify(dto);
+	}
 
 
 
