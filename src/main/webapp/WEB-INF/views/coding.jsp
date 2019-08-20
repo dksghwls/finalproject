@@ -25,13 +25,14 @@
                 bUseModeChanger : true,
             }
         });
-        //전송버튼
-        $("#insertBoard").click(function(){
-            //id가 smarteditor인 textarea에 에디터에서 대입
-            obj.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-            //폼 submit
-            $("#insertBoardFrm").submit();
-        });
+        
+      //전송버튼
+	    $("#insertBoard").click(function(){
+	        //id가 smarteditor인 textarea에 에디터에서 대입
+	        obj.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+	        //폼 submit
+	        $("#insertBoardFrm").submit();
+	    });
     });
 </script>
 </head>
@@ -44,6 +45,6 @@
 		상품설명:<textarea name="content" id="content" style="width: 700px; height: 400px;"></textarea>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <input type="button" id="insertBoard" value="등록" />
-    </form> 
+    </form>
 </body>
 </html>
