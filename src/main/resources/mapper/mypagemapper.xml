@@ -29,6 +29,7 @@
               , addr=#{addr}
               , detailaddr=#{detailaddr}
               , phone=#{phone}
+              , pwd=#{pwd}
            where no=#{no}    
     	</update>
     	
