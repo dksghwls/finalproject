@@ -29,6 +29,12 @@ public class FaqController {
 
 		return "templete.jsp?page=helpcenter";
 	}
+	
+	@RequestMapping(value = "/helpsearch")
+	public String helpsearch() {
+
+		return "templete.jsp?page=helpsearch";
+	}
 
 	@RequestMapping("/faq")
 	public String faqlist(@RequestParam(required = false, defaultValue = "1") int currPage
