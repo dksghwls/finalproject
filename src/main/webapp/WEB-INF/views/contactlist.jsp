@@ -9,9 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+ 
 <div class="container">
  <h2>Search</h2>
 <input class="form-control" id="myInput" type="text" placeholder="검색어를 입력하세요">
+
 	<table class="table table-hover">
 		<thead>
 			<tr>

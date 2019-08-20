@@ -14,15 +14,17 @@
 				<choose>
 					<when test="search=='ftitle'">
 						and ftitle like CONCAT('%',#{keyword},'%')
-
 					</when>
 					<when test="search=='fcontent'">
 						and fcontent like CONCAT('%',#{keyword},'%')
 					</when>
+					<when test="search=='all'">
+						and ftitle like CONCAT('%',#{keyword},'%')
+						or fcontent like CONCAT('%',#{keyword},'%')
+				</when>
 				</choose>
 			</if>
 		</where>
-
 
 	</select>
 
@@ -30,11 +32,8 @@
 	<select id="faqlist" resultType="com.bitcamp.DTO.FaqDTO"
 		parameterType="java.util.HashMap">
 		SELECT b.*, a.fno, a.ftitle, a.fcontent
-		FROM faq a,
-		faqcategory b
-		WHERE
-		b.fcno=a.fcno
-		AND a.fcno BETWEEN 1 AND 3
+		FROM faq a join	faqcategory b on b.fcno=a.fcno
+		where a.fcno BETWEEN 1 AND 3
 		<!-- GROUP BY a.fno ORDER BY SUM(a.fno) LIMIT #{startRow}, 5; -->
 		<if test="keyword!=null and keyword!=''">
 			<choose>
@@ -44,6 +43,10 @@
 				</when>
 				<when test="search=='fcontent'">
 					and fcontent like CONCAT('%',#{keyword},'%')
+				</when>
+					<when test="search=='all'">
+						and ftitle like CONCAT('%',#{keyword},'%')
+						or fcontent like CONCAT('%',#{keyword},'%')
 				</when>
 			</choose>
 		</if>
@@ -55,45 +58,28 @@
 	<select id="shiplist" resultType="com.bitcamp.DTO.FaqDTO"
 		parameterType="java.util.HashMap">
 		SELECT b.*, a.fno, a.ftitle, a.fcontent
-		FROM faq a,
-		faqcategory b
-		WHERE b.fcno=a.fcno
-		AND a.fcno BETWEEN 1 AND 1
-		GROUP BY
-		a.fno
-		ORDER BY SUM(a.fno) desc
-
-
-
+		FROM faq a join	faqcategory b on b.fcno=a.fcno
+		where a.fcno BETWEEN 1 AND 1
+		GROUP BY a.fno
+		ORDER BY a.fno desc
 	</select>
 
 	<select id="orderlist" resultType="com.bitcamp.DTO.FaqDTO"
 		parameterType="java.util.HashMap">
 		SELECT b.*, a.fno, a.ftitle, a.fcontent
-		FROM faq a,
-		faqcategory b
-		WHERE b.fcno=a.fcno
-		AND a.fcno BETWEEN 2 AND 2
-		GROUP BY
-		a.fno
-		ORDER BY SUM(a.fno) desc
-
-
-
+		FROM faq a join	faqcategory b on b.fcno=a.fcno
+		where a.fcno BETWEEN 2 AND 2
+		GROUP BY a.fno
+		ORDER BY a.fno desc
 	</select>
 
 	<select id="cuslist" resultType="com.bitcamp.DTO.FaqDTO"
 		parameterType="java.util.HashMap">
 		SELECT b.*, a.fno, a.ftitle, a.fcontent
-		FROM faq a,
-		faqcategory b
-		WHERE b.fcno=a.fcno
-		AND a.fcno BETWEEN 3 AND 3
-		GROUP BY
-		a.fno
-		ORDER BY SUM(a.fno) desc
-
-
+		FROM faq a join	faqcategory b on b.fcno=a.fcno
+		where a.fcno BETWEEN 3 AND 3
+		GROUP BY a.fno
+		ORDER BY a.fno desc
 	</select>
 
 	<insert id="faqinsert" parameterType="com.bitcamp.DTO.FaqDTO">
@@ -123,7 +109,6 @@
 		update faq
 		set ftitle=#{ftitle}, fcontent=#{fcontent}, fcno=#{fcno}
 		where fno=#{fno}
-
 	</update>
 
 

@@ -35,7 +35,9 @@ public class FaqController {
 						,@RequestParam(required=false, defaultValue="")String search
 						,@RequestParam(required=false, defaultValue="")String keyword,
 						Model model) {
-
+		
+		System.out.println(keyword);
+		
 		int totalCount = faqservice.faqcount(search, keyword);
 		System.out.println("totalCount: " + totalCount);
 
