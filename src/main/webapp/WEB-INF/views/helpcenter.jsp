@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,17 +52,15 @@ p {
 		<h3 class="margin">사람들이 시작하는 오늘의 혜택</h3>
 		<p>Help Center</p>
 		<form method="get" action="faq?currPage=${page.startBlock }">
-		<select name="search" class="form-control" id="sel1"
-			style="width: 15%;">
-			<option value="ftitle">제목</option>
-			<option value="fcontent">내용</option>
-		</select>
+		<!-- <select name="search" class="form-control" id="sel1" style="width: 15%;">
+			<option value="all">전체검색</option>
+		 
+		</select> -->
 		<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
 		<!-- <input type="text" name="keyword" class="form-control" > -->
-
+		<input type="hidden" name="search" value="all">
 		<div class="input-group">
-			<input type="text" class="form-control" placeholder="검색어를 입력하세요"
-				name="keyword">
+			<input type="text" class="form-control" placeholder="검색어를 입력하세요" name="keyword">
 			<div class="input-group-btn">
 				<button class="btn btn-default" type="submit">
 					<i class="glyphicon glyphicon-search"></i>
