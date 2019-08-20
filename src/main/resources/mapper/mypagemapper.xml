@@ -152,5 +152,11 @@
 			order by p1.pno
 			limit #{startRow}, 10
   		</select>
+  		
+  		<delete id="deleteauth" parameterType="String">
+    		delete from auth
+    		where email=#{email}
+    	
+    	</delete>
     	
     </mapper>

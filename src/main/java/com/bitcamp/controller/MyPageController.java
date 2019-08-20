@@ -157,8 +157,9 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("exit/{no}")
-	public String exit(@PathVariable int no) {
+	public String exit(@PathVariable int no, @RequestParam String email) {
 		myPageService.deletelist(no);
+		myPageService.deleteauth(email);
 		return "exit";
 	}
 	

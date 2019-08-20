@@ -35,7 +35,7 @@
                 <a class="nav-link active" href="../adminpage">회원 관리</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../goods">상품 관리</a>
+                <a class="nav-link" href="../adminproduct">상품 관리</a>
               </li>
               <!-- <li data-tab="product2" class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>

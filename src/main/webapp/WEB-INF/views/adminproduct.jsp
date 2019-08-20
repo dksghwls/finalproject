@@ -36,13 +36,13 @@ function update(pno)
             <ul class="nav nav-pills">
       
           <li data-tab="member" class="nav-item" id="default">
-                <a class="nav-link active" data-toggle="tab" href="#">회원 관리</a>
+                <a class="nav-link active" href="../adminpage">회원 관리</a>
               </li>
               <li data-tab="goods" class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#">상품 관리</a>
+                <a class="nav-link" href="../adminproduct">상품 관리</a>
               </li>
               <li data-tab="order" class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#">주문 관리</a>
+                <a class="nav-link" href="../order">주문 관리</a>
               </li>
               
           </ul>

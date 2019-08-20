@@ -35,4 +35,6 @@ public interface MyPageMapper {
 
 	public int ctotalCount(HashMap<String, Object> hm);
 
+	public void deleteauth(String email);
+
 }
