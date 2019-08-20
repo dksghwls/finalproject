@@ -1,101 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <style>
-*, *:before, *:after {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
+	*, *:before, *:after {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
 
-#integration-list {
-	font-family: 'Open Sans', sans-serif;
-	width: 80%;
-	margin: 0 auto;
-	display: table;
-}
+	#integration-list {
+		font-family: 'Open Sans', sans-serif;
+		width: 80%;
+		margin: 0 auto;
+		display: table;
+	}
 
-#integration-list ul {
-	padding: 0;
-	margin: 20px 0;
-	color: #555;
-}
+	#integration-list ul {
+		padding: 0;
+		margin: 20px 0;
+		color: #555;
+	}
 
-#integration-list ul>li {
-	list-style: none;
-	border-top: 1px solid #ddd;
-	display: block;
-	padding: 15px;
-	overflow: hidden;
-}
+	#integration-list ul>li {
+		list-style: none;
+		border-top: 1px solid #ddd;
+		display: block;
+		padding: 15px;
+		overflow: hidden;
+	}
 
-#integration-list ul:last-child {
-	border-bottom: 1px solid #ddd;
-}
+	#integration-list ul:last-child {
+		border-bottom: 1px solid #ddd;
+	}
 
-#integration-list ul>li:hover {
-	background: #efefef;
-}
+	#integration-list ul>li:hover {
+		background: #efefef;
+	}
 
-.expand {
-	display: block;
-	text-decoration: none;
-	color: #555;
-	cursor: pointer;
-}
+	.expand {
+		display: block;
+		text-decoration: none;
+		color: #555;
+		cursor: pointer;
+	}
+	
+	h2 {
+		padding: 0;
+		margin: 0;
+		font-size: 17px;
+		font-weight: 400;
+	}
+	
+	span {
+		font-size: 12.5px;
+	}
+	
+	#left, #right {
+		display: table;
+	}
 
-h2 {
-	padding: 0;
-	margin: 0;
-	font-size: 17px;
-	font-weight: 400;
-}
+	#sup {
+		display: table-cell;
+		vertical-align: middle;
+		width: 80%;
+	}
+	
+	.detail a {
+		text-decoration: none;
+		color: #C0392B;
+		border: 1px solid #C0392B;
+		padding: 6px 10px 5px;
+		font-size: 14px;
+	}
+	
+	.detail {
+		margin: 10px 0 10px 0px;
+		display: none;
+		line-height: 22px;
+		height: 150px;
+	}
+	
+	.detail span {
+		margin: 0;
+	}
 
-span {
-	font-size: 12.5px;
-}
-
-#left, #right {
-	display: table;
-}
-
-#sup {
-	display: table-cell;
-	vertical-align: middle;
-	width: 80%;
-}
-
-.detail a {
-	text-decoration: none;
-	color: #C0392B;
-	border: 1px solid #C0392B;
-	padding: 6px 10px 5px;
-	font-size: 14px;
-}
-
-.detail {
-	margin: 10px 0 10px 0px;
-	display: none;
-	line-height: 22px;
-	height: 150px;
-}
-
-.detail span {
-	margin: 0;
-}
-
-.right-arrow {
-	margin-top: 12px;
-	margin-left: 20px;
-	width: 10px;
-	height: 100%;
-	float: right;
-	font-weight: bold;
-	font-size: 20px;
-}
+	.right-arrow {
+		margin-top: 12px;
+		margin-left: 20px;
+		width: 10px;
+		height: 100%;
+		float: right;
+		font-weight: bold;
+		font-size: 20px;
+	}
+	
 </style>
 <head>
 <meta charset="UTF-8">
@@ -190,7 +192,7 @@ span {
 						<input type="text" class="form-control" placeholder="검색어를 입력하세요"
 							name="keyword">
 						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit" >
+							<button class="btn btn-default" type="submit">
 								<i class="glyphicon glyphicon-search"></i>
 							</button>
 						</div>
@@ -231,10 +233,11 @@ span {
 				<%-- <sec:authorize access="hasRole('ROLE_ADMIN')">
 					<a href="faqinsert"><input type="button" value="글쓰기"></a>
 				</sec:authorize> --%>
-				
+
 				<!-- 사용자일 경우 글쓰기 보여지는 것 -->
 				<sec:authorize access="hasRole('ROLE_USER')">
-					<a href="faqinsert"><input type="button" class="btn btn-default" value="글쓰기"></a>
+					<a href="faqinsert"><input type="button"
+						class="btn btn-default" value="글쓰기"></a>
 				</sec:authorize>
 
 

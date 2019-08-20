@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,23 +52,24 @@ p {
 		<h3 class="margin">사람들이 시작하는 오늘의 혜택</h3>
 		<p>Help Center</p>
 		<form method="get" action="faq?currPage=${page.startBlock }">
-		<!-- <select name="search" class="form-control" id="sel1" style="width: 15%;">
+			<!-- <select name="search" class="form-control" id="sel1" style="width: 15%;">
 			<option value="all">전체검색</option>
 		 
 		</select> -->
-		<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
-		<!-- <input type="text" name="keyword" class="form-control" > -->
-		<input type="hidden" name="search" value="all">
-		<div class="input-group">
-			<input type="text" class="form-control" placeholder="검색어를 입력하세요" name="keyword">
-			<div class="input-group-btn">
-				<button class="btn btn-default" type="submit">
-					<i class="glyphicon glyphicon-search"></i>
-				</button>
+			<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
+			<!-- <input type="text" name="keyword" class="form-control" > -->
+			<input type="hidden" name="search" value="all">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="검색어를 입력하세요"
+					name="keyword">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
 			</div>
-		</div>
-	</form>
-		 
+		</form>
+
 	</div>
 
 	<!-- Third Container (Grid) -->
@@ -87,7 +88,7 @@ p {
 				<p>Contact Us</p>
 				<p class="helppsize">원하는 질문이 없다면 이 페이지를 이용하세요.</p>
 				<br> <a href="/contact" data-toggle="tooltip"
-					title="Click Contact Us!"><img src="img/Jellyfish.jpg"
+					title="Click Contact Us!"> <img src="img/Jellyfish.jpg"
 					class="img-responsive margin" style="width: 100%" alt="Image"></a>
 			</div>
 			<div class="col-sm-4">
@@ -98,7 +99,7 @@ p {
 			</div>
 		</div>
 	</div>
-		<!-- 지도 api  -->
+	<!-- 지도 api  -->
 	<!-- <script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa8b0b5161046e37e60ed382cde1421"></script>
 	<script>
