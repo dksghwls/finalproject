@@ -14,6 +14,7 @@ public interface FaqService {
 	public int faqinsert(FaqDTO dto);
 	public FaqDTO faqdetail(int no);
 	public int faqdelete(int no);
+	public int faqmodifyok(FaqDTO dto);
 	
 	
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 		<thead>
 			<tr>
 				<th>글번호</th>
-				<th>회원번호</th>
+				<th>회원명</th>
 				<th>글제목</th>
 				<th>작성일</th>
 			</tr>
@@ -25,7 +26,7 @@
 			<tr>
 				<td><a href="/contactdetail/${i.hno }"> <c:out
 												value="${i.hno } "></c:out></a> </td>
-				<td><c:out value="${i.no }"></c:out></td>
+				<td><c:out value="${i.nickname }"></c:out></td>
 				<td><c:out value="${i.htitle }"></c:out></td>
 				<td><c:out value="${i.hdate }"></c:out></td>				
 			</tr>
@@ -34,7 +35,11 @@
 		</tbody>
 
 	</table>
-	<a href="/contactinsert"><input type="button" value="글쓰기"></a>
+	<!-- 관리자일 경우 글쓰기 보여지는 것 -->
+    <%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
+	<sec:authorize access="hasRole('ROLE_USER')">
+	<a href="/contactinsert"><input type="button" class="btn btn-default" value="글쓰기"></a>
+		</sec:authorize>
 	</div>
 	
 <script>

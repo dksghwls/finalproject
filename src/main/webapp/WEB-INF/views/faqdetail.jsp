@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +11,18 @@
 </head>
 <body>
 
-<div class="panel panel-default">
-    <div class="panel-heading"> ${dto.ftitle }</div>
-    <div class="panel-body"> ${dto.fcontent }</div>
-  </div>
+	<!-- 관리자일 경우 글쓰기 보여지는 것 -->
+	<%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
+	<sec:authorize access="hasRole('ROLE_USER')">
+		<div class="container">
+			<br>
+			<div class="panel panel-default">
+		
+				<div class="panel-heading">제목: ${dto.ftitle }</div>
+				<div class="panel-body">내용: ${dto.fcontent }</div>
+			</div>
 
-<%-- 	<table>
+			<%-- 	<table>
 		<thead>
 			<tr>
 				<th>카테고리</th>
@@ -35,10 +43,10 @@
 		</tbody>
 	</table>
  --%>
-	<a href=/faq><input type="button" value="목록"></a>
-	<a href="/faqmodify/${dto.fno }"><input type="button"
-		value="수정"></a>
-	<a href="/faqdelete/${dto.fno }"><input type="button"
-		value="삭제"></a>
+			<a href=/faq><input type="button" class="btn btn-default" value="목록"></a> <a
+				href="/faqmodify/${dto.fno }"><input type="button" class="btn btn-default" value="수정"></a>
+			<a href="/faqdelete/${dto.fno }"><input type="button" class="btn btn-default" value="삭제"></a>
+			</div>
+	</sec:authorize>
 </body>
 </html>

@@ -77,7 +77,7 @@ public class FaqController {
 	@RequestMapping("/faqinsert")
 	public String faqinsert(FaqDTO dto) {
 
-		return "faqinsertform";
+		return "templete.jsp?page=faqinsertform";
 	}
 
 	@RequestMapping("/faqinsertok")
@@ -101,4 +101,20 @@ public class FaqController {
 		int result = faqservice.faqdelete(no);
 		return "redirect:/faq";
 	}
+	
+	@RequestMapping("/faqmodify/{no}")
+	public String faqmodify(@PathVariable int no, Model model) {
+		FaqDTO dto = faqservice.faqdetail(no);
+		model.addAttribute("dto",dto);
+		
+		 return "templete.jsp?page=faqmodify";
+	}
+	
+	@RequestMapping("/faqmodifyok")
+	public String faqmodifyok(FaqDTO dto) {
+		int result = faqservice.faqmodifyok(dto);
+		
+		return "redirect:/faq";
+	}
+	
 }

@@ -47,8 +47,8 @@
 				</when>
 			</choose>
 		</if>
-		
-		ORDER BY a.fno
+
+		ORDER BY a.fno desc
 		LIMIT #{startRow}, 5;
 	</select>
 
@@ -61,7 +61,7 @@
 		AND a.fcno BETWEEN 1 AND 1
 		GROUP BY
 		a.fno
-		ORDER BY SUM(a.fno)
+		ORDER BY SUM(a.fno) desc
 
 
 
@@ -76,7 +76,7 @@
 		AND a.fcno BETWEEN 2 AND 2
 		GROUP BY
 		a.fno
-		ORDER BY SUM(a.fno)
+		ORDER BY SUM(a.fno) desc
 
 
 
@@ -91,7 +91,7 @@
 		AND a.fcno BETWEEN 3 AND 3
 		GROUP BY
 		a.fno
-		ORDER BY SUM(a.fno)
+		ORDER BY SUM(a.fno) desc
 
 
 	</select>
@@ -118,6 +118,14 @@
 		where
 		fno=#{fno}
 	</delete>
+
+	<update id="faqmodify" parameterType="com.bitcamp.DTO.FaqDTO">
+		update faq
+		set ftitle=#{ftitle}, fcontent=#{fcontent}, fcno=#{fcno}
+		where fno=#{fno}
+
+	</update>
+
 
 </mapper>
     
