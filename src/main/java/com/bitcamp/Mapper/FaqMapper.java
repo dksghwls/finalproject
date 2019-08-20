@@ -18,6 +18,7 @@ public interface FaqMapper {
 	public int faqinsert(FaqDTO dto);
 	public FaqDTO faqdetail(int no);
 	public int faqdelete(int no);
+	public int faqmodify(FaqDTO dto);
 	
 
 	

@@ -76,4 +76,10 @@ public class FaqServiceImple implements FaqService {
 		return mapper.faqdelete(no);
 	}
 
+	@Override
+	public int faqmodifyok(FaqDTO dto) {
+		 
+		return mapper.faqmodify(dto);
+	}
+
 }

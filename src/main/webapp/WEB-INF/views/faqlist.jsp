@@ -186,7 +186,7 @@ span {
 					<!-- <input type="text" name="keyword" class="form-control" > -->
 
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search"
+						<input type="text" class="form-control" placeholder="검색어를 입력하세요"
 							name="keyword">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">

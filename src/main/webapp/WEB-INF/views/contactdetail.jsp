@@ -10,13 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <br>
 <!-- 관리자일 경우 글쓰기 보여지는 것 -->
 <%--  <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
 
  <sec:authorize access="hasRole('ROLE_USER')">
-
-
 	 <div class="container">
 		<div class="panel panel-default">
 		<div class="panel-heading">회원번호: ${dto.no }</div>

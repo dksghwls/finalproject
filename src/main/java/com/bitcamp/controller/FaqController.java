@@ -101,4 +101,20 @@ public class FaqController {
 		int result = faqservice.faqdelete(no);
 		return "redirect:/faq";
 	}
+	
+	@RequestMapping("/faqmodify/{no}")
+	public String faqmodify(@PathVariable int no, Model model) {
+		FaqDTO dto = faqservice.faqdetail(no);
+		model.addAttribute("dto",dto);
+		
+		 return "faqmodify";
+	}
+	
+	@RequestMapping("/faqmodifyok")
+	public String faqmodifyok(FaqDTO dto) {
+		int result = faqservice.faqmodifyok(dto);
+		
+		return "redirect:/faq";
+	}
+	
 }

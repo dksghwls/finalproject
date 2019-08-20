@@ -11,11 +11,11 @@
 <body>
 <form method="post" action="/faqinsertok">
 
-<label for="fcno">카테고리 번호</label>
+<label for="fcno">카테고리</label>
  <select name="fcno" id="fcno"> 
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
+<option value="1">1.배송</option>
+<option value="2">2.주문</option>
+<option value="3">3.회원</option>
 </select><br>
 <br>
  
