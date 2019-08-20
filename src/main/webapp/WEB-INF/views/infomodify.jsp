@@ -22,6 +22,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<c:set var="member" value="${ sessionScope.user }"></c:set>
 <div class="container">
       <!--<div class="row">
         <div class="col">-->
@@ -34,16 +35,16 @@
       <li data-tab="tab3" class='nav-item'><a href="#">menu3</a></li>-->
       
       <li data-tab="info" class="nav-item" id="default">
-                <a class="nav-link" href="mypage">나의 정보</a>
+                <a class="nav-link" href="../mypage/${member.no }">나의 정보</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="product">나의 주문 내역</a>
+                <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
               <!-- <li data-tab="product2" class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
               </li> -->
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="#">나의 리뷰</a>
+                <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
               </li>
           </ul>
           <br>
@@ -103,8 +104,7 @@
   <button type="button" class="btn btn-info" onclick="location.href='modifyresult'">수정</button>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">탈퇴</button> --%>
   
-  
-  <form action="modifyresult" class="was-validated">
+  <form action="../modifyresult" class="was-validated">
   <c:forEach var="item" items="${mlist }">
     <div class="form-group">
      <p>
@@ -131,7 +131,6 @@
       <label for="phone">전화번호</label>
       <input type="phone" class="form-control" id="phone" value="${item.phone }" name="phone">
     </div>
-    </c:forEach>
     <!-- <div class="form-group form-check">
       <label class="form-check-label">
         <input class="form-check-input" type="checkbox" name="remember" required> 위 정보를 수정하겠습니다.
@@ -139,11 +138,12 @@
         <div class="invalid-feedback">Check this checkbox to continue.</div>
       </label>
     </div> -->
-    <button type="submit" class="btn btn-info">확인</button>
-    <button type="cancel" class="btn btn-danger" onclick="location.href='mypage'">취소</button>
+     <input type="hidden" id="no" name="no" value="${item.no }"/>
+     <button type="submit" class="btn btn-info">확인</button>
+    <a href="../mypage/${item.no }" class="btn btn-danger">취소</a>
+    </c:forEach>
+    <!-- <button type="cancel" class="btn btn-danger" onclick="location.href='mypage'">취소</button> -->
   </form>
- 
-  
 </div>
 
 <!--</body>

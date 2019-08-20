@@ -50,7 +50,7 @@
       </select>
     </div>
     <button type="submit" class="btn btn-info" name="bno" value="${bno }">수정</button>
-  	<button type="cancel" class="btn btn-danger" name="bno" value="${bno }" onclick="location.href='../order'">취소</button>
+  	<a href="../order" class="btn btn-danger">취소</a>
   </form>
   
 </div>

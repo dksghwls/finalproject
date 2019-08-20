@@ -21,13 +21,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+${session.validate }
 <div class="container">
   <div class="jumbotron">
     <h2>회원 탈퇴가 완료되었습니다.</h2>      
     <p>그동안 저희 사이트를 이용해주셔서 감사합니다.</p>
   </div>
   
-  <center><button type="button" class="btn btn-primary" onclick="location.href='home'">홈으로</button></center>
+  <center><button type="button" class="btn btn-primary" onclick="location.href='../home'">홈으로</button></center>
+  
+	<a href="#" onclick="document.getElementById('logout-form').submit();"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a>
+	<form id="logout-form" action="/logout" method="POST">
+		<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+	</form>
           
 </div>
 </body>

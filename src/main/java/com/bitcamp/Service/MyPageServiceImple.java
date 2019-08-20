@@ -19,9 +19,9 @@ public class MyPageServiceImple implements MyPageService {
 	private MyPageMapper myPageMapper;
 
 	@Override
-	public List<MemberDTO> memberlist() {
+	public List<MemberDTO> memberlist(int no) {
 
-		return myPageMapper.memberlist();
+		return myPageMapper.memberlist(no);
 	}
 
 	@Override
@@ -31,12 +31,13 @@ public class MyPageServiceImple implements MyPageService {
 
 	@Override
 	public void modifylist(MemberDTO dto) {
+		
 		myPageMapper.modifylist(dto);
 	}
 
 	@Override
-	public List<ReviewDTO> reviewlist() {
-		return myPageMapper.reviewlist();
+	public List<ReviewDTO> reviewlist(int no) {
+		return myPageMapper.reviewlist(no);
 	}
 
 	@Override
@@ -63,13 +64,14 @@ public class MyPageServiceImple implements MyPageService {
 	}
 
 	@Override
-	public List<ProductDTO> adpList(String search, String searchtxt, int startRow, int endRow) {
+	public List<ProductDTO> adpList(String search, String searchtxt, int startRow, int endRow, int no) {
 
 		HashMap<String, Object> o = new HashMap<>();
 		o.put("search", search);
 		o.put("searchtxt", searchtxt);
 		o.put("startRow", startRow);
 		o.put("endRow", endRow);
+		o.put("no", no);
 
 		/*
 		 * System.out.println(startRow); System.out.println(endRow);
@@ -85,7 +87,7 @@ public class MyPageServiceImple implements MyPageService {
 	}
 
 	@Override
-	public List<ProductDTO> adcpList(String search, String searchtxt, int startRow, int endRow, int cno) {
+	public List<ProductDTO> adcpList(String search, String searchtxt, int startRow, int endRow, int cno, int no) {
 
 		HashMap<String, Object> o = new HashMap<>();
 		o.put("search", search);
@@ -93,7 +95,8 @@ public class MyPageServiceImple implements MyPageService {
 		o.put("startRow", startRow );
 		o.put("endRow", endRow);
 		o.put("cno", cno);
-
+		o.put("no", no);
+		
 		return myPageMapper.adcpList(o);
 	}
 
