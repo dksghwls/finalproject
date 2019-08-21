@@ -13,7 +13,8 @@
 <input type="text" name="filename" id="filename"><br>
 <label for="file1">파일</label>
 <input type="file" name="file1" id="file1"><br>
-
+<input type="hidden" name="${_csrf.parameterName }"
+			value="${_csrf.token }" /> 
 <input type="submit" value="파일등록">
 
 </form>

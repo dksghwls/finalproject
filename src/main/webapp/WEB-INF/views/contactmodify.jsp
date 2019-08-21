@@ -6,6 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+ 
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="./../resources/editor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
