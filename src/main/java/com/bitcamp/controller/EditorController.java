@@ -58,7 +58,7 @@ public class EditorController {
 				
 				String dftFilePath = request.getSession().getServletContext().getRealPath("/");
 				
-				String filePath = dftFilePath + "resources" + File.separator + "editor" + File.separator +"multiupload" + File.separator;
+				String filePath = dftFilePath + "resources" + File.separator + "editor" + File.separator+"multiupload" + File.separator;
 				File file = new File(filePath); 
 				if(!file.exists())
 				{ 
@@ -81,7 +81,7 @@ public class EditorController {
 				sFileInfo += "&bNewLine=true"; 
 				
 				sFileInfo += "&sFileName="+ filename;
-				sFileInfo += "&sFileURL="+"/resources/editor/multiupload/"+realFileNm;
+				sFileInfo += "&sFileURL="+"/resources/editor/multiupload"+realFileNm;
 				PrintWriter print = response.getWriter();
 				print.print(sFileInfo);
 				print.flush();
