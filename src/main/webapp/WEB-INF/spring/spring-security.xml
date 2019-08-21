@@ -7,6 +7,9 @@
 	
 	<!-- 링크별 권한 -->
 	<security:http use-expressions="true">
+		<security:headers>
+			<security:frame-options disabled="true"/>
+		</security:headers>
 	     <security:csrf />
 		<security:intercept-url pattern="/**" access="permitAll"/>
 		<security:form-login login-processing-url="/loginOK" login-page="/login" default-target-url="/" authentication-failure-url="/login"

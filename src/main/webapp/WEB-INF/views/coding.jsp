@@ -37,7 +37,7 @@
 </script>
 </head>
 <body>
-	<form action="insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+	<form action="insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data" >
 		카테고리번호:<input type="text" name="cno" id="cno"><br>
 		상품이름:<input type="text" name="pname" id="pname"><br>
 		원가:<input type="text" name="oprice" id="oprice"><br>
