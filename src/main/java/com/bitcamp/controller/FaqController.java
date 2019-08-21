@@ -109,7 +109,7 @@ public class FaqController {
 		FaqDTO dto = faqservice.faqdetail(no);
 		model.addAttribute("dto",dto);
 		
-		 return "templete.jsp?page=faqmodify";
+		return "templete.jsp?page=faqmodify";
 	}
 	
 	@RequestMapping("/faqmodifyok")
