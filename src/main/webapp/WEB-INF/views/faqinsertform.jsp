@@ -56,7 +56,7 @@
 <input type="text" name="ftitle" class="form-control" id="focusedInput" required="required"><br>
 <br>
 <label for="fcontent">내용</label>
-<textarea class="form-control" rows="5" id="fcontent" name="fcontent" required="required">
+<textarea class="form-control" rows="5" id="fcontent" name="fcontent" style="width: 100%;" required="required">
  </textarea><br>
 
 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>

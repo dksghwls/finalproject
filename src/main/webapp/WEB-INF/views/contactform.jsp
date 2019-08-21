@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="./resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -36,6 +37,7 @@
 	    });
     });
     
+    
 </script>
 </head>
 <body>
@@ -57,7 +59,7 @@
 		</select><br> <br> 
 		
 		<label for="hcontent">내용</label>
-		<textarea class="form-control" rows="5" id="hcontent"name="hcontent" 
+		<textarea class="form-control" rows="5" id="hcontent"name="hcontent" style="width: 100%;"
 			required="required"></textarea>
 		<br> <input type="hidden" name="${_csrf.parameterName }"
 			value="${_csrf.token }" /> 

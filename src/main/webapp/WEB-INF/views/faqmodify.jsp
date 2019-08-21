@@ -66,7 +66,7 @@ $(document).ready(function() {
 			<input type="text" name="ftitle" class="form-control" id="focusedInput" value="${dto.ftitle }"><br>
 			<br>
 			<label for="fcontent">내용</label><br>
-			<textarea class="form-control" rows="5" id="fcontent"name="fcontent">
+			<textarea class="form-control" rows="5" id="fcontent"name="fcontent" style="width: 100%;">
 				
 			</textarea><br>
 			<br>
