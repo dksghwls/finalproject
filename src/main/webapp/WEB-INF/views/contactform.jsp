@@ -35,6 +35,7 @@
 	        $("#contactform").submit();
 	    });
     });
+    
 </script>
 </head>
 <body>

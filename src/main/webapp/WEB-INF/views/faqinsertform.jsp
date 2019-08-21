@@ -35,6 +35,8 @@
 	        $("#faqinsertBoardFrm").submit();
 	    });
     });
+    
+    
 </script>
 </head>
 <body>
@@ -54,7 +56,7 @@
 <input type="text" name="ftitle" class="form-control" id="focusedInput" required="required"><br>
 <br>
 <label for="fcontent">내용</label>
-<textarea class="form-control" rows="5" id="fcontent"name="fcontent" required="required">
+<textarea class="form-control" rows="5" id="fcontent" name="fcontent" required="required">
  </textarea><br>
 
 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
@@ -64,7 +66,7 @@
 
 </form>
 </div>
-
+ 
 
 </body>
 </html>

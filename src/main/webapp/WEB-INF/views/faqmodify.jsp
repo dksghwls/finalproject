@@ -28,13 +28,14 @@
         });
         
       //전송버튼
-	    $("#faqmodiBoard").click(function(){
+	    $("#faqmodifyboard").click(function(){
 	        //id가 smarteditor인 textarea에 에디터에서 대입
 	        obj.getById["fcontent"].exec("UPDATE_CONTENTS_FIELD", []);
 	        //폼 submit
 	        $("#faqmodiBoardFrm").submit();
 	    });
     });
+    
 </script>
 </head>
 <body>
@@ -60,7 +61,7 @@
 	<textarea class="form-control" rows="5" id="fcontent"name="fcontent">${dto.fcontent }</textarea><br>
 	<br>
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
-	<input type="submit" class="btn btn-default" id="faqmodiBoard" value="수정완료">
+	<input type="submit" class="btn btn-default" id="faqmodifyboard" value="수정완료">
 	<input type="reset" class="btn btn-default" value="취소">
 	 
 	</form>
