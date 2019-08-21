@@ -7,13 +7,16 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+ 
 </head>
 <body>
  
 <div class="container">
  <h2>Search</h2>
 <input class="form-control" id="myInput" type="text" placeholder="검색어를 입력하세요">
-
+	<sec:authorize access="hasRole('ROLE_USER')">
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -33,17 +36,19 @@
 				<td><c:out value="${i.hdate }"></c:out></td>				
 			</tr>
 			</c:forEach>
-		 
 		</tbody>
 
 	</table>
 	<!-- 관리자일 경우 글쓰기 보여지는 것 -->
     <%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
-	<sec:authorize access="hasRole('ROLE_USER')">
-	<a href="/contactinsert"><input type="button" class="btn btn-default" value="글쓰기"></a>
-		</sec:authorize>
+	<input type="button" class="btn btn-default" id="btn" value="글쓰기">
 	</div>
-	
+	<!-- include 시도 -->
+	<div class="insertshow" style="display:none;">
+	<jsp:include page="${request.contextPath}/contactinsert"></jsp:include>
+		</sec:authorize>
+ </div>
+
 <script>
 	$(document).ready(function(){
 	  $("#myInput").on("keyup", function() {
@@ -53,6 +58,14 @@
 	    });
 	  });
 	});
+	
+	/*글쓰기 버튼 */
+	$(document).ready(function() {
+	    $('#btn').click(function() {
+	            $('.insertshow').slideToggle("fast");
+	    });
+	});
+	
 </script>
 </body>
 </html>

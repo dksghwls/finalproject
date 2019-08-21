@@ -100,7 +100,7 @@ p {
 		</div>
 	</div>
 	<!-- 지도 api  -->
-	<!-- <script type="text/javascript"
+<!-- 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa8b0b5161046e37e60ed382cde1421"></script>
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

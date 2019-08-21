@@ -34,10 +34,10 @@ public class ContactController {
 		return "templete.jsp?page=contactlist";
 	}
 
-	@RequestMapping("/contactinsert")
+	@RequestMapping(value="/contactinsert", method=RequestMethod.GET)
 	public String contact(ContactDTO dto) {
 
-		return "templete.jsp?page=contactform";
+		return "contactform";
 	}
 
 	@RequestMapping("/contactok")
