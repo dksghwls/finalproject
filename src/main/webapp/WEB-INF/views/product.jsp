@@ -74,6 +74,7 @@
         <th>구매 가격</th>
         <th>배송 주소</th>
         <th>배송 상태</th>
+        <th>주문 취소</th>
       </tr>
     </thead>
     <tbody>
@@ -86,7 +87,33 @@
         <td><c:out value="${item.dprice }"></c:out></td>
         <td><c:out value="${item.addr }"></c:out></td>
         <td><c:out value="${item.shipping }"></c:out></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">취소</button></td>
       </tr>
+      <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">취소 확인</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          정말로 취소하시겠습니까?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="#">예</button>
+          <a href="../mypage/${item.no }"><button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button></a>
+         <%--  <a href="../mypage/${item.no }" class="btn btn-secondary" data-dismiss="modal">아니오</a> --%>
+        </div>
+        
+      </div>
+    </div>
+  </div>
      </c:forEach>
     </tbody>
   </table>
