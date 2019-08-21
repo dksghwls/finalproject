@@ -22,11 +22,11 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	@Override
+/*	@Override
 	public List<CategoryDTO> pList() {
 		
 		return mapper.pList();
-	}
+	}*/
 	@Override
 	public List<CategoryDTO> allList() {
 		
@@ -113,6 +113,30 @@ public class CategoryServiceImple implements CategoryService{
 	public List<CategoryDTO> adcpList(int cno) {
 		
 		return mapper.adcpList(cno);
+	}
+
+
+	@Override
+	public int totalCountcount(String search, String searchtxt) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		return mapper.totalCountcount(hm);
+	}
+
+
+	@Override
+	public List<CategoryDTO> pList(String search, String searchtxt, int startRow, int endRow) {
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow );
+		o.put("endRow", endRow);
+		
+		System.out.println(startRow);
+		System.out.println(endRow);
+		
+		return mapper.plist(o);
 	}
 
 

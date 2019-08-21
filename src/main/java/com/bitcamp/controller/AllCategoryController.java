@@ -27,17 +27,47 @@ public class AllCategoryController {
 	
 	
 	@RequestMapping(value = "/AllCategory")
-	public String category(Model model)
+	public String category(Model model
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt)
 	{
 		
 		List<CategoryDTO> clist = service.AllList();
 		
 		model.addAttribute("list", clist);
 		
-		List<CategoryDTO> plist = service.pList();
+		Pattern p = Pattern.compile("(^[0-9]*$)"); // 
+		
+		if(search=="pno"||search.equals("pno")
+				|| search=="cno"||search.equals("cno"))
+		{
+			Matcher m = p.matcher(searchtxt);
+			if(!m.find())
+			{
+				searchtxt="";
+				model.addAttribute("searchtxt", "");
+				
+			}
+			else
+			{
+				model.addAttribute("searchtxt", searchtxt);
+			}
+		}
+		
+		
+		int totalCount = service.totalCountcount(search, searchtxt);
+		
+		int pageSize=10;
+		int blockSize=5;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		List<CategoryDTO> plist = service.pList(search, searchtxt, page.getStartRow(), page.getEndRow());
 		
 		model.addAttribute("dto", plist );
-		
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
 		return "templete.jsp?page=AllCategory";
 	}
 	

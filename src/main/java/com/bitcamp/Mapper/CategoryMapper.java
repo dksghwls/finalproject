@@ -39,4 +39,8 @@ public interface CategoryMapper {
 	public List<CategoryDTO> adallList();
 
 	public List<CategoryDTO> adcpList(int cno);
+
+	public int totalCountcount(HashMap<String, Object> o);
+
+	public List<CategoryDTO> plist(HashMap<String, Object> o);
 }

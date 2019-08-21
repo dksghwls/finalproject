@@ -97,7 +97,15 @@
   
 </head>
 <body>
-
+<form method="get" action="AllCategory?currPage=${page.currPage }">
+	<select name="search" style="width: 100px;height: 30px;">
+		<option value="pno">상품번호</option>
+		<option value="pname">상품이름</option>
+		<option value="cno">카테고리번호</option>
+	</select>
+	<input type="text" name="searchtxt" style="height: 30px;">
+	<input type="submit" class="btn btn-info" value="검색">
+    </form>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav" id="sidemenu">
@@ -131,9 +139,34 @@
       </div>
     </div>
     <div class="btns">
-    <a href="javascript:moreList();" class="btn btn-primary">더보기</a>
+  
     </div>
     </div>
+    
+ 
+  
+  <div class="text-center">
+  <ul class="pagination">
+    <c:if test="${page.prev }">
+	<a href="AllCategory?currPage=${page.startBlock-1 }&search=${search}&searxhtxt=${searchtxt}">
+	<c:out value="이전"></c:out>
+	</a>
+	</c:if>
+  <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+  	
+		<a href="AllCategory?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
+		<c:out value="${index }"/>
+		</a>
+	
+</c:forEach>
+  <c:if test="${page.next }">
+<a href="AllCategory?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
+<c:out value="다음"/>
+</a>
+</c:if>
+  </ul>
+  </div>
 </div>
+
 </body>
 </html>
