@@ -64,7 +64,7 @@ public class ContactController {
 		return "redirect:/contact";
 	}
 	
-	@RequestMapping("/contactmodify/{no}")
+	@RequestMapping(value="/contactmodify/{no}", method=RequestMethod.GET)
 	public String contactmodify(@PathVariable int no, Model model) {
 		ContactDTO dto = contactservice.contactdetail(no);
 		model.addAttribute("dto",dto);

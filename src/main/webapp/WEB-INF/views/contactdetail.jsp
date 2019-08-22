@@ -24,15 +24,45 @@
 		</div>
 
 		<a href=/contact><input type="button" class="btn btn-default" value="목록"></a>
-		<a href="/contactmodify/${dto.hno }"><input type="button" class="btn btn-default" id="btn"
-			value="수정"></a>
-		<a href="/contactdelete/${dto.hno }"><input type="button" class="btn btn-default"
-			value="삭제"></a>
+		<%-- <a href="/contactmodify/${dto.hno }"><input type="button" class="btn btn-default" id="btn"
+			value="수정"></a> --%>
+			  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">문의글을 수정하세요.</h4>
+        </div>
+        <div class="modal-body">
+    <jsp:include page="contactmodify.jsp"></jsp:include>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  		<input type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" value="수정">
+	  
+	  
+	  <a href="/contactdelete/${dto.hno }">
+	  <input type="button" id="delbtn" class="btn btn-default"	value="삭제"></a>  
+			
  </div>
  
  </sec:authorize>
- 
-
+ <script>
+$(document).ready(function() {
+	 
+	    $('#delbtn').click(function() {
+	            alert('삭제하시겠습니까?');
+	            location.href="/contact"
+	    });
+	});
+</script>
 </body>
 </html>
 

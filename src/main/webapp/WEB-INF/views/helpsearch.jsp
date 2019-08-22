@@ -18,12 +18,12 @@
 		<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
 		<!-- <input type="text" name="keyword" class="form-control" > -->
 
-		<div class="input-group">
+		<div class="input-group" >
 			<input type="text" class="form-control" placeholder="검색어를 입력하세요"
-				name="keyword">
+				name="keyword" >
 			<div class="input-group-btn">
 				<button class="btn btn-default" type="submit">
-					<i class="glyphicon glyphicon-search"></i>
+					<i class="glyphicon glyphicon-search" ></i>
 				</button>
 			</div>
 		</div>
