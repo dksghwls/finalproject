@@ -91,33 +91,5 @@ public class ContactController {
 	}
 	 
 	
-	//파일 업로드
-	 private String path = "temp";
-	 
-	 @RequestMapping("/contactfile")
-	 public String contactfileform() {
-		 return "contactfile";
-				 
-	 }
-	 
-	 @RequestMapping("/contactfileok")
-	 public String contactfileok(HttpServletRequest request, FileVo vo, Model model) {
-		 
-		 MultipartFile multi = vo.getFile1();
-		 try {
-			 String uploadpath = request.getSession().getServletContext().getRealPath(path);
-			 if(!multi.isEmpty()) {
-				 File file= new File(uploadpath, multi.getOriginalFilename());
-				 multi.transferTo(file);
-				 model.addAttribute("title", vo.getFilename());
-				 model.addAttribute("filename", vo.getFile1().getOriginalFilename());
-				 model.addAttribute("uploadpath", file.getAbsolutePath());
-				 return "contactfilelist";
-			 }
-		 }catch(IOException e) {
-			 System.out.println(e);
-		 }
-		 return "redirect:/contactfile";
-		 
-	 }
+	
 }
