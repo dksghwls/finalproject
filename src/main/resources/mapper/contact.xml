@@ -8,7 +8,6 @@
 	<select id="count" resultType="int">
 		select count(*)
 		from help
-
 	</select>
 
 
