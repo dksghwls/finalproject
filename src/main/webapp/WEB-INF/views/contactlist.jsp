@@ -22,7 +22,6 @@
 				<th>회원명</th>
 				<th>글제목</th>
 				<th>작성일</th>
-			 
 			</tr>
 		</thead>
 		<tbody id="myTable">
