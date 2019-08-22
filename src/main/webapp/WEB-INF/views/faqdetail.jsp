@@ -45,8 +45,18 @@
  --%>
 			<a href=/faq><input type="button" class="btn btn-default" value="목록"></a> <a
 				href="/faqmodify/${dto.fno }"><input type="button" class="btn btn-default" value="수정"></a>
-			<a href="/faqdelete/${dto.fno }"><input type="button" class="btn btn-default" value="삭제"></a>
+			<a href="/faqdelete/${dto.fno }"><input type="button" id="delbtn" class="btn btn-default" value="삭제"></a>
 			</div>
 	</sec:authorize>
+	
+	 <script>
+$(document).ready(function() {
+	 
+	    $('#delbtn').click(function() {
+	            alert('삭제하시겠습니까?');
+	            location.href="/faq"
+	    });
+	});
+</script>
 </body>
 </html>
