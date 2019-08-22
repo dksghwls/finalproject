@@ -112,14 +112,6 @@
 	  });
 	});
 	
-	/*글쓰기 버튼 */
-/* 	$(document).ready(function() {
-	 
-	    $('#btn').click(function() {
-	            $('.insertshow').slideToggle("fast");
-	    });
-	});
-	 */
 </script>
 </body>
 </html>

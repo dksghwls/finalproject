@@ -21,37 +21,15 @@
 				<div class="panel-heading">제목: ${dto.ftitle }</div>
 				<div class="panel-body">내용: ${dto.fcontent }</div>
 			</div>
-
-			<%-- 	<table>
-		<thead>
-			<tr>
-				<th>카테고리</th>
-				<th>번호</th>
-				<th>제목
-				<th>내용</th>
-			</tr>
-		</thead>
-		<tbody>
-		
-			<tr>
-				<td>${dto.fcname }</td>
-				<td>${dto.fno }</td>
-				<td>${dto.ftitle }</td>
-				<td>${dto.fcontent }</td>
-			</tr>
-			
-		</tbody>
-	</table>
- --%>
-			<a href=/faq><input type="button" class="btn btn-default"
-				value="목록"></a> <a href="/faqmodify/${dto.fno }"><input
-				type="button" class="btn btn-default" value="수정"></a>
-			<%-- 			<a href="/faqdelete/${dto.fno }"><input type="button" id="delbtn" class="btn btn-default" value="삭제"></a> --%>
+				<a href=/faq><input type="button" class="btn btn-default" value="목록"></a> 
+				<a href="/faqmodify/${dto.fno }"><input	type="button" class="btn btn-default" value="수정"></a>
+				
+			<%-- <a href="/faqdelete/${dto.fno }"><input type="button" id="delbtn" class="btn btn-default" value="삭제"></a> --%>
 
 			<input type="button" class="btn btn-default" data-toggle="modal"
-				data-target="#myModal2" value="삭제">
+				data-target="#myModal" value="삭제">
 			<!-- Modal -->
-			<div class="modal fade" id="myModal2" role="dialog">
+			<div class="modal fade" id="myModal" role="dialog">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
 						<div class="modal-header">

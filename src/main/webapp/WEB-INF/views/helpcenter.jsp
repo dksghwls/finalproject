@@ -57,6 +57,7 @@
 	<div class="container-fluid bg-2 text-center">
 		<h3 class="margin">사람들이 시작하는 오늘의 혜택</h3>
 		<p>Help Center</p>
+		<br>
 		<form method="get" action="faq?currPage=${page.startBlock }">
 			<input type="hidden" name="search" value="all">
 			 
