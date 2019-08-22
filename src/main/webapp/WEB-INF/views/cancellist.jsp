@@ -17,9 +17,7 @@
         }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script 
-
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
@@ -40,7 +38,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
                 <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
               <li data-tab="product2" class="nav-item">
-                <a class="nav-link" href="../cancellist/${member.no }">나의 취소 내역</a>
+                <a class="nav-link" href="../cancel/${member.no }">나의 취소 내역</a>
               </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
@@ -51,9 +49,9 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
           <br><br>
           
 <div class="container">
-  <p>${member.nickname } 님의 주문 완료 상품입니다.</p>
+  <p>${member.nickname } 님의 주문 취소 상품입니다.</p>
 
-<form>
+<%-- <form>
     <div class="form-group" style="width: 150px; float: right;">
       <select class="form-control" id="sel1" onchange="location.href=this.value">
         <option>카테고리</option>
@@ -63,7 +61,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
         </c:forEach>
       </select>
     </div>
-    </form>
+    </form> --%>
       
 <br>
 <table class="table">
@@ -74,56 +72,24 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
         <th>주문 번호</th>
         <th>주문 일자</th>
         <th>구매 가격</th>
-        <th>배송 주소</th>
-        <th>배송 상태</th>
-        <th>주문 취소</th>
+        <th>취소 일자</th>
       </tr>
     </thead>
     <tbody>
-    <c:forEach var="item" items="${plist }">
+    <c:forEach var="item" items="${cancellist }">
       <tr>
-      	<td><a href="#"><img src="../img/Penguins.jpg" class="rounded" alt="Cinque 
-
-Terre" width="100" height="75"></a></td>
+      	<td><a href="#"><img src="../img/Penguins.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
         <td><c:out value="${item.pname }"></c:out></td>
         <td><c:out value="${item.bno }"></c:out></td>
         <td><c:out value="${item.bdate }"></c:out></td>
         <td><c:out value="${item.dprice }"></c:out></td>
-        <td><c:out value="${item.addr }"></c:out></td>
-        <td><c:out value="${item.shipping }"></c:out></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">취소</button></td>
-      </tr> 
-   <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">취소 확인</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          정말로 취소하시겠습니까?
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='../cancel/${item.bno}?no=${member.no}'">예</button>
-          ${item.bno }
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-     
+        <td><c:out value="${item.cdate }"></c:out></td>
+      </tr>
      </c:forEach>
     </tbody>
   </table>
   
-  <form method="get" action="../product?currPage=${page.currPage }">
+  <%-- <form method="get" action="../product?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option>검색 조건 </option>
 		<option value="pname">상품 이름</option>
@@ -132,41 +98,35 @@ Terre" width="100" height="75"></a></td>
 	<input type="hidden" id="no" name="no" value="${member.no }"/>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">
-    </form>
+    </form> --%>
   
-  <div class="text-center">
+  <%-- <div class="text-center">
   <ul class="pagination">
   <li class="page-item">
     <c:if test="${page.prev }">
-    <%-- <c:if test="${page.startBlock>1 }"> --%>
-	<a class="page-link" href="product?no=${member.no }&currPage=
-
-${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+    <c:if test="${page.startBlock>1 }">
+	<a class="page-link" href="product?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
   </li>
   <li class="page-item">
   
-  <%-- <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+  <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
   	
-		<a class="page-link" href="product?currPage=${index }&search=
-
-${search}&searchtxt=${searchtxt}">
+		<a class="page-link" href="product?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
 		<c:out value="${index }"/>
 		</a>
-  </c:forEach> --%>
+  </c:forEach>
   
-  <%-- <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
+  <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
     <c:if test="${index==currpage}">
       <c:out value="${index}"></c:out>
     </c:if>
     <c:if test="${index!=currpage }">
-     <a class="page-link" href="product?currpage=${index}&search=${search}&searchtxt=
-
-${searchtxt}"><c:out value="${index }"/></a>
+     <a class="page-link" href="product?currpage=${index}&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
     </c:if>
-   </c:forEach> --%>
+   </c:forEach>
    
    <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
@@ -174,9 +134,7 @@ ${searchtxt}"><c:out value="${index }"/></a>
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="product?no=${member.no }&currPage=
-
-${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="product?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>
@@ -187,16 +145,14 @@ ${index}&search=${search}&searchtxt=${searchtxt}">
   </li>
   <li class="page-item">
   <c:if test="${page.next }">
-  <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="product?no=${member.no }&currPage=
-
-${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+  <c:if test="${page.endBlock<totalPage }">
+	<a  class="page-link" href="product?no=${member.no }&currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>
   </li>
   </ul>
-  </div>
+  </div> --%>
   
   <!-- <div class="text-center">
   <ul class="pagination">

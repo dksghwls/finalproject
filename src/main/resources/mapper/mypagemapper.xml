@@ -96,7 +96,7 @@
 			</if>
 			
 		<!-- </where> -->
-			order by p1.pno
+			order by p2.bno
 			limit #{startRow}, 10
   		</select>
   		
@@ -160,4 +160,27 @@
     	
     	</delete>
     	
+    	<select id="cancelselect" resultType="com.bitcamp.DTO.ProductDTO" parameterType="hashmap">
+    		select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping, m.no
+    		from category c, product p1, pay p2, member m
+    		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and m.no=#{no} and p2.bno=#{bno}
+    	</select>
+    	
+    	<insert id="cancelinsert" parameterType="com.bitcamp.DTO.ProductDTO">
+    		insert into cancel(no, pname, bno, bdate, dprice, cdate)
+    		values( #{no}, #{pname}, #{bno}, #{bdate}, #{dprice}, now())
+    	</insert>
+    	
+    	<delete id="cancelpay" parameterType="int">
+    		delete from pay
+    		where bno=#{bno}
+    	</delete>
+    	
+    	<select id="cancellist" parameterType="int" resultType="com.bitcamp.DTO.ProductDTO">
+    		
+    		select *
+    		from cancel
+    		where no=#{no};
+    		
+    	</select>
     </mapper>

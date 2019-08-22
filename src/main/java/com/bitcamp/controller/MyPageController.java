@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -186,6 +187,28 @@ public class MyPageController {
 		model.addAttribute("dlist", dlist);
 
 		return "templete.jsp?page=review";
+	}
+	
+	@RequestMapping("cancel/{bno}")
+	@Transactional
+	public String cancel(@PathVariable int bno, @RequestParam int no, Model model) {
+		
+		ProductDTO dto=myPageService.cancelselect(bno, no);
+		myPageService.cancelinsert(dto);
+		System.out.println(bno);
+		myPageService.cancelpay(bno);
+		model.addAttribute("no", no);
+		
+		return "cancelresult";
+	}
+	
+	@RequestMapping("cancellist/{no}")
+	public String cancellist(@PathVariable int no, Model model) {
+		
+		List<ProductDTO> cancellist=myPageService.cancellist(no);
+		model.addAttribute("cancellist", cancellist);
+
+		return "templete.jsp?page=cancellist";
 	}
 
 }

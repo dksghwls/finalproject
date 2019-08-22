@@ -37,4 +37,14 @@ public interface MyPageMapper {
 
 	public void deleteauth(String email);
 
+	public ProductDTO cancelselect(HashMap<String, Object> hm);
+
+	public void cancelinsert(ProductDTO dto);
+
+	public void cancelpay(int bno);
+
+	public List<ProductDTO> cancellist(int no);
+
+	
+
 }

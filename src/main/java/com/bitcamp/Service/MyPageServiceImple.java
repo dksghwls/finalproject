@@ -117,4 +117,34 @@ public class MyPageServiceImple implements MyPageService {
 		
 	}
 
+	@Override
+	public ProductDTO cancelselect(int bno, int no) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("bno", bno);
+		hm.put("no", no);
+		
+		return myPageMapper.cancelselect(hm);
+	}
+
+	@Override
+	public void cancelinsert(ProductDTO dto) {
+		
+		myPageMapper.cancelinsert(dto);
+		
+	}
+
+	@Override
+	public void cancelpay(int bno) {
+		
+		myPageMapper.cancelpay(bno);
+		
+	}
+
+	@Override
+	public List<ProductDTO> cancellist(int no) {
+		
+		return myPageMapper.cancellist(no);
+	}
+
 }

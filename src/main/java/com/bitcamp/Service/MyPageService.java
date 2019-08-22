@@ -35,6 +35,14 @@ public interface MyPageService {
 	public int ctotalCount(String search, String searchtxt);
 
 	public void deleteauth(String email);
+
+	public ProductDTO cancelselect(int bno, int no);
+
+	public void cancelinsert(ProductDTO dto);
+
+	public void cancelpay(int bno);
+
+	public List<ProductDTO> cancellist(int no);
 	
 	
 }

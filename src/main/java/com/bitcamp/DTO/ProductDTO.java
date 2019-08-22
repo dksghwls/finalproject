@@ -14,6 +14,7 @@ public class ProductDTO {
 	private int bno;
 	private int imgno;
 	private Date bdate;
+	private Date cdate;
 	private int bcount;
 	private int pay;
 	private String addr;
@@ -117,6 +118,12 @@ public class ProductDTO {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public Date getCdate() {
+		return cdate;
+	}
+	public void setCdate(Date cdate) {
+		this.cdate = cdate;
 	}
 	
 	
