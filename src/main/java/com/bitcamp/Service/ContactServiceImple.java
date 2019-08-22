@@ -1,5 +1,6 @@
 package com.bitcamp.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,11 @@ public class ContactServiceImple implements ContactService {
 	private ContactMapper mapper;
 
 	@Override
-	public List<ContactDTO> contactlist() {
-		 
-		return mapper.contactlist();
+	public List<ContactDTO> contactlist(int startRow, int endRow) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return mapper.contactlist(hm);
 	}
 	@Override
 	public int contactinsert(ContactDTO dto) {
@@ -38,6 +41,11 @@ public class ContactServiceImple implements ContactService {
 	public int contactmodify(ContactDTO dto) {
 		 
 		return mapper.contactmodify(dto);
+	}
+	@Override
+	public int contactcount() {
+		 
+		return mapper.count();
 	}
 
 

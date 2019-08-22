@@ -5,37 +5,49 @@
 
 <mapper namespace="com.bitcamp.Mapper.ContactMapper">
 
-	<select id="contactlist" resultType="com.bitcamp.DTO.ContactDTO">
-		select b.nickname, hno, b.no, htitle, hcontent, hdate
+	<select id="count" resultType="int">
+		select count(*)
+		from help
+	</select>
+
+
+	<select id="contactlist" resultType="com.bitcamp.DTO.ContactDTO" parameterType="java.util.HashMap">
+		select b.nickname, hno,
+		b.no, htitle, hcontent, hdate
 		from help as a
 		left join member as b
-		on a.no = b.no
+		on
+		a.no = b.no
 		order by hno desc
+		LIMIT #{startRow}, 5;
 	</select>
 
 	<insert id="contactinsert"
 		parameterType="com.bitcamp.DTO.ContactDTO">
 		insert into help (no,htitle,hcontent,hdate)
-		values (#{no},#{htitle},#{hcontent},sysdate())
+		values
+		(#{no},#{htitle},#{hcontent},sysdate())
 	</insert>
-	
-	<select id="contactdetail" parameterType="int" resultType="com.bitcamp.DTO.ContactDTO">
-	select hno, b.no, htitle, hcontent, hdate
+
+	<select id="contactdetail" parameterType="int"
+		resultType="com.bitcamp.DTO.ContactDTO">
+		select hno, b.no, htitle, hcontent, hdate
 		from help as a
 		left join member as b
 		on a.no = b.no
 		where hno=#{hno}
 	</select>
-	
+
 	<delete id="contactdelete" parameterType="int">
-	delete from help
-	where hno=#{hno}
+		delete from help
+		where hno=#{hno}
 	</delete>
-	
-	<update id="contactmodify" parameterType="com.bitcamp.DTO.ContactDTO">
-	update help
-	set htitle=#{htitle}, hcontent=#{hcontent}
-	where hno=#{hno}
+
+	<update id="contactmodify"
+		parameterType="com.bitcamp.DTO.ContactDTO">
+		update help
+		set htitle=#{htitle}, hcontent=#{hcontent}
+		where hno=#{hno}
 	</update>
 
 </mapper>

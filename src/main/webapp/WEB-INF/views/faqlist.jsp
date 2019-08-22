@@ -68,6 +68,7 @@
 		vertical-align: middle;
 		width: 80%;
 	}
+
 	
 	.detail a {
 		text-decoration: none;
@@ -158,11 +159,11 @@
 									</a>
 
 										<div class="detail">
-											<div id="left" style="width: 15%; float: left; height: 70%;">
+											<div id="left" style="width: 15%; float: left; height: 50%;">
 												<div id="sup"></div>
 											</div>
 											<div id="right"
-												style="width: 55%; float: right; height: 50%; padding-left: 20px;">
+												style="width: 85%; float: right; height: 50%; padding-left: 20px;">
 												<div id="sup">
 													<div>
 														<span>${i.fcontent }</span>
@@ -263,14 +264,14 @@
 												</div>
 										</a>
 											<div class="detail">
-												<div id="left" style="width: 15%; float: left; height: 70%;">
+												<div id="left" style="width: 15%; float: left; height: 50%;">
 													<div id="sup"></div>
 												</div>
 												<div id="right"
-													style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+													style="width: 85%; float: right; height: 50%; padding-left: 20px;">
 													<div id="sup">
 														<div>
-															<span><c:out value="${i.fcontent }"></c:out></span>
+															<span>${i.fcontent }"</span>
 														</div>
 													</div>
 												</div>
@@ -282,6 +283,7 @@
 						</div>
 				</table>
 			</div>
+			
 			<div id="menu2" class="tab-pane fade">
 				<table class="table table-hover">
 					<!-- 아코디언 효과 -->
@@ -302,14 +304,14 @@
 												</div>
 										</a>
 											<div class="detail">
-												<div id="left" style="width: 15%; float: left; height: 70%;">
+												<div id="left" style="width: 15%; float: left; height: 50%;">
 													<div id="sup"></div>
 												</div>
 												<div id="right"
-													style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+													style="width: 85%; float: right; height: 50%; padding-left: 20px;">
 													<div id="sup">
 														<div>
-															<span><c:out value="${i.fcontent }"></c:out></span>
+															<span>${i.fcontent }</span>
 														</div>
 													</div>
 												</div>
@@ -341,14 +343,14 @@
 												</div>
 										</a>
 											<div class="detail">
-												<div id="left" style="width: 15%; float: left; height: 70%;">
+												<div id="left" style="width: 15%; float: left; height: 50%;">
 													<div id="sup"></div>
 												</div>
 												<div id="right"
-													style="width: 55%; float: right; height: 70%; padding-left: 20px;">
+													style="width: 85%; float: right; height: 50%; padding-left: 20px;">
 													<div id="sup">
 														<div>
-															<span><c:out value="${i.fcontent }"></c:out></span>
+															<span>${i.fcontent }</span>
 														</div>
 													</div>
 												</div>

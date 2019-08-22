@@ -49,7 +49,7 @@ $(document).ready(function() {
 <body>
 	<div class="container">
 		<br>
-			<form method="post" action="../faqmodifyok" id="faqmodiBoardFrm">	
+			<form method="post" action="/faqmodifyok" id="faqmodiBoardFrm">	
 			<label for="focusedInput">글번호</label>
 			<input type="text" name="fno" class="form-control" id="focusedInput" value="${dto.fno }" readonly="readonly"><br>
 			<br>

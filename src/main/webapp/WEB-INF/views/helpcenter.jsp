@@ -13,35 +13,41 @@
 	rel="stylesheet">
 
 <style>
-body {
-	font: '돋움', Dotum, Helvetica, Sans-serif;
-	line-height: 1.5;
-	color: #f5f6f7;
-}
-
-p {
-	font-size: 50px;
-}
-
-.margin {
-	margin-bottom: 120px;
-}
-
-.bg-2 {
-	/* background-color: #474e5d; /* Dark Blue */
-	/* color: #ffffff;  */
-	color: black;
-}
-
-.bg-3 {
-	background-color: #ffffff; /* White */
-	color: black;
-}
-
-.helppsize {
-	font-size: 15px;
-	color: gray;
-}
+	body {
+		font: '돋움', Dotum, Helvetica, Sans-serif;
+		line-height: 1.5;
+		color: #f5f6f7;
+	}
+	
+	p {
+		font-size: 50px;
+	}
+	
+	.margin {
+		margin-bottom: 120px;
+	}
+	
+	.bg-2 {
+		/* background-color: #474e5d; /* Dark Blue */
+		/* color: #ffffff;  */
+		color: black;
+	}
+	
+	.bg-3 {
+		background-color: #ffffff; /* White */
+		color: black;
+	}
+	
+	.helppsize {
+		font-size: 15px;
+		color: gray;
+	}
+/* 	
+	.form-control {
+		margin : 0 auto;
+		top: 50%;
+		left: 243%;
+	} */
 </style>
 </head>
 <body>
@@ -51,25 +57,18 @@ p {
 	<div class="container-fluid bg-2 text-center">
 		<h3 class="margin">사람들이 시작하는 오늘의 혜택</h3>
 		<p>Help Center</p>
+		<br>
 		<form method="get" action="faq?currPage=${page.startBlock }">
-			<!-- <select name="search" class="form-control" id="sel1" style="width: 15%;">
-			<option value="all">전체검색</option>
-		 
-		</select> -->
-			<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
-			<!-- <input type="text" name="keyword" class="form-control" > -->
 			<input type="hidden" name="search" value="all">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요"
-					name="keyword">
-				<div class="input-group-btn">
+			 
+					<input type="text" class="btn btn-default btn-lg" 
+						placeholder="검색어를 입력하세요" name="keyword">
+			  
+			 
 					<button class="btn btn-default" type="submit">
-						<i class="glyphicon glyphicon-search"></i>
+						<span class="glyphicon glyphicon-search"></span>
 					</button>
-				</div>
-			</div>
 		</form>
-
 	</div>
 
 	<!-- Third Container (Grid) -->
@@ -100,7 +99,7 @@ p {
 		</div>
 	</div>
 	<!-- 지도 api  -->
-<!-- 	<script type="text/javascript"
+	<!-- 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa8b0b5161046e37e60ed382cde1421"></script>
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

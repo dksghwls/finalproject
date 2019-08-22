@@ -9,7 +9,7 @@
  
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="./../resources/editor/js/HuskyEZCreator.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function() {
 
     $(function(){
@@ -45,7 +45,7 @@ $(document).ready(function() {
 	    });
     });
 });
-</script>
+</script> -->
 </head>
 <body>
 <br>
@@ -54,15 +54,15 @@ $(document).ready(function() {
 	<form method="post" action="/contactmodifyok" id="contactmodi">
 	
 	<label for="focusedInput">글번호</label>
-	<input type="text" class="form-control" id="focusedInput" name="hno"  value="${dto.hno }" readonly="readonly"><br>
+	<input type="text" class="form-control" id="focusedInput" name="hno" value="${dto.hno }" style="width: 15%;" readonly="readonly"><br>
 	
 	<input type="hidden" name="no" value="${member.no }"><br>
 	
 	<label for="focusedInput">회원명</label>
-	<input type="text" class="form-control" id="focusedInput" name="nickname"  value="${member.nickname }" readonly="readonly"><br>
+	<input type="text" class="form-control" id="focusedInput" name="nickname" value="${member.nickname }" style="width: 15%;" readonly="readonly" ><br>
 	<br>
 	<label for="sel1">제목</label> 
-	<select name="htitle"  class="form-control" id="sel1"  value="${dto.htitle }"><br>
+	<select name="htitle"  class="form-control" id="sel1" value="${dto.htitle }" style="width: 15%;"><br>
 			<option value="계정문의">계정문의</option>
 			<option value="개인정보">개인정보</option>
 			<option value="할인문의">할인문의</option>
@@ -71,7 +71,7 @@ $(document).ready(function() {
 			<br>
 	 
 	<label for="hcontent">내용</label><br>
-	<textarea class="form-control" rows="5" id="hcontent"name="hcontent" style="width: 100%;"></textarea>
+	<textarea class="form-control" rows="5" id="hcontent"name="hcontent" style="width: 48%;">${dto.hcontent }</textarea>
  
 	<br>
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
