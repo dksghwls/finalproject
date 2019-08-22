@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<script src="https://code.jquery.com/jquery-latest.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="./resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
     $(function(){
@@ -36,9 +35,7 @@
 	        $("#contactform").submit();
 	    });
     });
-    
-    
-</script>
+</script> -->
 </head>
 <body>
 <br>
@@ -48,18 +45,17 @@
 
 		<input type="hidden" name="no" value="${member.no }">
 		<label for="focusedInput">회원명</label> 
-		<input type="text" name="nickname" class="form-control" id="focusedInput" value="${member.nickname }" readonly="readonly"><br>
-		<br>
+		<input type="text" name="nickname" class="form-control" id="focusedInput" value="${member.nickname }" style="width: 15%;" readonly="readonly"><br>
 		 <label for="sel1">제목</label> 
-		<select name="htitle" class="form-control" id="sel1">
+		<select name="htitle" class="form-control" id="sel1" style="width: 15%;">
 			<option value="계정문의">계정문의</option>
 			<option value="개인정보">개인정보</option>
 			<option value="할인문의">할인문의</option>
 			<option value="기타문의">기타문의</option>
-		</select><br> <br> 
+		</select><br>
 		
 		<label for="hcontent">내용</label>
-		<textarea class="form-control" rows="5" id="hcontent"name="hcontent" style="width: 100%;"
+		<textarea class="form-control" rows="5" id="hcontent"name="hcontent" style="width: 48%;"
 			required="required"></textarea>
 		<br> <input type="hidden" name="${_csrf.parameterName }"
 			value="${_csrf.token }" /> 
