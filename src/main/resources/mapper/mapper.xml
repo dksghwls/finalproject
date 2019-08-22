@@ -11,12 +11,56 @@
  
     		
     	</select>
-    	<select id="pList" resultType="com.bitcamp.DTO.CategoryDTO">
+    	<select id="totalCountcount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(*) from product
+  	  		
+  	<where>
+  		<if test="searchtxt!=null and searchtxt!=''">
+  			<choose>
+  				<when test="search=='pno'">
+  				and pno=#{searchtxt}
+  				</when>
+  				<when test="search=='pname'">
+  					and pname like '%'||upper(#{searchtxt})||'%'     
+  				</when>
+  				<when test="search=='cno'">
+  				and cno=#{searchtxt}
+  				</when>
+  			</choose>
+  		</if>
+  	</where>
+  </select>
+  <select id="plist" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
+  		select *
+  		from product
+  		
+              <where>
+				<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
+					<when test="search=='pno'">
+						and pno=#{searchtxt}
+					</when>
+					<when test="search=='pname'">
+						and pname like upper('%'|| #{searchtxt}||'%')
+					</when>
+					<when test="search=='cno'">
+						and cno=#{searchtxt}
+					</when>
+				</choose>
+			</if>
+			
+	</where>
+	order by pno
+	limit #{startRow}, #{endRow}
+  </select>
+  
+    	<!-- <select id="pList" resultType="com.bitcamp.DTO.CategoryDTO">
     		
     		select pno, pname, oprice, dprice from product
     	
     	
-    	</select>
+    	</select> -->
     	<select id="allList" resultType="com.bitcamp.DTO.CategoryDTO">
     	
     		select cno,cname from category

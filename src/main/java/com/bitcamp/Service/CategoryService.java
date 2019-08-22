@@ -8,7 +8,7 @@ public interface CategoryService {
 
 	public List<CategoryDTO> AllList();
 
-	public List<CategoryDTO> pList();
+	//public List<CategoryDTO> pList();
 
 	public List<CategoryDTO> cpList(int cno);
 
@@ -33,6 +33,10 @@ public interface CategoryService {
 	public List<CategoryDTO> adallList();
 
 	public List<CategoryDTO> adcpList(int cno);
+
+	public int totalCountcount(String search, String searchtxt);
+
+	public List<CategoryDTO> pList(String search, String searchtxt, int startRow, int endRow);
 
 	
 }
