@@ -42,14 +42,12 @@
 		font-size: 15px;
 		color: gray;
 	}
-	
- #ex1{
-	 position:absolute; 
-	 top:50%; left:243%;
-	   
-	}  
-	
- 
+/* 	
+	.form-control {
+		margin : 0 auto;
+		top: 50%;
+		left: 243%;
+	} */
 </style>
 </head>
 <body>
@@ -61,19 +59,15 @@
 		<p>Help Center</p>
 		<form method="get" action="faq?currPage=${page.startBlock }">
 			<input type="hidden" name="search" value="all">
-			<div class="form-group row">
-				<div class="col-xs-2">
-					<input type="text" class="form-control" id="ex1"
+			 
+					<input type="text" class="btn btn-default btn-lg" 
 						placeholder="검색어를 입력하세요" name="keyword">
-				</div>
-				<div class="input-group-btn">
+			  
+			 
 					<button class="btn btn-default" type="submit">
-						<i class="glyphicon glyphicon-search"></i>
+						<span class="glyphicon glyphicon-search"></span>
 					</button>
-				</div>
-			</div>
 		</form>
-
 	</div>
 
 	<!-- Third Container (Grid) -->

@@ -39,6 +39,37 @@
 		</tbody>
 
 	</table>
+	<br>
+	<!-- block 처리 -->
+				<ul class="pager">
+					<li><c:if test="${page.prev }">
+							<a
+								href="contact?currPage=${page.startBlock-1 } "><c:out
+									value="이전"></c:out></a>
+						</c:if></li>
+
+					<c:forEach var="i" begin="${page.startBlock }"
+						end="${page.endBlock }">
+						<li><c:choose>
+								<c:when test="${i }==${page.currPage }">
+									<c:out value="${i }"></c:out>
+								</c:when>
+								<c:otherwise>
+									<a
+										href="contact?currPage=${i } ">
+										<c:out value="${i}"></c:out>
+									</a>
+								</c:otherwise>
+							</c:choose></li>
+					</c:forEach>
+
+					<li><c:if test="${page.next }">
+							<a
+								href="contact?currPage=${page.endBlock+1 } "><c:out
+									value="다음"></c:out></a>
+						</c:if></li>
+				</ul>
+	
 	<!-- 관리자일 경우 글쓰기 보여지는 것 -->
     <%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
 	<%-- <input type="button" class="btn btn-default" id="btn" value="글쓰기">

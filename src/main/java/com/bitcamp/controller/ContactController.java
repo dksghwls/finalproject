@@ -13,10 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.DTO.ContactDTO;
 import com.bitcamp.DTO.FileVo;
+import com.bitcamp.DTO.MakePage;
 import com.bitcamp.Service.ContactService;
 
 @Controller
@@ -26,10 +28,20 @@ public class ContactController {
 	private ContactService contactservice;
 
 	@RequestMapping("/contact")
-	public String contactlist(Model model) {
-		List<ContactDTO> dto = contactservice.contactlist();
+	public String contactlist(@RequestParam(required=false, defaultValue="1") int currPage, Model model) {
+		
+		int totalCount = contactservice.contactcount();
+		System.out.println("totalCount: " + totalCount);
+		
+		int pageSize = 5;
+		int blockSize = 5;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		
+		List<ContactDTO> dto = contactservice.contactlist(page.getStartRow(), page.getEndRow());
 		model.addAttribute("dto", dto);
 		System.out.println("testdto" + dto);
+		model.addAttribute("page", page);
 
 		return "templete.jsp?page=contactlist";
 	}
