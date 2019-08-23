@@ -43,6 +43,10 @@
 		원가:<input type="text" name="oprice" id="oprice"><br>
 		할인가:<input type="text" name="dprice" id="dprice"><br>
 		상품설명:<textarea name="content" id="content" style="width: 700px; height: 400px;"></textarea>
+		<label for="filename">파일명</label>
+		<input type="text" name="filename" id="filename"><br>
+		<label for="file1">파일</label>
+		<input type="file" name="file1" id="file1"><br>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <input type="button" id="insertBoard" value="등록" />
     </form>

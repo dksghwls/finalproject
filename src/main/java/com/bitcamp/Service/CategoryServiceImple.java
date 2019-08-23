@@ -2,9 +2,12 @@ package com.bitcamp.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.jar.Attributes.Name;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bitcamp.DTO.CategoryDTO;
 import com.bitcamp.Mapper.CategoryMapper;
@@ -41,12 +44,12 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	@Override
+	/*@Override
 	public int addresult(CategoryDTO dto) {
 		
 		return mapper.addresult(dto);
 	}
-
+*/
 
 	@Override
 	public int delete(int pno) {
@@ -137,6 +140,18 @@ public class CategoryServiceImple implements CategoryService{
 		System.out.println(endRow);
 		
 		return mapper.plist(o);
+	}
+
+	@Transactional
+	public int addresult(CategoryDTO dto, String uploadpath) {
+		  
+		  mapper.addresult(dto);
+		  
+		  
+		  HashMap<String, Object> hm=new HashMap<>();
+		  hm.put("path", uploadpath);
+		 
+		  return  mapper.addallresult(hm);
 	}
 
 

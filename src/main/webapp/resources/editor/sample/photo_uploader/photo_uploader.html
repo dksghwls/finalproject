@@ -53,15 +53,17 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
     <!-- container -->
 	
     <!-- [D] HTML5인 경우 pop_container 클래스와 하위 HTML 적용
-	    	 그밖의 경우 pop_container2 클래스와 하위 HTML 적용      -->
+	    	 그밖의 경우 pop_container2 클래스와 하위 HTML 적용      -->  <!--onSubmit="return false;"  -->
+	<form id="editor_upimage" name="editor_upimage" method="post"  action="/file_uploader_html5" enctype="multipart/form-data" >
+	
 	<div id="pop_container2" class="pop_container2">
     	<!-- content -->
-		<form id="editor_upimage" name="editor_upimage"  method="post" enctype="multipart/form-data" onSubmit="return false;">
+		
         <div id="pop_content2">
 			<input type="file" class="upload" id="uploadInputBox" name="Filedata">
             <p class="dsc" id="info"><strong>10MB</strong>이하의 이미지 파일만 등록할 수 있습니다.<br>(JPG, GIF, PNG, BMP)</p>
         </div>
-		</form>
+		
         <!-- //content -->
     </div>
     <div id="pop_container" class="pop_container" style="display:none;">
@@ -91,6 +93,7 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
         </div>
     </div>
     <!-- //footer -->
+   </form>
 </div>
 <script type="text/javascript" src="jindo.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="jindo.fileuploader.js" charset="utf-8"></script>

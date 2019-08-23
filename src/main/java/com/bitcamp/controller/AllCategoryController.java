@@ -161,9 +161,7 @@ public class AllCategoryController {
 		
 		int result = service.updateresult(dto);
 		
-		System.out.println(service);
-		System.out.println(result);
-		System.out.println("ok");
+		
 		return "redirect:/adminproduct";
 	}
 	
@@ -185,10 +183,13 @@ public class AllCategoryController {
 	}
 	
 	
-	@RequestMapping(value = "/Payment", method = RequestMethod.GET)
-	public String payment()
+	
+	
+	/*@RequestMapping("Paymentresult")
+	public String paymentok()
 	{
-		return "templete.jsp?page=Payment";
-	}
+		
+	}*/
+	
 
 }

@@ -177,8 +177,6 @@
   <div class="row content">
     <div class="col-sm-2 sidenav">
      <h3>Order Detail</h3>
-      <p>수량:</p>
-      <p>소계:</p>
       <p>운송 및 취급:택배</p>
       <p>총금액:</p>
       <hr>

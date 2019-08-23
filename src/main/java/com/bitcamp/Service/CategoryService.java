@@ -14,7 +14,7 @@ public interface CategoryService {
 
 	public List<CategoryDTO> allList();
 
-	public int addresult(CategoryDTO dto);
+	//public int addresult(CategoryDTO dto);
 
 	public int delete(int pno);
 
@@ -37,6 +37,8 @@ public interface CategoryService {
 	public int totalCountcount(String search, String searchtxt);
 
 	public List<CategoryDTO> pList(String search, String searchtxt, int startRow, int endRow);
+
+	public int addresult(CategoryDTO dto, String uploadpath);
 
 	
 }
