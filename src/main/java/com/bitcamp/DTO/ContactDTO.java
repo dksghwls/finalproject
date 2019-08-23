@@ -7,6 +7,7 @@ public class ContactDTO {
 	private int hno; //글번호
 	private int no; // 회원번호
 	private String nickname; //회원명
+	private String email; //이메일
 	private String htitle; //제목
 	private String hcontent; //내용
 	private Date hdate;//날짜
@@ -53,6 +54,12 @@ public class ContactDTO {
 	}
 	public void setHimg(String himg) {
 		this.himg = himg;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

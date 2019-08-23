@@ -23,6 +23,7 @@
 					<th>글번호</th>
 					<th>회원명</th>
 					<th>글제목</th>
+					<th>이메일</th>
 					<th>작성일</th>
 				</tr>
 			</thead>
@@ -33,6 +34,7 @@
 									value="${i.hno } "></c:out></a></td>
 						<td><c:out value="${i.nickname }"></c:out></td>
 						<td><a href="/contactdetail/${i.hno }"><c:out value="${i.htitle }"></c:out></a></td>
+						<td><c:out value="${i.email }"></c:out></td>
 						<td><c:out value="${i.hdate }"></c:out></td>
 					</tr>
 				</c:forEach>
@@ -88,7 +90,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">문의글을 작성하세요.</h4>
+						<h4 class="modal-title">답변은 이메일로 받으실 수 있어요^^</h4>
 					</div>
 					<div class="modal-body">
 						<jsp:include page="${request.contextPath}/contactinsert"></jsp:include>

@@ -127,12 +127,15 @@ span {
 
 	<div class="container">
 		<h2>
-			<a href="/helpcenter" data-toggle="tooltip" title="HelpCenter!">FAQ</a>
-		</h2>
-
+		<a href="/helpcenter" data-toggle="tooltip" title="HelpCenter!">FAQ</a>
+		<sec:authorize access="hasRole('ROLE_USER')">
+		<a href="faqinsert">
+		<input type="button" class="btn btn-default" id="insertbtn" value="글쓰기"></a>
+		</sec:authorize>
+				</h2>
 		<br>
 		<ul class="nav nav-pills">
-			<li class="active"><a data-toggle="pill" href="#home">전체</a></li>
+			<li class="active"><a data-toggle="pill" onclick="location.href='/faq'">전체</a></li>
 			<li><a data-toggle="pill" href="#menu1">배송</a></li>
 			<li><a data-toggle="pill" href="#menu2">주문</a></li>
 			<li><a data-toggle="pill" href="#menu3">회원</a></li>
@@ -189,17 +192,14 @@ span {
 						<option value="fcontent">내용</option>
 						<option value="all">제목+내용</option>
 					</select>
-					<!-- <input type="text" class="form-control" placeholder="Search" name="keyword" style="width: 12%;">  -->
-					<!-- <input type="text" name="keyword" class="form-control" > -->
-
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="검색어를 입력하세요"
-							name="keyword">
-						<div class="input-group-btn">
+							name="keyword" style="width: 308px;;">
+						<!-- <div class="input-group-btn"> -->
 							<button class="btn btn-default" type="submit">
 								<i class="glyphicon glyphicon-search"></i>
 							</button>
-						</div>
+						<!-- </div> -->
 					</div>
 				</form>
 				<br>
@@ -233,16 +233,12 @@ span {
 									value="다음"></c:out></a>
 						</c:if></li>
 				</ul>
-				<!-- 관리자일 경우 글쓰기 보여지는 것 -->
-				<%-- <sec:authorize access="hasRole('ROLE_ADMIN')">
-					<a href="faqinsert"><input type="button" value="글쓰기"></a>
-				</sec:authorize> --%>
 
 				<!-- 사용자일 경우 글쓰기 보여지는 것 -->
-				<sec:authorize access="hasRole('ROLE_USER')">
-					<a href="faqinsert"><input type="button"
-						class="btn btn-default" value="글쓰기"></a>
-				</sec:authorize>
+				<%-- <sec:authorize access="hasRole('ROLE_USER')">
+					<a href="faqinsert">
+					<input type="button" class="btn btn-default" id="insertbtn" value="글쓰기"></a>
+				</sec:authorize> --%>
 
 			</div>
 			<div id="menu1" class="tab-pane fade">

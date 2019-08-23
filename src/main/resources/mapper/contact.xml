@@ -13,7 +13,7 @@
 
 	<select id="contactlist" resultType="com.bitcamp.DTO.ContactDTO" parameterType="java.util.HashMap">
 		select b.nickname, hno,
-		b.no, htitle, hcontent, hdate
+		b.no, htitle, hcontent, hdate, b.email
 		from help as a
 		left join member as b
 		on
