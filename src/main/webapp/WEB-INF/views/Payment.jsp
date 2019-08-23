@@ -197,7 +197,7 @@
   <div class="row content">
     
     <div class="col-sm-8 text-left" id="addresinfo">
-    <form>
+    <form action="payok" method="post">
     	<label for="name">이름</label><br>
     	<input type="text" class="form-control" name="name" placeholder="name" style="width: 700px;" ><br>
     	<label for="phone">전화번호</label><br>
