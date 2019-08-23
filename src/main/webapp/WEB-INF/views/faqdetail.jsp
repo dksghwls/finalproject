@@ -40,11 +40,8 @@
 							<p>삭제하시겠습니까?</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal"
-								onclick="location.href='/faqdelete/${dto.fno }'">예</button>
-							<a href="/faqdetail/${dto.fno }"><button type="button"
-									class="btn btn-secondary" data-dismiss="modal">아니오</button></a>
+							<button type="button" class="btn btn-secondary"	data-dismiss="modal" onclick="location.href='/faqdelete/${dto.fno }'">예</button>
+							<a href="/faqdetail/${dto.fno }"><button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button></a>
 						</div>
 					</div>
 				</div>

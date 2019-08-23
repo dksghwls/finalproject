@@ -38,33 +38,30 @@
 </script> -->
 </head>
 <body>
-<br>
+	<br>
 	<div class="container">
-	<c:set var="member" value="${ sessionScope.user }"></c:set>
-	<form method="post" action="/contactok" id="contactform">
-
-		<input type="hidden" name="no" value="${member.no }">
-		<label for="focusedInput">회원명</label> 
-		<input type="text" name="nickname" class="form-control" id="focusedInput" value="${member.nickname }" style="width: 15%;" readonly="readonly"><br>
-		 <label for="sel1">제목</label> 
-		<select name="htitle" class="form-control" id="sel1" style="width: 15%;">
-			<option value="계정문의">계정문의</option>
-			<option value="개인정보">개인정보</option>
-			<option value="할인문의">할인문의</option>
-			<option value="기타문의">기타문의</option>
-		</select><br>
+		<c:set var="member" value="${ sessionScope.user }"></c:set>
 		
-		<label for="hcontent">내용</label>
-		<textarea class="form-control" rows="5" id="hcontent"name="hcontent" style="width: 48%;"
-			required="required"></textarea>
-		<br> <input type="hidden" name="${_csrf.parameterName }"
-			value="${_csrf.token }" /> 
-			
-		<a href="uploadfile"><input type="button" class="btn btn-default" value="파일추가"></a>	
-			
+		<form method="post" action="/contactok" id="contactform">
+
+			<input type="hidden" name="no" value="${member.no }"> 
+			<label for="focusedInput">회원명</label>
+			 <input type="text" name="nickname"	class="form-control" id="focusedInput" value="${member.nickname }"
+				style="width: 15%;" readonly="readonly"><br>
+				 <label	for="sel1">제목</label> 
+				 <select name="htitle" class="form-control"	id="sel1" style="width: 15%;">
+				<option value="계정문의">계정문의</option>
+				<option value="개인정보">개인정보</option>
+				<option value="할인문의">할인문의</option>
+				<option value="기타문의">기타문의</option>
+			</select><br> <label for="hcontent">내용</label>
+			<textarea class="form-control" rows="5" id="hcontent" name="hcontent"
+				style="width: 48%;" required="required"></textarea>
+			<br> 
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 			<input type="submit" class="btn btn-default" id="contactinsert" value="등록">
-	</form>
-</div>
+		</form>
+	</div>
 
 </body>
 </html>

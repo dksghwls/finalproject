@@ -23,7 +23,9 @@ import com.bitcamp.Service.ContactService;
 
 @Controller
 public class ContactController {
-
+	//파일 업로드
+	private String path = "temp";
+			 
 	@Autowired
 	private ContactService contactservice;
 
@@ -56,6 +58,7 @@ public class ContactController {
 	public String contactok(ContactDTO dto) {
 		int result = contactservice.contactinsert(dto);
 		System.out.println("resulttest: " + result);
+		 
 		return "redirect:contact";
 	}
 
@@ -89,7 +92,36 @@ public class ContactController {
 		int result = contactservice.contactmodify(dto);
 		return "redirect:/contact";
 	}
-	 
 	
+/*	 
+	//파일 업로드
+	 private String path = "temp";
+	 
+	 @RequestMapping("/contactuploadfile")
+	 public String contactfileform() {
+		 return "contactfileform";
+				 
+	 }
+	 
+	 @RequestMapping("/contactfileok")
+	 public String contactfileok(HttpServletRequest request, FileVo vo, Model model) {
+		 
+		 MultipartFile multi = vo.getFile1();
+		 try {
+			 String uploadpath = request.getSession().getServletContext().getRealPath(path);
+			 if(!multi.isEmpty()) {
+				 File file= new File(uploadpath, multi.getOriginalFilename());
+				 multi.transferTo(file);
+				 model.addAttribute("title", vo.getFilename());
+				 model.addAttribute("filename", vo.getFile1().getOriginalFilename());
+				 model.addAttribute("uploadpath", file.getAbsolutePath());
+				 return "contactfilelist";
+			 }
+		 }catch(IOException e) {
+			 System.out.println(e);
+		 }
+		 return "redirect:/contactuploadfile";
+		 
+	 }*/
 	
 }
