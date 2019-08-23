@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
-<body>
+<%-- <body>
 	<form method="get" action="faq?currPage=${page.startBlock }">
 		<select name="search" class="form-control" id="sel1"
 			style="width: 15%;">
@@ -28,5 +28,5 @@
 			</div>
 		</div>
 	</form>
-</body>
+</body> --%>
 </html>
