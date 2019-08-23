@@ -22,10 +22,13 @@
     <bean name="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="dbconf"></constructor-arg>
     </bean>
-     
+    
+    <tx:annotation-driven transaction-manager="transactionManager" />
     <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     	<property name="dataSource" ref="dataSource"></property>
     </bean>
     
 	<tx:annotation-driven/> 
+	
+
 </beans>

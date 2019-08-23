@@ -43,4 +43,6 @@ public interface CategoryMapper {
 	public int totalCountcount(HashMap<String, Object> o);
 
 	public List<CategoryDTO> plist(HashMap<String, Object> o);
+
+	public int addallresult(HashMap<String, Object> hm);
 }
