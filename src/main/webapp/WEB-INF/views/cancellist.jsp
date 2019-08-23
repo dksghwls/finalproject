@@ -38,7 +38,7 @@
                 <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
               <li data-tab="product2" class="nav-item">
-                <a class="nav-link" href="../cancel/${member.no }">나의 취소 내역</a>
+                <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
               </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
@@ -51,17 +51,17 @@
 <div class="container">
   <p>${member.nickname } 님의 주문 취소 상품입니다.</p>
 
-<%-- <form>
+<form>
     <div class="form-group" style="width: 150px; float: right;">
       <select class="form-control" id="sel1" onchange="location.href=this.value">
         <option>카테고리</option>
-        <option value="../product?no=${member.no }">전체</option>
+        <option value="../cancellist?no=${member.no }">전체</option>
         <c:forEach var="item" items="${clist }">
-        	<option value="../product/${item.cno }?no=${member.no}">${item.cname }</option>
+        	<option value="../cancellist/${item.cno }?no=${member.no}">${item.cname }</option>
         </c:forEach>
       </select>
     </div>
-    </form> --%>
+    </form>
       
 <br>
 <table class="table">
@@ -89,7 +89,7 @@
     </tbody>
   </table>
   
-  <%-- <form method="get" action="../product?currPage=${page.currPage }">
+  <form method="get" action="../cancellist?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option>검색 조건 </option>
 		<option value="pname">상품 이름</option>
@@ -98,37 +98,20 @@
 	<input type="hidden" id="no" name="no" value="${member.no }"/>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">
-    </form> --%>
+    </form>
   
-  <%-- <div class="text-center">
+ <div class="text-center">
   <ul class="pagination">
   <li class="page-item">
     <c:if test="${page.prev }">
-    <c:if test="${page.startBlock>1 }">
-	<a class="page-link" href="product?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+	<a class="page-link" href="cancellist?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
   </li>
   <li class="page-item">
   
-  <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
-  	
-		<a class="page-link" href="product?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
-		<c:out value="${index }"/>
-		</a>
-  </c:forEach>
-  
   <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
-    <c:if test="${index==currpage}">
-      <c:out value="${index}"></c:out>
-    </c:if>
-    <c:if test="${index!=currpage }">
-     <a class="page-link" href="product?currpage=${index}&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
-    </c:if>
-   </c:forEach>
-   
-   <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
 			<c:when test="${index}==${page.currPage}">
 				<c:out value="${index}"></c:out>
@@ -145,14 +128,16 @@
   </li>
   <li class="page-item">
   <c:if test="${page.next }">
-  <c:if test="${page.endBlock<totalPage }">
-	<a  class="page-link" href="product?no=${member.no }&currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+  <%-- <c:if test="${page.endBlock<totalPage }"> --%>
+	<a  class="page-link" href="product?no=${member.no }&currPage=
+
+${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>
   </li>
   </ul>
-  </div> --%>
+  </div>
   
   <!-- <div class="text-center">
   <ul class="pagination">

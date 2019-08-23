@@ -24,7 +24,7 @@ public interface MyPageService {
 
 	public List<ProductDTO> adminAllList();
 
-	public int totalCount(String search, String searchtxt);
+	public int totalCount(String search, String searchtxt, int no);
 
 	public List<ProductDTO> adpList(String search, String searchtxt, int startRow, int endRow, int no);
 
@@ -32,7 +32,7 @@ public interface MyPageService {
 
 	public List<ProductDTO> adcpList(String search, String searchtxt, int startRow, int endRow, int cno, int no);
 
-	public int ctotalCount(String search, String searchtxt);
+	public int ctotalCount(String search, String searchtxt, int cno, int no);
 
 	public void deleteauth(String email);
 
@@ -42,7 +42,17 @@ public interface MyPageService {
 
 	public void cancelpay(int bno);
 
-	public List<ProductDTO> cancellist(int no);
+	public List<ProductDTO> calllist();
+
+	public int catotalCount(String search, String searchtxt, int no);
+
+	public List<ProductDTO> cancellist(String search, String searchtxt, int startRow, int endRow, int no);
+
+	public List<ProductDTO> scalllist();
+
+	public int scatotalCount(String search, String searchtxt, int no, int cno);
+
+	public List<ProductDTO> scancellist(String search, String searchtxt, int startRow, int endRow, int cno, int no);
 	
 	
 }

@@ -78,7 +78,7 @@ public class MyPageController {
 		}
 		
 		
-		int totalCount = myPageService.totalCount(search, searchtxt);
+		int totalCount = myPageService.totalCount(search, searchtxt, no);
 		
 		int pageSize=10;
 		int blockSize=5;
@@ -86,7 +86,6 @@ public class MyPageController {
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		
 		List<ProductDTO> plist = myPageService.adpList(search, searchtxt, page.getStartRow(), page.getEndRow(), no);
-		
 		
 		model.addAttribute("plist",plist);
 		model.addAttribute("page", page);
@@ -125,7 +124,7 @@ public class MyPageController {
 			//}
 		}
 		
-		int totalCount = myPageService.ctotalCount(search, searchtxt);
+		int totalCount = myPageService.ctotalCount(search, searchtxt, no, cno);
 		
 		int pageSize=10;
 		int blockSize=5;
@@ -133,7 +132,11 @@ public class MyPageController {
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		
 		List<ProductDTO> spclist = myPageService.adcpList(search, searchtxt, page.getStartRow(), page.getEndRow(), cno, no);
+		
 		model.addAttribute("plist", spclist );
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
 		
 		return "templete.jsp?page=product";
 		
@@ -202,13 +205,70 @@ public class MyPageController {
 		return "cancelresult";
 	}
 	
-	@RequestMapping("cancellist/{no}")
-	public String cancellist(@PathVariable int no, Model model) {
+	@RequestMapping(value="/cancellist")
+	public String cancellist(@RequestParam int no, @RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,Model model) {
 		
-		List<ProductDTO> cancellist=myPageService.cancellist(no);
-		model.addAttribute("cancellist", cancellist);
-
+		List<ProductDTO> clist=myPageService.calllist();
+		model.addAttribute("clist", clist);
+		
+		if(search=="pname"||search.equals("pname")
+				|| search=="bno"||search.equals("bno")){
+			
+			model.addAttribute("searchtxt", searchtxt);
+		}
+		
+		int totalCount = myPageService.catotalCount(search, searchtxt, no);
+		
+		int pageSize=10;
+		int blockSize=5;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		
+		List<ProductDTO> cancellist = myPageService.cancellist(search, searchtxt, page.getStartRow(), page.getEndRow(), no);
+		
+		model.addAttribute("cancellist", cancellist );
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
+		
 		return "templete.jsp?page=cancellist";
+		
+	}
+	
+	@RequestMapping("cancellist/{cno}")
+	public String cancellist(@PathVariable int cno, @RequestParam int no, @RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,Model model) {
+		
+		List<ProductDTO> clist=myPageService.scalllist();
+		model.addAttribute("clist", clist);
+		
+		if(search=="pname"||search.equals("pname")
+				|| search=="bno"||search.equals("bno")){
+			
+			model.addAttribute("searchtxt", searchtxt);
+		}
+		
+		int totalCount = myPageService.scatotalCount(search, searchtxt, no, cno);
+		
+		int pageSize=10;
+		int blockSize=5;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		
+		List<ProductDTO> scancellist = myPageService.scancellist(search, searchtxt, page.getStartRow(), page.getEndRow(), cno, no);
+		
+		model.addAttribute("cancellist", scancellist );
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
+		
+		return "templete.jsp?page=cancellist";
+		
 	}
 
 }

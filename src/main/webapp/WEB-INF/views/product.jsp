@@ -40,7 +40,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
                 <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
               <li data-tab="product2" class="nav-item">
-                <a class="nav-link" href="../cancellist/${member.no }">나의 취소 내역</a>
+                <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
               </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
@@ -82,9 +82,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
     <tbody>
     <c:forEach var="item" items="${plist }">
       <tr>
-      	<td><a href="#"><img src="../img/Penguins.jpg" class="rounded" alt="Cinque 
-
-Terre" width="100" height="75"></a></td>
+      	<td><a href="#"><img src="../img/Penguins.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
         <td><c:out value="${item.pname }"></c:out></td>
         <td><c:out value="${item.bno }"></c:out></td>
         <td><c:out value="${item.bdate }"></c:out></td>
@@ -139,9 +137,7 @@ Terre" width="100" height="75"></a></td>
   <li class="page-item">
     <c:if test="${page.prev }">
     <%-- <c:if test="${page.startBlock>1 }"> --%>
-	<a class="page-link" href="product?no=${member.no }&currPage=
-
-${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+	<a class="page-link" href="product?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
@@ -174,9 +170,7 @@ ${searchtxt}"><c:out value="${index }"/></a>
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="product?no=${member.no }&currPage=
-
-${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="product?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>

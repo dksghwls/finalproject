@@ -53,11 +53,12 @@ public class MyPageServiceImple implements MyPageService {
 	}
 
 	@Override
-	public int totalCount(String search, String searchtxt) {
+	public int totalCount(String search, String searchtxt, int no) {
 
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
+		hm.put("no", no);
 
 		return myPageMapper.totalCount(hm);
 
@@ -101,11 +102,13 @@ public class MyPageServiceImple implements MyPageService {
 	}
 
 	@Override
-	public int ctotalCount(String search, String searchtxt) {
+	public int ctotalCount(String search, String searchtxt, int cno, int no) {
 		
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
+		hm.put("cno", cno);
+		hm.put("no", no);
 
 		return myPageMapper.ctotalCount(hm);
 	}
@@ -142,9 +145,66 @@ public class MyPageServiceImple implements MyPageService {
 	}
 
 	@Override
-	public List<ProductDTO> cancellist(int no) {
+	public List<ProductDTO> calllist() {
 		
-		return myPageMapper.cancellist(no);
+		return myPageMapper.calllist();
+	}
+
+	@Override
+	public int catotalCount(String search, String searchtxt, int no) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("no", no);
+
+		return myPageMapper.catotalCount(hm);
+		
+	}
+
+	@Override
+	public List<ProductDTO> cancellist(String search, String searchtxt, int startRow, int endRow, int no) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow);
+		o.put("endRow", endRow);
+		o.put("no", no);
+
+		return myPageMapper.cancellist(o);
+	}
+
+	@Override
+	public List<ProductDTO> scalllist() {
+		
+		return myPageMapper.scalllist();
+	}
+
+	@Override
+	public int scatotalCount(String search, String searchtxt, int no, int cno) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("no", no);
+		hm.put("cno", cno);
+
+		return myPageMapper.scatotalCount(hm);
+	}
+
+	@Override
+	public List<ProductDTO> scancellist(String search, String searchtxt, int startRow, int endRow, int cno, int no) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow );
+		o.put("endRow", endRow);
+		o.put("cno", cno);
+		o.put("no", no);
+		
+		return myPageMapper.scancellist(o);
 	}
 
 }

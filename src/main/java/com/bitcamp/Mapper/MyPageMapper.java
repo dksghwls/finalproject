@@ -43,8 +43,17 @@ public interface MyPageMapper {
 
 	public void cancelpay(int bno);
 
-	public List<ProductDTO> cancellist(int no);
+	public List<ProductDTO> calllist();
 
-	
+	public int catotalCount(HashMap<String, Object> hm);
+
+	public List<ProductDTO> cancellist(HashMap<String, Object> o);
+
+	public List<ProductDTO> scalllist();
+
+	public int scatotalCount(HashMap<String, Object> hm);
+
+	public List<ProductDTO> scancellist(HashMap<String, Object> o);
+
 
 }

@@ -53,20 +53,24 @@
     	
     	<select id="totalCount" parameterMap="hashmap" resultType="int">
   	  		
-  	  		select count(bno)
+  	  		<!-- select count(bno)
   	  		from category c, product p1, pay p2, member m
-  	  		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
+  	  		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no  -->
+  	  		
+  	  		select count(bno)
+  	  		from product p1, pay p2
+  	  		where p1.pno=p2.pno and p2.no=#{no}
   		<!-- 	<where> -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>
   						<when test="search=='pname'">
 						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
-						and pname like CONCAT('%', #{searchtxt}, '%')
+						and p1.pname like CONCAT('%', #{searchtxt}, '%')
 						
 					</when>
 					<when test="search=='bno'">
-						and bno=#{searchtxt}
+						and p2.bno=#{searchtxt}
 					</when>
   					</choose>
   				</if>
@@ -77,20 +81,24 @@
   			<!-- select *
   			from product -->
   			
-  			select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
+  			<!-- select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
     		from category c, product p1, pay p2, member m
-  			where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and m.no=#{no}
+  			where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and m.no=#{no} -->
+  			
+  			select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
+  			from product p1, pay p2, member m
+  			where p1.pno=p2.pno and p2.no=m.no and p2.no=#{no}
             <!-- <where> -->
            	<if test="searchtxt!=null">
 			<!-- <if test="searchtxt!=null and searchtxt!=''"> -->
 				<choose>
 					<when test="search=='pname'">
 						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
-						and pname like CONCAT('%', #{searchtxt}, '%')
+						and p1.pname like CONCAT('%', #{searchtxt}, '%')
 						
 					</when>
 					<when test="search=='bno'">
-						and bno=#{searchtxt}
+						and p2.bno=#{searchtxt}
 					</when>
 				</choose>
 			</if>
@@ -108,20 +116,24 @@
     	
     	<select id="ctotalCount" parameterMap="hashmap" resultType="int">
   	  		
-  	  		select count(pname)
+  	  		<!-- select count(bno)
   	  		from category c, product p1, pay p2, member m
-  	  		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and p1.cno = #{cno}
+  	  		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and p1.cno = #{cno} -->
+  	  		
+  	  		select count(bno)
+  	  		from product p1, pay p2, category c
+  	  		where p1.pno=p2.pno and p1.cno=c.cno and p2.no=#{no} and p1.cno=#{cno}
   		<!-- 	<where> -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>
   						<when test="search=='pname'">
 						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
-						and pname like CONCAT('%', #{searchtxt}, '%')
+						and p1.pname like CONCAT('%', #{searchtxt}, '%')
 						
 					</when>
 					<when test="search=='bno'">
-						and bno=#{searchtxt}
+						and p2.bno=#{searchtxt}
 					</when>
   					</choose>
   				</if>
@@ -133,7 +145,7 @@
     		select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
     		from category c, product p1, pay p2, member m
     		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
-    			and m.no=#{no} and p1.cno = #{cno}
+    			and p2.no=#{no} and p1.cno = #{cno}
     		
     		<where>
     			
@@ -141,16 +153,16 @@
 				<choose>
 					<when test="search=='pname'">
 						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
-						and pname like CONCAT('%', #{searchtxt}, '%')
+						and p1.pname like CONCAT('%', #{searchtxt}, '%')
 					</when>
 					<when test="search=='bno'">
-						and bno=#{searchtxt}
+						and p2.bno=#{searchtxt}
 					</when>
 				</choose>
 			</if>
 			
 		</where>
-			order by p1.pno
+			order by p2.bno
 			limit #{startRow}, 10
   		</select>
   		
@@ -161,14 +173,14 @@
     	</delete>
     	
     	<select id="cancelselect" resultType="com.bitcamp.DTO.ProductDTO" parameterType="hashmap">
-    		select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping, m.no
+    		select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping, m.no, c.cno
     		from category c, product p1, pay p2, member m
     		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and m.no=#{no} and p2.bno=#{bno}
     	</select>
     	
     	<insert id="cancelinsert" parameterType="com.bitcamp.DTO.ProductDTO">
-    		insert into cancel(no, pname, bno, bdate, dprice, cdate)
-    		values( #{no}, #{pname}, #{bno}, #{bdate}, #{dprice}, now())
+    		insert into cancel(no, pname, bno, bdate, dprice, cno, cdate)
+    		values( #{no}, #{pname}, #{bno}, #{bdate}, #{dprice}, #{cno}, now())
     	</insert>
     	
     	<delete id="cancelpay" parameterType="int">
@@ -176,11 +188,88 @@
     		where bno=#{bno}
     	</delete>
     	
-    	<select id="cancellist" parameterType="int" resultType="com.bitcamp.DTO.ProductDTO">
+    	<select id="calllist" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select cno, cname from category
+    		
+    	</select>
+    	
+    	<select id="catotalCount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(bno)
+  	  		from cancel
+  	  		where no=#{no}
+  			<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+							and pname like CONCAT('%', #{searchtxt}, '%')
+						</when>
+						<when test="search=='bno'">
+							and bno=#{searchtxt}
+						</when>
+  					</choose>
+  			</if>
+  		</select>
+  		
+  		<select id="cancellist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
     		
     		select *
     		from cancel
-    		where no=#{no};
+    		where no=#{no}
+    		<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+							and pname like CONCAT('%', #{searchtxt}, '%')
+						</when>
+						<when test="search=='bno'">
+							and bno=#{searchtxt}
+						</when>
+  					</choose>
+  			</if>
+  			order by bno
+			limit #{startRow}, 10
+    	</select>
+    	
+  		<select id="scalllist" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select cno, cname from category
     		
     	</select>
+  		
+    	<select id="scatotalCount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(bno)
+  	  		from cancel
+  	  		where no=#{no} and cno=#{cno}
+  			<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+							and pname like CONCAT('%', #{searchtxt}, '%')
+						</when>
+						<when test="search=='bno'">
+							and bno=#{searchtxt}
+						</when>
+  					</choose>
+  			</if>
+  		</select>
+  		
+  		<select id="scancellist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
+    		
+    		select *
+    		from cancel
+    		where no=#{no} and cno=#{cno}
+    		<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+							and pname like CONCAT('%', #{searchtxt}, '%')
+						</when>
+						<when test="search=='bno'">
+							and bno=#{searchtxt}
+						</when>
+  					</choose>
+  			</if>
+  			order by bno
+			limit #{startRow}, 10
+    	</select>
+  		
     </mapper>

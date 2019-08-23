@@ -51,7 +51,7 @@
                 <a class="nav-link" href="../product?no=${member.no}">나의 주문 내역</a>
               </li>
               <li data-tab="product2" class="nav-item">
-                <a class="nav-link" href="../cancellist/${member.no }">나의 취소 내역</a>
+                <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
               </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="../review/${member.no}">나의 리뷰</a>
