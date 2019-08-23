@@ -3,6 +3,8 @@ package com.bitcamp.Service;
 import java.util.List;
 
 import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.DTO.payMemberDTO;
+import com.bitcamp.DTO.paymentDTO;
 
 public interface CategoryService {
 
@@ -39,6 +41,8 @@ public interface CategoryService {
 	public List<CategoryDTO> pList(String search, String searchtxt, int startRow, int endRow);
 
 	public int addresult(CategoryDTO dto, String uploadpath);
+
+	//public int payok(payMemberDTO dto, paymentDTO pao);
 
 	
 }

@@ -185,5 +185,15 @@
     	</select>
     	
     	
+    	<!-- <insert id="payok" parameterType="com.bitcamp.DTO.payMemberDTO">
+    	
+    		insert into member()
+    	
+    	
+    	</insert> -->
+    	
+    	
+    	
+    	
     	
     </mapper>

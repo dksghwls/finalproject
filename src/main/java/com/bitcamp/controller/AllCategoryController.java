@@ -183,13 +183,5 @@ public class AllCategoryController {
 	}
 	
 	
-	
-	
-	/*@RequestMapping("Paymentresult")
-	public String paymentok()
-	{
-		
-	}*/
-	
 
 }

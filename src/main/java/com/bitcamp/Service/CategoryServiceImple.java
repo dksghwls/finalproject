@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.DTO.payMemberDTO;
+import com.bitcamp.DTO.paymentDTO;
 import com.bitcamp.Mapper.CategoryMapper;
 
 @Service
@@ -156,10 +158,18 @@ public class CategoryServiceImple implements CategoryService{
 
 
 	/*@Override
-	public int addimg(String imgname) {
+	public int payok(payMemberDTO dto, paymentDTO pao) {
 		
-		return mapper.addimg(imgname);
-	}*/
+		mapper.payok(dto);
+		
+		HashMap<String, Object> pm=new HashMap<>();
+		pm.put("pao",pao);
+		
+		
+		 return mapper.payallok(pm);
+	}
+*/
+	
 
 
 }
