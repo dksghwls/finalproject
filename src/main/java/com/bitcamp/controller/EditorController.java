@@ -26,7 +26,7 @@ public class EditorController {
 	@RequestMapping(value = "/coding")
 	public String coding()
 	{
-		return "coding";
+		return "templete.jsp?page=coding";
 	}
 	
 

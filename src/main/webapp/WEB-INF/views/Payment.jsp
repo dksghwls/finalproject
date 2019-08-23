@@ -128,7 +128,7 @@
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #f1f1f1;
+     /*  background-color: #f1f1f1; */
       height: 100%;
     }
     
@@ -163,11 +163,31 @@
           left: 500px;
           top: 100px;
       }
-     
+     #addresinfo form
+     {
+     	position: relative;
+		left:500px;
+     }
+     #sideorder
+    {
+   		 position: relative;
+   		 right:100px;
+    }
+    #shopping
+    {
+    	position: relative;
+		left:300px;
+    }
+    section h2
+    {
+    	position: relative;
+		left:200px;
+    }
     
   </style>
 </head>
-<body><section>
+<body>
+	<section>
         <h2>상품이름</h2>
    </section>
   <img src="img/Jellyfish.jpg" alt="a" id="shopping">   
@@ -175,39 +195,48 @@
   
 <div class="container-fluid text-center" id="orderdetail">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
+    
+    <div class="col-sm-8 text-left" id="addresinfo">
+    <form>
+    	<label for="name">이름</label><br>
+    	<input type="text" class="form-control" name="name" placeholder="name" style="width: 700px;" ><br>
+    	<label for="phone">전화번호</label><br>
+    	<input type="text" id="phone" name="phone" placeholder="phone" class="form-control" style="width: 700px;"><br>
+    	<label for="email">이메일</label><br>
+    	<input type="email" id="email" name="email"  placeholder="email" class="form-control" style="width: 700px;" ><br>
+           <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary btn-lg" >
+           <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control" style="width: 700px;">
+           <input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" style="width: 700px;">
+           <input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control" style="width: 700px;">
+           <span id="guide" style="color:#999;display:none"></span>
+           <input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" style="width: 700px;">
+           <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" class="form-control" style="width: 700px;"><br><br>
+    </form>
+    </div>
+    <div class="col-sm-2 sidenav" id="sideorder">
      <h3>Order Detail</h3>
       <p>운송 및 취급:택배</p>
       <p>총금액:</p>
       <hr>
       <h3>결제수단</h3>
       <input type="radio" value="신용카드" checked>신용카드<br><br>
-      <button type="button" class="btn btn-default btn-lg" id="check_module">결제하기</button>
+     
     </div>
-    <div class="col-sm-8 text-left" id="addresinfo">
-    	<label for="name">이름</label><br>
-    	<input type="text" class="form-control" name="name" placeholder="name" ><br><br>
-    	<label for="phone">전화번호</label><br>
-    	<input type="text" id="phone" name="phone" placeholder="phone" class="form-control"><br><br>
-    	<label for="email">이메일</label><br>
-    	<input type="email" id="email" name="email"  placeholder="email" class="form-control" ><br><br>
-           <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
-           <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" ><br><br>
-           <input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
-           <input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control"><br>
-           <span id="guide" style="color:#999;display:none"></span>
-           <input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control">
-           <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" class="form-control"><br><br>
-    </div>
-     <div class="col-sm-2 sidenav">
+     
+    
+    
+     <!-- <div class="col-sm-2 sidenav">
       <div class="well">
         <p>ADS</p>
       </div>
       <div class="well">
         <p>ADS</p>
       </div>
-    </div>
+    </div> -->
   </div>
+<button type="button" class="btn btn-primary btn-lg" id="check_module">결제하기</button>
+<br><br>
+
 </div>
 </body>
 </html>

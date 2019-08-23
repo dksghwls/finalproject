@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#codingform form
+{
+	position: relative;
+	left:600px;
+}
+</style>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="./resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -37,18 +44,20 @@
 </script>
 </head>
 <body>
+	<div id="codingform">
 	<form action="insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data" >
-		카테고리번호:<input type="text" name="cno" id="cno"><br>
-		상품이름:<input type="text" name="pname" id="pname"><br>
-		원가:<input type="text" name="oprice" id="oprice"><br>
-		할인가:<input type="text" name="dprice" id="dprice"><br>
-		상품설명:<textarea name="content" id="content" style="width: 700px; height: 400px;"></textarea>
+		카테고리번호:<input type="text" name="cno" id="cno" class="form-control input-lg" style="width: 700px;"><br>
+		상품이름:<input type="text" name="pname" id="pname" class="form-control input-lg" style="width: 700px;"><br>
+		원가:<input type="text" name="oprice" id="oprice" class="form-control input-lg" style="width: 700px;"><br>
+		할인가:<input type="text" name="dprice" id="dprice" class="form-control input-lg" style="width: 700px;"><br>
+		상품설명:<textarea name="content" id="content" class="form-control" style="width: 700px; height: 400px;"></textarea>
 		<label for="filename">파일명</label>
-		<input type="text" name="filename" id="filename"><br>
+		<input type="text" name="filename" id="filename" class="form-control input-lg" style="width: 700px;"><br>
 		<label for="file1">파일</label>
-		<input type="file" name="file1" id="file1"><br>
+		<input type="file" name="file1" id="file1" class="form-control input-lg" style="width: 700px;"><br>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        <input type="button" id="insertBoard" value="등록" />
+        <input type="button" id="insertBoard" value="등록" class="btn btn-primary btn-lg" />
     </form>
+    </div>
 </body>
 </html>
