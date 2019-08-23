@@ -166,11 +166,9 @@ span {
 													<div>
 														<span>${i.fcontent }</span>
 													</div>
-													<div class="radio">
-														위의 답변으로 해결이 됐나요?
+														<div class="checkbox-inline">
 														<br>
-														<label><input type="radio" name="optradio" checked>네, 그럼요♡</label>
-														<label><input type="radio" name="optradio" checked>놉놉놉!!</label>
+														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
 													</div>
 													
 												</div>
@@ -246,7 +244,6 @@ span {
 						class="btn btn-default" value="글쓰기"></a>
 				</sec:authorize>
 
-
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table class="table table-hover">
@@ -276,8 +273,12 @@ span {
 													style="width: 85%; float: right; height: 50%; padding-left: 20px;">
 													<div id="sup">
 														<div>
-															<span>${i.fcontent }"</span>
+															<span>${i.fcontent }</span>
 														</div>
+														<div class="checkbox-inline">
+														<br>
+														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
+													</div>
 													</div>
 												</div>
 											</div>
@@ -318,6 +319,10 @@ span {
 														<div>
 															<span>${i.fcontent }</span>
 														</div>
+															<div class="checkbox-inline">
+														<br>
+														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
+													</div>
 													</div>
 												</div>
 											</div>
@@ -357,6 +362,10 @@ span {
 														<div>
 															<span>${i.fcontent }</span>
 														</div>
+															<div class="checkbox-inline">
+														<br>
+														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
+													</div>
 													</div>
 												</div>
 											</div>
