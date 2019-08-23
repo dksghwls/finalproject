@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/contactfileok" enctype="multipart/form-data">
+<form method="post" action="/fileok" enctype="multipart/form-data">
 <label for="filename">파일명</label>
 <input type="text" name="filename" id="filename"><br>
 <label for="file1">파일</label>

@@ -60,7 +60,7 @@
 		<br> <input type="hidden" name="${_csrf.parameterName }"
 			value="${_csrf.token }" /> 
 			
-		<a href="contactfile"><input type="button" class="btn btn-default" value="파일추가"></a>	
+		<a href="uploadfile"><input type="button" class="btn btn-default" value="파일추가"></a>	
 			
 			<input type="submit" class="btn btn-default" id="contactinsert" value="등록">
 	</form>

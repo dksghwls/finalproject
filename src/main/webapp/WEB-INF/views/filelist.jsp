@@ -13,7 +13,7 @@
 <li>제목 ${title }</li>
 <li>파일명 ${filename }</li>
 <li>업로드한 경로${uploadpath }</li>
-<li><a href="contact">화면으로</a></li>
+<li><a href="/contact">화면으로</a></li>
 </ul>
 </body>
 </html>

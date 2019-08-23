@@ -5,24 +5,26 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.DTO.FileVo;
 
+@Controller
 public class UploadController {
 
 	//파일 업로드
 		 private String path = "temp";
 		 
-		 @RequestMapping("/contactfile")
+		 @RequestMapping("/uploadfile")
 		 public String contactfileform() {
-			 return "contactfile";
+			 return "fileform";
 					 
 		 }
 		 
-		 @RequestMapping("/contactfileok")
+		 @RequestMapping("/fileok")
 		 public String contactfileok(HttpServletRequest request, FileVo vo, Model model) {
 			 
 			 MultipartFile multi = vo.getFile1();
@@ -34,12 +36,12 @@ public class UploadController {
 					 model.addAttribute("title", vo.getFilename());
 					 model.addAttribute("filename", vo.getFile1().getOriginalFilename());
 					 model.addAttribute("uploadpath", file.getAbsolutePath());
-					 return "contactfilelist";
+					 return "filelist";
 				 }
 			 }catch(IOException e) {
 				 System.out.println(e);
 			 }
-			 return "redirect:/contactfile";
+			 return "redirect:/uploadfile";
 			 
 		 }
 }
