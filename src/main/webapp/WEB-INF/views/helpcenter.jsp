@@ -17,8 +17,8 @@
 		font: '돋움', Dotum, Helvetica, Sans-serif;
 		line-height: 1.5;
 		color: #f5f6f7;
-		background-image: url("img/test.jpg");
-  		background-size: 50%;
+		background-image: url("img/helpmain.jpg");
+  		background-size: 100%;
 	}
 	
 	p {
@@ -26,14 +26,17 @@
 	}
 	
 	.margin {
-		margin-bottom: 120px;
+		margin-bottom: 80px;
 		 
 	}
-	
+	.searchform {
+		margin-bottom: 50px;
+		 
+	}
 	.bg-2 {
 		/* background-color: #474e5d; /* Dark Blue */
 		/* color: #ffffff;  */
-		color: white;
+		color: black;
 		font-weight: 200px;
 	}
 	
@@ -63,10 +66,10 @@
 
 	<!-- Second Container -->
 	<div class="container-fluid bg-2 text-center">
-		<h2 class="margin">사람들이 시작하는 오늘의 혜택</h2>
+		<h1 class="margin">사람들이 시작하는 오늘의 혜택</h1>
 		 <p>Help Center</p> 
 		<br>
-		<form method="get" action="faq?currPage=${page.startBlock }">
+		<form method="get" action="faq?currPage=${page.startBlock }" class="searchform">
 			<input type="hidden" name="search" value="all">
 			 
 					<input type="text" class="btn btn-default btn-lg" 
