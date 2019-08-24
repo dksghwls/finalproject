@@ -17,6 +17,8 @@
 		font: '돋움', Dotum, Helvetica, Sans-serif;
 		line-height: 1.5;
 		color: #f5f6f7;
+		background-image: url("img/test.jpg");
+  		background-size: 50%;
 	}
 	
 	p {
@@ -25,12 +27,14 @@
 	
 	.margin {
 		margin-bottom: 120px;
+		 
 	}
 	
 	.bg-2 {
 		/* background-color: #474e5d; /* Dark Blue */
 		/* color: #ffffff;  */
-		color: black;
+		color: white;
+		font-weight: 200px;
 	}
 	
 	.bg-3 {
@@ -43,7 +47,15 @@
 		color: gray;
 	}
 
-
+	.btn-default:hover {
+	background: #EFF5FB;
+	}
+	
+ 	.btn-lg:hover{
+	background: #EFF5FB;
+	}
+	
+ 
 </style>
 </head>
 <body>
@@ -51,7 +63,7 @@
 
 	<!-- Second Container -->
 	<div class="container-fluid bg-2 text-center">
-		<h3 class="margin">사람들이 시작하는 오늘의 혜택</h3>
+		<h2 class="margin">사람들이 시작하는 오늘의 혜택</h2>
 		 <p>Help Center</p> 
 		<br>
 		<form method="get" action="faq?currPage=${page.startBlock }">
@@ -76,14 +88,14 @@
 				<p>FAQ</p>
 				<p class="helppsize">자주 묻는 질문을 모아둔 페이지입니다.</p>
 				<br> <a href="/faq" data-toggle="tooltip" title="Click FAQ!"><img
-					src="img/Jellyfish.jpg" class="img-responsive margin"
+					src="img/test.jpg" class="img-responsive margin"
 					style="width: 100%" alt="Image"></a>
 			</div>
 			<div class="col-sm-4">
 				<p>Contact Us</p>
 				<p class="helppsize">원하는 질문이 없다면 이 페이지를 이용하세요.</p>
 				<br> <a href="/contact" data-toggle="tooltip"
-					title="Click Contact Us!"> <img src="img/Jellyfish.jpg"
+					title="Click Contact Us!"> <img src="img/test.jpg"
 					class="img-responsive margin" style="width: 100%" alt="Image"></a>
 			</div>
 			<div class="col-sm-4">
