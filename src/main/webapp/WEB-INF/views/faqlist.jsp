@@ -172,12 +172,7 @@
 													<div>
 														<span>${i.fcontent }</span>
 													</div>
-														<div class="checkbox-inline">
-														<br>
-														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
-													</div>
-													
-												</div>
+																									</div>
 											</div>
 										</div></li>
 								</c:forEach>
@@ -274,11 +269,7 @@
 														<div>
 															<span>${i.fcontent }</span>
 														</div>
-														<div class="checkbox-inline">
-														<br>
-														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
-													</div>
-													</div>
+																											</div>
 												</div>
 											</div>
 									</c:if>
@@ -318,10 +309,7 @@
 														<div>
 															<span>${i.fcontent }</span>
 														</div>
-															<div class="checkbox-inline">
-														<br>
-														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
-													</div>
+															
 													</div>
 												</div>
 											</div>
@@ -361,10 +349,7 @@
 														<div>
 															<span>${i.fcontent }</span>
 														</div>
-															<div class="checkbox-inline">
-														<br>
-														<label><input type="checkbox" >도움이 되었다면 체크해주세요^0^</label>
-													</div>
+															
 													</div>
 												</div>
 											</div>

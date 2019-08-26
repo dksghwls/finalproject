@@ -7,8 +7,10 @@
 <meta charset="utf-8">
 <!-- Theme Made By www.w3schools.com - No Copyright -->
 <title></title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 지도 api -->
+<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa8b0b5161046e37e60ed382cde1421"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat"
 	rel="stylesheet">
 
@@ -21,12 +23,19 @@
   		background-size: 100%;
 	}
 	
-	p {
+/* 	p {
 		font-size: 50px;
+	
+	} */
+	
+	.p1{
+	font-size: 50px;
 	}
 	
 	.margin {
-		margin-bottom: 80px;
+	margin-top: 10px;
+	margin-bottom: 70px;
+	 
 		 
 	}
 	.searchform {
@@ -41,6 +50,7 @@
 	}
 	
 	.bg-3 {
+		 
 		background-color: #ffffff; /* White */
 		color: black;
 	}
@@ -48,6 +58,7 @@
 	.helppsize {
 		font-size: 15px;
 		color: gray;
+		margin : 20px 0px;
 	}
 
 	.btn-default:hover {
@@ -58,24 +69,35 @@
 	background: #EFF5FB;
 	}
 	
+	h3.margin{
+	margin:35px;
+	}
+	
+	 h1.margin{
+	margin: 20px;
+	 
+	}  
+	
+	.col-sm-4{
+	margin-bottom: 30px;
+	}
+	
  
-</style>
+ 
+ </style>
 </head>
 <body>
-
-
 	<!-- Second Container -->
 	<div class="container-fluid bg-2 text-center">
 		<h1 class="margin">사람들이 시작하는 오늘의 혜택</h1>
-		 <p>Help Center</p> 
+		 <p class="p1">Help Center</p> 
 		<br>
 		<form method="get" action="faq?currPage=${page.startBlock }" class="searchform">
 			<input type="hidden" name="search" value="all">
 			 
 					<input type="text" class="btn btn-default btn-lg" 
 						placeholder="검색어를 입력하세요" name="keyword">
-			  
-			 
+			  		 
 					<button class="btn btn-default" type="submit">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
@@ -88,21 +110,21 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-4">
-				<p>FAQ</p>
+				<p class="p1">FAQ</p>
 				<p class="helppsize">자주 묻는 질문을 모아둔 페이지입니다.</p>
 				<br> <a href="/faq" data-toggle="tooltip" title="Click FAQ!"><img
 					src="img/test.jpg" class="img-responsive margin"
-					style="width: 100%" alt="Image"></a>
+					style="width: 100%; height: 400px;"  alt="Image"></a>
 			</div>
 			<div class="col-sm-4">
-				<p>Contact Us</p>
+				<p class="p1">Contact Us</p>
 				<p class="helppsize">원하는 질문이 없다면 이 페이지를 이용하세요.</p>
 				<br> <a href="/contact" data-toggle="tooltip"
 					title="Click Contact Us!"> <img src="img/test.jpg"
-					class="img-responsive margin" style="width: 100%" alt="Image"></a>
+					class="img-responsive margin" style="width: 100%; height: 400px;" alt="Image"></a>
 			</div>
 			<div class="col-sm-4">
-				<p>Map</p>
+				<p class="p1">Map</p>
 				<p class="helppsize">오시는 길을 검색할 수 있습니다.</p>
 				<br>
 				<div id="map" style="width: 500px; height: 400px;"></div>
@@ -110,9 +132,8 @@
 		</div>
 	</div>
 	<!-- 지도 api  -->
-	<!-- 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa8b0b5161046e37e60ed382cde1421"></script>
-	<script>
+		
+	<!-- <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.570493, 126.985315), // 지도의 중심좌표
