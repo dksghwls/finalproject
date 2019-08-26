@@ -29,7 +29,7 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="pwd">Password:</label>
 	      <div class="col-sm-8">          
-	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" maxlength="4">
+	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" maxlength="12">
 	      </div>
 	    </div>
 	    <!-- 로그인 실패 메시지 -->
