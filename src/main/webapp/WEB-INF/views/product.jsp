@@ -15,6 +15,9 @@
       .nav-link { 
           font-size: 20px;
         }
+        .p{
+        	color: red;
+        }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -58,7 +61,8 @@
           <br><br>
           
 <div class="container">
-  <p>${member.nickname } 님의 주문 완료 상품입니다.</p>
+  <p>${member.nickname } 님의 주문 완료 상품입니다</p>
+  <p class="p">(* 배송 준비 상품만 주문 취소할 수 있습니다).</p>
 
 <form>
     <div class="form-group" style="width: 150px; float: right;">
@@ -94,9 +98,13 @@
         <td><c:out value="${item.bno }"></c:out></td>
         <td><c:out value="${item.bdate }"></c:out></td>
         <td><c:out value="${item.dprice }"></c:out></td>
-        <td><c:out value="${item.addr }"></c:out></td>
+        <td><c:out value="${item.addr }"></c:out><br><c:out value="${item.detailaddr }"></c:out></td>
         <td><c:out value="${item.shipping }"></c:out></td>
-        <td><button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button></td>
+        <td>
+        <c:if test="${item.shipping=='배송 준비' }">
+        <button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button>
+        </c:if>
+        </td>
       </tr> 
    <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
