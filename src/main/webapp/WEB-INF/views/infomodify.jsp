@@ -77,6 +77,7 @@
         }).open();
     }
    </script>
+   
 </head>
 <body>
 <c:set var="member" value="${ sessionScope.user }"></c:set>
@@ -106,75 +107,23 @@
           </ul>
           <br>
           
-          <!--<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-<body>-->
-
 <div class="container">
   <h3>개인 정보 수정 페이지</h3>
-  <!-- <p>닉네임, 비밀번호를 수정할 수 있습니다.</p> -->
   <br>
   
-   <%-- <table class="table">
-    <!--<thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>-->
-    <tbody>
-    <c:forEach var="item" items="${mlist }">
-      <tr>
-        <td class="a">Email</td>
-        <td>${item.email }</td>
-        <!--<td>mary@example.com</td>-->
-      </tr>
-      <tr>
-        <td class="a">Nickname</td>
-        <td><input type="nickname" name="nickname" maxlength="50" 
-							value="${item.nickname }"></td>
-        <td>${item.nickname }</td>
-        <!--<td>john@example.com</td>-->
-      </tr>
-      
-      <tr>
-        <td class="a">Password</td>
-        <td><input type="password" name="password" maxlength="50" 
-							value="${item.pwd }"></td>
-        <td>${item.pwd }</td>
-        <!--<td>july@example.com</td>-->
-      </tr>
-      </c:forEach>
-    </tbody>
-  </table>
-  <br>
-  <button type="button" class="btn btn-info" onclick="location.href='modifyresult'">수정</button>
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">탈퇴</button> --%>
-  
-  <form action="../modifyresult" class="was-validated">
+  <form action="../modifyresult" class="was-validated" onsubmit="return submitCheck()" name="frm">
   <c:forEach var="item" items="${mlist }">
     <div class="form-group">
-     <p>
-         <span>이메일: </span>${item.email }
-     </p>
+       <label for="roadAddress">이메일</label>
+   	   <input type="text" id="sample4_roadAddress" value="${item.email }" class="form-control" style="width: 700px;" name="addr" readonly="readonly">
     </div>
     <div class="form-group">
       <label for="nickname">닉네임</label>
-      <input type="nickname" class="form-control" id="nickname" value="${item.nickname }" style="width: 700px;" name="nickname">
+      <input type="text" class="form-control" id="nickname" value="${item.nickname }" style="width: 700px;" name="nickname">
     </div>
     <div class="form-group">
       <label for="name">이름</label>
-      <input type="name" class="form-control" id="name" value="${item.name }" style="width: 700px;" name="name">
+      <input type="text" class="form-control" id="name" value="${item.name }" style="width: 700px;" name="name">
     </div>
     <div class="form-group">
       <button type="button" id="sample4_postcode" onclick="sample4_execDaumPostcode()" class="btn btn-primary">우편번호 찾기</button>
@@ -189,13 +138,15 @@
    	</div>
     <div class="form-group">
       <label for="phone">전화번호</label>
-      <input type="phone" class="form-control" id="phone" value="${item.phone }" style="width: 700px;" name="phone">
+      <input type="text" class="form-control" id="phone" value="${item.phone }" style="width: 700px;" name="phone">
     </div>
     <div class="form-group">
       <label for="cpwd">비밀번호</label>
-      <input type="password" class="form-control" id="cpwd" placeholder="기존 또는 새 비밀번호를 입력하세요" style="width: 700px;" name="cpwd">
+      <input type="password" class="form-control" id="cpwd" placeholder="기존 또는 새 비밀번호를 입력하세요" style="width: 700px;" name="cpwd" maxlength="20">
     </div>
-     
+     <div class="col-sm-offset-6 col-sm-6">
+	        <div id="result"></div>
+	  </div>
      <input type="hidden" id="no" name="no" value="${item.no }"/>
      <button type="submit" class="btn btn-info">확인</button>
     <a href="../mypage/${item.no }" class="btn btn-danger">취소</a>
@@ -203,12 +154,106 @@
     <!-- <button type="cancel" class="btn btn-danger" onclick="location.href='mypage'">취소</button> -->
   </form>
 </div>
-
-<!--</body>
-</html>-->
-
-  
-          <!--<div id="tabcontent"></div>-->
       </div>
+ <script>
+		var pw_passed = true;  // 추후 벨리데이션 처리시에 해당 인자값 확인을 위해
+	
+	    function submitCheck() {
+			var nickname = document.frm.nickname.value; // 닉네임
+	    	var email = document.frm.email.value; // 이메일
+			var pw = document.frm.cpwd.value; //비밀번호
+	        
+	        pw_passed = true;
+	
+	        var pattern1 = /[0-9]/;
+	        var pattern2 = /[a-zA-Z]/;
+	        var pattern3 = /[~!@\#$%<>^&*]/; // 원하는 특수문자 추가 제거
+	        var pw_msg = "";
+	        
+			if(email.length == 0) {
+				$('#result').text("이메일을 입력해주세요.");
+				return false;
+			}
+			
+			if(nickname.length == 0) {
+				$('#result').text("닉네임 입력해주세요.");
+				frm.nickname.focus();
+				return false;
+			}
+	        
+			if(pw.length == 0) {
+				$('#result').text("비밀번호를 입력해주세요.");
+				frm.cpwd.focus();
+				return false;
+			}
+	
+			if(!pattern1.test(pw)||!pattern2.test(pw)||!pattern3.test(pw)||pw.length<6){
+				$('#result').text("영문+숫자+특수문자 6자리 이상으로 구성하여야 합니다.");
+				frm.cpwd.focus();
+				return false;
+			}
+			
+			if(pw.indexOf(nickname) > -1) {
+				$('#result').text("비밀번호는 닉네임을 포함할 수 없습니다.");
+				frm.cpwd.focus();
+				return false;
+			}
+	
+			var SamePass_0 = 0; //동일문자 카운트
+			var SamePass_1 = 0; //연속성(+) 카운드
+			var SamePass_2 = 0; //연속성(-) 카운드
+	
+			for(var i=0; i < pw.length; i++) {
+				var chr_pass_0;
+				var chr_pass_1;
+				var chr_pass_2;
+	
+				if(i >= 2) {
+					chr_pass_0 = pw.charCodeAt(i-2);
+	                chr_pass_1 = pw.charCodeAt(i-1);
+	                chr_pass_2 = pw.charCodeAt(i);
+	                 
+	                //동일문자 카운트
+	                if((chr_pass_0 == chr_pass_1) && (chr_pass_1 == chr_pass_2)) {
+						SamePass_0++;
+					} else {
+						SamePass_0 = 0;
+					}
+	
+					//연속성(+) 카운드
+					if(chr_pass_0 - chr_pass_1 == 1 && chr_pass_1 - chr_pass_2 == 1) {
+						SamePass_1++;
+					} else {
+						SamePass_1 = 0;
+	 				}
+	
+					//연속성(-) 카운드
+					if(chr_pass_0 - chr_pass_1 == -1 && chr_pass_1 - chr_pass_2 == -1) {
+						SamePass_2++;
+					} else {
+						SamePass_2 = 0;
+					}  
+				}     
+	
+				if(SamePass_0 > 0) {
+					$('#result').text("동일문자를 3자 이상 연속 입력할 수 없습니다.");
+					frm.cpwd.focus();
+					pw_passed=false;
+				}
+	
+	            if(SamePass_1 > 0 || SamePass_2 > 0 ) {
+	            	$('#result').text("영문, 숫자는 3자 이상 연속 입력할 수 없습니다.");
+	            	frm.cpwd.focus();
+					pw_passed=false;
+				} 
+	
+				if(!pw_passed) {             
+					return false;
+	                break;
+	            }
+			}
+			return true;
+		}
+	</script>
 </body>
 </html>
