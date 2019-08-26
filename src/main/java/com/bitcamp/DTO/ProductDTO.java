@@ -13,8 +13,8 @@ public class ProductDTO {
 	private String nickname;
 	private int bno;
 	private int imgno;
-	private Date bdate;
-	private Date cdate;
+	private String bdate;
+	private String cdate;
 	private int bcount;
 	private int pay;
 	private String addr;
@@ -47,10 +47,10 @@ public class ProductDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	public Date getBdate() {
+	public String getBdate() {
 		return bdate;
 	}
-	public void setBdate(Date bdate) {
+	public void setBdate(String bdate) {
 		this.bdate = bdate;
 	}
 	public int getPay() {
@@ -119,10 +119,10 @@ public class ProductDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public Date getCdate() {
+	public String getCdate() {
 		return cdate;
 	}
-	public void setCdate(Date cdate) {
+	public void setCdate(String cdate) {
 		this.cdate = cdate;
 	}
 	
