@@ -10,6 +10,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style>
+	textarea {
+		resize: none;
+	}
+	
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
