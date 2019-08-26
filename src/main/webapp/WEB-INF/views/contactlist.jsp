@@ -81,8 +81,8 @@
 	}
 	
 	.right-arrow {
-		margin-top: 12px;
-		margin-left: 20px;
+		margin-top: 0px;
+		margin-left: 0px;
 		width: 10px;
 		height: 100%;
 		float: right;
@@ -92,37 +92,17 @@
 </style>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script>
-	$(function() {
-		$(".expand").on("click", function() {
-			$(this).next().slideToggle(200);
-			$expand = $(this).find(">:first-child");
-
-			if ($expand.text() == "답변") {
-				$expand.text("-");
-			} else {
-				$expand.text("답변");
-			}
-		});
-	});
-</script>
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
-	<!-- <div class="container">
+	<div class="container">
 		<h2>Search</h2>
 		<input class="form-control" id="myInput" type="text"
-			placeholder="검색어를 입력하세요"> -->
-		<%-- 	<sec:authorize access="hasRole('ROLE_USER')"> --%>
-	<%-- 	<table class="table table-hover">
+			placeholder="검색어를 입력하세요">
+			<sec:authorize access="hasRole('ROLE_USER')">
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>글번호</th>
@@ -140,52 +120,18 @@
 						<td><c:out value="${i.nickname }"></c:out></td>
 						<td><a href="/contactdetail/${i.hno }"><c:out value="${i.htitle }"></c:out></a></td>
 						<td><c:out value="${i.hdate }"></c:out></td>
-						<td><input type="button"  class="btn btn-default" value="답변보기"></td>
+						<td><input type="button" class="btn btn-default" value="답변보기"></td>				 
+					
 					</tr>
+					 
 				</c:forEach>
+				 
 			</tbody>
+		</table>
+		 
 
-		</table> --%>
-		<br>
-		<div class="tab-content">
-			<div id="home" class="tab-pane fade in active">
-				<table class="table table-hover">
-					<!-- 아코디언 효과 -->
-					<tbody>
-						<div id="integration-list">
-							<ul>
-								<c:forEach var="i" items="${dto }">
-									<li><a href="/contactdetail/${i.hno }"> <c:out
-												value="${i.hno } "><br></c:out></a> <c:out value="${i.nickname }"></c:out>
-										
-										<c:out value="${i.hdate }"></c:out>
-										<a class="expand">
-											<div class="right-arrow">답변</div>
-											<div>
-												<h4>
-													<c:out value="${i.htitle }"></c:out>
-												</h4>
-											</div>
-									</a>
-
-										<div class="detail">
-											<div id="left" style="width: 15%; float: left; height: 50%;">
-												<div id="sup"></div>
-											</div>
-											<div id="right"
-												style="width: 85%; float: right; height: 50%; padding-left: 20px;">
-												<div id="sup">
-													<div>
-														<span>${i.hcontent }</span>
-													</div>
-																									</div>
-											</div>
-										</div></li>
-								</c:forEach>
-							</ul>
-						</div>
-					</tbody>
-				</table>
+		
+		 </sec:authorize>
 				<br>
 		<!-- block 처리 -->
 		<ul class="pager">
@@ -249,7 +195,7 @@
 	</div>
 
 	<script>
-		$(document)
+/* 		$(document)
 				.ready(function() {$("#myInput").on("keyup",function() {
 					var value = $(this).val().toLowerCase();
 					$("#myTable tr").filter(function() {
@@ -258,6 +204,10 @@
 	});
  });
 });
+	 */	
+	 
+ 
+ 
 	</script>
 </body>
 </html>
