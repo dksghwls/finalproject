@@ -68,6 +68,7 @@ public class AllCategoryController {
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
+		
 		return "templete.jsp?page=AllCategory";
 	}
 	
@@ -83,6 +84,7 @@ public class AllCategoryController {
 		List<CategoryDTO> calist = service.allList();
 		
 		model.addAttribute("list", calist);
+		
 		Pattern p = Pattern.compile("(^[0-9]*$)");
 		if(search=="pno"||search.equals("pno")
 				|| search=="cno"||search.equals("cno"))
@@ -107,10 +109,6 @@ public class AllCategoryController {
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		List<CategoryDTO> pclist = service.cpList(search, searchtxt, page.getStartRow(), page.getEndRow(),cno);
-		
-		System.out.println(pclist.size() +"!!!!!!! ÀÚ·á¼ö");
-		System.out.println(page.getStartRow());
-		System.out.println(page.getEndRow());
 		
 		model.addAttribute("dto", pclist );
 		model.addAttribute("page", page);
@@ -202,15 +200,49 @@ public class AllCategoryController {
 	
 	
 	@RequestMapping("adminproduct/{cno}")
-	public String adminselect(@PathVariable int cno, Model model)
+	public String adminselect(@PathVariable int cno
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt 
+			, Model model)
 	{
 		List<CategoryDTO> scalist = service.adallList();
 		
 		model.addAttribute("clist", scalist);
 		
-		List<CategoryDTO> spclist = service.adcpList(cno);
+		
+		Pattern p = Pattern.compile("(^[0-9]*$)"); // 
+		
+		if(search=="pno"||search.equals("pno")
+				|| search=="cno"||search.equals("cno"))
+		{
+			Matcher m = p.matcher(searchtxt);
+			if(!m.find())
+			{
+				searchtxt="";
+				model.addAttribute("searchtxt", "");
+				
+			}
+			else
+			{
+				model.addAttribute("searchtxt", searchtxt);
+			}
+		}
+		
+		
+		int totalCount = service.adminsubCount(search, searchtxt ,cno);
+		
+		int pageSize=10;
+		int blockSize=5;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		
+		List<CategoryDTO> spclist = service.adcpList(search, searchtxt, page.getStartRow(), page.getEndRow(),cno);
 		
 		model.addAttribute("list", spclist );
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
 		
 		return "templete.jsp?page=adminproduct";
 		

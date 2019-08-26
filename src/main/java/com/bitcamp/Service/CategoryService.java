@@ -36,8 +36,6 @@ public interface CategoryService {
 
 	public List<CategoryDTO> adallList();
 
-	public List<CategoryDTO> adcpList(int cno);
-
 	public int totalCountcount(String search, String searchtxt);
 
 	public List<CategoryDTO> pList(String search, String searchtxt, int startRow, int endRow);
@@ -50,6 +48,10 @@ public interface CategoryService {
 
 	public int subpage(String search, String searchtxt, int cno);
 	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno);
+
+	
+	public List<CategoryDTO> adcpList(String search, String searchtxt, int startRow, int endRow, int cno);
+	public int adminsubCount(String search, String searchtxt, int cno);
 
 	
 }
