@@ -145,7 +145,7 @@
   <li class="page-item">
     <c:if test="${page.prev }">
     <%-- <c:if test="${page.startBlock>1 }"> --%>
-	<a class="page-link" href="product?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+	<a class="page-link" href="../product/${cno}?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
@@ -178,7 +178,7 @@ ${searchtxt}"><c:out value="${index }"/></a>
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="product?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="../product/${cno}?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>
@@ -190,7 +190,7 @@ ${searchtxt}"><c:out value="${index }"/></a>
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="product?no=${member.no }&currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+	<a  class="page-link" href="../product/${cno}?no=${member.no }&currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>

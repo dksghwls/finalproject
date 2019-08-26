@@ -29,11 +29,11 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="pwd">Password:</label>
 	      <div class="col-sm-8">          
-	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" maxlength="4">
+	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" maxlength="20">
 	      </div>
 	    </div>
 	    <!-- 로그인 실패 메시지 -->
-	    <div class="col-sm-offset-6 col-sm-4">
+	    <div class="col-sm-offset-6 col-sm-6">
 	        <div id="result"></div>
 	    </div>
 	    <div class="form-group">
@@ -169,24 +169,106 @@
 		
 		naverLogin.logout(); 
 	</script>
-	
+
 	<script>
-		function submitCheck(){
-			if(document.frm.email.value==""){
-		        $('#result').text('이메일을 입력하세요.');
+		var pw_passed = true;  // 추후 벨리데이션 처리시에 해당 인자값 확인을 위해
+	
+	    function submitCheck() {
+			var nickname = document.frm.nickname.value; // 닉네임
+	    	var email = document.frm.email.value; // 이메일
+			var pw = document.frm.pwd.value; //비밀번호
+	        
+	        pw_passed = true;
+	
+	        var pattern1 = /[0-9]/;
+	        var pattern2 = /[a-zA-Z]/;
+	        var pattern3 = /[~!@\#$%<>^&*]/; // 원하는 특수문자 추가 제거
+	        var pw_msg = "";
+	        
+			if(email.length == 0) {
+				$('#result').text("이메일을 입력해주세요.");
 				return false;
-			} else if(document.frm.nickname.value=="") {
-				$('#result').text('닉네임을 입력하세요.');
+			}
+			
+			if(nickname.length == 0) {
+				$('#result').text("닉네임 입력해주세요.");
 				frm.nickname.focus();
 				return false;
-	        } else if(document.frm.pwd.value.length < 4) {
-		        $('#result').text('비밀번호를 4글자 이상 입력하세요.');
-		        frm.pwd.focus();
+			}
+	        
+			if(pw.length == 0) {
+				$('#result').text("비밀번호를 입력해주세요.");
+				frm.pwd.focus();
 				return false;
-	        } else {
-	         return true;
-	       }
-	    }
+			}
+	
+			if(!pattern1.test(pw)||!pattern2.test(pw)||!pattern3.test(pw)||pw.length<6){
+				$('#result').text("영문+숫자+특수문자 6자리 이상으로 구성하여야 합니다.");
+				frm.pwd.focus();
+				return false;
+			}
+			
+			if(pw.indexOf(nickname) > -1) {
+				$('#result').text("비밀번호는 닉네임을 포함할 수 없습니다.");
+				frm.pwd.focus();
+				return false;
+			}
+	
+			var SamePass_0 = 0; //동일문자 카운트
+			var SamePass_1 = 0; //연속성(+) 카운드
+			var SamePass_2 = 0; //연속성(-) 카운드
+	
+			for(var i=0; i < pw.length; i++) {
+				var chr_pass_0;
+				var chr_pass_1;
+				var chr_pass_2;
+	
+				if(i >= 2) {
+					chr_pass_0 = pw.charCodeAt(i-2);
+	                chr_pass_1 = pw.charCodeAt(i-1);
+	                chr_pass_2 = pw.charCodeAt(i);
+	                 
+	                //동일문자 카운트
+	                if((chr_pass_0 == chr_pass_1) && (chr_pass_1 == chr_pass_2)) {
+						SamePass_0++;
+					} else {
+						SamePass_0 = 0;
+					}
+	
+					//연속성(+) 카운드
+					if(chr_pass_0 - chr_pass_1 == 1 && chr_pass_1 - chr_pass_2 == 1) {
+						SamePass_1++;
+					} else {
+						SamePass_1 = 0;
+	 				}
+	
+					//연속성(-) 카운드
+					if(chr_pass_0 - chr_pass_1 == -1 && chr_pass_1 - chr_pass_2 == -1) {
+						SamePass_2++;
+					} else {
+						SamePass_2 = 0;
+					}  
+				}     
+	
+				if(SamePass_0 > 0) {
+					$('#result').text("동일문자를 3자 이상 연속 입력할 수 없습니다.");
+					frm.pwd.focus();
+					pw_passed=false;
+				}
+	
+	            if(SamePass_1 > 0 || SamePass_2 > 0 ) {
+	            	$('#result').text("영문, 숫자는 3자 이상 연속 입력할 수 없습니다.");
+	            	frm.pwd.focus();
+					pw_passed=false;
+				} 
+	
+				if(!pw_passed) {             
+					return false;
+	                break;
+	            }
+			}
+			return true;
+		}
 	</script>
 
 </body>

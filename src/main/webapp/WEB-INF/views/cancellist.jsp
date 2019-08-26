@@ -104,7 +104,7 @@
   <ul class="pagination">
   <li class="page-item">
     <c:if test="${page.prev }">
-	<a class="page-link" href="cancellist?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+	<a class="page-link" href="../cancellist/${cno}?no=${member.no }&currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
@@ -117,7 +117,7 @@
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="../cancellist/${cno}?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>
@@ -129,9 +129,7 @@
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="cancellist?no=${member.no }&currPage=
-
-${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+	<a  class="page-link" href="../cancellist/${cno}?no=${member.no }&currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>
