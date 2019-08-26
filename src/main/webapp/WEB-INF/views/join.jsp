@@ -29,7 +29,7 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="pwd">Password:</label>
 	      <div class="col-sm-8">          
-	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+	        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" maxlength="4">
 	      </div>
 	    </div>
 	    <!-- 로그인 실패 메시지 -->
@@ -179,9 +179,9 @@
 				$('#result').text('닉네임을 입력하세요.');
 				frm.nickname.focus();
 				return false;
-	        } else if(document.frm.pwd.value==""){
-	        	$('#result').text('비밀번호를 입력하세요.');
-	        	frm.pwd.focus();
+	        } else if(document.frm.pwd.value.length < 4) {
+		        $('#result').text('비밀번호를 4글자 이상 입력하세요.');
+		        frm.pwd.focus();
 				return false;
 	        } else {
 	         return true;
