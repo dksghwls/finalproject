@@ -18,6 +18,7 @@ public class ProductDTO {
 	private int bcount;
 	private int pay;
 	private String addr;
+	private String detailaddr;
 	private String shipping;
 	private int dprice;
 	private String paying;
@@ -64,6 +65,13 @@ public class ProductDTO {
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
+	}
+	
+	public String getDetailaddr() {
+		return detailaddr;
+	}
+	public void setDetailaddr(String detailaddr) {
+		this.detailaddr = detailaddr;
 	}
 	public String getPaying() {
 		return paying;

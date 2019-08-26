@@ -83,6 +83,7 @@ public class AdminPageController {
 	@RequestMapping(value="/memberdelete")
 	public String delete(@RequestParam int no, Model model)
 	{
+		
 		adminPageService.memberdelete(no);
 		
 		return "deleteresult";

@@ -115,7 +115,7 @@
   <c:forEach var="item" items="${mlist }">
     <div class="form-group">
        <label for="roadAddress">이메일</label>
-   	   <input type="text" id="sample4_roadAddress" value="${item.email }" class="form-control" style="width: 700px;" name="addr" readonly="readonly">
+   	   <input type="text" id="email" value="${item.email }" class="form-control" style="width: 700px;" name="email" readonly="readonly">
     </div>
     <div class="form-group">
       <label for="nickname">닉네임</label>

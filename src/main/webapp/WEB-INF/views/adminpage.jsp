@@ -98,7 +98,7 @@
         <td><c:out value="${item.addr }"></c:out></td>
         <td><c:out value="${item.detailaddr }"></c:out></td>
         <td><c:out value="${item.phone }"></c:out></td>
-        <td><button id="cancel_btn" type="button" class="btn btn-danger" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">삭제</button></td>
+        <td><button id="cancel_btn" type="button" class="btn btn-danger" data-mem="${item.no}" data-toggle="modal" data-target="#myModal">삭제</button></td>
       </tr>
       <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">

@@ -41,8 +41,6 @@ public interface CategoryMapper {
 
 	public List<CategoryDTO> adallList();
 
-	public List<CategoryDTO> adcpList(int cno);
-
 	public int totalCountcount(HashMap<String, Object> o);
 
 	public List<CategoryDTO> plist(HashMap<String, Object> o);
@@ -58,4 +56,10 @@ public interface CategoryMapper {
 	public int subpage(HashMap<String, Object> hm);
 
 	public List<CategoryDTO> cpList(HashMap<String, Object> o);
+
+	public List<CategoryDTO> adcpList(HashMap<String, Object> o);
+
+	public int adminsubCount(HashMap<String, Object> hm);
+
+	
 }

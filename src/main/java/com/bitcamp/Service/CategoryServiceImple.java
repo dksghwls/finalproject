@@ -117,13 +117,6 @@ public class CategoryServiceImple implements CategoryService{
 
 
 	@Override
-	public List<CategoryDTO> adcpList(int cno) {
-		
-		return mapper.adcpList(cno);
-	}
-
-
-	@Override
 	public int totalCountcount(String search, String searchtxt) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("search", search);
@@ -199,6 +192,32 @@ public class CategoryServiceImple implements CategoryService{
 		hm.put("cno", cno);
 		
 		return mapper.subpage(hm);
+	}
+
+
+	@Override
+	public List<CategoryDTO> adcpList(String search, String searchtxt, int startRow, int endRow, int cno) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow );
+		o.put("endRow", endRow);
+		o.put("cno", cno);
+		
+		return mapper.adcpList(o);
+	}
+
+
+	@Override
+	public int adminsubCount(String search, String searchtxt, int cno) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("cno", cno);
+		
+		return mapper.adminsubCount(hm);
 	}
 
 	
