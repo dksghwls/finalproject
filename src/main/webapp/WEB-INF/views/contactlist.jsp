@@ -5,26 +5,131 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
+	<style>
+	*, *:before, *:after {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	#integration-list {
+		font-family: 'Open Sans', sans-serif;
+		width: 80%;
+		margin: 0 auto;
+		display: table;
+	}
+	
+	#integration-list ul {
+		padding: 0;
+		margin: 20px 0;
+		color: #555;
+	}
+	
+	#integration-list ul>li {
+		list-style: none;
+		border-top: 1px solid #ddd;
+		display: block;
+		padding: 15px;
+		overflow: hidden;
+	}
+	
+	#integration-list ul:last-child {
+		border-bottom: 1px solid #ddd;
+	}
+	
+	#integration-list ul>li:hover {
+		background: #EFF5FB;
+	}
+	
+	#insertbtn:hover{
+		background: #EFF5FB;
+	}
+	.expand {
+		display: block;
+		text-decoration: none;
+		color: #555;
+		cursor: pointer;
+	}
+	
+	span {
+		font-size: 12.5px;
+	}
+	
+	#left, #right {
+		display: table;
+	}
+	
+	#sup {
+		display: table-cell;
+		vertical-align: middle;
+		width: 80%;
+	}
+	
+	.detail a {
+		text-decoration: none;
+		color: #C0392B;
+		border: 1px solid #C0392B;
+		padding: 6px 10px 5px;
+		font-size: 14px;
+	}
+	
+	.detail {
+		margin: 10px 0 10px 0px;
+		display: none;
+		line-height: 22px;
+		height: 150px;
+	}
+	
+	.right-arrow {
+		margin-top: 12px;
+		margin-left: 20px;
+		width: 10px;
+		height: 100%;
+		float: right;
+		font-weight: bold;
+		font-size: 20px;
+	}
+</style>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$(".expand").on("click", function() {
+			$(this).next().slideToggle(200);
+			$expand = $(this).find(">:first-child");
+
+			if ($expand.text() == "답변") {
+				$expand.text("-");
+			} else {
+				$expand.text("답변");
+			}
+		});
+	});
+</script>
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
-	<div class="container">
+	<!-- <div class="container">
 		<h2>Search</h2>
 		<input class="form-control" id="myInput" type="text"
-			placeholder="검색어를 입력하세요">
+			placeholder="검색어를 입력하세요"> -->
 		<%-- 	<sec:authorize access="hasRole('ROLE_USER')"> --%>
-		<table class="table table-hover">
+	<%-- 	<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>글번호</th>
 					<th>회원명</th>
 					<th>글제목</th>
-					<th>이메일</th>
 					<th>작성일</th>
+					<th>답변</th>
 				</tr>
 			</thead>
 			<tbody id="myTable">
@@ -34,14 +139,54 @@
 									value="${i.hno } "></c:out></a></td>
 						<td><c:out value="${i.nickname }"></c:out></td>
 						<td><a href="/contactdetail/${i.hno }"><c:out value="${i.htitle }"></c:out></a></td>
-						<td><c:out value="${i.email }"></c:out></td>
 						<td><c:out value="${i.hdate }"></c:out></td>
+						<td><input type="button"  class="btn btn-default" value="답변보기"></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 
-		</table>
+		</table> --%>
 		<br>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<table class="table table-hover">
+					<!-- 아코디언 효과 -->
+					<tbody>
+						<div id="integration-list">
+							<ul>
+								<c:forEach var="i" items="${dto }">
+									<li><a href="/contactdetail/${i.hno }"> <c:out
+												value="${i.hno } "><br></c:out></a> <c:out value="${i.nickname }"></c:out>
+										
+										<c:out value="${i.hdate }"></c:out>
+										<a class="expand">
+											<div class="right-arrow">답변</div>
+											<div>
+												<h4>
+													<c:out value="${i.htitle }"></c:out>
+												</h4>
+											</div>
+									</a>
+
+										<div class="detail">
+											<div id="left" style="width: 15%; float: left; height: 50%;">
+												<div id="sup"></div>
+											</div>
+											<div id="right"
+												style="width: 85%; float: right; height: 50%; padding-left: 20px;">
+												<div id="sup">
+													<div>
+														<span>${i.hcontent }</span>
+													</div>
+																									</div>
+											</div>
+										</div></li>
+								</c:forEach>
+							</ul>
+						</div>
+					</tbody>
+				</table>
+				<br>
 		<!-- block 처리 -->
 		<ul class="pager">
 			<li><c:if test="${page.prev }">
