@@ -128,12 +128,11 @@
       <div class="col-sm-3" id="iimg">
 
         <%-- <img src="resources/editor/multiupload/"+${ dto.imgname }><br> --%>
-        <img alt="a" src="../img/Penguins.jpg">
-        <p><c:out value="${dto.pno}"></c:out></p>
-        <p><c:out value="${dto.pname}"></c:out></p>
-        <p><c:out value="${dto.dprice}"></c:out></p>
-        <p><c:out value="${dto.oprice}"></c:out></p><br>
-        <a href="../detail/${pno}"></a>
+        <a href="../detail/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br>
+        ${dto.pname}
+        ${dto.dprice}
+        ${dto.oprice}<br>
+        
       </div>   
       </c:forEach> 
       </div>
