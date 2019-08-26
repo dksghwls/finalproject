@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.DTO.MemberDTO;
+import com.bitcamp.DTO.ProductDTO;
 import com.bitcamp.DTO.payMemberDTO;
 import com.bitcamp.DTO.paymentDTO;
 import com.bitcamp.Mapper.CategoryMapper;
@@ -157,8 +159,8 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	/*@Override
-	public int payok(payMemberDTO dto, paymentDTO pao) {
+	@Override
+	public int payok(MemberDTO dto, paymentDTO pao) {
 		
 		mapper.payok(dto);
 		
@@ -168,7 +170,14 @@ public class CategoryServiceImple implements CategoryService{
 		
 		 return mapper.payallok(pm);
 	}
-*/
+
+
+	@Override
+	public List<ProductDTO> paymentProduct() {
+		
+		return mapper.paymentProduct();
+	}
+
 	
 
 

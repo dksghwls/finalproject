@@ -185,13 +185,19 @@
     	</select>
     	
     	
-    	<!-- <insert id="payok" parameterType="com.bitcamp.DTO.payMemberDTO">
+    	<insert id="payok" parameterType="com.bitcamp.DTO.payMemberDTO">
     	
     		insert into member()
     	
     	
-    	</insert> -->
+    	</insert>
     	
+    	<select id="paymentProduct" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select pname, dprice
+    		from product
+    	
+    	</select>
     	
     	
     	

@@ -23,7 +23,8 @@ a button
 <div class="modal-dialog" id="payok">
 <h1>구매를 완료하였습니다.</h1>
 </div>
-	<a href="../home"><button type="button" class="btn btn-primary btn-lg">홈으로</button></a>
+<br><br><br>
+	<a href="../"><button type="button" class="btn btn-primary btn-lg">홈으로</button></a>
 <br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

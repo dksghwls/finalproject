@@ -104,7 +104,7 @@
 		<option value="cno">카테고리번호</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
-	<input type="submit" class="btn btn-info" value="검색">
+	<button type="submit"><span class="glyphicon glyphicon-search"></span></button>
     </form>
 <div class="container-fluid">
   <div class="row content">
@@ -133,7 +133,7 @@
         <p><c:out value="${dto.pname}"></c:out></p>
         <p><c:out value="${dto.dprice}"></c:out></p>
         <p><c:out value="${dto.oprice}"></c:out></p><br>
-        
+        <a href="../detail/${pno}"></a>
       </div>   
       </c:forEach> 
       </div>
