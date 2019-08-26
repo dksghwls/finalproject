@@ -61,40 +61,6 @@
       	margin-left: 10px;
       }
   </style>
- <script>
- function moreList(){
-	    $.ajax({
-	        url : "/AllCategory",
-	        type : "POST",
-	        cache : false,
-	        dataType: 'json',
-	        data : "conectType="+conectType +"&eDate="+eDate+"&sDate="+sDate+"&codeId="+codeId+"&limit="+limit,
-	        success : function(data){
-	            //console.log(data);
-	            var content="";
-	            for(var i=0; i<data.hashMapList.length; i++){
-	                content +=
-	                	"<img alt='a' src='../img/Penguins.jpg'>"
-	                    "<p>"+data.hashMapList[i].pno+"</p>"
-	                    "<p>"+data.hashMapList[i].pname+"</p>"
-	                    "<p>"+data.hashMapList[i].oprice+"</p>"
-	                    "<p>"+data.hashMapList[i].dprice+"</p>"
-	                ;
-	            }
-	            content+="<div class='btns'><a href='javascript:moreList();' class='btn btn-primary'>더보기</a></div>";
-	            $('#addbtn').remove();//remove btn
-	            $(content).appendTo("#imgbox");
-	        }, error:function(request,status,error){
-	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	           }
-	    });
-	};
-
-
- </script>
-  
-  
-  
 </head>
 <body>
 <form method="get" action="AllCategory?currPage=${page.currPage }">
@@ -104,7 +70,7 @@
 		<option value="cno">카테고리번호</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
-	<input type="submit" class="btn btn-info" value="검색">
+	<button type="submit"><span class="glyphicon glyphicon-search"></span></button>
     </form>
 <div class="container-fluid">
   <div class="row content">
@@ -128,12 +94,11 @@
       <div class="col-sm-3" id="iimg">
 
         <%-- <img src="resources/editor/multiupload/"+${ dto.imgname }><br> --%>
-        <img alt="a" src="../img/Penguins.jpg">
-        <p><c:out value="${dto.pno}"></c:out></p>
-        <p><c:out value="${dto.pname}"></c:out></p>
-        <p><c:out value="${dto.dprice}"></c:out></p>
-        <p><c:out value="${dto.oprice}"></c:out></p><br>
-        
+        <a href="../detail/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br>
+        ${dto.pname}
+        ${dto.dprice}
+        ${dto.oprice}
+        <br>
       </div>   
       </c:forEach> 
       </div>
@@ -142,9 +107,6 @@
   
     </div>
     </div>
-    
- 
-  
   <div class="text-center">
   <ul class="pagination">
     <c:if test="${page.prev }">
@@ -153,11 +115,9 @@
 	</a>
 	</c:if>
   <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
-  	
 		<a href="AllCategory?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
 		<c:out value="${index }"/>
 		</a>
-	
 </c:forEach>
   <c:if test="${page.next }">
 <a href="AllCategory?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
@@ -167,6 +127,5 @@
   </ul>
   </div>
 </div>
-
 </body>
 </html>

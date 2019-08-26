@@ -11,7 +11,7 @@ import com.bitcamp.DTO.ReviewDTO;
 
 public interface AdminPageService {
 
-	public List<PersonDTO> personlist(String search, String searchtxt, int startRow, int endRow);
+	public List<MemberDTO> personlist(String search, String searchtxt, int startRow, int endRow);
 
 	public int totalCount(String search, String searchtxt);
 

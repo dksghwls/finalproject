@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.DTO.MemberDTO;
+import com.bitcamp.DTO.ProductDTO;
 import com.bitcamp.DTO.payMemberDTO;
 
 @Mapper
@@ -15,7 +17,7 @@ public interface CategoryMapper {
 
 	public List<CategoryDTO> pList();
 
-	public List<CategoryDTO> cpList(int cno);
+	//public List<CategoryDTO> cpList(int cno);
 
 	public List<CategoryDTO> allList();
 
@@ -47,7 +49,13 @@ public interface CategoryMapper {
 
 	public int addallresult(HashMap<String, Object> hm);
 
-	/*public void payok(payMemberDTO dto);
+	public void payok(MemberDTO dto);
 
-	public int payallok(HashMap<String, Object> pm);*/
+	public int payallok(HashMap<String, Object> pm);
+
+	public List<ProductDTO> paymentProduct();
+
+	public int subpage(HashMap<String, Object> hm);
+
+	public List<CategoryDTO> cpList(HashMap<String, Object> o);
 }

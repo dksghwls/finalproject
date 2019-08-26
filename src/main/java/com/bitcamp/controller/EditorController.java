@@ -2,18 +2,21 @@ package com.bitcamp.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.DTO.CategoryDTO;
 import com.bitcamp.DTO.FileVo;
-import com.bitcamp.DTO.payMemberDTO;
+import com.bitcamp.DTO.MemberDTO;
+import com.bitcamp.DTO.ProductDTO;
 import com.bitcamp.DTO.paymentDTO;
 import com.bitcamp.Service.CategoryService;
 
@@ -57,21 +60,21 @@ public class EditorController {
 		return "redirect:/adminproduct";
 	}
 	@RequestMapping("Payment")
-	public String payment()
+	public String payment(Model model)
 	{
-		
+		List<ProductDTO> dto = service.paymentProduct();
+		model.addAttribute("dto", dto);
 		return "templete.jsp?page=Payment";
-	}	
+	}
 	
-	/*@RequestMapping("payok")
-	public String payok(HttpServletRequest request, payMemberDTO dto, paymentDTO pao)
+	@Transactional
+	@RequestMapping("payok")
+	public String payok(HttpServletRequest request, MemberDTO dto, paymentDTO pao)
 	{
 		int result = service.payok(dto, pao);
 		
-		
-		
 		return "redirect:/paysuccess";
-	}*/
+	}
 	
 	@RequestMapping("paysuccess")
 	public String paysuccess()

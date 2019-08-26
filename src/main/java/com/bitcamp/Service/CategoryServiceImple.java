@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bitcamp.DTO.CategoryDTO;
+import com.bitcamp.DTO.MemberDTO;
+import com.bitcamp.DTO.ProductDTO;
 import com.bitcamp.DTO.payMemberDTO;
 import com.bitcamp.DTO.paymentDTO;
 import com.bitcamp.Mapper.CategoryMapper;
@@ -39,12 +41,12 @@ public class CategoryServiceImple implements CategoryService{
 	}
 	
 
-	@Override
+	/*@Override
 	public List<CategoryDTO> cpList(int cno) {
 		
 		return mapper.cpList(cno);
 	}
-
+*/
 
 	/*@Override
 	public int addresult(CategoryDTO dto) {
@@ -157,8 +159,8 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	/*@Override
-	public int payok(payMemberDTO dto, paymentDTO pao) {
+	@Override
+	public int payok(MemberDTO dto, paymentDTO pao) {
 		
 		mapper.payok(dto);
 		
@@ -168,7 +170,37 @@ public class CategoryServiceImple implements CategoryService{
 		
 		 return mapper.payallok(pm);
 	}
-*/
+
+
+	@Override
+	public List<ProductDTO> paymentProduct() {
+		
+		return mapper.paymentProduct();
+	}
+
+	@Override
+	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow );
+		o.put("endRow", endRow);
+		o.put("cno", cno);
+		
+		return mapper.cpList(o);
+	}
+	@Override
+	public int subpage(String search, String searchtxt, int cno) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("cno", cno);
+		
+		return mapper.subpage(hm);
+	}
+
 	
 
 

@@ -62,7 +62,7 @@ public class AdminPageController {
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		
-		List<PersonDTO> plist = adminPageService.personlist(search, searchtxt, page.getStartRow(), page.getEndRow());
+		List<MemberDTO> plist = adminPageService.personlist(search, searchtxt, page.getStartRow(), page.getEndRow());
 		
 		
 		model.addAttribute("plist",plist);
@@ -70,13 +70,11 @@ public class AdminPageController {
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
 		
-		System.out.println("plist.size() : " + plist.size());
+		/*System.out.println("plist.size() : " + plist.size());
 		System.out.println("page : " + page);
 		System.out.println("search : [" + search + "]");
 		System.out.println("searchtxt : [" + searchtxt + "]");
-		System.out.println("page.getStartRow() : [" + page.getStartRow() + "]");
-		
-		
+		System.out.println("page.getStartRow() : [" + page.getStartRow() + "]");*/
 		
 		return "templete.jsp?page=adminpage";
 		
@@ -182,6 +180,7 @@ public class AdminPageController {
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
+		model.addAttribute("cno", cno);
 		
 		return "templete.jsp?page=order";
 		

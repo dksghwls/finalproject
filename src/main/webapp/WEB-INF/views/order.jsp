@@ -103,11 +103,11 @@
     </tbody>
   </table>
   
-  <form method="get" action="order?currPage=${page.currPage }">
+  <form method="get" action="../order/${cno}?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option>검색 조건 </option>
 		<option value="pname">상품명</option>
-		<option value="nickname">주문 번호</option>
+		<option value="bno">주문 번호</option>
 		<option value="nickname">주문자</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
@@ -148,7 +148,7 @@
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="order?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="../order?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>
@@ -160,7 +160,7 @@
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="order?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+	<a  class="page-link" href="../order?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>

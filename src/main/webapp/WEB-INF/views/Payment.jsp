@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -188,7 +189,9 @@
 </head>
 <body>
 	<section>
-        <h2>상품이름</h2>
+	<c:forEach var="dto" items="${dto }">
+        <h2>${dto.pname }</h2>
+    </c:forEach>
    </section>
   <img src="img/Jellyfish.jpg" alt="a" id="shopping">   
    
@@ -206,25 +209,23 @@
     	<input type="email" id="email" name="email"  placeholder="email" class="form-control" style="width: 700px;" ><br>
            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary btn-lg" >
            <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control" style="width: 700px;">
-           <input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" style="width: 700px;">
-           <input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control" style="width: 700px;">
+           <input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" readonly="readonly" style="width: 700px;">
+           <input type="hidden" id="sample4_jibunAddress" name="addr" placeholder="지번주소" class="form-control" style="width: 700px;">
            <span id="guide" style="color:#999;display:none"></span>
-           <input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" style="width: 700px;">
+           <input type="text" id="sample4_detailAddress" name="addrdetail" placeholder="상세주소" class="form-control" style="width: 700px;">
            <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" class="form-control" style="width: 700px;"><br><br>
     </form>
     </div>
     <div class="col-sm-2 sidenav" id="sideorder">
      <h3>Order Detail</h3>
       <p>운송 및 취급:택배</p>
-      <p>총금액:</p>
+      <c:forEach var="dto" items="${dto }">
+      <p>총금액:${dto.dprice }</p>
+      </c:forEach>
       <hr>
       <h3>결제수단</h3>
-      <input type="radio" value="신용카드" checked>신용카드<br><br>
-     
-    </div>
-     
-    
-    
+      <input type="radio" value="신용카드" checked>신용카드<br><br>   
+    </div> 
      <!-- <div class="col-sm-2 sidenav">
       <div class="well">
         <p>ADS</p>

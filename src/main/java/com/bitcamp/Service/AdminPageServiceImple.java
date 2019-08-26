@@ -21,7 +21,7 @@ public class AdminPageServiceImple implements AdminPageService {
 	private AdminPageMapper adminMapper;
 
 	@Override
-	public List<PersonDTO> personlist(String search, String searchtxt, int startRow, int endRow) {
+	public List<MemberDTO> personlist(String search, String searchtxt, int startRow, int endRow) {
 		
 		HashMap<String, Object> o = new HashMap<>();
 		o.put("search", search);
