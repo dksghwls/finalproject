@@ -41,12 +41,12 @@ public class CategoryServiceImple implements CategoryService{
 	}
 	
 
-	@Override
+	/*@Override
 	public List<CategoryDTO> cpList(int cno) {
 		
 		return mapper.cpList(cno);
 	}
-
+*/
 
 	/*@Override
 	public int addresult(CategoryDTO dto) {
@@ -176,6 +176,29 @@ public class CategoryServiceImple implements CategoryService{
 	public List<ProductDTO> paymentProduct() {
 		
 		return mapper.paymentProduct();
+	}
+
+	@Override
+	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow );
+		o.put("endRow", endRow);
+		o.put("cno", cno);
+		
+		return mapper.cpList(o);
+	}
+	@Override
+	public int subpage(String search, String searchtxt, int cno) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("cno", cno);
+		
+		return mapper.subpage(hm);
 	}
 
 	

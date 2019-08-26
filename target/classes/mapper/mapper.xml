@@ -62,14 +62,64 @@
     	</select>
     	
     	
-    	<select id="cpList" resultType="com.bitcamp.DTO.CategoryDTO" parameterType="int">
+    	<select id="cpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
     	
-    		select p.pname, p.dprice, p.oprice
-    		from category c, product p 
-    		where c.cno = p.cno 
-    		and p.cno = #{cno}
+    	select *
+  		from category c, product p 
+    	where c.cno = p.cno 
+    	and p.cno = #{cno} 
+    	  
+				<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
+					<when test="search=='pno'">
+						and pno=#{searchtxt}
+					</when>
+					<when test="search=='pname'">
+						and pname like upper('%'|| #{searchtxt}||'%')
+					</when>
+					<when test="search=='cno'">
+						and cno=#{searchtxt}
+					</when>
+				</choose>
+			</if>
+			
+	
+	order by pno
+	limit #{startRow}, #{endRow}
     	
     	</select>
+    	
+    	<select id="subpage" parameterMap="hashmap" resultType="int">
+    	
+    		select count(*)
+    		from category c inner join product p 
+    		on c.cno = p.cno 
+    		
+    	
+    	<where>
+         	p.cno = #{cno}
+    	<if test="searchtxt!=null and searchtxt!=''">
+  			<choose>
+  				<when test="search=='pno'">
+  				and pno=#{searchtxt}
+  				</when>
+  				<when test="search=='pname'">
+  				 and pname like '%'||upper(#{searchtxt})||'%'     
+  				</when>
+  				<when test="search=='cno'">
+  				and cno=#{searchtxt}
+  				</when>
+  			</choose>
+  		</if>
+  		</where>
+    	</select>
+    	
+    	
+    	
+    	
+    	
+    	
+    	
   		<insert id="addresult" parameterType="com.bitcamp.DTO.CategoryDTO">
     	
     		insert into product(pname, dprice, oprice, cno, content)

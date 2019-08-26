@@ -14,7 +14,7 @@ public interface CategoryService {
 
 	//public List<CategoryDTO> pList();
 
-	public List<CategoryDTO> cpList(int cno);
+	//public List<CategoryDTO> cpList(int cno);
 
 	public List<CategoryDTO> allList();
 
@@ -47,6 +47,9 @@ public interface CategoryService {
 	public int payok(MemberDTO dto, paymentDTO pao);
 
 	public List<ProductDTO> paymentProduct();
+
+	public int subpage(String search, String searchtxt, int cno);
+	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno);
 
 	
 }

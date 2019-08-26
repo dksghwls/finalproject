@@ -17,7 +17,7 @@ public interface CategoryMapper {
 
 	public List<CategoryDTO> pList();
 
-	public List<CategoryDTO> cpList(int cno);
+	//public List<CategoryDTO> cpList(int cno);
 
 	public List<CategoryDTO> allList();
 
@@ -54,4 +54,8 @@ public interface CategoryMapper {
 	public int payallok(HashMap<String, Object> pm);
 
 	public List<ProductDTO> paymentProduct();
+
+	public int subpage(HashMap<String, Object> hm);
+
+	public List<CategoryDTO> cpList(HashMap<String, Object> o);
 }
