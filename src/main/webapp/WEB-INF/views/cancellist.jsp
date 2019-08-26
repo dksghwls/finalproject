@@ -89,7 +89,7 @@
     </tbody>
   </table>
   
-  <form method="get" action="../cancellist?currPage=${page.currPage }">
+  <form method="get" action="../cancellist/${cno}?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option>검색 조건 </option>
 		<option value="pname">상품 이름</option>
@@ -117,7 +117,7 @@
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="product?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>
@@ -129,7 +129,7 @@
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="product?no=${member.no }&currPage=
+	<a  class="page-link" href="cancellist?no=${member.no }&currPage=
 
 ${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>

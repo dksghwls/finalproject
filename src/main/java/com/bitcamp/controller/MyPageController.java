@@ -137,6 +137,7 @@ public class MyPageController {
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
+		model.addAttribute("cno", cno);
 		
 		return "templete.jsp?page=product";
 		
@@ -167,6 +168,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("exit/{no}")
+	@Transactional
 	public String exit(@PathVariable int no, @RequestParam String email) {
 		myPageService.deletelist(no);
 		myPageService.deleteauth(email);
@@ -174,7 +176,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/home")
-	public String home( HttpSession session) {
+	public String home(HttpSession session) {
 		return "templete.jsp?page=home";
 	}
 	
@@ -266,6 +268,7 @@ public class MyPageController {
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
+		model.addAttribute("cno", cno);
 		
 		return "templete.jsp?page=cancellist";
 		

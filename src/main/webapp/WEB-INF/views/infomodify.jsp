@@ -20,6 +20,63 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <script>
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+   </script>
 </head>
 <body>
 <c:set var="member" value="${ sessionScope.user }"></c:set>
@@ -40,9 +97,9 @@
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
-              <!-- <li data-tab="product2" class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
-              </li> -->
+              <li data-tab="product2" class="nav-item">
+                <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
+              </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
               </li>
@@ -113,35 +170,32 @@
     </div>
     <div class="form-group">
       <label for="nickname">닉네임</label>
-      <input type="nickname" class="form-control" id="nickname" value="${item.nickname }" name="nickname">
+      <input type="nickname" class="form-control" id="nickname" value="${item.nickname }" style="width: 700px;" name="nickname">
     </div>
     <div class="form-group">
       <label for="name">이름</label>
-      <input type="name" class="form-control" id="name" value="${item.name }" name="name">
+      <input type="name" class="form-control" id="name" value="${item.name }" style="width: 700px;" name="name">
     </div>
     <div class="form-group">
-      <label for="addr">주소</label>
-      <input type="addr" class="form-control" id="addr" value="${item.addr }" name="addr">
-    </div>
-    <div class="form-group">
-      <label for="detailaddr">상세주소</label>
-      <input type="detailaddr" class="form-control" id="detailaddr" value="${item.detailaddr }" name="detailaddr">
-    </div>
+      <button type="button" id="sample4_postcode" onclick="sample4_execDaumPostcode()" class="btn btn-primary">우편번호 찾기</button>
+   	</div>
+   	<div class="form-group">
+   		<label for="roadAddress">주소</label>
+   		<input type="text" id="sample4_roadAddress" value="${item.addr }" class="form-control" style="width: 700px;" name="addr" readonly="readonly">
+   	</div>
+   	<div class="form-group">
+		<label for="name">상세주소</label>
+		<input type="text" id="sample4_detailAddress" value="${item.detailaddr }"  class="form-control" style="width: 700px;" name="detailaddr">
+   	</div>
     <div class="form-group">
       <label for="phone">전화번호</label>
-      <input type="phone" class="form-control" id="phone" value="${item.phone }" name="phone">
+      <input type="phone" class="form-control" id="phone" value="${item.phone }" style="width: 700px;" name="phone">
     </div>
-     <div class="form-group">
+    <div class="form-group">
       <label for="cpwd">비밀번호</label>
-      <input type="cpwd" class="form-control" id="cpwd" value="" name="cpwd" placeholder="새 비밀번호를 입력하세요">
+      <input type="password" class="form-control" id="cpwd" placeholder="기존 또는 새 비밀번호를 입력하세요" style="width: 700px;" name="cpwd">
     </div>
-    <!-- <div class="form-group form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember" required> 위 정보를 수정하겠습니다.
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Check this checkbox to continue.</div>
-      </label>
-    </div> -->
+     
      <input type="hidden" id="no" name="no" value="${item.no }"/>
      <button type="submit" class="btn btn-info">확인</button>
     <a href="../mypage/${item.no }" class="btn btn-danger">취소</a>

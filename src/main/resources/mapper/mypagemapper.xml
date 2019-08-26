@@ -34,9 +34,9 @@
     	</update>
     	
     	<select id="reviewlist" parameterType="int" resultType="com.bitcamp.DTO.ReviewDTO">
-    		select imgname, pname, dprice, deadline, rcontent
-    		from product p, img i, reply r
-    		where p.pno=r.pno and p.pno=i.pno and no=#{no}
+    		select pname, dprice, deadline, rcontent
+    		from product p, reply r
+    		where p.pno=r.pno and r.no=#{no}
     	</select>
     	
     	<delete id="deletelist" parameterType="int">
@@ -147,7 +147,7 @@
     		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no
     			and p2.no=#{no} and p1.cno = #{cno}
     		
-    		<where>
+    		<!-- <where> -->
     			
 				<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
@@ -161,7 +161,7 @@
 				</choose>
 			</if>
 			
-		</where>
+		<!-- </where> -->
 			order by p2.bno
 			limit #{startRow}, 10
   		</select>

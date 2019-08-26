@@ -14,7 +14,7 @@ import com.bitcamp.DTO.ReviewDTO;
 @Mapper
 public interface AdminPageMapper {
 
-	public List<PersonDTO> personlist(HashMap<String, Object> o);
+	public List<MemberDTO> personlist(HashMap<String, Object> o);
 
 	public int totalCount(HashMap<String, Object> hm);
 

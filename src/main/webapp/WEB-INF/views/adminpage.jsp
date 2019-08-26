@@ -16,6 +16,17 @@
           font-size: 20px;
         }
 </style>
+<script>
+
+	$(document).on("click", "#cancel_btn", function () { 
+		/* var bno = $(this).data('id'); */
+		var mno = $(this).data('mem');
+		/* onclick="location.href='../cancel/11?no=${member.no}'" */
+		document.getElementById("yes_btn").setAttribute("onclick", "location.href='memberdelete?no=" + mno+ "'");
+	
+    });
+	
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -68,10 +79,12 @@
     <thead>
       <tr>
         <th>회원 번호</th>
-        <th>이메일</th>
         <th>닉네임</th>
-        <th>총 주문 횟수</th>
-        <th>총 주문 금액</th>
+        <th>이메일</th>
+        <th>이름</th>
+        <th>주소</th>
+        <th>상세 주소</th>
+        <th>전화번호</th>
         <th>회원 삭제</th>
       </tr>
     </thead>
@@ -79,11 +92,13 @@
     <c:forEach var="item" items="${plist}">
       <tr>
         <td><c:out value="${item.no }"></c:out></td>
-        <td><c:out value="${item.email }"></c:out></td>
         <td><c:out value="${item.nickname }"></c:out></td>
-        <td><c:out value="${item.ordercount }"></c:out></td>
-        <td><c:out value="${item.ordermoney }"></c:out></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">삭제</button></td>
+        <td><c:out value="${item.email }"></c:out></td>
+        <td><c:out value="${item.name }"></c:out></td>
+        <td><c:out value="${item.addr }"></c:out></td>
+        <td><c:out value="${item.detailaddr }"></c:out></td>
+        <td><c:out value="${item.phone }"></c:out></td>
+        <td><button id="cancel_btn" type="button" class="btn btn-danger" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">삭제</button></td>
       </tr>
       <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
@@ -102,7 +117,7 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='memberdelete?no=${item.no }'">예</button>
+          <button id="yes_btn" type="button" class="btn btn-secondary" data-dismiss="modal">예</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button>
         </div>
       </div>

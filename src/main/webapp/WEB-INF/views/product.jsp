@@ -17,9 +17,16 @@
         }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script 
+<script>
 
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	$(document).on("click", "#cancel_btn", function () { 
+		var bno = $(this).data('id');
+		var mno = $(this).data('mem');
+		/* onclick="location.href='../cancel/11?no=${member.no}'" */
+		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../cancel/" + bno+ "?no=" + mno + "'");
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
@@ -89,7 +96,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
         <td><c:out value="${item.dprice }"></c:out></td>
         <td><c:out value="${item.addr }"></c:out></td>
         <td><c:out value="${item.shipping }"></c:out></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">취소</button></td>
+        <td><button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button></td>
       </tr> 
    <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
@@ -108,8 +115,8 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='../cancel/${item.bno}?no=${member.no}'">예</button>
-          ${item.bno }
+          <button id="yes_btn" type="button" class="btn btn-secondary" data-dismiss="modal" >예</button>
+          <input type="hidden" name="tmp_name" id="tmp_id" value="" >
           <button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button>
         </div>
         
@@ -121,7 +128,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
     </tbody>
   </table>
   
-  <form method="get" action="../product?currPage=${page.currPage }">
+  <form method="get" action="../product/${cno}?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option>검색 조건 </option>
 		<option value="pname">상품 이름</option>
@@ -129,7 +136,8 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
 	</select>
 	<input type="hidden" id="no" name="no" value="${member.no }"/>
 	<input type="text" name="searchtxt" style="height: 30px;">
-	<input type="submit" class="btn btn-info" value="검색">
+	<!-- <input type="submit" class="btn btn-info" value="검색"> -->
+	<input id="submit_btn" type="submit" class="btn btn-info" value="검색">
     </form>
   
   <div class="text-center">
@@ -182,9 +190,7 @@ ${searchtxt}"><c:out value="${index }"/></a>
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="product?no=${member.no }&currPage=
-
-${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+	<a  class="page-link" href="product?no=${member.no }&currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>

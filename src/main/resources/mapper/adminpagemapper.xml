@@ -26,13 +26,12 @@
   			</where>
   		</select>
     	
-    	<select id="personlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.PersonDTO">
+    	<select id="personlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.MemberDTO">
   			
-  			select m.no, email, nickname, count(bno) as ordercount, sum(pay) as ordermoney
-  			from member m, pay p
-  			where m.no=p.no
+  			select *
+  			from member
   			
-            <!-- <where> -->
+            <where>
            	<!-- <if test="searchtxt!=null"> -->
 			<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
@@ -46,8 +45,8 @@
 				</choose>
 			</if>
 			
-		<!-- </where> -->
-			order by m.no
+		   </where>
+			order by no
 			limit #{startRow}, 10
   		</select>
   		
@@ -65,8 +64,8 @@
     	<select id="ototalCount" parameterMap="hashmap" resultType="int">
   	  		
   	  		select count(bno)
-  	  		from product p1, pay p2, member m, img i
-  			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno
+  	  		from product p1, pay p2, member m
+  			where p1.pno=p2.pno and p2.no=m.no
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>
@@ -78,7 +77,7 @@
 						and p2.bno=#{searchtxt}
 					</when>
 					<when test="search=='nickname'">
-						and nickname like CONCAT('%', #{searchtxt}, '%')
+						and m.nickname like CONCAT('%', #{searchtxt}, '%')
 					</when>
   					</choose>
   				</if>
@@ -86,9 +85,9 @@
     	
     	<select id="orderlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select bno, imgname, p2.pno, pname, nickname, bcount, pay, bdate, shipping
-  			from product p1, pay p2, member m, img i
-  			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno
+  			select bno, p2.pno, p1.pname, m.nickname, p2.bcount, p2.pay, p2.bdate, p2.shipping
+  			from product p1, pay p2, member m
+  			where p1.pno=p2.pno and p2.no=m.no
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -96,19 +95,19 @@
 				<choose>
 					<when test="search=='pname'">
 						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
-						and pname like CONCAT('%', #{searchtxt}, '%')
+						and p1.pname like CONCAT('%', #{searchtxt}, '%')
 					</when>
 					<when test="search=='bno'">
-						and bno=#{searchtxt}
+						and p2.bno=#{searchtxt}
 					</when>
 					<when test="search=='nickname'">
-						and nickname like CONCAT('%', #{searchtxt}, '%')
+						and m.nickname like CONCAT('%', #{searchtxt}, '%')
 					</when>
 				</choose>
 			</if>
 			
 		<!-- </where> -->
-			order by m.no
+			order by p2.bno
 			limit #{startRow}, 10
   		</select>
   		
@@ -121,21 +120,21 @@
     	<select id="subototalCount" parameterMap="hashmap" resultType="int">
   	  		
   	  		select count(bno)
-  	  		from product p1, pay p2
-  	  		where p1.pno=p2.pno and cno=#{cno}
+  	  		from product p1, pay p2, member m
+  	  		where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno}
   		<!-- 	<where> -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>
   						<when test="search=='pname'">
 						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
-						and pname like CONCAT('%', #{searchtxt}, '%')
+						and p1.pname like CONCAT('%', #{searchtxt}, '%')
 					</when>
 					<when test="search=='bno'">
-						and bno=#{searchtxt}
+						and p2.bno=#{searchtxt}
 					</when>
 					<when test="search=='nickname'">
-						and nickname like CONCAT('%', #{searchtxt}, '%')
+						and m.nickname like CONCAT('%', #{searchtxt}, '%')
 					</when>
   					</choose>
   				</if>
@@ -144,10 +143,9 @@
   		
   		<select id="suborderlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select bno, imgname, p2.pno, pname, nickname, bcount, pay, bdate, shipping
-  			from product p1, pay p2, member m, img i
-  			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno
-  			and p1.cno=#{cno}
+  			select p2.bno, p2.pno, p1.pname, m.nickname, p2.bcount, p2.pay, p2.bdate, p2.shipping
+  			from product p1, pay p2, member m
+  			where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno}
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -155,19 +153,19 @@
 				<choose>
 					<when test="search=='pname'">
 						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
-						and pname like CONCAT('%', #{searchtxt}, '%')
+						and p1.pname like CONCAT('%', #{searchtxt}, '%')
 					</when>
 					<when test="search=='bno'">
-						and bno=#{searchtxt}
+						and p2.bno=#{searchtxt}
 					</when>
 					<when test="search=='nickname'">
-						and nickname like CONCAT('%', #{searchtxt}, '%')
+						and m.nickname like CONCAT('%', #{searchtxt}, '%')
 					</when>
 				</choose>
 			</if>
 			
 		<!-- </where> -->
-			order by m.no
+			order by p2.bno
 			limit #{startRow}, 10
   		</select>
   		
