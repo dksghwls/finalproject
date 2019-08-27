@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,10 +60,10 @@ public class EditorController {
 		
 		return "redirect:/adminproduct";
 	}
-	@RequestMapping("Payment")
-	public String payment(Model model)
+	@RequestMapping("/Payment/{pno}")
+	public String payment(@PathVariable int pno,Model model)
 	{
-		List<ProductDTO> dto = service.paymentProduct();
+		List<ProductDTO> dto = service.paymentProduct(pno);
 		model.addAttribute("dto", dto);
 		return "templete.jsp?page=Payment";
 	}

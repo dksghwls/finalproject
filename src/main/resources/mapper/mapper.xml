@@ -284,11 +284,12 @@
     	
     	</insert>
     	
-    	<select id="paymentProduct" resultType="com.bitcamp.DTO.ProductDTO">
+    	<select id="paymentProduct" resultType="com.bitcamp.DTO.ProductDTO" parameterType="int">
     	
-    		select pname, dprice
+    		select * 
     		from product
-    	
+    		where pno=#{pno}
+    		
     	</select>
     	
     	

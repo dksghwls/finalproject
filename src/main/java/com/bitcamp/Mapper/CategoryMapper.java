@@ -51,8 +51,6 @@ public interface CategoryMapper {
 
 	public int payallok(HashMap<String, Object> pm);
 
-	public List<ProductDTO> paymentProduct();
-
 	public int subpage(HashMap<String, Object> hm);
 
 	public List<CategoryDTO> cpList(HashMap<String, Object> o);
@@ -60,6 +58,8 @@ public interface CategoryMapper {
 	public List<CategoryDTO> adcpList(HashMap<String, Object> o);
 
 	public int adminsubCount(HashMap<String, Object> hm);
+
+	public List<ProductDTO> paymentProduct(int pno);
 
 	
 }

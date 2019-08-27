@@ -44,14 +44,14 @@ public interface CategoryService {
 
 	public int payok(MemberDTO dto, paymentDTO pao);
 
-	public List<ProductDTO> paymentProduct();
-
 	public int subpage(String search, String searchtxt, int cno);
 	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno);
 
 	
 	public List<CategoryDTO> adcpList(String search, String searchtxt, int startRow, int endRow, int cno);
 	public int adminsubCount(String search, String searchtxt, int cno);
+
+	public List<ProductDTO> paymentProduct(int pno);
 
 	
 }

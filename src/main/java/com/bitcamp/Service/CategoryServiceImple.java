@@ -165,11 +165,6 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	@Override
-	public List<ProductDTO> paymentProduct() {
-		
-		return mapper.paymentProduct();
-	}
 
 	@Override
 	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno) {
@@ -218,6 +213,13 @@ public class CategoryServiceImple implements CategoryService{
 		hm.put("cno", cno);
 		
 		return mapper.adminsubCount(hm);
+	}
+
+
+	@Override
+	public List<ProductDTO> paymentProduct(int pno) {
+		
+		return mapper.paymentProduct(pno);
 	}
 
 	
