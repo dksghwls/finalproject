@@ -47,7 +47,12 @@ public class ContactServiceImple implements ContactService {
 		 
 		return mapper.count();
 	}
-
+	@Override
+	public int recontentmodify(ContactDTO dto) {
+		 
+		return mapper.recontentmodify(dto);
+	}
+ 
 
 
 	 

@@ -93,35 +93,22 @@ public class ContactController {
 		return "redirect:/contact";
 	}
 	
-/*	 
-	//파일 업로드
-	 private String path = "temp";
-	 
-	 @RequestMapping("/contactuploadfile")
-	 public String contactfileform() {
-		 return "contactfileform";
-				 
-	 }
-	 
-	 @RequestMapping("/contactfileok")
-	 public String contactfileok(HttpServletRequest request, FileVo vo, Model model) {
+	
+	@RequestMapping(value="/recontentmodify/{no}", method=RequestMethod.GET)
+	public String recontent(@PathVariable int no, Model model) {
+		System.out.println("no값 출력: "+no);
+		ContactDTO dto = contactservice.contactdetail(no);
+		model.addAttribute("dto",dto);
+		System.out.println("답변저장dto: "+dto);
+		return "recontentform";
+	}
+	
+	@RequestMapping("/recontentok")
+	public String recontentok(ContactDTO dto) {
+		int result = contactservice.recontentmodify(dto);
+		System.out.println("답변저장테스트: " + result);
 		 
-		 MultipartFile multi = vo.getFile1();
-		 try {
-			 String uploadpath = request.getSession().getServletContext().getRealPath(path);
-			 if(!multi.isEmpty()) {
-				 File file= new File(uploadpath, multi.getOriginalFilename());
-				 multi.transferTo(file);
-				 model.addAttribute("title", vo.getFilename());
-				 model.addAttribute("filename", vo.getFile1().getOriginalFilename());
-				 model.addAttribute("uploadpath", file.getAbsolutePath());
-				 return "contactfilelist";
-			 }
-		 }catch(IOException e) {
-			 System.out.println(e);
-		 }
-		 return "redirect:/contactuploadfile";
-		 
-	 }*/
+		return "redirect:contact";
+	}
 	
 }

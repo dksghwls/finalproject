@@ -13,7 +13,7 @@
 
 	<select id="contactlist" resultType="com.bitcamp.DTO.ContactDTO" parameterType="java.util.HashMap">
 		select b.nickname, hno,
-		b.no, htitle, hcontent, hdate, b.email
+		b.no, htitle, hcontent, hdate, b.email, recontent
 		from help as a
 		left join member as b
 		on
@@ -49,5 +49,13 @@
 		set htitle=#{htitle}, hcontent=#{hcontent}
 		where hno=#{hno}
 	</update>
+	
+	<update id="recontentmodify"
+		parameterType="com.bitcamp.DTO.ContactDTO">
+		update help
+		set  recontent=#{recontent} 
+		where hno=#{hno}
+	</update>
+ 
 
 </mapper>
