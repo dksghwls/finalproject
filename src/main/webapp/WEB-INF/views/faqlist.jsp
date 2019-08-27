@@ -131,7 +131,7 @@
 	<div class="container">
 		<h2>
 		<a href="/helpcenter" data-toggle="tooltip" title="HelpCenter!">FAQ</a>
-		<sec:authorize access="hasRole('ROLE_USER')">
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<a href="faqinsert">
 		<input type="button" class="btn btn-default" id="insertbtn" value="글쓰기"></a>
 		</sec:authorize>
@@ -232,12 +232,7 @@
 						</c:if></li>
 				</ul>
 
-				<!-- 사용자일 경우 글쓰기 보여지는 것 -->
-				<%-- <sec:authorize access="hasRole('ROLE_USER')">
-					<a href="faqinsert">
-					<input type="button" class="btn btn-default" id="insertbtn" value="글쓰기"></a>
-				</sec:authorize> --%>
-
+				
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table class="table table-hover">
