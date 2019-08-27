@@ -118,7 +118,7 @@ span {
 		<h2>Search</h2>
 		<input class="form-control" id="myInput" type="text"
 			placeholder="검색어를 입력하세요">
-		<sec:authorize access="hasRole('ROLE_USER')">
+		 
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -180,9 +180,7 @@ span {
 				</tbody>
 
 			</table>
-
-
-		</sec:authorize>
+ 
 		<br>
 		<!-- block 처리 -->
 		<ul class="pager">

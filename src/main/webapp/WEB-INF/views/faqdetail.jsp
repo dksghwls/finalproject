@@ -10,10 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<!-- 관리자일 경우 글쓰기 보여지는 것 -->
-	<%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
-	<sec:authorize access="hasRole('ROLE_USER')">
+ 
 		<div class="container">
 			<br>
 			<div class="panel panel-default">
@@ -48,7 +45,6 @@
 			</div>
 
 		</div>
-	</sec:authorize>
-
+ 
 </body>
 </html>
