@@ -114,6 +114,13 @@ public class AdminPageServiceImple implements AdminPageService {
 		
 	}
 
+	@Override
+	public void updateno(int no) {
+		
+		adminMapper.updateno(no);
+		
+	}
+
 	
 
 }

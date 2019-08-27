@@ -82,9 +82,12 @@
 	margin-bottom: 30px;
 	}
 	
- 
- 
- </style>
+	.trysearch{
+		padding-top: 3px;
+		padding-bottom: 6px;
+	}
+	
+ 	</style>
 </head>
 <body>
 	<!-- Second Container -->
@@ -95,8 +98,7 @@
 		<form method="get" action="faq?currPage=${page.startBlock }" class="searchform">
 			<input type="hidden" name="search" value="all">
 			 
-					<input type="text" class="btn btn-default btn-lg" 
-						placeholder="검색어를 입력하세요" name="keyword">
+					<input type="text"  class="trysearch" name="keyword">
 			  		 
 					<button class="btn btn-default" type="submit">
 						<span class="glyphicon glyphicon-search"></span>
@@ -133,7 +135,7 @@
 	</div>
 	<!-- 지도 api  -->
 		
-	<!-- <script>
+<!-- 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.570493, 126.985315), // 지도의 중심좌표

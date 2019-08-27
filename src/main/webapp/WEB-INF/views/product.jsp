@@ -101,9 +101,9 @@
         <td><c:out value="${item.addr }"></c:out><br><c:out value="${item.detailaddr }"></c:out></td>
         <td><c:out value="${item.shipping }"></c:out></td>
         <td>
-        <c:if test="${item.shipping=='배송 준비' }">
-        <button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button>
-        </c:if>
+        	<c:if test="${item.shipping=='배송 준비' }">
+        		<button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button>
+        	</c:if>
         </td>
       </tr> 
    <div class="modal fade" id="myModal">

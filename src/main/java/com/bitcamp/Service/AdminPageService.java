@@ -30,5 +30,7 @@ public interface AdminPageService {
 	public List<ProductDTO> suborderlist(String search, String searchtxt, int startRow, int endRow, int cno);
 
 	public void smodifyresult(ProductDTO dto);
+
+	public void updateno(int no);
 	
 }

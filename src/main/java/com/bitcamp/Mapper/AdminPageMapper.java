@@ -34,5 +34,7 @@ public interface AdminPageMapper {
 
 	public void smodifyresult(ProductDTO dto);
 
+	public void updateno(int no);
+
 	
 }

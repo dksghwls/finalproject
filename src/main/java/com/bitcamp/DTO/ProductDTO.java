@@ -11,6 +11,7 @@ public class ProductDTO {
 	private String imgname;
 	private String pname;
 	private String nickname;
+	private String email;
 	private int bno;
 	private int imgno;
 	private String bdate;
@@ -126,6 +127,13 @@ public class ProductDTO {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getCdate() {
 		return cdate;

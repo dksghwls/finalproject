@@ -160,9 +160,13 @@
 	
 	    function submitCheck() {
 			var nickname = document.frm.nickname.value; // 닉네임
+			var name = document.frm.name.value; // 닉네임
 	    	var email = document.frm.email.value; // 이메일
 			var pw = document.frm.cpwd.value; //비밀번호
-	        
+			var addr = document.frm.addr.value // 주소
+	        var detailaddr=document.frm.detailaddr.value //상세주소
+	        var phone=document.frm.phone.value //전화번호
+			
 	        pw_passed = true;
 	
 	        var pattern1 = /[0-9]/;
@@ -175,12 +179,42 @@
 				return false;
 			}
 			
+			
 			if(nickname.length == 0) {
-				$('#result').text("닉네임 입력해주세요.");
+				$('#result').text("닉네임을 입력해주세요.");
 				frm.nickname.focus();
 				return false;
 			}
+			
+			if(nickname.length < 2) {
+				$('#result').text("닉네임을 2글자 이상 입력해주세요.");
+				frm.nickname.focus();
+				return false;
+			}
+			
+			if(name.length == 0) {
+				$('#result').text("이름을 입력해주세요.");
+				frm.name.focus();
+				return false;
+			}
 	        
+			if(addr.length == 0) {
+				$('#result').text("주소를 입력해주세요.");
+				frm.addr.focus();
+				return false;
+			}
+			
+			if(detailaddr.length == 0) {
+				$('#result').text("상세주소를 입력해주세요.");
+				frm.detailaddr.focus();
+				return false;
+			}
+			
+			if(phone.length == 0) {
+				$('#result').text("전화번호를 입력해주세요.");
+				frm.phone.focus();
+				return false;
+			}
 			if(pw.length == 0) {
 				$('#result').text("비밀번호를 입력해주세요.");
 				frm.cpwd.focus();
