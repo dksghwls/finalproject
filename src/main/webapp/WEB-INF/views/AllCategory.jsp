@@ -110,17 +110,27 @@
   <div class="text-center">
   <ul class="pagination">
     <c:if test="${page.prev }">
-	<a href="AllCategory?currPage=${page.startBlock-1 }&search=${search}&searxhtxt=${searchtxt}">
+	<a href="../AllCategory?currPage=${page.startBlock-1 }&search=${search}&searxhtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
   <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
-		<a href="AllCategory?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
-		<c:out value="${index }"/>
-		</a>
+  		<c:choose>
+  		<c:when test="${index }==${page.currPage }">
+  		<c:out value="${index }"/>
+  		</c:when>
+  		<c:otherwise>
+  		<a href="../AllCategory/${cno }?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
+  		<c:out value="${index }"/></a>
+  		</c:otherwise>
+  	</c:choose>
+		
+		
+		
+		
 </c:forEach>
   <c:if test="${page.next }">
-<a href="AllCategory?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
+<a href="../AllCategory?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
 <c:out value="다음"/>
 </a>
 </c:if>

@@ -52,7 +52,7 @@
 			
 	</where>
 	order by pno
-	limit #{startRow}, #{endRow}
+	limit #{startRow}, 10 <!-- #{endRow} --> 
   </select>
   
     	<select id="allList" resultType="com.bitcamp.DTO.CategoryDTO">
@@ -85,7 +85,7 @@
 			
 	
 	order by pno
-	limit #{startRow}, #{endRow}
+	limit #{startRow}, 10
     	
     	</select>
     	
@@ -191,7 +191,7 @@
 			
 	</where>
 	order by pno
-	limit #{startRow}, #{endRow}
+	limit #{startRow}, 10
   </select>
     	
     	<select id="update" parameterType="int" resultType="com.bitcamp.DTO.CategoryDTO">
@@ -248,7 +248,7 @@
 			
 	
 			order by pno
-			limit #{startRow}, #{endRow}
+			limit #{startRow}, 10
     	</select>
     	<select id="adminsubCount" parameterMap="hashmap" resultType="int">
     		select count(*)

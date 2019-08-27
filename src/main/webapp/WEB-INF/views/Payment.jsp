@@ -28,7 +28,7 @@
            
             merchant_uid: 'merchant_' + new Date().getTime(),
            
-            name: document.,
+            name: '주문명:결제테스트',
             
             amount: 1000, 
             //가격 
@@ -192,7 +192,7 @@
 	<c:set var="member" value="${ sessionScope.user }"></c:set>
 	
 	<section>
-	<c:forEach var="dto" items="${dto }" >
+	<c:forEach var="dto" items="${dto }">
         <h2>${dto.pname }</h2>
     </c:forEach>
    </section>
