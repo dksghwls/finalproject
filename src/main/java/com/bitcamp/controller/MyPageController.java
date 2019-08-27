@@ -22,6 +22,7 @@ import com.bitcamp.DTO.MakePage;
 import com.bitcamp.DTO.MemberDTO;
 import com.bitcamp.DTO.ProductDTO;
 import com.bitcamp.DTO.ReviewDTO;
+import com.bitcamp.Service.AdminPageService;
 import com.bitcamp.Service.CategoryService;
 import com.bitcamp.Service.MyPageService;
 
@@ -34,6 +35,9 @@ public class MyPageController {
 	
 	@Autowired
 	private MyPageService myPageService;
+	
+	@Autowired
+	private AdminPageService adminPageService;
 	
 	@RequestMapping("mypage/{no}")
 	public String myPage(@PathVariable int no, Model model) {
@@ -170,6 +174,7 @@ public class MyPageController {
 	@RequestMapping("exit/{no}")
 	@Transactional
 	public String exit(@PathVariable int no, @RequestParam String email) {
+		adminPageService.updateno(no);
 		myPageService.deletelist(no);
 		myPageService.deleteauth(email);
 		return "exit";

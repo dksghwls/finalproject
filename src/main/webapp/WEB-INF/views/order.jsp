@@ -15,6 +15,9 @@
       .nav-link { 
           font-size: 20px;
         }
+        .td{
+        	color: red;
+        }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -77,12 +80,13 @@
         <th>상품 이미지</th>
         <th>상품 번호</th>
         <th>상품명</th>
-        <th>주문자</th>
+        <th>주문자 이메일</th>
         <th>주문 수량</th>
         <th>주문 금액</th>
         <th>주문 일자</th>
         <th>배송 상태</th>
         <th>배송 상태 수정</th>
+        <th>탈퇴 여부</th>
       </tr>
     </thead>
     <tbody>
@@ -92,12 +96,13 @@
         <td><a href="#"><img src="../img/Jellyfish.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
         <td><c:out value="${item.pno }"></c:out></td>
         <td><c:out value="${item.pname }"></c:out></td>
-        <td><c:out value="${item.nickname }"></c:out></td>
+        <td><c:out value="${item.email }"></c:out></td>
         <td><c:out value="${item.bcount }"></c:out></td>
         <td><c:out value="${item.pay }"></c:out></td>
         <td><c:out value="${item.bdate }"></c:out></td>
         <td><c:out value="${item.shipping }"></c:out></td>
-        <td><button type="button" class="btn btn-info" onclick="shippingmodify(${item.bno})">수정</button></td>
+        <td><c:if test="${item.no!='0' }"><button type="button" class="btn btn-info" onclick="shippingmodify(${item.bno})">수정</button></c:if></td>
+        <td class="td"><c:if test="${item.no=='0' }"><c:out value="탈퇴"></c:out></c:if></td>
       </tr>
      </c:forEach>
     </tbody>
@@ -119,7 +124,7 @@
   <li class="page-item">
     <c:if test="${page.prev }">
     <%-- <c:if test="${page.startBlock>1 }"> --%>
-	<a class="page-link" href="order?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+	<a class="page-link" href="order/${cno}?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
@@ -148,7 +153,7 @@
 				<c:out value="${index}"></c:out>
 			</c:when>
 			<c:otherwise>
-				<a href="../order?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<a href="../order/${cno}?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
 				<c:out value="${index}"/></a>
 			</c:otherwise>
 		</c:choose>
