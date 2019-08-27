@@ -144,12 +144,15 @@ span {
 							<td><c:out value="${i.hdate }"></c:out></td>
 
 							<!-- 관리자 로그인 시 나타나게 하기!! -->
-							<sec:authorize access="hasRole('ROLE_USER')">
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<td>
 									<!-- input type="button" class="btn btn-default"
 								value="답변작성"> --> <input type="button" class="btn btn-default"
 									id="rebtn" data-toggle="modal" data-no="${i.hno}"
-									data-target="#myModal2" value="답변작성"> <!-- <!-- Modal -->
+									data-target="#myModal2" value="답변작성">
+									</sec:authorize>
+									
+									 <!-- <!-- Modal -->
 									<div class="modal fade" id="myModal2" role="dialog">
 										<div class="modal-dialog">
 
@@ -166,11 +169,7 @@ span {
 												</div>
 											</div>
 										</div>
-									</div>
-
-
-								</td>
-							</sec:authorize>
+									</div>						
 						</tr>
 						<tr style="display: none">
 						 <td colspan="7">답변: <c:out value="${i.recontent }"></c:out></td>
@@ -207,11 +206,11 @@ span {
 							value="다음"></c:out></a>
 				</c:if></li>
 		</ul>
-
+	<sec:authorize access="hasRole('ROLE_USER')">
 	 	<input type="button" class="btn btn-default" data-toggle="modal"
 			data-target="#myModal" value="글쓰기">
-		</button>
-
+			
+		 </sec:authorize>
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog">
