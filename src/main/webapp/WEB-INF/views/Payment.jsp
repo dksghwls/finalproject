@@ -28,13 +28,13 @@
            
             merchant_uid: 'merchant_' + new Date().getTime(),
            
-            name: '주문명:결제테스트',
+            name: document.,
             
             amount: 1000, 
             //가격 
-            buyer_email: 'iamport@siot.do',
-            buyer_name: '구매자이름',
-            buyer_tel: '010-1234-5678',
+            buyer_email: document.frm.email.value,
+            buyer_name: document.frm.name.value,
+            buyer_tel: document.frm.phone.value,
             buyer_addr: '서울특별시 강남구 삼성동',
             buyer_postcode: '123-456',
             m_redirect_url: 'https://www.yourdomain.com/payments/complete'
@@ -149,7 +149,7 @@
       .row.content {height:auto;} 
     }
    
-     img
+   /*   img
       {
           width: 200px;
           height: 200px;
@@ -157,7 +157,7 @@
           left: 50px;
          
           
-      }
+      } */
       section
       {
           position: relative;
@@ -188,25 +188,28 @@
   </style>
 </head>
 <body>
+
+	<c:set var="member" value="${ sessionScope.user }"></c:set>
+	
 	<section>
-	<c:forEach var="dto" items="${dto }">
+	<c:forEach var="dto" items="${dto }" >
         <h2>${dto.pname }</h2>
     </c:forEach>
    </section>
-  <img src="img/Jellyfish.jpg" alt="a" id="shopping">   
+  <img src="../img/Jellyfish.jpg" alt="a" id="shopping" style="width: 200px; height: 200px; position: relative; left: 50px;"> 
    
   
 <div class="container-fluid text-center" id="orderdetail">    
   <div class="row content">
     
     <div class="col-sm-8 text-left" id="addresinfo">
-    <form action="payok" method="post">
+    <form action="payok" method="post" name="frm">
     	<label for="name">이름</label><br>
-    	<input type="text" class="form-control" name="name" placeholder="name" style="width: 700px;" ><br>
+    	<input type="text" class="form-control" name="name" placeholder="name" style="width: 700px;" value="${member.name }"><br>
     	<label for="phone">전화번호</label><br>
-    	<input type="text" id="phone" name="phone" placeholder="phone" class="form-control" style="width: 700px;"><br>
+    	<input type="text" id="phone" name="phone" placeholder="phone" class="form-control" style="width: 700px;" value="${member.phone }"><br>
     	<label for="email">이메일</label><br>
-    	<input type="email" id="email" name="email"  placeholder="email" class="form-control" style="width: 700px;" ><br>
+    	<input type="email" id="email" name="email"  placeholder="email" class="form-control" style="width: 700px;" value="${member.email}" ><br>
            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary btn-lg" >
            <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control" style="width: 700px;">
            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" readonly="readonly" style="width: 700px;">
