@@ -11,6 +11,7 @@ public interface ContactService {
 	public int contactdelete(int no);
 	public int contactmodify(ContactDTO dto);
 	public int contactcount();
+	public int recontentmodify(ContactDTO dto);
 
 	
 

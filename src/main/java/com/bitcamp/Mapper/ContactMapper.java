@@ -9,13 +9,15 @@ import com.bitcamp.DTO.ContactDTO;
 
 @Mapper
 public interface ContactMapper {
+ 
+ 
 	public List<ContactDTO> contactlist(HashMap<String, Object> hm);
 	public int contactinsert(ContactDTO dto);
 	public ContactDTO contactdetail(int no);
 	public int contactdelete(int no);
 	public int contactmodify(ContactDTO dto);
 	public int count();
-
+	public int recontentmodify(ContactDTO dto);
 	
  
 

@@ -12,6 +12,7 @@ public class ContactDTO {
 	private String hcontent; //내용
 	private Date hdate;//날짜
 	private String himg; //파일명
+	private String recontent; //답글 내용
 	
 	public int getHno() {
 		return hno;
@@ -60,6 +61,12 @@ public class ContactDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getRecontent() {
+		return recontent;
+	}
+	public void setRecontent(String recontent) {
+		this.recontent = recontent;
 	}
 
 }
