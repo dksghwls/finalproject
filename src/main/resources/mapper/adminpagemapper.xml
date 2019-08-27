@@ -64,8 +64,8 @@
     	<select id="ototalCount" parameterMap="hashmap" resultType="int">
   	  		
   	  		select count(bno)
-  	  		from product p1, pay p2, member m
-  			where p1.pno=p2.pno and p2.no=m.no
+  	  		from product p1, pay p2
+  			where p1.pno=p2.pno
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>
@@ -76,8 +76,8 @@
 					<when test="search=='bno'">
 						and p2.bno=#{searchtxt}
 					</when>
-					<when test="search=='nickname'">
-						and m.nickname like CONCAT('%', #{searchtxt}, '%')
+					<when test="search=='email'">
+						and p2.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
   					</choose>
   				</if>
@@ -85,9 +85,9 @@
     	
     	<select id="orderlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select bno, p2.pno, p1.pname, m.nickname, p2.bcount, p2.pay, p2.bdate, p2.shipping
-  			from product p1, pay p2, member m
-  			where p1.pno=p2.pno and p2.no=m.no
+  			select p2.bno, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
+  			from product p1, pay p2
+  			where p1.pno=p2.pno
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -100,8 +100,8 @@
 					<when test="search=='bno'">
 						and p2.bno=#{searchtxt}
 					</when>
-					<when test="search=='nickname'">
-						and m.nickname like CONCAT('%', #{searchtxt}, '%')
+					<when test="search=='email'">
+						and p2.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
 				</choose>
 			</if>
@@ -120,8 +120,12 @@
     	<select id="subototalCount" parameterMap="hashmap" resultType="int">
   	  		
   	  		select count(bno)
+  	  		from product p1, pay p2
+  			where p1.pno=p2.pno and p1.cno=#{cno}
+  	  		
+  	  		<!-- select count(bno)
   	  		from product p1, pay p2, member m
-  	  		where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno}
+  	  		where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno} -->
   		<!-- 	<where> -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
@@ -133,8 +137,8 @@
 					<when test="search=='bno'">
 						and p2.bno=#{searchtxt}
 					</when>
-					<when test="search=='nickname'">
-						and m.nickname like CONCAT('%', #{searchtxt}, '%')
+					<when test="search=='email'">
+						and p2.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
   					</choose>
   				</if>
@@ -143,9 +147,13 @@
   		
   		<select id="suborderlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select p2.bno, p2.pno, p1.pname, m.nickname, p2.bcount, p2.pay, p2.bdate, p2.shipping
+  			select p2.bno, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
+  			from product p1, pay p2
+  			where p1.pno=p2.pno and p1.cno=#{cno}
+  			
+  			<!-- select p2.bno, p2.pno, p1.pname, m.nickname, p2.bcount, p2.pay, p2.bdate, p2.shipping
   			from product p1, pay p2, member m
-  			where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno}
+  			where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno} -->
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -158,8 +166,8 @@
 					<when test="search=='bno'">
 						and p2.bno=#{searchtxt}
 					</when>
-					<when test="search=='nickname'">
-						and m.nickname like CONCAT('%', #{searchtxt}, '%')
+					<when test="search=='email'">
+						and p2.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
 				</choose>
 			</if>
@@ -174,6 +182,13 @@
            set  
                shipping=#{shipping}
           where bno=#{bno}   
+    	</update>
+    	
+    	<update id="updateno" parameterType="int">
+          update   pay
+           set  
+               no=0
+          where no=#{no}   
     	</update>
     	
     </mapper>
