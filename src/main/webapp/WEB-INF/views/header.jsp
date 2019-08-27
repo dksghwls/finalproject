@@ -26,8 +26,9 @@
 	      <ul class="nav navbar-nav">
 	        <li><a href="../AllCategory">상품</a></li>
 	        <li><a href="../helpcenter">고객센터</a></li>
-	        <!-- <li><a href="../adminproduct">관리페이지</a></li> -->
-	        <li><a href="../adminpage">관리자 페이지</a></li>
+	        <sec:authorize access="hasRole('ROLE_ADMIN')">
+				<li><a href="../adminpage">관리자 페이지</a></li>
+			</sec:authorize>
 	      </ul>
 	      
 	    <ul class="nav navbar-nav navbar-right">  
@@ -37,7 +38,7 @@
 		</sec:authorize>
 	    <sec:authorize access="isAuthenticated()">
 	    	<li>
-		    	<a href="../mypage/${member.no }"><span class="glyphicon glyphicon-user"></span>
+		    	<a href="../mypage/${ member.no }"><span class="glyphicon glyphicon-user"></span>
 		    		<c:if test="${ member != null }">
 						<c:out value="${ member.nickname }님"></c:out>
 					</c:if>
