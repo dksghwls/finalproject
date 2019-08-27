@@ -17,7 +17,7 @@
 	   <div class="form-group">
 	      <label class="control-label col-sm-2" for="email">Nickname:</label>
 	      <div class="col-sm-8">
-	        <input type="text" class="form-control" id="nickname" placeholder="Enter nickname" name="nickname" value="">
+	        <input type="text" class="form-control" id="nickname" placeholder="Enter nickname" name="nickname" value="" maxlength="10">
 	      </div>
 	    </div>
 	    <div class="form-group">
@@ -149,11 +149,8 @@
 				
 				$.ajax({
 			        url : "/userCheck",
-			        // 사용자가 입력하여 id로 넘어온 값을 서버로 보냅니다.
 			        data : {"email" : email},
-			        // 성공적으로 값을 서버로 보냈을 경우 처리하는 코드입니다.
 			        success : function (data) {
-			            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
 			            if (data) {
 			            	$('#result').text('사용할 수 없는 아이디 입니다.');
 			            	$("#submit").attr("disabled", "disabled");
@@ -191,7 +188,13 @@
 			}
 			
 			if(nickname.length == 0) {
-				$('#result').text("닉네임 입력해주세요.");
+				$('#result').text("닉네임을 입력해주세요.");
+				frm.nickname.focus();
+				return false;
+			}
+			
+			if(nickname.length < 2) {
+				$('#result').text("닉네임을 2글자 이상 입력해주세요.");
 				frm.nickname.focus();
 				return false;
 			}
