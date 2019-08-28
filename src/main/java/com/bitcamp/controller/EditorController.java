@@ -26,7 +26,7 @@ public class EditorController {
 
 	@Autowired
 	private CategoryService service;
-	private String path = "temp";
+	private String path = "/temp";
 
 	@RequestMapping(value = "/coding")
 	public String coding()
@@ -41,16 +41,18 @@ public class EditorController {
 		
 		MultipartFile multi = vo.getFile1();
 		 try {
+			 
 			 String uploadpath = request.getSession().getServletContext().getRealPath(path);
 			 if(!multi.isEmpty()) {
 				 File file= new File(uploadpath, multi.getOriginalFilename());
 				 multi.transferTo(file);
-				 model.addAttribute("title", vo.getFilename());
+				 /*model.addAttribute("title", vo.getFilename());
 				 model.addAttribute("filename", vo.getFile1().getOriginalFilename());
-				 model.addAttribute("uploadpath", file.getAbsolutePath());
+				 model.addAttribute("uploadpath", path);*/
 		
-
-				int result = service.addresult(dto,uploadpath);
+				 System.out.println(path+"!!!");
+				 System.out.println(vo.getFile1().getOriginalFilename());
+				int result = service.addresult(dto,path+"/"+vo.getFile1().getOriginalFilename());
 				 
 				 return "redirect:/adminproduct";
 			 }

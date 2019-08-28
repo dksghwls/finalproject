@@ -14,9 +14,9 @@ public class CategoryDTO {
 	private String regist;
 	private int stock;
 	
-	
 	private int imgno;
 	private String imgname;
+	
 	
 
 	public int getPno() {
@@ -55,18 +55,7 @@ public class CategoryDTO {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	public int getImgno() {
-		return imgno;
-	}
-	public void setImgno(int imgno) {
-		this.imgno = imgno;
-	}
-	public String getImgname() {
-		return imgname;
-	}
-	public void setImgname(String imgname) {
-		this.imgname = imgname;
-	}
+	
 	public String getContent() {
 		return content;
 	}
@@ -90,6 +79,18 @@ public class CategoryDTO {
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+	public int getImgno() {
+		return imgno;
+	}
+	public void setImgno(int imgno) {
+		this.imgno = imgno;
+	}
+	public String getImgname() {
+		return imgname;
+	}
+	public void setImgname(String imgname) {
+		this.imgname = imgname;
 	}
 	
 }

@@ -147,7 +147,8 @@ public class CategoryServiceImple implements CategoryService{
 		  
 		  HashMap<String, Object> hm=new HashMap<>();
 		  hm.put("path", uploadpath);
-		 
+		
+		 System.out.println(uploadpath);
 		  return  mapper.addallresult(hm);
 	}
 
@@ -220,6 +221,13 @@ public class CategoryServiceImple implements CategoryService{
 	public List<ProductDTO> paymentProduct(int pno) {
 		
 		return mapper.paymentProduct(pno);
+	}
+
+
+	@Override
+	public List<CategoryDTO> imgTest() {
+		
+		return mapper.imgTest();
 	}
 
 	

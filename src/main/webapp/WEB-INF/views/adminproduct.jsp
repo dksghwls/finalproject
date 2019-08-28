@@ -86,8 +86,7 @@ function update(pno)
     <tbody>
     <c:forEach var="dto" items="${list }">
       <tr>
-      
-        <td><a href="main.html"><img src="../img/Tulips.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
+        <td><a href="../detail/{pno}"><img src="${dto.imgname}" class="rounded" width="100" height="75"></a></td>
         <td><c:out value="${dto.pno }"></c:out></td>
         <td><c:out value="${dto.pname }"></c:out></td>
         <td><c:out value="${dto.oprice }"></c:out></td>
@@ -95,8 +94,8 @@ function update(pno)
         <td>null</td>
         <td>null</td>
         <td>null</td>
-        <td>null</td>
-        <td>null</td>
+        <td><c:out value="${dto.regist }"></c:out></td>
+        <td><c:out value="${dto.deadline }"></c:out></td>
         <td><input type="button" value="삭제" onclick="del(${dto.pno})"></td>
         <td><input type="button" value="수정" onclick="update(${dto.pno})"></td>
       </tr>
