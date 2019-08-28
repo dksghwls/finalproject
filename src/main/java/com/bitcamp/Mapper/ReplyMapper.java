@@ -7,7 +7,7 @@ import com.bitcamp.DTO.ReplyDTO;
 
 public interface ReplyMapper {
 
-	public List<ReplyDTO> replylist(HashMap<String,Object> hm);
+	public List<ReplyDTO> replylist();
     public int replyinsert(ReplyDTO dto);
     public int replyinsertresult(ReplyDTO dto);
     public ReplyDTO replydetail(int no);

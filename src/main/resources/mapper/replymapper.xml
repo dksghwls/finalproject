@@ -6,14 +6,14 @@
     <mapper namespace="com.bitcamp.Mapper.ReplyMapper" >
     
     
-    <select id="replylist" resultType="com.bitcamp.DTO.ReplyDTO" parameterType="java.util.HashMap">
+    <select id="replylist" resultType="com.bitcamp.DTO.ReplyDTO">
     
     
     select rcontent from reply
     
     </select>
     
-    <insert id="replyinsert" parameterType="com.bitcamp.DTO.ReplyDTO" >
+    <insert id="replyinsert" parameterType="com.bitcamp.DTO.ReplyDTO">
     
     insert into reply(rcontent)
     values(#{rcontent})

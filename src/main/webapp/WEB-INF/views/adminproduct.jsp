@@ -86,7 +86,7 @@ function update(pno)
     <tbody>
     <c:forEach var="dto" items="${list }">
       <tr>
-        <td><a href="../detail/{pno}"><img src="${dto.imgname}" class="rounded" width="100" height="75"></a></td>
+        <td><a href="../detail/${dto.pno}"><img src="${dto.imgname}" class="rounded" width="100" height="75"></a></td>
         <td><c:out value="${dto.pno }"></c:out></td>
         <td><c:out value="${dto.pname }"></c:out></td>
         <td><c:out value="${dto.oprice }"></c:out></td>

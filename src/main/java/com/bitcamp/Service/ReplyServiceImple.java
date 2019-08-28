@@ -18,16 +18,16 @@ public class ReplyServiceImple implements ReplyService {
 	@Override
 	public List<ReplyDTO> replylist()
 	{
-		HashMap<String, Object> hm = new HashMap<>(); 
+		
 	    
 		
-		return replymapper.replylist(hm);
+		return replymapper.replylist();
 		
 	}
 	@Override
 	public int replyinsert(ReplyDTO dto)
 	{
-	    HashMap<String, Object> hm = new HashMap<>();
+	    
 		
 	    
 	    

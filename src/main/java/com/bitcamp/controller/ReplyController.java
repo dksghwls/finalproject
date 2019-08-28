@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ import com.bitcamp.Service.ReplyService;
 
 @Controller
 public class ReplyController {
-
+    @Autowired
 	private ReplyService replyservice;
 	
 	@RequestMapping("/reply")
@@ -28,22 +29,22 @@ public class ReplyController {
 		List<ReplyDTO> list = replyservice.replylist();
 		model.addAttribute("rlist",list);
 		
-		return "replylist";
+		return "redirect:/replylist";
 		
 		 
 	}
 	@RequestMapping("/replyinsert")
 	public String replyinsert(ReplyDTO dto)
 	{
-		return "templete.jsp?page=replyinsertform";
+		return "templete.jsp?page=replyinsert";
 		
 	}
-	@RequestMapping("/replyinsertok")
-	public String replyinsertok(ReplyDTO dto)
+	@RequestMapping("/replyinsertresult")
+	public String replyinsertresult(ReplyDTO dto)
 	{
 		int result = replyservice.replyinsert(dto);
 		
-		return "redirect:replylist";
+		return "redirect:/detail";
 		
 		
 	}

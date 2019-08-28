@@ -90,7 +90,9 @@
       <div role="tabpanel" class="tab-pane active" id="detailpage"></div>
       <div role="tabpanel" class="tab-pane" id="reviewpage">
       
-      <div class="drop">
+      <jsp:include page="replylist.jsp"></jsp:include>
+      
+<%--       <div class="drop">
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">분류
     <span class="caret"></span></button>
@@ -111,24 +113,50 @@
  
 
    <div class="row">
-       <div class="col-xs-6"><textarea class="textarea" rows="5" id="textarea">리뷰작성</textarea></div>
-   <div class="col-xs-6"><button class="reviewbtn">리뷰</button></div>
-    </div>
+       <div class="col-xs-6"><textarea class="textarea" rows="5" id="textarea">리뷰작성</textarea>
+       <c:forEach var="item" items="${rlist}">
+       <c:out value="${item.rcontent }"></c:out>
+       
+       
+       </c:forEach>
+       </div>
    
+    <!-- Trigger the modal with a button -->
+<a href="/replyinsert"></a><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">리뷰쓰기</button>
+<!-- <div class="col-xs-6"><a href="/replyinsert">리뷰쓰기</a> -->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">리뷰를 입력하세요</h4>
+      </div>
+      <div class="modal-body">
+      <!-- <form action="replyinsertresult" method="post">  -->
+		
+	 <jsp:include page="replyinsert.jsp"></jsp:include> 
+		<input type="hidden" name="${_csrf.parameterName }"
+				value="${_csrf.token }" />
+		
+	
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+   
+   
+   </div>
+    </div> --%>
+   
       </div>
       
     </div>
