@@ -90,6 +90,12 @@
 		font-weight: bold;
 		font-size: 20px;
 	}
+	
+	.recolor{
+	 
+  border-left: 6px solid red;
+  background-color: white;
+	}	
 </style>
 
 <head>
@@ -159,8 +165,9 @@
 		</div>
 	</div>						
 		</tr>
-			<tr style="display: none">
-			 <td colspan="7">답변: <c:out value="${i.recontent }"></c:out></td>
+			<tr class="recolor" style="display: none">
+			<td colspan="1">답변:</td>
+			 <td colspan="7"><c:out value="${i.recontent }"></c:out></td>
 			</tr>
 		</c:forEach>
 	</tbody>
