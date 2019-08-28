@@ -67,7 +67,6 @@ $(document).ready(function() {
 			<br>
 			<label for="fcontent">내용</label><br>
 			<textarea class="form-control" rows="5" id="fcontent"name="fcontent" style="width: 100%;">
-				
 			</textarea><br>
 			<br>
 			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
