@@ -61,7 +61,7 @@ public class EditorController {
 		return "redirect:/adminproduct";
 	}
 	@RequestMapping("/Payment/{pno}")
-	public String payment(@PathVariable int pno,Model model)
+	public String payment(@PathVariable int pno ,Model model)
 	{
 		List<ProductDTO> dto = service.paymentProduct(pno);
 		model.addAttribute("dto", dto);

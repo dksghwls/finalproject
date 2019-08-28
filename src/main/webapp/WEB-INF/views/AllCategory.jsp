@@ -94,7 +94,7 @@
       <div class="col-sm-3" id="iimg">
 
         <%-- <img src="resources/editor/multiupload/"+${ dto.imgname }><br> --%>
-        <a href="../Payment/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br>
+        <a href="../detail/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br>
         ${dto.pname}
         ${dto.dprice}
         ${dto.oprice}
