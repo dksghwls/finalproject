@@ -20,11 +20,11 @@
 <script>
 function del(pno)
 {
-	location.href="delete/"+pno;
+	location.href="../delete/"+pno;
 }
 function update(pno)
 {
-	location.href="update/"+pno;
+	location.href="../update/"+pno;
 }
 </script>
 </head>
