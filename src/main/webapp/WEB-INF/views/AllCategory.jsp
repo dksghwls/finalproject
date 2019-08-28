@@ -92,9 +92,9 @@
    <div class="row">
       <c:forEach var="dto" items="${dto}">
       <div class="col-sm-3" id="iimg">
-
-        <%-- <img src="resources/editor/multiupload/"+${ dto.imgname }><br> --%>
-        <a href="../detail/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br>
+		
+        <a href="../detail/${dto.pno}"><img src="${ dto.imgname }"></a><br> 
+        <%-- <a href="../detail/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br> --%>
         ${dto.pname}
         ${dto.dprice}
         ${dto.oprice}

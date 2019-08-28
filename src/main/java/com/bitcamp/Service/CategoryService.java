@@ -53,5 +53,7 @@ public interface CategoryService {
 
 	public List<ProductDTO> paymentProduct(int pno);
 
+	public List<CategoryDTO> imgTest();
+
 	
 }
