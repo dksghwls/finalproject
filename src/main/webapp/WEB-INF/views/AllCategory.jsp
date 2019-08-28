@@ -63,7 +63,7 @@
   </style>
 </head>
 <body>
-<form method="get" action="AllCategory?currPage=${page.currPage }">
+<form method="get" action="../AllCategory?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option value="pno">상품번호</option>
 		<option value="pname">상품이름</option>
@@ -94,7 +94,7 @@
       <div class="col-sm-3" id="iimg">
 
         <%-- <img src="resources/editor/multiupload/"+${ dto.imgname }><br> --%>
-        <a href="../Payment/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br>
+        <a href="../detail/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br>
         ${dto.pname}
         ${dto.dprice}
         ${dto.oprice}
