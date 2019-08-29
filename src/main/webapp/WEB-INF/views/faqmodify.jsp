@@ -48,16 +48,16 @@ $(document).ready(function() {
 </head>
 <body>
 	<div class="container">
-		<br>
+		 
 			<form method="post" action="/faqmodifyok" id="faqmodiBoardFrm">	
-			<label for="focusedInput">글번호</label>
-			<input type="text" name="fno" class="form-control" id="focusedInput" value="${dto.fno }" readonly="readonly"><br>
+			 
+			<input type="hidden" name="fno" class="form-control" id="focusedInput" value="${dto.fno }" readonly="readonly"><br>
 			<br>
 			<label for="sel1">카테고리</label>
 		 	<select name="fcno" class="form-control" id="sel1"> 
-				<option value="1">1.배송</option>
-				<option value="2">2.주문</option>
-				<option value="3">3.회원</option>
+				<option value="1">배송</option>
+				<option value="2">주문</option>
+				<option value="3">회원</option>
 			</select><br>
 			<%-- <label for="fcname">카테고리번호</label>
 			<input type="text" name="fcname" id="fcname" value="${dto.fcname }" readonly="readonly"><br> --%>
