@@ -16,10 +16,12 @@ public class ContactServiceImple implements ContactService {
 	private ContactMapper mapper;
 
 	@Override
-	public List<ContactDTO> contactlist(int startRow, int endRow) {
+	public List<ContactDTO> contactlist(String search,String keyword, int startRow, int endRow) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("startRow", startRow);
 		hm.put("endRow", endRow);
+		hm.put("search", search);
+		hm.put("keyword", keyword);
 		return mapper.contactlist(hm);
 	}
 	@Override
@@ -43,9 +45,11 @@ public class ContactServiceImple implements ContactService {
 		return mapper.contactmodify(dto);
 	}
 	@Override
-	public int contactcount() {
-		 
-		return mapper.count();
+	public int contactcount(String search, String keyword) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("keyword", keyword);
+		return mapper.count(hm);
 	}
 	@Override
 	public int recontentmodify(ContactDTO dto) {

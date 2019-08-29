@@ -51,7 +51,7 @@ public class FaqController {
 		model.addAttribute("page", page);
 		model.addAttribute("search",search);
 		model.addAttribute("keyword",keyword);
-		System.out.println("listtest: " + list);
+		System.out.println("listtest: " + list.get(0).getFtitle());
 		System.out.println("pagetest: " + page);
 
 		List<FaqDTO> shiplist = faqservice.shiplist(page.getStartRow(), page.getEndRow());

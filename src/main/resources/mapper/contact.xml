@@ -5,9 +5,22 @@
 
 <mapper namespace="com.bitcamp.Mapper.ContactMapper">
 
-	<select id="count" resultType="int">
+	<select id="count" resultType="int" parameterType="java.util.HashMap">
 		select count(*)
-		from help
+		from help as a
+		left join member as b
+		on a.no = b.no
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				<choose>
+					<when test="search=='all'">
+						and htitle like CONCAT('%',#{keyword},'%')
+						or b.nickname like CONCAT('%',#{keyword},'%')
+				</when>
+				</choose>
+			</if>
+		</where>
+		
 	</select>
 
 
@@ -16,10 +29,18 @@
 		b.no, htitle, hcontent, hdate, b.email, recontent
 		from help as a
 		left join member as b
-		on
-		a.no = b.no
-		order by hno desc
-		LIMIT #{startRow}, 5;
+		on a.no = b.no
+		where hno
+		 <if test="keyword!=null and keyword!=''">
+			<choose>
+					<when test="search=='all'">
+						and htitle like CONCAT('%',#{keyword},'%')
+						or b.nickname like CONCAT('%',#{keyword},'%')
+				</when>
+			</choose>
+		</if>
+		ORDER BY hno desc
+		LIMIT #{startRow}, 3;
 	</select>
 
 	<insert id="contactinsert"
