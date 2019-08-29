@@ -125,6 +125,7 @@
 				<th>회원명</th>
 				<th>글제목</th>
 				<th>작성일</th>
+				<th>답변상태</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -139,9 +140,15 @@
 					<td><c:out value="${i.nickname }"></c:out></td>
 					<td>
 					<c:if test="${ member.no==i.no }"><a href="/contactdetail/${i.hno }"></c:if>
+					<c:if test="${ member.no==1 }"><a href="/contactdetail/${i.hno }"></c:if>
 					<c:out value="${i.htitle }"></c:out></a>
 					</td>
-					<td><c:out value="${i.hdate }"></c:out></td>				
+					<td><c:out value="${i.hdate }"></c:out></td>
+					<td><c:if test="${i.recontent != null }">
+					<c:out value="완료"></c:out></c:if>
+					<c:if test="${i.recontent == null }">
+					<c:out value="대기"></c:out></c:if>
+					</td>				
 			<!-- 관리자 로그인 시 나타나게 하기!! -->
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<td>
