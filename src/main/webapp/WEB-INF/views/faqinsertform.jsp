@@ -81,7 +81,6 @@
 				return false;
 			}
 	}
-</script>
-	
+</script>	
  </body>
 </html>
