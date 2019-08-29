@@ -189,16 +189,23 @@ public class AdminPageController {
 		
 	}
 	
-	@RequestMapping("shippingmodify/{bno}")
+	/*@RequestMapping("shippingmodify/{bno}")
 	public String shippingmodify(@PathVariable int bno, Model model) {
 		
 		model.addAttribute("bno", bno);
-		
 		return "templete.jsp?page=shippingmodify";
-	}
+		
+		ProductDTO dto=new ProductDTO();
+		dto.setBno(bno);
+		dto.setShipping(shipping);
+		
+		adminPageService.smodifyresult(dto);
+		
+		return "redirect:/order";
+	}*/
 	
-	@RequestMapping(value="/smodifyresult")
-	public String smodifyresult(@RequestParam int bno, @RequestParam String shipping, Model model) {
+	@RequestMapping("smodifyresult/{bno}")
+	public String smodifyresult(@PathVariable int bno, @RequestParam String shipping, Model model) {
 		
 		ProductDTO dto=new ProductDTO();
 		dto.setBno(bno);
