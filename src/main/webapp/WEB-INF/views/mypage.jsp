@@ -118,7 +118,7 @@
   <br>
   <button type="button" class="btn btn-info" onclick="location.href='../infomodify/${item.no}'">수정</button>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">탈퇴</button>
-  
+  <br><br>
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">

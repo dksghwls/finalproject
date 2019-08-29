@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: hb2004
-=======
 Built-By: 5CLASS-184
->>>>>>> branch 'master' of https://github.com/dksghwls/finalproject.git
-Build-Jdk: 1.8.0_201
+Build-Jdk: 1.8.0_91
 Created-By: Maven Integration for Eclipse
 
