@@ -45,7 +45,10 @@
 	}
 	#helpcenterbg{
 	background-image: url("img/helpmain.jpg");
-  	background-size: 50%;
+  	background-size: 100%; 
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+     
 	}
 	
 	.bg-3 {
