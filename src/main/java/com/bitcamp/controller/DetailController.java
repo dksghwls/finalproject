@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bitcamp.DTO.ProductDTO;
+import com.bitcamp.DTO.imgDTO;
 import com.bitcamp.Service.DetailService;
 
 @Controller
@@ -25,7 +26,12 @@ public class DetailController {
 		System.out.println(pno);
 		
 		List<ProductDTO> dto = service.detaillist(pno);
+	
+		imgDTO img = service.getimage(pno);
+		System.out.println(img.getImgname());
+		
 		model.addAttribute("dto", dto);
+		model.addAttribute("img",img);
 		
 		return "templete.jsp?page=detail";
 		

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.DTO.ProductDTO;
+import com.bitcamp.DTO.imgDTO;
 import com.bitcamp.Mapper.DetailMapper;
 
 @Service
@@ -19,5 +20,13 @@ public class DetailServiceImple implements DetailService {
 		
 		return detailmapper.detaillist(pno);
 	}
+	
+	@Override
+	public imgDTO getimage(int pno) {
+		return detailmapper.getimage(pno);		
+	}
+	
+	
+	
 	
 }

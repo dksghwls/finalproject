@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitcamp.DTO.ReplyDTO;
 import com.bitcamp.Service.ReplyService;
@@ -29,22 +30,23 @@ public class ReplyController {
 		List<ReplyDTO> list = replyservice.replylist();
 		model.addAttribute("rlist",list);
 		
-		return "redirect:/replylist";
+		return "/replylist";
 		
 		 
 	}
-	@RequestMapping("/replyinsert")
-	public String replyinsert(ReplyDTO dto)
+	@RequestMapping(value="/replyinsert", method=RequestMethod.GET)
+	public String replyinsert(ReplyDTO dto )
 	{
-		return "templete.jsp?page=replyinsert";
+		  		return "templete.jsp?page=replyinsert";
 		
 	}
 	@RequestMapping("/replyinsertresult")
-	public String replyinsertresult(ReplyDTO dto)
+	public String replyinsertresult(ReplyDTO dto, Model model)
 	{
 		int result = replyservice.replyinsert(dto);
-		
-		return "redirect:/detail";
+	    model.addAttribute("dto", dto);	
+	    System.out.println(dto.getRcontent());
+		return "/replylist";
 		
 		
 	}

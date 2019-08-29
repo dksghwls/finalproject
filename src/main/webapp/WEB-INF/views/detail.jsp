@@ -3,6 +3,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	$(document).on("click", "#reviewbtn", function() {
+		var dto = $(this).data('dto');
+		$.ajax({
+			url : '/replyinsertresult/',
+			success : function(data) {
+			$('#outputt .row2').empty().append(data);
+			}
+		});
+	});
+</script>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +56,10 @@
 <div class="row">
   <div class="col-sm-8">
   <div class="inner">
-  <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
+   
+     <img src="${img.imgname}"> 
+   
+  
   </div>
     
   </div> 
@@ -90,9 +105,9 @@
       <div role="tabpanel" class="tab-pane active" id="detailpage"></div>
       <div role="tabpanel" class="tab-pane" id="reviewpage">
       
-      <jsp:include page="replylist.jsp"></jsp:include>
+      <div role="tabpanel" class="tab-pane" id="reviewpage">
       
-<%--       <div class="drop">
+      <div class="drop">
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">분류
     <span class="caret"></span></button>
@@ -111,18 +126,23 @@
       <input type="text" class="search" size="20" placeholder="Search" required> <button type="button" class="btn btn-danger">검색하기</button>  
     </div>
  
-
-   <div class="row">
-       <div class="col-xs-6"><textarea class="textarea" rows="5" id="textarea">리뷰작성</textarea>
+<div id="outputt">
+   <div class="row2">
+      
        <c:forEach var="item" items="${rlist}">
        <c:out value="${item.rcontent }"></c:out>
        
        
        </c:forEach>
+       <button id="reviewbtn">리뷰보기</button>
        </div>
-   
-    <!-- Trigger the modal with a button -->
+ </div>     
+      
+           <!-- Trigger the modal with a button -->
 <a href="/replyinsert"></a><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">리뷰쓰기</button>
+
+
+
 <!-- <div class="col-xs-6"><a href="/replyinsert">리뷰쓰기</a> -->
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -137,7 +157,7 @@
       </div>
       <div class="modal-body">
       <!-- <form action="replyinsertresult" method="post">  -->
-		
+		 <%-- <jsp:include page="replylist.jsp"></jsp:include> --%>
 	 <jsp:include page="replyinsert.jsp"></jsp:include> 
 		<input type="hidden" name="${_csrf.parameterName }"
 				value="${_csrf.token }" />
@@ -145,6 +165,9 @@
 	
        
       </div>
+      
+      
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -152,10 +175,23 @@
 
   </div>
 </div>
+<div>
+  
+   
+</div>
+
+
+
+    </div>
+    </div>
+   
+   
+      
+
    
    
    </div>
-    </div> --%>
+    </div> 
    
       </div>
       
