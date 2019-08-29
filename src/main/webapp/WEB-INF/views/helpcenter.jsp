@@ -122,12 +122,9 @@
 				<p class="helppsize">원하는 질문이 없다면 이 페이지를 이용하세요.</p>
 				<br> 
 				<sec:authorize access="isAnonymous()">
-			  <a href="/contact" data-toggle="modal" data-target="#myModal"> 
-			 <img src="img/test.jpg"	class="img-responsive margin" 
-			 style="width: 100%; height: 400px;" alt="Image">
-					</a>
+			   
 		     <!-- Modal -->
-  			<div class="modal fade" id="myModal" role="dialog">
+  			<div class="modal fade" id="myModal4" role="dialog">
  		  	 <div class="modal-dialog modal-sm">
   		   	 <div class="modal-content">
    		     <div class="modal-header">
@@ -143,16 +140,16 @@
      		 </div>
     		</div>
   			</div>
-		</div>
-			 	</sec:authorize>
-			 	 
-				<sec:authorize access="isAuthenticated()">
-				<a href="/contact" data-toggle="tooltip" title="Click Contact Us!"> 
-				</sec:authorize>
+  			<a href="#" data-toggle="modal" data-target="#myModal4"> 
 					<img src="img/test.jpg"	class="img-responsive margin" 
-					style="width: 100%; height: 400px;" alt="Image">
-					</a>
-					
+					style="width: 100%; height: 400px;" alt="Image"></a>
+  				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+				<a href="/contact" data-toggle="tooltip" title="Click Contact Us!">
+				<img src="img/test.jpg"	class="img-responsive margin" 
+					style="width: 100%; height: 400px;" alt="Image"></a>
+				</sec:authorize>
+				   					
 			</div>
 			<div class="col-sm-4">
 				<p class="p1">Map</p>
@@ -163,7 +160,7 @@
 		</div>
 	</div>
 	<!-- 지도 api  -->
-		
+	<!-- 	
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
@@ -196,6 +193,6 @@
 
 		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 		infowindow.open(map, marker);
-	</script>
+	</script> -->
 </body>
 </html>
