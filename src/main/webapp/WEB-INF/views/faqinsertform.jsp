@@ -43,9 +43,9 @@
 	<form method="post" action="/faqinsertok" id="faqinsertBoardFrm">
 	<label for="sel1">카테고리</label>
 	 <select name="fcno"class="form-control" id="sel1"> 
-		<option value="1">1.배송</option>
-		<option value="2">2.주문</option>
-		<option value="3">3.회원</option>
+		<option value="1">배송</option>
+		<option value="2">주문</option>
+		<option value="3">회원</option>
 	</select><br>
 	<br>
 	<label for="focusedInput">제목</label>
