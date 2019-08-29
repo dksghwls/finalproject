@@ -84,6 +84,8 @@ public class MyPageController {
 		
 		int totalCount = myPageService.totalCount(search, searchtxt, no);
 		
+		System.out.println("totalCount 1: "+totalCount);
+		
 		int pageSize=10;
 		int blockSize=5;
 		
@@ -129,6 +131,8 @@ public class MyPageController {
 		}
 		
 		int totalCount = myPageService.ctotalCount(search, searchtxt, no, cno);
+		
+		System.out.println("totalCount 2: "+totalCount);
 		
 		int pageSize=10;
 		int blockSize=5;

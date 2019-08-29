@@ -6,7 +6,7 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(document).on("click", "#reviewbtn", function() {
-		var rcontent = $(this).data('dto');
+		var dto = $(this).data('dto');
 		$.ajax({
 			url : '/replyinsertresult/',
 			success : function(data) {
@@ -56,9 +56,9 @@
 <div class="row">
   <div class="col-sm-8">
   <div class="inner">
-   <c:forEach var="item" items="${dto}">
-     <img src="${item.imgname}" alt="${item.imgname}"> 
-   </c:forEach>
+   
+     <img src="${img.imgname}"> 
+   
   
   </div>
     

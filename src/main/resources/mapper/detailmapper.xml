@@ -12,5 +12,16 @@
     
     
     </select>
+   <select id="getimage" resultType="com.bitcamp.DTO.imgDTO" parameterType="int">
+    
+    select imgname from img where pno=#{pno}
+    
+    
+    
+    </select> 
+    
+    
+    
+    
     
     </mapper>

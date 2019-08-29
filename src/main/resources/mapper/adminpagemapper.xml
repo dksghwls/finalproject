@@ -191,4 +191,116 @@
           where no=#{no}   
     	</update>
     	
+    	<select id="ccategorylist" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select cno, cname from category
+    		
+    	</select>
+    	
+    	<select id="ctotalCount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(bno)
+  	  		from cancel c, member m
+  	  		where c.no=m.no
+  				
+  				<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and c.pname like CONCAT('%', #{searchtxt}, '%')
+					</when>
+					<when test="search=='bno'">
+						and c.bno=#{searchtxt}
+					</when>
+					<when test="search=='email'">
+						and m.email like CONCAT('%', #{searchtxt}, '%')
+					</when>
+  					</choose>
+  				</if>
+  		</select>
+  		
+  		<select id="ordercancel" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
+  			
+  			select c.no, c.pname, c.bno, c.bdate, c.dprice, c.cno, c.cdate, m.email
+  			from cancel c, member m
+  			where c.no=m.no
+  			
+            <!-- <where> -->
+           	<if test="searchtxt!=null">
+			<!-- <if test="searchtxt!=null and searchtxt!=''"> -->
+				<choose>
+					<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and c.pname like CONCAT('%', #{searchtxt}, '%')
+					</when>
+					<when test="search=='bno'">
+						and c.bno=#{searchtxt}
+					</when>
+					<when test="search=='email'">
+						and m.email like CONCAT('%', #{searchtxt}, '%')
+					</when>
+				</choose>
+			</if>
+			
+		<!-- </where> -->
+			order by c.bno
+			limit #{startRow}, 10
+  		</select>
+  		
+  		<select id="subccategorylist" resultType="com.bitcamp.DTO.ProductDTO">
+    	
+    		select cno, cname from category
+    		
+    	</select>
+    	
+    	<select id="subctotalCount" parameterMap="hashmap" resultType="int">
+  	  		
+  	  		select count(bno)
+  	  		from cancel c, member m
+  	  		where c.no=m.no and c.cno=#{cno}
+  				
+  				<if test="searchtxt!=null and searchtxt!=''">
+  					<choose>
+  						<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and c.pname like CONCAT('%', #{searchtxt}, '%')
+					</when>
+					<when test="search=='bno'">
+						and c.bno=#{searchtxt}
+					</when>
+					<when test="search=='email'">
+						and m.email like CONCAT('%', #{searchtxt}, '%')
+					</when>
+  					</choose>
+  				</if>
+  		</select>
+  		
+  		<select id="subordercancel" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
+  			
+  			select c.no, c.pname, c.bno, c.bdate, c.dprice, c.cno, c.cdate, m.email
+  			from cancel c, member m
+  			where c.no=m.no and c.cno=#{cno}
+  			
+            <!-- <where> -->
+           	<if test="searchtxt!=null">
+			<!-- <if test="searchtxt!=null and searchtxt!=''"> -->
+				<choose>
+					<when test="search=='pname'">
+						<!-- and pname like upper('%' || #{searchtxt} || '%') -->
+						and c.pname like CONCAT('%', #{searchtxt}, '%')
+					</when>
+					<when test="search=='bno'">
+						and c.bno=#{searchtxt}
+					</when>
+					<when test="search=='email'">
+						and m.email like CONCAT('%', #{searchtxt}, '%')
+					</when>
+				</choose>
+			</if>
+			
+		<!-- </where> -->
+			order by c.bno
+			limit #{startRow}, 10
+  		</select>
+    	
     </mapper>
