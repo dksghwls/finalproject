@@ -36,5 +36,17 @@ public interface AdminPageMapper {
 
 	public void updateno(int no);
 
+	public List<ProductDTO> ccategorylist();
+
+	public int ctotalCount(HashMap<String, Object> hm);
+
+	public List<ProductDTO> ordercancel(HashMap<String, Object> o);
+
+	public List<ProductDTO> subccategorylist();
+
+	public int subctotalCount(HashMap<String, Object> hm);
+
+	public List<ProductDTO> subordercancel(HashMap<String, Object> o);
+
 	
 }

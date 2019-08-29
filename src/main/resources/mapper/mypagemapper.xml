@@ -121,8 +121,8 @@
   	  		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and p1.cno = #{cno} -->
   	  		
   	  		select count(bno)
-  	  		from product p1, pay p2, category c
-  	  		where p1.pno=p2.pno and p1.cno=c.cno and p2.no=#{no} and p1.cno=#{cno}
+  	  		from product p1, pay p2
+  	  		where p1.pno=p2.pno and p2.no=#{no} and p1.cno=#{cno}
   		<!-- 	<where> -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
