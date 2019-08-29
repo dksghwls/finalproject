@@ -129,8 +129,12 @@
 				<th></th>
 			</tr>
 		</thead>
+		<c:set var="member" value="${ sessionScope.user }"></c:set>
+		
 		<tbody id="myTable">
+		 
 		 	<c:forEach var="i" items="${dto }">
+		 	<c:if test="${ member.no==i.no }">
 				<tr>
 			  		<td><span class="glyphicon glyphicon-plus plusIcon"></span>
 					<span class="glyphicon glyphicon-minus plusIcon"
@@ -169,7 +173,9 @@
 			<td colspan="1">답변:</td>
 			 <td colspan="7"><c:out value="${i.recontent }"></c:out></td>
 			</tr>
+				</c:if>
 		</c:forEach>
+	
 	</tbody>
 
 </table>

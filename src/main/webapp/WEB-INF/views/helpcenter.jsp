@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +15,14 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat"
 	rel="stylesheet">
 
+
 <style>
 	body {
 		font: '돋움', Dotum, Helvetica, Sans-serif;
 		line-height: 1.5;
 		color: #f5f6f7;
-		background-image: url("img/helpmain.jpg");
-  		background-size: 100%;
-	}
-	
-/* 	p {
-		font-size: 50px;
-	
-	} */
-	
+		
+	}	
 	.p1{
 	font-size: 50px;
 	}
@@ -47,6 +42,13 @@
 		/* color: #ffffff;  */
 		color: black;
 		font-weight: 200px;
+	}
+	#helpcenterbg{
+	background-image: url("img/helpmain.jpg");
+  	background-size: 100%; 
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+     
 	}
 	
 	.bg-3 {
@@ -91,7 +93,7 @@
 </head>
 <body>
 	<!-- Second Container -->
-	<div class="container-fluid bg-2 text-center">
+	<div class="container-fluid bg-2 text-center" id="helpcenterbg">
 		<h1 class="margin">사람들이 시작하는 오늘의 혜택</h1>
 		 <p class="p1">Help Center</p> 
 		<br>
@@ -121,9 +123,36 @@
 			<div class="col-sm-4">
 				<p class="p1">Contact Us</p>
 				<p class="helppsize">원하는 질문이 없다면 이 페이지를 이용하세요.</p>
-				<br> <a href="/contact" data-toggle="tooltip"
-					title="Click Contact Us!"> <img src="img/test.jpg"
-					class="img-responsive margin" style="width: 100%; height: 400px;" alt="Image"></a>
+				<br> 
+				<sec:authorize access="isAnonymous()">
+			   
+		     <!-- Modal -->
+  			<div class="modal fade" id="myModal4" role="dialog">
+ 		  	 <div class="modal-dialog modal-sm">
+  		   	 <div class="modal-content">
+   		     <div class="modal-header">
+         	 <button type="button" class="close" data-dismiss="modal">&times;</button>
+    	      <h4 class="modal-title">회원 문의글 페이지</h4>
+     	 	  </div>
+      	 	 <div class="modal-body">
+     	    	 <p>로그인 후 이용해주세요^^</p>
+      		  </div>
+      		  <div class="modal-footer">
+      		 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		  </div>
+     		 </div>
+    		</div>
+  			</div>
+  			<a href="#" data-toggle="modal" data-target="#myModal4"> 
+					<img src="img/test.jpg"	class="img-responsive margin" 
+					style="width: 100%; height: 400px;" alt="Image"></a>
+  				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+				<a href="/contact" data-toggle="tooltip" title="Click Contact Us!">
+				<img src="img/test.jpg"	class="img-responsive margin" 
+					style="width: 100%; height: 400px;" alt="Image"></a>
+				</sec:authorize>
+				   					
 			</div>
 			<div class="col-sm-4">
 				<p class="p1">Map</p>
@@ -134,8 +163,8 @@
 		</div>
 	</div>
 	<!-- 지도 api  -->
-		
-<!-- 	<script>
+	<!-- 	
+	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.570493, 126.985315), // 지도의 중심좌표

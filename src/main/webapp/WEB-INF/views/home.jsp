@@ -13,7 +13,7 @@
 		관리자 로그인
 	</sec:authorize>
 	
-	<div class="container">
+	
 	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	    <!-- Indicators -->
 	    <ol class="carousel-indicators">
@@ -26,7 +26,7 @@
 	    <div class="carousel-inner">
 	
 	      <div class="item active">
-	        <img src="img/Jellyfish.jpg" alt="Los Angeles" style="width:100%;">
+	        <img src="img/Jellyfish.jpg" alt="Los Angeles" style="width:100%; max-height: 500px !important;">
 	        <div class="carousel-caption">
 	          <h3>Los Angeles</h3>
 	          <p>LA is always so much fun!</p>
@@ -34,7 +34,7 @@
 	      </div>
 	
 	      <div class="item">
-	        <img src="img/Penguins.jpg" alt="Chicago" style="width:100%;">
+	        <img src="img/Penguins.jpg" alt="Chicago" style="width:100%; max-height: 500px !important;">
 	        <div class="carousel-caption">
 	          <h3>Chicago</h3>
 	          <p>Thank you, Chicago!</p>
@@ -42,7 +42,7 @@
 	      </div>
 	    
 	      <div class="item">
-	        <img src="img/Tulips.jpg" alt="New York" style="width:100%;">
+	        <img src="img/Tulips.jpg" alt="New York" style="width:100%; max-height: 500px !important;">
 	        <div class="carousel-caption">
 	          <h3>New York</h3>
 	          <p>We love the Big Apple!</p>
@@ -61,7 +61,7 @@
 	      <span class="sr-only">Next</span>
 	    </a>
 	  </div>
-	</div>
+
 	
 </body>
 </html>
