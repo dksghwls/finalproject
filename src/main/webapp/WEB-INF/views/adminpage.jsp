@@ -52,7 +52,10 @@
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
               </li> -->
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../order">주문 관리</a>
+                <a class="nav-link" href="../order">주문 완료</a>
+              </li>
+              <li data-tab="product" class="nav-item">
+                <a class="nav-link" href="../ordercancel">주문 취소</a>
               </li>
 
           </ul>

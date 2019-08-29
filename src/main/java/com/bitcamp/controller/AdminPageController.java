@@ -156,7 +156,7 @@ public class AdminPageController {
 		//Pattern p = Pattern.compile("(^[0-9]*$)");
 		
 		if(search=="pname"||search.equals("pname")||search=="bno"||search.equals("bno")
-				|| search=="nickname"||search.equals("nickname"))
+				|| search=="email"||search.equals("email"))
 		{
 			//Matcher m = p.matcher(searchtxt);
 			/*
@@ -169,7 +169,7 @@ public class AdminPageController {
 		}
 		
 		
-		int totalCount = adminPageService.subototalCount(search, searchtxt);
+		int totalCount = adminPageService.subototalCount(search, searchtxt, cno);
 		
 		int pageSize=10;
 		int blockSize=5;

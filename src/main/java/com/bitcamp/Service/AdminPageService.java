@@ -25,7 +25,7 @@ public interface AdminPageService {
 
 	public List<ProductDTO> ocategorylist();
 
-	public int subototalCount(String search, String searchtxt);
+	public int subototalCount(String search, String searchtxt, int cno);
 
 	public List<ProductDTO> suborderlist(String search, String searchtxt, int startRow, int endRow, int cno);
 

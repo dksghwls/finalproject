@@ -85,11 +85,12 @@ public class AdminPageServiceImple implements AdminPageService {
 	}
 
 	@Override
-	public int subototalCount(String search, String searchtxt) {
+	public int subototalCount(String search, String searchtxt, int cno) {
 		
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
+		hm.put("cno", cno);
 
 		return adminMapper.subototalCount(hm);
 	}
