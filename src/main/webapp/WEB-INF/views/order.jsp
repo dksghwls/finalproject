@@ -28,21 +28,34 @@
 	$(document).on("click", "#modify_btn", function () { 
 		var bno = $(this).data('bno');
 		
-		var select = document.getElementById("sel2");
-		var shipping=select.options[document.getElementById("sel2").selectedIndex].value;
-			
-			
-			/* 
-			 */
-	    /* alert('선택된 옵션 text 값=' + target.options[target.selectedIndex].text);     // 옵션 text 값
-	       alert('선택된 옵션 value 값=' + target.options[target.selectedIndex].value);
-
-	출처: https://gocoder.tistory.com/51 [고코더 IT Express] */
+		var sel = document.getElementById("sel2");
+		var shipping;
 		
-		/* var shipping=document.getElementById("sel2").options; */
-		/* onclick="location.href='../cancel/11?no=${member.no}'" */
+		for(i=0; i<sel.options.length; i++){
+		
+			if(sel.options[i].selected==true){
+				shipping=sel.options[i].value;
+				break;
+			}
+		}
+		
+		//var shipping=target.options[target.selectedIndex].value;
 		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../smodifyresult/"+bno+"?shipping="+shipping+"'");
-    });
+    
+	
+		/* var sel = document.getElementById("sel");
+		var val;
+		for(i=0; i<sel.options.length; i++) {
+		    if(sel.options[i].selected == true) {
+		        val = sel.options[i].value;
+		        break;
+		    }
+		} */
+	
+	
+	
+	
+	});
 	
 	/* function shippingmodify(bno)
 	{
