@@ -10,6 +10,8 @@ public interface DetailService {
 
 	public List<ProductDTO> detaillist(int pno);
 	public imgDTO getimage(int pno);
+	public int replyinsert2(int no, int pno, String rcontent);
+	public List<ReplyDTO> replylist(int pno);
 	
 	
 }
