@@ -5,23 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-	  $("#btn").click(function(){
-	    $("/detail.jsp").append(" <b>Appended text</b>.");
-	  });
-	  /* $("#btn2").click(function(){
-	    $("ol").append("<li>Appended item</li>");
-	  }); */
-	});
-  
-  
-  
 
-
-
-</script>
 
 
 </head>
@@ -35,12 +19,6 @@ $(document).ready(function(){
 	
 	
 	</form>
-
-
-
-
-
-
 
 </body>
 </html>

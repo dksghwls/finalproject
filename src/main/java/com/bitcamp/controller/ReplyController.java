@@ -35,17 +35,18 @@ public class ReplyController {
 		 
 	}
 	@RequestMapping(value="/replyinsert", method=RequestMethod.GET)
-	public String replyinsert(ReplyDTO dto)
+	public String replyinsert(ReplyDTO dto )
 	{
-		return "templete.jsp?page=replyinsert";
+		  		return "templete.jsp?page=replyinsert";
 		
 	}
 	@RequestMapping("/replyinsertresult")
-	public String replyinsertresult(ReplyDTO dto)
+	public String replyinsertresult(ReplyDTO dto, Model model)
 	{
 		int result = replyservice.replyinsert(dto);
-		
-		return "redirect:/detail";
+	    model.addAttribute("dto", dto);	
+	    System.out.println(dto.getRcontent());
+		return "/replylist";
 		
 		
 	}
