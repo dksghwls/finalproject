@@ -33,7 +33,7 @@
 	      </div>
 	    </div>
 	    <!-- 로그인 실패 메시지 -->
-	    <div class="col-sm-offset-6 col-sm-6">
+	    <div class="col-sm-offset-5 col-sm-6">
 	        <div id="result"></div>
 	    </div>
 	    <div class="form-group">
