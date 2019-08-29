@@ -69,7 +69,9 @@
      <c:forEach var="item" items="${dto}">
      ${item.pno }
      ${item.pname }
+    
       </c:forEach>
+     
     </div>
     
      <c:forEach var="item" items="${dto}">
