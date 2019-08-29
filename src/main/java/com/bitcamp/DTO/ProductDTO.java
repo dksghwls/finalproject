@@ -7,7 +7,7 @@ public class ProductDTO {
 	private int no;
 	private int cno;
 	private String cname;
-
+    private String content;
 	private String imgname;
 	private String pname;
 	private String nickname;
@@ -49,6 +49,13 @@ public class ProductDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
 	public String getBdate() {
 		return bdate;
 	}

@@ -19,8 +19,20 @@
     
     
     </select> 
+    <insert id="replyinsert2" parameterType="com.bitcamp.DTO.ReplyDTO">
     
+    insert into reply(no, pno, rcontent)
+    values(#{no}, #{pno}, #{rcontent})
     
+    </insert>
+    <select id="replylist" resultType="com.bitcamp.DTO.ReplyDTO">
+    
+    select *
+    from reply
+    where pno=#{pno}
+    order by rno
+    
+    </select>
     
     
     

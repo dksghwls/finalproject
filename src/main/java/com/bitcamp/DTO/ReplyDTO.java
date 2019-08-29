@@ -7,9 +7,6 @@ public class ReplyDTO {
 	private int pno;
 	private String rcontent;
 	
-	
-	
-	
 	public int getRno() {
 		return rno;
 	}
