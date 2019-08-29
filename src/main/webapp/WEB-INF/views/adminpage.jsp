@@ -194,24 +194,6 @@
   </ul>
   </div>
   
-  <!-- <div class="text-center">
-  <ul class="pagination">
-   <li><a href="#">이전</a></li>
-   <li><a href="#">1</a></li>
-   <li><a href="#">2</a></li>
-   <li><a href="#">3</a></li>
-   <li><a href="#">4</a></li>
-   <li><a href="#">5</a></li>
-   <li><a href="#">다음</a></li>
-   
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-  </div> -->
-  
 </div>
 </body>
 </html>
