@@ -122,7 +122,6 @@
 		<thead>
 			<tr>
 		  		<th>답변</th>
-				<th>글번호</th>
 				<th>회원명</th>
 				<th>글제목</th>
 				<th>작성일</th>
@@ -132,27 +131,24 @@
 		<c:set var="member" value="${ sessionScope.user }"></c:set>
 		
 		<tbody id="myTable">
-		 
-		 	<c:forEach var="i" items="${dto }">
-		 	<c:if test="${ member.no==i.no }">
+		  	<c:forEach var="i" items="${dto }">
 				<tr>
 			  		<td><span class="glyphicon glyphicon-plus plusIcon"></span>
 					<span class="glyphicon glyphicon-minus plusIcon"
 								style="display: none"></span>
-					<td><a href="/contactdetail/${i.hno }"> 
-					<c:out value="${i.hno } "></c:out></a></td>
 					<td><c:out value="${i.nickname }"></c:out></td>
-					<td><a href="/contactdetail/${i.hno }">
-					<c:out value="${i.htitle }"></c:out></a></td>
-					<td><c:out value="${i.hdate }"></c:out></td>
-					
+					<td>
+					<c:if test="${ member.no==i.no }"><a href="/contactdetail/${i.hno }"></c:if>
+					<c:out value="${i.htitle }"></c:out></a>
+					</td>
+					<td><c:out value="${i.hdate }"></c:out></td>				
 			<!-- 관리자 로그인 시 나타나게 하기!! -->
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<td>
 					  <input type="button" class="btn btn-default" id="rebtn" data-toggle="modal"
 						   data-no="${i.hno}" data-target="#myModal2" value="답변작성">
 				</sec:authorize>
-									
+		
 	 		<!-- Modal -->
 		 		 <div class="modal fade" id="myModal2" role="dialog">
 					<div class="modal-dialog">
@@ -169,13 +165,13 @@
 		</div>
 	</div>						
 		</tr>
-			<tr class="recolor" style="display: none">
-			<td colspan="1">답변:</td>
+			<tr class="recolor" style="display: none"> 
+			<c:if test="${ member.no==i.no }">
+			 <td colspan="1">답변:</td>
 			 <td colspan="7"><c:out value="${i.recontent }"></c:out></td>
+			 </c:if>
 			</tr>
-				</c:if>
 		</c:forEach>
-	
 	</tbody>
 
 </table>

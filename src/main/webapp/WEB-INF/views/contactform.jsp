@@ -16,19 +16,16 @@
    		<label for="focusedInput">회원명</label>
    		<input type="text" name="nickname" class="form-control" id="focusedInput" 
    		  value="${member.nickname }"	style="width: 15%;" readonly="readonly"><br> 
-		<label for="sel1">제목</label> 
-		<select name="htitle" class="form-control"	id="sel1" style="width: 15%;">
-			<option value="계정문의">계정문의</option>
-			<option value="개인정보">개인정보</option>
-			<option value="할인문의">할인문의</option>
-			<option value="기타문의">기타문의</option>
-		</select><br>
+		<label for="htitle">제목</label> 
+		<textarea class="form-control" rows="1" id="htitle" name="htitle"
+				style="width: 27%;" required="required"></textarea><br>
+		 <br>
 	<div class="input-group">
 		<span class="input-group-addon">
 		<i	class="glyphicon glyphicon-user"></i>
 		</span>
 		<input id="email" type="text" class="form-control" name="email" placeholder="Email" 
-		  value="${member.email }" style="width: 46%;" readonly="readonly">
+		  value="${member.email }" style="width: 25%;" readonly="readonly">
 	</div><br>
 		<label for="hcontent">내용</label>
 		<textarea class="form-control" rows="5" id="hcontent" name="hcontent"
