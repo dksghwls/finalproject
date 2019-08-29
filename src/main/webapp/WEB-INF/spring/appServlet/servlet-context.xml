@@ -35,11 +35,8 @@
         <beans:property name="uploadTempDir" value="temp" />
     </beans:bean>
 	
-	
-	
 	<context:component-scan base-package="com.bitcamp.conf"/>
 	<context:component-scan base-package="com.bitcamp.controller" />
-		
 	<context:component-scan base-package="com.bitcamp.Service"/>
 	<mybatis-spring:scan base-package="com.bitcamp.Mapper"/>
 	
