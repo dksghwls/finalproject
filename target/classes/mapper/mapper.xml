@@ -32,10 +32,11 @@
   	</where>
   </select>
   <select id="plist" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
-  		select *
-  		from product
+  		select p.pno, p.pname, p.dprice, p.oprice, i.imgname
+  		from product p, img i
   		
               <where>
+              p.pno = i.pno
 				<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
 					<when test="search=='pno'">
@@ -64,9 +65,14 @@
     	
     	<select id="cpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
     	
-    	select *
+    	<!-- select *
   		from category c, product p 
     	where c.cno = p.cno 
+    	and p.cno = #{cno}  -->
+    	select i.imgname, p.pno, p.pname, p.oprice, p.dprice
+  		from category c, product p, img i 
+    	where c.cno = p.cno 
+  		and p.pno = i.pno
     	and p.cno = #{cno} 
     	  
 				<if test="searchtxt!=null and searchtxt!=''">
@@ -113,11 +119,6 @@
   		</if>
   		</where>
     	</select>
-    	
-    	
-    	
-    	
-    	
     	
     	
   		<insert id="addresult" parameterType="com.bitcamp.DTO.CategoryDTO">
@@ -171,10 +172,12 @@
   </select>
   
   <select id="list" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
-  		select *
-  		from product
-  		
+  		 <!-- select *
+  		from product  -->
+  		select p.pno, p.pname, p.dprice, p.oprice, i.imgname
+  		from product p, img i
               <where>
+              p.pno = i.pno
 				<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
 					<when test="search=='pno'">
@@ -227,27 +230,28 @@
     		
     	</select>
     	<select id="adcpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
-    	select *
-  		from category c, product p 
+    	select i.imgname, p.pno, p.pname, p.oprice, p.dprice
+  		from category c, product p, img i 
     	where c.cno = p.cno 
+  		and p.pno = i.pno
     	and p.cno = #{cno} 
     	  
 				<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
 					<when test="search=='pno'">
-						and pno=#{searchtxt}
+						and p.pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+						and p.pname like upper('%'|| #{searchtxt}||'%')
 					</when>
 					<when test="search=='cno'">
-						and cno=#{searchtxt}
+						and p.cno=#{searchtxt}
 					</when>
 				</choose>
 			</if>
 			
 	
-			order by pno
+			order by p.pno
 			limit #{startRow}, 10
     	</select>
     	<select id="adminsubCount" parameterMap="hashmap" resultType="int">
@@ -291,6 +295,11 @@
     		where pno=#{pno}
     		
     	</select>
+    	<select id="imgTest" resultType="com.bitcamp.DTO.CategoryDTO">
     	
+    	select * from img
+    	
+    	
+    	</select>
     	
     </mapper>

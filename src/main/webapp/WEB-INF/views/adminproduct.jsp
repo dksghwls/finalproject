@@ -20,11 +20,11 @@
 <script>
 function del(pno)
 {
-	location.href="delete/"+pno;
+	location.href="../delete/"+pno;
 }
 function update(pno)
 {
-	location.href="update/"+pno;
+	location.href="../update/"+pno;
 }
 </script>
 </head>
@@ -86,8 +86,7 @@ function update(pno)
     <tbody>
     <c:forEach var="dto" items="${list }">
       <tr>
-      
-        <td><a href="main.html"><img src="../img/Tulips.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
+        <td><a href="../detail/${dto.pno}"><img src="${dto.imgname}" class="rounded" width="100" height="75"></a></td>
         <td><c:out value="${dto.pno }"></c:out></td>
         <td><c:out value="${dto.pname }"></c:out></td>
         <td><c:out value="${dto.oprice }"></c:out></td>
@@ -95,8 +94,8 @@ function update(pno)
         <td>null</td>
         <td>null</td>
         <td>null</td>
-        <td>null</td>
-        <td>null</td>
+        <td><c:out value="${dto.regist }"></c:out></td>
+        <td><c:out value="${dto.deadline }"></c:out></td>
         <td><input type="button" value="삭제" onclick="del(${dto.pno})"></td>
         <td><input type="button" value="수정" onclick="update(${dto.pno})"></td>
       </tr>
@@ -105,7 +104,7 @@ function update(pno)
     </tbody>
   </table>
   
-  <form method="get" action="adminproduct?currPage=${page.currPage }">
+  <form method="get" action="../adminproduct?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option value="pno">상품번호</option>
 		<option value="pname">상품이름</option>

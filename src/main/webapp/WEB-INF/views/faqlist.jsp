@@ -146,217 +146,193 @@
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<table class="table table-hover">
-					<!-- 아코디언 효과 -->
-					<tbody>
-						<div id="integration-list">
-							<ul>
-								<c:forEach var="i" items="${list }">
-									<li><a href="/faqdetail/${i.fno }"> <c:out
-												value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out>
-										<a class="expand">
-											<div class="right-arrow">+</div>
-											<div>
-												<h4>
-													<c:out value="${i.ftitle }"></c:out>
-												</h4>
-											</div>
-									</a>
-
-										<div class="detail">
-											<div id="left" style="width: 15%; float: left; height: 50%;">
-												<div id="sup"></div>
-											</div>
-											<div id="right"
-												style="width: 85%; float: right; height: 50%; padding-left: 20px;">
-												<div id="sup">
-													<div>
-														<span>${i.fcontent }</span>
-													</div>
-																									</div>
-											</div>
-										</div></li>
-								</c:forEach>
-							</ul>
+				<!-- 아코디언 효과 -->
+				<tbody>
+				<div id="integration-list">
+					<ul>
+						<c:forEach var="i" items="${list }">
+						<li>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<a href="/faqdetail/${i.fno }">
+						</sec:authorize>
+						 <c:out	value="${i.fno } "></c:out></a> 
+						 <c:out value="${i.fcname }"></c:out>
+						<a class="expand"><div class="right-arrow">+</div>
+					<div>
+						<h4>
+						<c:out value="${i.ftitle }"></c:out>
+						</h4>
+					</div></a>
+					<div class="detail">
+					<div id="left" style="width: 15%; float: left; height: 50%;">
+						<div id="sup"></div>
+					</div>
+						<div id="right"	style="width: 85%; float: right; height: 50%; padding-left: 20px;">
+						<div id="sup">
+						<div>
+							<span>${i.fcontent }</span>
+						</div>
+						</div>
+						</div>
+						</div></li>
+							</c:forEach>
+						</ul>
 						</div>
 					</tbody>
 				</table>
 				<br>
-
 				<!-- 검색 -->
-				<form method="get" action="faq?currPage=${page.startBlock }">
-					<select name="search" class="form-control" id="sel1"
-						style="width: 15%;">
-						<option value="ftitle">제목</option>
-						<option value="fcontent">내용</option>
-						<option value="all">제목+내용</option>
-					</select>
+			<form method="get" action="faq?currPage=${page.startBlock }">
+				<select name="search" class="form-control" id="sel1" style="width: 15%;">
+					<option value="ftitle">제목</option>
+					<option value="fcontent">내용</option>
+					<option value="all">제목+내용</option>
+				</select>
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="검색어를 입력하세요"
-							name="keyword" style="width: 308px;">
-						<!-- <div class="input-group-btn"> -->
-							<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						<!-- </div> -->
+						name="keyword" style="width: 308px;">
+						<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i></button>
 					</div>
-				</form>
-				<br>
-
+			</form>	<br>
 				<!-- block 처리 -->
 				<ul class="pager">
 					<li><c:if test="${page.prev }">
-							<a
-								href="faq?currPage=${page.startBlock-1 }&search=${search}&keyword=${keyword}"><c:out
-									value="이전"></c:out></a>
+							<a href="faq?currPage=${page.startBlock-1 }&search=${search}&keyword=${keyword}">
+							<c:out value="이전"></c:out></a>
 						</c:if></li>
-
-					<c:forEach var="i" begin="${page.startBlock }"
-						end="${page.endBlock }">
+					<c:forEach var="i" begin="${page.startBlock }" end="${page.endBlock }">
 						<li><c:choose>
 								<c:when test="${i }==${page.currPage }">
 									<c:out value="${i }"></c:out>
 								</c:when>
 								<c:otherwise>
-									<a
-										href="faq?currPage=${i }&search=${search}&keyword=${keyword}">
-										<c:out value="${i}"></c:out>
-									</a>
+							<a href="faq?currPage=${i }&search=${search}&keyword=${keyword}">
+							<c:out value="${i}"></c:out></a>
 								</c:otherwise>
 							</c:choose></li>
 					</c:forEach>
-
 					<li><c:if test="${page.next }">
-							<a
-								href="faq?currPage=${page.endBlock+1 }&search=${search}&keyword=${keyword}"><c:out
-									value="다음"></c:out></a>
+						<a href="faq?currPage=${page.endBlock+1 }&search=${search}&keyword=${keyword}">
+						<c:out value="다음"></c:out></a>
 						</c:if></li>
 				</ul>
-
-				
 			</div>
-			<div id="menu1" class="tab-pane fade">
-				<table class="table table-hover">
-					<!-- 아코디언 효과 -->
-					<tbody>
-						<div id="integration-list">
-							<ul>
-								<c:forEach var="i" items="${shiplist }">
-
-									<c:if test="${i.fcno ==1 }">
-
-										<li><a href="/faqdetail/${i.fno }"><c:out
-													value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out><a
-											class="expand">
-												<div class="right-arrow">+</div>
-												<div>
-													<h4>
-														<c:out value="${i.ftitle }"></c:out>
-													</h4>
-												</div>
-										</a>
-											<div class="detail">
-												<div id="left" style="width: 15%; float: left; height: 50%;">
-													<div id="sup"></div>
-												</div>
-												<div id="right"
-													style="width: 85%; float: right; height: 50%; padding-left: 20px;">
-													<div id="sup">
-														<div>
-															<span>${i.fcontent }</span>
-														</div>
-																											</div>
-												</div>
-											</div>
-									</c:if>
-								</c:forEach>
-								</li>
-							</ul>
-						</div>
+	<div id="menu1" class="tab-pane fade">
+		<table class="table table-hover">
+		<!-- 아코디언 효과 -->
+			<tbody>
+				<div id="integration-list">
+				<ul>
+				<c:forEach var="i" items="${shiplist }">
+				<c:if test="${i.fcno ==1 }">
+				<li>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<a href="/faqdetail/${i.fno }">
+				</sec:authorize>
+				<c:out value="${i.fno } "></c:out></a> 
+				<c:out value="${i.fcname }"></c:out>
+				<a class="expand"><div class="right-arrow">+</div>
+				<div>		
+					<h4><c:out value="${i.ftitle }"></c:out></h4>
+				</div>
+				</a>
+		     	<div class="detail">
+					<div id="left" style="width: 15%; float: left; height: 50%;">
+			 			<div id="sup"></div>
+					</div>
+				<div id="right"	style="width: 85%; float: right; height: 50%; padding-left: 20px;">
+				<div id="sup">
+				<div>
+					<span>${i.fcontent }</span>
+				</div>
+				</div>
+				</div>
+				</div>
+				</c:if>
+				</c:forEach>
+				</li>
+				</ul>
+				</div>
 				</table>
 			</div>
-
-			<div id="menu2" class="tab-pane fade">
-				<table class="table table-hover">
-					<!-- 아코디언 효과 -->
-					<tbody>
-						<div id="integration-list">
-							<ul>
-								<c:forEach var="i" items="${orderlist }">
-
-									<c:if test="${i.fcno ==2 }">
-										<li><a href="/faqdetail/${i.fno }"><c:out
-													value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out><a
-											class="expand">
-												<div class="right-arrow">+</div>
-												<div>
-													<h4>
-														<c:out value="${i.ftitle }"></c:out>
-													</h4>
-												</div>
-										</a>
-											<div class="detail">
-												<div id="left" style="width: 15%; float: left; height: 50%;">
-													<div id="sup"></div>
-												</div>
-												<div id="right"
-													style="width: 85%; float: right; height: 50%; padding-left: 20px;">
-													<div id="sup">
-														<div>
-															<span>${i.fcontent }</span>
-														</div>
-															
-													</div>
-												</div>
-											</div>
-									</c:if>
-								</c:forEach>
-								</li>
-							</ul>
-						</div>
-				</table>
+	<div id="menu2" class="tab-pane fade">
+		<table class="table table-hover">
+		<!-- 아코디언 효과 -->
+			<tbody>
+				<div id="integration-list">
+				<ul>
+					<c:forEach var="i" items="${orderlist }">
+						<c:if test="${i.fcno ==2 }">
+						<li>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<a href="/faqdetail/${i.fno }">
+						</sec:authorize>
+						<c:out	value="${i.fno } "></c:out></a> 
+						<c:out value="${i.fcname }"></c:out>
+						<a class="expand">
+					<div class="right-arrow">+</div>
+					<div>
+						<h4><c:out value="${i.ftitle }"></c:out></h4>
+					</div>
+					</a>
+	<div class="detail">
+		<div id="left" style="width: 15%; float: left; height: 50%;">
+		<div id="sup"></div>
+	</div>
+	<div id="right" style="width: 85%; float: right; height: 50%; padding-left: 20px;">
+	<div id="sup">
+		<div>
+		<span>${i.fcontent }</span>
 			</div>
-			<div id="menu3" class="tab-pane fade">
-				<table class="table table-hover">
-
-					<!-- 아코디언 효과 -->
-					<tbody>
-						<div id="integration-list">
-							<ul>
-								<c:forEach var="i" items="${cuslist }">
-									<c:if test="${i.fcno ==3 }">
-										<li><a href="/faqdetail/${i.fno }"><c:out
-													value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out><a
-											class="expand">
-												<div class="right-arrow">+</div>
-												<div>
-													<h4>
-														<c:out value="${i.ftitle }"></c:out>
-													</h4>
-												</div>
-										</a>
-											<div class="detail">
-												<div id="left" style="width: 15%; float: left; height: 50%;">
-													<div id="sup"></div>
-												</div>
-												<div id="right"
-													style="width: 85%; float: right; height: 50%; padding-left: 20px;">
-													<div id="sup">
-														<div>
-															<span>${i.fcontent }</span>
-														</div>
-															
-													</div>
-												</div>
-											</div>
-									</c:if>
-								</c:forEach>
-								</li>
-							</ul>
-						</div>
-				</table>
+			</div>
 			</div>
 		</div>
-
+		</c:if>
+		</c:forEach>
+			</li>
+		</ul>
+		</div>
+	</table>
+	</div>
+	<div id="menu3" class="tab-pane fade">
+	<table class="table table-hover">
+	<!-- 아코디언 효과 -->
+	<tbody>
+	<div id="integration-list">
+		<ul>
+		<c:forEach var="i" items="${cuslist }">
+			<c:if test="${i.fcno ==3 }">
+			<li>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a href="/faqdetail/${i.fno }">
+			</sec:authorize>
+			<c:out	value="${i.fno } "></c:out></a> 
+			<c:out value="${i.fcname }"></c:out>
+			<a class="expand">
+			<div class="right-arrow">+</div>
+			<div>
+			<h4><c:out value="${i.ftitle }"></c:out></h4>
+			</div>
+		</a>
+			<div class="detail">
+				<div id="left" style="width: 15%; float: left; height: 50%;">
+				<div id="sup"></div>
+				</div>
+					<div id="right" style="width: 85%; float: right; height: 50%; padding-left: 20px;">
+					<div id="sup">
+						<div><span>${i.fcontent }</span></div>
+				</div>
+			</div>
+			</div>
+		</c:if>
+		</c:forEach>
+		</li>
+		</ul>
+		</div>
+		</table>
+		</div>
+		</div>
 	</div>
 </body>
 </html>

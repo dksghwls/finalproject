@@ -69,6 +69,10 @@ public class AllCategoryController {
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
 		
+		
+		
+		
+		
 		return "templete.jsp?page=AllCategory";
 	}
 	

@@ -51,6 +51,14 @@
 		원가:<input type="text" name="oprice" id="oprice" class="form-control input-lg" style="width: 700px;"><br>
 		할인가:<input type="text" name="dprice" id="dprice" class="form-control input-lg" style="width: 700px;"><br>
 		상품설명:<textarea name="content" id="content" class="form-control" style="width: 700px; height: 400px;"></textarea>
+	<!-- 	등록일:<input type="text" name="regist" id="regist" class="form-control input-lg" style="width: 700px;"><br>
+		마감일:<input type="text" name="deadline" id="deadline" class="form-control input-lg" style="width: 700px;"><br> -->
+		
+		
+		
+		
+		
+		
 		<label for="filename">파일명</label>
 		<input type="text" name="filename" id="filename" class="form-control input-lg" style="width: 700px;"><br>
 		<label for="file1">파일</label>
