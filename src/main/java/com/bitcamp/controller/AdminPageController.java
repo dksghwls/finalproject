@@ -207,6 +207,8 @@ public class AdminPageController {
 	@RequestMapping("smodifyresult/{bno}")
 	public String smodifyresult(@PathVariable int bno, @RequestParam String shipping, Model model) {
 		
+		System.out.println("shipping: "+shipping);
+		
 		ProductDTO dto=new ProductDTO();
 		dto.setBno(bno);
 		dto.setShipping(shipping);
