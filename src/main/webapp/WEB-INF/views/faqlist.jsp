@@ -224,15 +224,15 @@
 			<tbody>
 				<div id="integration-list">
 				<ul>
-				<c:forEach var="i" items="${shiplist }">
-				<c:if test="${i.fcno ==1 }">
+					<c:forEach var="i" items="${shiplist }">
+					<c:if test="${i.fcno ==1 }">
 				<li>
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<a href="/faqdetail/${i.fno }">
-				</sec:authorize>
-				<c:out value="${i.fno } "></c:out></a> 
-				<c:out value="${i.fcname }"></c:out>
-				<a class="expand"><div class="right-arrow">+</div>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<a href="/faqdetail/${i.fno }">
+					</sec:authorize>
+					<c:out value="${i.fno } "></c:out></a> 
+					<c:out value="${i.fcname }"></c:out>
+					<a class="expand"><div class="right-arrow">+</div>
 				<div>		
 					<h4><c:out value="${i.ftitle }"></c:out></h4>
 				</div>
@@ -242,13 +242,13 @@
 			 			<div id="sup"></div>
 					</div>
 				<div id="right"	style="width: 85%; float: right; height: 50%; padding-left: 20px;">
-				<div id="sup">
-				<div>
-					<span>${i.fcontent }</span>
+					<div id="sup">
+						<div>
+							<span>${i.fcontent }</span>
+						</div>
+					</div>
 				</div>
-				</div>
-				</div>
-				</div>
+			</div>
 				</c:if>
 				</c:forEach>
 				</li>

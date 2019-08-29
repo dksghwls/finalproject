@@ -133,7 +133,7 @@
 	  <button id="reviewbtn" disabled="disabled"> 입력하기 </button>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
- 		<textarea class="form-control" rows="5" id="comment" name="rcontent"></textarea>
+ 		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea>
    		<button id="reviewbtn"> 입력하기 </button>
 	</sec:authorize>
 	</div>
