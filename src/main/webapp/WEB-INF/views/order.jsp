@@ -50,15 +50,17 @@
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
               </li> -->
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../order">주문 관리</a>
+                <a class="nav-link" href="../order">주문 완료</a>
               </li>
-
+			  <li data-tab="product" class="nav-item">
+                <a class="nav-link" href="../ordercancel">주문 취소</a>
+              </li>
           </ul>
      </div>
           <br><br>
           
 <div class="container">
-  <p>현재까지의 주문 내역을 확인할 수 있습니다.</p>
+  <p>주문 완료 내역을 확인할 수 있습니다.</p>
 
 	<form>
     <div class="form-group" style="width: 150px; float: right;">
@@ -130,22 +132,6 @@
 	</c:if>
   </li>
   <li class="page-item">
-  
-  <%-- <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
-  	
-		<a class="page-link" href="product?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
-		<c:out value="${index }"/>
-		</a>
-  </c:forEach> --%>
-  
-  <%-- <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
-    <c:if test="${index==currpage}">
-      <c:out value="${index}"></c:out>
-    </c:if>
-    <c:if test="${index!=currpage }">
-     <a class="page-link" href="product?currpage=${index}&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
-    </c:if>
-   </c:forEach> --%>
    
    <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
@@ -159,8 +145,6 @@
 		</c:choose>
 	</c:forEach>
    
-   
-   
   </li>
   <li class="page-item">
   <c:if test="${page.next }">
@@ -172,24 +156,6 @@
   </li>
   </ul>
   </div>
-  
-  <!-- <div class="text-center">
-  <ul class="pagination">
-   <li><a href="#">이전</a></li>
-   <li><a href="#">1</a></li>
-   <li><a href="#">2</a></li>
-   <li><a href="#">3</a></li>
-   <li><a href="#">4</a></li>
-   <li><a href="#">5</a></li>
-   <li><a href="#">다음</a></li>
-   
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-  </div> -->
   
 </div>
 </body>

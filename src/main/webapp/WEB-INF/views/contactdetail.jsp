@@ -45,7 +45,6 @@
 		</div>
 		</div>
 	</div>
-	 
 	<input type="button" class="btn btn-default" data-toggle="modal" 
 	       data-target="#myModal2" value="삭제">
 	<!-- Modal -->
@@ -70,6 +69,3 @@
 	</div>
 </body>
 </html>
-
-
-

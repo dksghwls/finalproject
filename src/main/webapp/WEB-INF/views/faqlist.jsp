@@ -155,8 +155,9 @@
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<a href="/faqdetail/${i.fno }">
 						</sec:authorize>
-						 <c:out	value="${i.fno } "></c:out></a> <c:out value="${i.fcname }"></c:out>
-							<a class="expand"><div class="right-arrow">+</div>
+						 <c:out	value="${i.fno } "></c:out></a> 
+						 <c:out value="${i.fcname }"></c:out>
+						<a class="expand"><div class="right-arrow">+</div>
 					<div>
 						<h4>
 						<c:out value="${i.ftitle }"></c:out>
@@ -255,7 +256,6 @@
 				</div>
 				</table>
 			</div>
-
 	<div id="menu2" class="tab-pane fade">
 		<table class="table table-hover">
 		<!-- 아코디언 효과 -->
@@ -282,7 +282,7 @@
 	</div>
 	<div id="right" style="width: 85%; float: right; height: 50%; padding-left: 20px;">
 	<div id="sup">
-`		<div>
+		<div>
 		<span>${i.fcontent }</span>
 			</div>
 			</div>
@@ -321,9 +321,7 @@
 				</div>
 					<div id="right" style="width: 85%; float: right; height: 50%; padding-left: 20px;">
 					<div id="sup">
-						<div>
-				<span>${i.fcontent }</span>
-				</div>
+						<div><span>${i.fcontent }</span></div>
 				</div>
 			</div>
 			</div>

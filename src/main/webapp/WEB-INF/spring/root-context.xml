@@ -23,6 +23,11 @@
 		<constructor-arg ref="dbconf"></constructor-arg>
     </bean>
     
+    <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations"  value="classpath:mapper/*.xml"></property>
+    </bean>
+    
     <tx:annotation-driven transaction-manager="transactionManager" />
     <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     	<property name="dataSource" ref="dataSource"></property>
