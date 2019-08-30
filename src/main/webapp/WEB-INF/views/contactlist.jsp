@@ -90,6 +90,12 @@
 		font-weight: bold;
 		font-size: 20px;
 	}
+	
+	.recolor{
+	 
+  border-left: 6px solid red;
+  background-color: white;
+	}	
 </style>
 
 <head>
@@ -111,38 +117,55 @@
 <body>
 	<div class="container">
 		<h2>Search</h2>
-		<input class="form-control" id="myInput" type="text" placeholder="검색어를 입력하세요">
+			<!-- 검색 -->
+			<form method="get" action="contact?currPage=${page.startBlock }">
+			<input type="hidden" name="search" value="all">
+				 	<div class="input-group">
+						<input type="text" class="form-control" placeholder="search"
+						name="keyword" style="width: 308px;">
+						<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i></button>
+					</div>
+			</form>	<br>
+		<!-- <input class="form-control" id="myInput" type="text" placeholder="검색어를 입력하세요"> -->
 	 <table class="table table-hover">
 		<thead>
 			<tr>
 		  		<th>답변</th>
-				<th>글번호</th>
 				<th>회원명</th>
 				<th>글제목</th>
 				<th>작성일</th>
+				<th>답변상태</th>
 				<th></th>
 			</tr>
 		</thead>
+		<c:set var="member" value="${ sessionScope.user }"></c:set>
+		
 		<tbody id="myTable">
-		 	<c:forEach var="i" items="${dto }">
+		  	<c:forEach var="i" items="${dto }">
 				<tr>
 			  		<td><span class="glyphicon glyphicon-plus plusIcon"></span>
 					<span class="glyphicon glyphicon-minus plusIcon"
 								style="display: none"></span>
-					<td><a href="/contactdetail/${i.hno }"> 
-					<c:out value="${i.hno } "></c:out></a></td>
 					<td><c:out value="${i.nickname }"></c:out></td>
-					<td><a href="/contactdetail/${i.hno }">
-					<c:out value="${i.htitle }"></c:out></a></td>
+					<td>
+					<c:if test="${ member.no==i.no }"><a href="/contactdetail/${i.hno }"></c:if>
+					<c:if test="${ member.no==1 }"><a href="/contactdetail/${i.hno }"></c:if>
+					<c:out value="${i.htitle }"></c:out></a>
+					</td>
 					<td><c:out value="${i.hdate }"></c:out></td>
-					
+					<td><c:if test="${i.recontent != null }">
+					<c:out value="완료"></c:out></c:if>
+					<c:if test="${i.recontent == null }">
+					<c:out value="대기"></c:out></c:if>
+					</td>				
 			<!-- 관리자 로그인 시 나타나게 하기!! -->
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<td>
 					  <input type="button" class="btn btn-default" id="rebtn" data-toggle="modal"
 						   data-no="${i.hno}" data-target="#myModal2" value="답변작성">
 				</sec:authorize>
-									
+		
 	 		<!-- Modal -->
 		 		 <div class="modal fade" id="myModal2" role="dialog">
 					<div class="modal-dialog">
@@ -159,8 +182,17 @@
 		</div>
 	</div>						
 		</tr>
-			<tr style="display: none">
-			 <td colspan="7">답변: <c:out value="${i.recontent }"></c:out></td>
+			<tr class="recolor" style="display: none"> 
+		 
+			<c:if test="${ member.no==i.no }">
+			 <td colspan="1">답변:</td>
+			 <td colspan="7"><c:out value="${i.recontent }"></c:out></td>
+			 </c:if>
+			 <c:if test="${ member.no==1 }">
+			  <td colspan="1">답변:</td>
+			 <td colspan="7"><c:out value="${i.recontent }"></c:out></td>
+			 </c:if>
+			 
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -170,20 +202,19 @@
 		<!-- block 처리 -->
 		<ul class="pager">
 			<li><c:if test="${page.prev }">
-					<a href="contact?currPage=${page.startBlock-1 } ">
+					<a href="contact?currPage=${page.startBlock-1 }&search=${search}&keyword=${keyword} ">
 					<c:out value="이전"></c:out></a></c:if></li>
-			<c:forEach var="i" begin="${page.startBlock }"
-				end="${page.endBlock }">
+			<c:forEach var="i" begin="${page.startBlock }"	end="${page.endBlock }">
 		<li><c:choose>
 				<c:when test="${i }==${page.currPage }">
 					<c:out value="${i }"></c:out>
 				</c:when>
 			<c:otherwise>
-				<a href="contact?currPage=${i } "> <c:out value="${i}"></c:out></a>
+				<a href="contact?currPage=${i }&search=${search}&keyword=${keyword} "> <c:out value="${i}"></c:out></a>
 			</c:otherwise>
 			</c:choose></li>
 			</c:forEach>
-		<li><c:if test="${page.next }"><a href="contact?currPage=${page.endBlock+1 } ">
+		<li><c:if test="${page.next }"><a href="contact?currPage=${page.endBlock+1 }&search=${search}&keyword=${keyword} ">
 			<c:out value="다음"></c:out></a></c:if></li>
 	</ul>
 		<sec:authorize access="hasRole('ROLE_USER')">

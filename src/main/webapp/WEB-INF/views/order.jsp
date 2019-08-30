@@ -24,10 +24,43 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-	function shippingmodify(bno)
+	
+	$(document).on("click", "#modify_btn", function () { 
+		var bno = $(this).data('bno');
+		
+		var sel = document.getElementById("sel2");
+		var shipping;
+		
+		for(i=0; i<sel.options.length; i++){
+		
+			if(sel.options[i].selected==true){
+				shipping=sel.options[i].value;
+				break;
+			}
+		}
+		
+		//var shipping=target.options[target.selectedIndex].value;
+		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../smodifyresult/"+bno+"?shipping="+shipping+"'");
+    
+	
+		/* var sel = document.getElementById("sel");
+		var val;
+		for(i=0; i<sel.options.length; i++) {
+		    if(sel.options[i].selected == true) {
+		        val = sel.options[i].value;
+		        break;
+		    }
+		} */
+	
+	
+	
+	
+	});
+	
+	/* function shippingmodify(bno)
 	{
 		location.href="../shippingmodify/"+bno;
-	}
+	} */
 </script>
 </head>
 <body>
@@ -50,15 +83,17 @@
                 <a class="nav-link" data-toggle="tab" href="#">나의 취소 내역</a>
               </li> -->
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../order">주문 관리</a>
+                <a class="nav-link" href="../order">주문 완료</a>
               </li>
-
+			  <li data-tab="product" class="nav-item">
+                <a class="nav-link" href="../ordercancel">주문 취소</a>
+              </li>
           </ul>
      </div>
           <br><br>
           
 <div class="container">
-  <p>현재까지의 주문 내역을 확인할 수 있습니다.</p>
+  <p>주문 완료 내역을 확인할 수 있습니다.</p>
 
 	<form>
     <div class="form-group" style="width: 150px; float: right;">
@@ -101,9 +136,43 @@
         <td><c:out value="${item.pay }"></c:out></td>
         <td><c:out value="${item.bdate }"></c:out></td>
         <td><c:out value="${item.shipping }"></c:out></td>
-        <td><c:if test="${item.no!='0' }"><button type="button" class="btn btn-info" onclick="shippingmodify(${item.bno})">수정</button></c:if></td>
+        <td><c:if test="${item.no!='0' }"><button id="modify_btn" type="button" class="btn btn-info" data-bno="${item.bno }" data-toggle="modal" data-target="#myModal">수정</button></c:if></td>
         <td class="td"><c:if test="${item.no=='0' }"><c:out value="탈퇴"></c:out></c:if></td>
       </tr>
+            <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+       <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">수정 확인</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- <form action="../smodifyresult"> -->
+    		<div class="form-group">
+      			<select class="form-control" name="shipping" id="sel2" style="width: 200px;">
+        			<option value="배송 준비">배송 준비</option>
+       				<option value="배송 중">배송 중</option>
+        			<option value="배송 완료">배송 완료</option>
+      			</select>
+    		</div>
+    		<button id="yes_btn" type="submit" class="btn btn-info" data-dismiss="modal">수정</button>
+  			<a href="../order" class="btn btn-danger">취소</a>
+  		  <!-- </form> -->
+        </div>
+        
+        <!-- Modal footer
+        <div class="modal-footer">
+          <button id="yes_btn" type="button" class="btn btn-secondary" data-dismiss="modal">예</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
      </c:forEach>
     </tbody>
   </table>
@@ -113,7 +182,7 @@
 		<option>검색 조건 </option>
 		<option value="pname">상품명</option>
 		<option value="bno">주문 번호</option>
-		<option value="nickname">주문자</option>
+		<option value="email">주문자 이메일</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">
@@ -124,28 +193,12 @@
   <li class="page-item">
     <c:if test="${page.prev }">
     <%-- <c:if test="${page.startBlock>1 }"> --%>
-	<a class="page-link" href="order/${cno}?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
+	<a class="page-link" href="../order/${cno}?currPage=${page.startBlock-1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
   </li>
   <li class="page-item">
-  
-  <%-- <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
-  	
-		<a class="page-link" href="product?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
-		<c:out value="${index }"/>
-		</a>
-  </c:forEach> --%>
-  
-  <%-- <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
-    <c:if test="${index==currpage}">
-      <c:out value="${index}"></c:out>
-    </c:if>
-    <c:if test="${index!=currpage }">
-     <a class="page-link" href="product?currpage=${index}&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
-    </c:if>
-   </c:forEach> --%>
    
    <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
@@ -159,37 +212,17 @@
 		</c:choose>
 	</c:forEach>
    
-   
-   
   </li>
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
-	<a  class="page-link" href="../order?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
+	<a  class="page-link" href="../order/${cno}?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">
 	<c:out value="다음"/>
 	</a>
   </c:if>
   </li>
   </ul>
   </div>
-  
-  <!-- <div class="text-center">
-  <ul class="pagination">
-   <li><a href="#">이전</a></li>
-   <li><a href="#">1</a></li>
-   <li><a href="#">2</a></li>
-   <li><a href="#">3</a></li>
-   <li><a href="#">4</a></li>
-   <li><a href="#">5</a></li>
-   <li><a href="#">다음</a></li>
-   
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-  </div> -->
   
 </div>
 </body>

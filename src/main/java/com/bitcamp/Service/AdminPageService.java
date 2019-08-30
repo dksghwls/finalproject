@@ -25,12 +25,24 @@ public interface AdminPageService {
 
 	public List<ProductDTO> ocategorylist();
 
-	public int subototalCount(String search, String searchtxt);
+	public int subototalCount(String search, String searchtxt, int cno);
 
 	public List<ProductDTO> suborderlist(String search, String searchtxt, int startRow, int endRow, int cno);
 
 	public void smodifyresult(ProductDTO dto);
 
 	public void updateno(int no);
+
+	public List<ProductDTO> ccategorylist();
+
+	public int ctotalCount(String search, String searchtxt);
+
+	public List<ProductDTO> ordercancel(String search, String searchtxt, int startRow, int endRow);
+
+	public List<ProductDTO> subccategorylist();
+
+	public int subctotalCount(String search, String searchtxt, int cno);
+
+	public List<ProductDTO> subordercancel(String search, String searchtxt, int startRow, int endRow, int cno);
 	
 }

@@ -20,9 +20,14 @@
     }
     
     footer {
-      background-color: #f2f2f2;
+      background-color: #333333;
       padding: 25px;
     }
+    
+    footer > p {
+		color: #9D9D9D;
+		margin: 0px;
+	}
 </style>
 </head>
 <body>

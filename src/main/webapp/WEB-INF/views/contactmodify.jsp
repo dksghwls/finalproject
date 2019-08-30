@@ -15,22 +15,17 @@
 	<div class="container">
 	<c:set var="member" value="${ sessionScope.user }"></c:set>
 	<form method="post" action="/contactmodifyok" id="contactmodi">
-	<label for="focusedInput">글번호</label>
-	<input type="text" class="form-control" id="focusedInput" name="hno" 
+	<input type="hidden" class="form-control" id="focusedInput" name="hno" 
 	 value="${dto.hno }" style="width: 15%;" readonly="readonly"><br>
-	<input type="hidden" name="no" value="${member.no }"><br>
+	<input type="hidden" name="no" value="${member.no }"> 
 	<label for="focusedInput">회원명</label>
 	<input type="text" class="form-control" id="focusedInput" name="nickname" 
 	 value="${member.nickname }" style="width: 15%;" readonly="readonly" ><br>
 	<br>
-	<label for="sel1">제목</label> 
-	<select name="htitle"  class="form-control" id="sel1" 
-	 value="${dto.htitle }" style="width: 15%;"><br>
-		<option value="계정문의">계정문의</option>
-	 	<option value="개인정보">개인정보</option>
-		<option value="할인문의">할인문의</option>
-		<option value="기타문의">기타문의</option>
-	</select><br><br>
+	<label for="htitle">제목</label> 
+		<textarea class="form-control" rows="1" id="htitle" name="htitle"
+				style="width: 27%;" >${dto.htitle }</textarea>
+	 <br>
 	<label for="hcontent">내용</label><br>
 	<textarea class="form-control" rows="5" id="hcontent"
 	 name="hcontent" style="width: 48%;">${dto.hcontent }</textarea><br>

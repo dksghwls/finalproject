@@ -110,7 +110,7 @@ public class AdminPageController {
 		//Pattern p = Pattern.compile("(^[0-9]*$)");
 		
 		if(search=="pname"||search.equals("pname")||search=="bno"||search.equals("bno")
-				|| search=="nickname"||search.equals("nickname"))
+				|| search=="email"||search.equals("email"))
 		{
 			//Matcher m = p.matcher(searchtxt);
 			/*
@@ -156,7 +156,7 @@ public class AdminPageController {
 		//Pattern p = Pattern.compile("(^[0-9]*$)");
 		
 		if(search=="pname"||search.equals("pname")||search=="bno"||search.equals("bno")
-				|| search=="nickname"||search.equals("nickname"))
+				|| search=="email"||search.equals("email"))
 		{
 			//Matcher m = p.matcher(searchtxt);
 			/*
@@ -169,7 +169,7 @@ public class AdminPageController {
 		}
 		
 		
-		int totalCount = adminPageService.subototalCount(search, searchtxt);
+		int totalCount = adminPageService.subototalCount(search, searchtxt, cno);
 		
 		int pageSize=10;
 		int blockSize=5;
@@ -189,16 +189,25 @@ public class AdminPageController {
 		
 	}
 	
-	@RequestMapping("shippingmodify/{bno}")
+	/*@RequestMapping("shippingmodify/{bno}")
 	public String shippingmodify(@PathVariable int bno, Model model) {
 		
 		model.addAttribute("bno", bno);
-		
 		return "templete.jsp?page=shippingmodify";
-	}
+		
+		ProductDTO dto=new ProductDTO();
+		dto.setBno(bno);
+		dto.setShipping(shipping);
+		
+		adminPageService.smodifyresult(dto);
+		
+		return "redirect:/order";
+	}*/
 	
-	@RequestMapping(value="/smodifyresult")
-	public String smodifyresult(@RequestParam int bno, @RequestParam String shipping, Model model) {
+	@RequestMapping("smodifyresult/{bno}")
+	public String smodifyresult(@PathVariable int bno, @RequestParam String shipping, Model model) {
+		
+		System.out.println("shipping: "+shipping);
 		
 		ProductDTO dto=new ProductDTO();
 		dto.setBno(bno);
@@ -209,16 +218,94 @@ public class AdminPageController {
 		return "redirect:/order";
 	}
 	
-	/*
-	 * @RequestMapping(value ="/modifyresult") public String
-	 * modifyresult(@RequestParam String nickname, @RequestParam String
-	 * name, @RequestParam String addr, @RequestParam String
-	 * detailaddr, @RequestParam String phone, Model model) { MemberDTO dto=new
-	 * MemberDTO(); dto.setNickname(nickname); dto.setName(name); dto.setAddr(addr);
-	 * dto.setDetailaddr(detailaddr); dto.setPhone(phone);
-	 * myPageService.modifylist(dto);
-	 * 
-	 * return "redirect:/mypage"; }
-	 */
+	@RequestMapping(value="/ordercancel")
+	public String ordercancel(@RequestParam(required=false, defaultValue="1") int currPage
+						,@RequestParam(required=false, defaultValue="") String search
+						,@RequestParam(required=false, defaultValue="") String searchtxt
+						,Model model)
+	{
+		
+		List<ProductDTO> clist = adminPageService.ccategorylist();
+		
+		model.addAttribute("clist", clist);
+		
+		//Pattern p = Pattern.compile("(^[0-9]*$)");
+		
+		if(search=="pname"||search.equals("pname")||search=="bno"||search.equals("bno")
+				|| search=="email"||search.equals("email"))
+		{
+			//Matcher m = p.matcher(searchtxt);
+			/*
+			 * if(!m.find()) { searchtxt=""; model.addAttribute("searchtxt", "");
+			 * 
+			 * } else {
+			 */
+				model.addAttribute("searchtxt", searchtxt);
+			//}
+		}
+		
+		int totalCount = adminPageService.ctotalCount(search, searchtxt);
+		
+		int pageSize=10;
+		int blockSize=5;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		
+		List<ProductDTO> oclist = adminPageService.ordercancel(search, searchtxt, page.getStartRow(), page.getEndRow());
+		
+		
+		model.addAttribute("oclist", oclist);
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
+		
+		return "templete.jsp?page=ordercancel";
+		
+	}
+	
+	@RequestMapping(value="/ordercancel/{cno}")
+	public String ordercancel(@PathVariable int cno, @RequestParam(required=false, defaultValue="1") int currPage
+						,@RequestParam(required=false, defaultValue="") String search
+						,@RequestParam(required=false, defaultValue="") String searchtxt
+						,Model model)
+	{
+		
+		List<ProductDTO> clist = adminPageService.subccategorylist();
+		
+		model.addAttribute("clist", clist);
+		
+		//Pattern p = Pattern.compile("(^[0-9]*$)");
+		
+		if(search=="pname"||search.equals("pname")||search=="bno"||search.equals("bno")
+				|| search=="email"||search.equals("email"))
+		{
+			//Matcher m = p.matcher(searchtxt);
+			/*
+			 * if(!m.find()) { searchtxt=""; model.addAttribute("searchtxt", "");
+			 * 
+			 * } else {
+			 */
+				model.addAttribute("searchtxt", searchtxt);
+			//}
+		}
+		
+		int totalCount = adminPageService.subctotalCount(search, searchtxt, cno);
+		
+		int pageSize=10;
+		int blockSize=5;
+		
+		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
+		
+		List<ProductDTO> oclist = adminPageService.subordercancel(search, searchtxt, page.getStartRow(), page.getEndRow(), cno);
+		
+		
+		model.addAttribute("oclist", oclist);
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
+		
+		return "templete.jsp?page=ordercancel";
+		
+	}
 	
 }

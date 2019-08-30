@@ -44,10 +44,10 @@
 		</div>
 		</div>
 		</div>
-	</div>
-	 
+	
 	<input type="button" class="btn btn-default" data-toggle="modal" 
 	       data-target="#myModal2" value="삭제">
+	       </div>
 	<!-- Modal -->
 	<div class="modal fade" id="myModal2" role="dialog">
 		<div class="modal-dialog modal-sm">
@@ -70,6 +70,3 @@
 	</div>
 </body>
 </html>
-
-
-

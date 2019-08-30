@@ -42,7 +42,10 @@ function update(pno)
                 <a class="nav-link" href="../adminproduct">상품 관리</a>
               </li>
               <li data-tab="order" class="nav-item">
-                <a class="nav-link" href="../order">주문 관리</a>
+                <a class="nav-link" href="../order">주문 완료</a>
+              </li>
+              <li data-tab="product" class="nav-item">
+                <a class="nav-link" href="../ordercancel">주문 취소</a>
               </li>
               
           </ul>

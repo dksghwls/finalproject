@@ -85,11 +85,12 @@ public class AdminPageServiceImple implements AdminPageService {
 	}
 
 	@Override
-	public int subototalCount(String search, String searchtxt) {
+	public int subototalCount(String search, String searchtxt, int cno) {
 		
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
+		hm.put("cno", cno);
 
 		return adminMapper.subototalCount(hm);
 	}
@@ -119,6 +120,64 @@ public class AdminPageServiceImple implements AdminPageService {
 		
 		adminMapper.updateno(no);
 		
+	}
+
+	@Override
+	public List<ProductDTO> ccategorylist() {
+		
+		return adminMapper.ccategorylist();
+	}
+
+	@Override
+	public int ctotalCount(String search, String searchtxt) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+
+		return adminMapper.ctotalCount(hm);
+	}
+
+	@Override
+	public List<ProductDTO> ordercancel(String search, String searchtxt, int startRow, int endRow) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow);
+		o.put("endRow", endRow);
+
+		return adminMapper.ordercancel(o);
+	}
+
+	@Override
+	public List<ProductDTO> subccategorylist() {
+		
+		return adminMapper.subccategorylist();
+	}
+
+	@Override
+	public int subctotalCount(String search, String searchtxt, int cno) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("cno", cno);
+
+		return adminMapper.subctotalCount(hm);
+	}
+
+	@Override
+	public List<ProductDTO> subordercancel(String search, String searchtxt, int startRow, int endRow, int cno) {
+		
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("search", search);
+		o.put("searchtxt", searchtxt);
+		o.put("startRow", startRow );
+		o.put("endRow", endRow);
+		o.put("cno", cno);
+
+		return adminMapper.subordercancel(o);
 	}
 
 	

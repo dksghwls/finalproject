@@ -23,28 +23,33 @@ import com.bitcamp.Service.ContactService;
 
 @Controller
 public class ContactController {
-	//파일 업로드
-	private String path = "temp";
-			 
+				 
 	@Autowired
 	private ContactService contactservice;
 
 	@RequestMapping("/contact")
-	public String contactlist(@RequestParam(required=false, defaultValue="1") int currPage, Model model) {
+	public String contactlist(@RequestParam(required=false, defaultValue="1") int currPage
+								,@RequestParam(required=false, defaultValue="")String search
+								,@RequestParam(required=false, defaultValue="")String keyword
+								,Model model) {
 		
-		int totalCount = contactservice.contactcount();
+		System.out.println(keyword);
+		int totalCount = contactservice.contactcount(search, keyword);
 		System.out.println("totalCount: " + totalCount);
 		
-		int pageSize = 5;
+		int pageSize = 3;
 		int blockSize = 5;
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 		
-		List<ContactDTO> dto = contactservice.contactlist(page.getStartRow(), page.getEndRow());
+		List<ContactDTO> dto = contactservice.contactlist(search, keyword, page.getStartRow(), page.getEndRow());
 		model.addAttribute("dto", dto);
-		System.out.println("testdto" + dto);
+		System.out.println("testdto: " + dto.get(0).getNickname());
 		model.addAttribute("page", page);
-
+		model.addAttribute("search",search);
+		System.out.println("searchtest: "+search);
+		model.addAttribute("keyword",keyword);
+		System.out.println("keywordtest: "+keyword);
 		return "templete.jsp?page=contactlist";
 	}
 
