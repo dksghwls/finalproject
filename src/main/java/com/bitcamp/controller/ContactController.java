@@ -23,9 +23,7 @@ import com.bitcamp.Service.ContactService;
 
 @Controller
 public class ContactController {
-	//파일 업로드
-	private String path = "temp";
-			 
+				 
 	@Autowired
 	private ContactService contactservice;
 
