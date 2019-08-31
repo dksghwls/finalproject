@@ -44,7 +44,6 @@ public class ContactController {
 		
 		List<ContactDTO> dto = contactservice.contactlist(search, keyword, page.getStartRow(), page.getEndRow());
 		model.addAttribute("dto", dto);
-		System.out.println("testdto: " + dto.get(0).getNickname());
 		model.addAttribute("page", page);
 		model.addAttribute("search",search);
 		System.out.println("searchtest: "+search);

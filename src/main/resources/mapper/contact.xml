@@ -13,9 +13,12 @@
 		<where>
 			<if test="keyword!=null and keyword!=''">
 				<choose>
+				<when test="search=='b.nickname'">
+					and b.nickname like  CONCAT('%',#{keyword},'%')
+				</when>
 					<when test="search=='all'">
-						and htitle like CONCAT('%',#{keyword},'%')
-						or b.nickname like CONCAT('%',#{keyword},'%')
+						and htitle like CONCAT('%',#{keyword},'%') 
+						or hcontent like CONCAT('%',#{keyword},'%') 
 				</when>
 				</choose>
 			</if>
@@ -33,9 +36,12 @@
 		where hno
 		 <if test="keyword!=null and keyword!=''">
 			<choose>
+				<when test="search=='b.nickname'">
+					and b.nickname like  CONCAT('%',#{keyword},'%')
+				</when>
 					<when test="search=='all'">
-						and htitle like CONCAT('%',#{keyword},'%')
-						or b.nickname like CONCAT('%',#{keyword},'%')
+						and htitle like CONCAT('%',#{keyword},'%') 
+						or hcontent like CONCAT('%',#{keyword},'%') 
 				</when>
 			</choose>
 		</if>
