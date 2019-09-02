@@ -127,7 +127,6 @@
 
 </head>
 <body>
-
 	<div class="container">
 		<h2>
 		<a href="/helpcenter" data-toggle="tooltip" title="HelpCenter!">FAQ</a>

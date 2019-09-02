@@ -139,7 +139,7 @@
   <form method="get" action="../product/${cno}?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option>검색 조건 </option>
-		<option value="pname">상품 이름</option>
+		<option value="pname">상품명</option>
 		<option value="bno">주문 번호</option>
 	</select>
 	<input type="hidden" id="no" name="no" value="${member.no }"/>

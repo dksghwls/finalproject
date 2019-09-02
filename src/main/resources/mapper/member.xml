@@ -26,4 +26,12 @@
     		where email = #{email}
     	</select>
     	
+    	<select id="getList" resultType="com.bitcamp.DTO.CategoryDTO">
+    		select p.pno, pname, dprice, imgname
+			from product p inner join img i
+			on p.pno = i.pno
+			order by pno desc
+			limit 4
+    	</select>
+    	
     </mapper>

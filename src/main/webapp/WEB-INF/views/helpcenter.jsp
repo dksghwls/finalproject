@@ -14,8 +14,7 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa8b0b5161046e37e60ed382cde1421"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat"
 	rel="stylesheet">
-
-
+	
 <style>
 	body {
 		font: '돋움', Dotum, Helvetica, Sans-serif;
@@ -43,11 +42,12 @@
 		color: black;
 		font-weight: 200px;
 	}
+	
 	#helpcenterbg{
 	background-image: url("img/helpmain.jpg");
   	background-size: 100%; 
   	background-repeat: no-repeat;
-  	background-attachment: fixed;
+ 
      
 	}
 	
@@ -89,7 +89,9 @@
 		padding-bottom: 6px;
 	}
 	
+
  	</style>
+
 </head>
 <body>
 	<!-- Second Container -->
@@ -98,10 +100,8 @@
 		 <p class="p1">Help Center</p> 
 		<br>
 		<form method="get" action="faq?currPage=${page.startBlock }" class="searchform">
-			<input type="hidden" name="search" value="all">
-			 
-					<input type="text"  class="trysearch" name="keyword">
-			  		 
+				<input type="hidden" name="search" value="all">
+					<input type="text" class="trysearch" name="keyword">
 					<button class="btn btn-default" type="submit">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
@@ -109,7 +109,7 @@
 	</div>
 
 	<!-- Third Container (Grid) -->
-	<div class="container-fluid bg-3 text-center">
+	<div class="container-fluid bg-3 text-center" id="helpcenter">
 		<h3 class="margin"></h3>
 		<br>
 		<div class="row">
@@ -163,7 +163,7 @@
 		</div>
 	</div>
 	<!-- 지도 api  -->
-		
+	<!-- 	
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
@@ -196,6 +196,6 @@
 
 		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 		infowindow.open(map, marker);
-	</script>
+	</script> -->
 </body>
 </html>

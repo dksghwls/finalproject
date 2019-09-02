@@ -130,7 +130,7 @@ public class MyPageController {
 			//}
 		}
 		
-		int totalCount = myPageService.ctotalCount(search, searchtxt, no, cno);
+		int totalCount = myPageService.ctotalCount(search, searchtxt, cno, no);
 		
 		System.out.println("totalCount 2: "+totalCount);
 		

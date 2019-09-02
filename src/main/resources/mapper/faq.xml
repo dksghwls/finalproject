@@ -12,22 +12,20 @@
 			<if test="keyword!=null and keyword!=''">
 				<choose>
 					<when test="search=='ftitle'">
-						and ftitle like CONCAT('%',#{keyword},'%')
+						and ftitle like CONCAT('%',#{keyword},'%') 
 					</when>
 					<when test="search=='fcontent'">
-						and fcontent like CONCAT('%',#{keyword},'%')
+						and fcontent like  CONCAT('%',#{keyword},'%')
 					</when>
 					<when test="search=='all'">
-						and ftitle like CONCAT('%',#{keyword},'%')
-						or fcontent like CONCAT('%',#{keyword},'%')
+						and ftitle like  CONCAT('%',#{keyword},'%')
+						or fcontent like  CONCAT('%',#{keyword},'%') 
 				</when>
 				</choose>
 			</if>
 		</where>
 
 	</select>
-
-
 	<select id="faqlist" resultType="com.bitcamp.DTO.FaqDTO"
 		parameterType="java.util.HashMap">
 		SELECT b.*, a.fno, a.ftitle, a.fcontent
@@ -37,15 +35,14 @@
 		<if test="keyword!=null and keyword!=''">
 			<choose>
 				<when test="search=='ftitle'">
-					and ftitle like CONCAT('%',#{keyword},'%')
-
+					and a.ftitle like  CONCAT('%',#{keyword},'%') 
 				</when>
 				<when test="search=='fcontent'">
-					and fcontent like CONCAT('%',#{keyword},'%')
+					and a.fcontent like  CONCAT('%',#{keyword},'%')
 				</when>
 					<when test="search=='all'">
-						and ftitle like CONCAT('%',#{keyword},'%')
-						or fcontent like CONCAT('%',#{keyword},'%')
+						and a.ftitle like  CONCAT('%',#{keyword},'%') 
+						or a.fcontent like  CONCAT('%',#{keyword},'%') 
 				</when>
 			</choose>
 		</if>
@@ -53,7 +50,6 @@
 		ORDER BY a.fno desc
 		LIMIT #{startRow}, 5;
 	</select>
-
 	<select id="shiplist" resultType="com.bitcamp.DTO.FaqDTO"
 		parameterType="java.util.HashMap">
 		SELECT b.*, a.fno, a.ftitle, a.fcontent

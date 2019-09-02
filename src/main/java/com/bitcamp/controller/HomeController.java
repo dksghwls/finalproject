@@ -1,8 +1,9 @@
 package com.bitcamp.controller;
 
-import java.security.Principal;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
-import javax.inject.Inject;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bitcamp.DTO.CategoryDTO;
 import com.bitcamp.DTO.MemberDTO;
 import com.bitcamp.Service.MemberService;
 
@@ -29,13 +30,20 @@ public class HomeController {
 	private MemberService service;
 	
 	@RequestMapping(value = "/")
-	public String home(HttpSession session) {
+	public String home(HttpSession session, Model model) {
+		
+		List<CategoryDTO> clist = service.getList();
+		
+		// 세션 로그인
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    String email = authentication.getName();
 	    if(email != "anonymousUser") {
 	    	MemberDTO user = service.getMember(email);
 		    session.setAttribute("user", user);
 	    }
+	    
+	    model.addAttribute("clist", clist);
+	    
 		return "templete.jsp?page=home";
 	}
 	

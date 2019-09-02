@@ -12,6 +12,9 @@ public interface DetailService {
 	public imgDTO getimage(int pno);
 	public int replyinsert2(int no, int pno, String rcontent);
 	public List<ReplyDTO> replylist(int pno);
+	public int replydelete2(int rno);
+	public ReplyDTO replydetail2(int rno);
+	public int replyupdate2(ReplyDTO dto);
 	
 	
 }
