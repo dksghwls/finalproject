@@ -46,6 +46,15 @@ public class DetailServiceImple implements DetailService {
 		
 		return detailmapper.replylist(pno);
 	}
+	@Override
+	public int replydelete2(int rno) {
+		
+		return detailmapper.replydelete2(rno);
+		
+	}
+	
+	
+	
 	
 	
 }

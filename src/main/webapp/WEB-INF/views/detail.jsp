@@ -74,6 +74,25 @@
      
     </div>
     
+    <select id="countitem" name="countitem" > 
+    
+    
+    <option value="1">1
+    <option value="2">2
+    <option value="3">3
+    <option value="4">4
+    <option value="5">5
+    <option value="6">6
+    <option value="7">7
+    <option value="8">8
+    <option value="9">9
+    <option value="10">10
+    
+    </select>
+   
+    
+    
+    
      <c:forEach var="item" items="${dto}">
     <a href="../Payment/${item.pno }"><button type="button" class="btn btn-primary btn-md">결제</button></a>
       </c:forEach>
@@ -137,6 +156,9 @@
 	<sec:authorize access="isAuthenticated()">
  		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea>
    		<button id="reviewbtn"> 입력하기 </button>
+   		
+   		
+   		
 	</sec:authorize>
 	</div>
   <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
@@ -147,7 +169,8 @@
 	
    <c:forEach var="list" items="${replylist}">
     
-     ${ list.rcontent}
+     ${ list.rcontent}<br>
+     <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      ${list.pno }
  
  
