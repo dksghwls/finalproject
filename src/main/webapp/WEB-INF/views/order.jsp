@@ -15,7 +15,10 @@
       .nav-link { 
           font-size: 20px;
         }
-        .td{
+        .p1{
+        	color: blue;
+        }
+        .p2{
         	color: red;
         }
 </style>
@@ -24,30 +27,38 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-	
+	var bno;
 	$(document).on("click", "#modify_btn", function () { 
-		var bno = $(this).data('bno');
+		bno = $(this).data('bno');
 		
-		var select = document.getElementById("sel2");
-		var shipping=select.options[document.getElementById("sel2").selectedIndex].value;
-			
-			
-			/* 
-			 */
-	    /* alert('선택된 옵션 text 값=' + target.options[target.selectedIndex].text);     // 옵션 text 값
-	       alert('선택된 옵션 value 값=' + target.options[target.selectedIndex].value);
-
-	출처: https://gocoder.tistory.com/51 [고코더 IT Express] */
+	});
 		
-		/* var shipping=document.getElementById("sel2").options; */
-		/* onclick="location.href='../cancel/11?no=${member.no}'" */
-		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../smodifyresult/"+bno+"?shipping="+shipping+"'");
-    });
+	function modify_func1(currPage){
+		var sel=document.getElementById("sel2");
+		var shipping;
+		for(i=0; i<sel.options.length; i++){
+			if(sel.options[i].selected==true){
+				shipping=sel.options[i].value;
+				break;
+			}
+		}
+		
+		location.href="../smodifyresult?bno="+bno+"&shipping="+shipping+"&currPage="+currPage;
+	}
 	
-	/* function shippingmodify(bno)
-	{
-		location.href="../shippingmodify/"+bno;
-	} */
+	function modify_func2(currPage, cno){
+		var sel=document.getElementById("sel2");
+		var shipping;
+		for(i=0; i<sel.options.length; i++){
+			if(sel.options[i].selected==true){
+				shipping=sel.options[i].value;
+				break;
+			}
+		}
+		
+		location.href="../smodifyresult/"+bno+"?shipping="+shipping+"&currPage="+currPage+"&cno="+cno;
+	}
+	
 </script>
 </head>
 <body>
@@ -108,7 +119,7 @@
         <th>주문 일자</th>
         <th>배송 상태</th>
         <th>배송 상태 수정</th>
-        <th>탈퇴 여부</th>
+        <th>회원 상태</th>
       </tr>
     </thead>
     <tbody>
@@ -123,8 +134,17 @@
         <td><c:out value="${item.pay }"></c:out></td>
         <td><c:out value="${item.bdate }"></c:out></td>
         <td><c:out value="${item.shipping }"></c:out></td>
-        <td><c:if test="${item.no!='0' }"><button id="modify_btn" type="button" class="btn btn-info" data-bno="${item.bno }" data-toggle="modal" data-target="#myModal">수정</button></c:if></td>
-        <td class="td"><c:if test="${item.no=='0' }"><c:out value="탈퇴"></c:out></c:if></td>
+        <td><c:if test="${item.no!='0'}"><button id="modify_btn" type="button" class="btn btn-info" data-bno="${item.bno}" data-toggle="modal" data-target="#myModal">수정</button></c:if></td>
+        <td>
+        	<c:choose>
+        		<c:when test="${item.no!='0'}">
+        			<p class="p1">가입 회원</p>
+        		</c:when>
+        		<c:otherwise>
+        			<p class="p2">탈퇴 회원</p>
+        		</c:otherwise>
+        	</c:choose> 
+        </td>
       </tr>
             <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
@@ -132,7 +152,7 @@
       
        <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">수정 확인</h4>
+          <h4 class="modal-title">배송 상태 수정</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -146,9 +166,17 @@
         			<option value="배송 완료">배송 완료</option>
       			</select>
     		</div>
-    		<button id="yes_btn" type="submit" class="btn btn-info" data-dismiss="modal">수정</button>
-  			<a href="../order" class="btn btn-danger">취소</a>
-  		  <!-- </form> -->
+    		
+    		<c:choose>
+        		<c:when test="${cno==null || cno==''}">
+        			<button onclick="modify_func1(${page.currPage})" id="yes_btn" type="submit" class="btn btn-info" data-dismiss="modal">수정</button>
+  					<a href="../order?currPage=${page.currPage}" class="btn btn-danger">취소</a>
+        		</c:when>
+        		<c:otherwise>
+        			<button onclick="modify_func2(${page.currPage}, ${cno})" id="yes_btn" type="submit" class="btn btn-info" data-dismiss="modal">수정</button>
+  					<a href="../order/${cno}?currPage=${page.currPage}" class="btn btn-danger">취소</a>
+        		</c:otherwise>
+        	</c:choose> 
         </div>
         
         <!-- Modal footer

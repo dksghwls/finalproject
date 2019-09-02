@@ -184,6 +184,7 @@ public class AdminPageController {
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
 		model.addAttribute("cno", cno);
+		model.addAttribute("currPage", currPage);
 		
 		return "templete.jsp?page=order";
 		
@@ -204,16 +205,33 @@ public class AdminPageController {
 		return "redirect:/order";
 	}*/
 	
-	@RequestMapping("smodifyresult/{bno}")
-	public String smodifyresult(@PathVariable int bno, @RequestParam String shipping, Model model) {
+	@RequestMapping(value="smodifyresult")
+	public String smodifyresult(@RequestParam int bno, @RequestParam String shipping, @RequestParam int currPage, Model model) {
 		
 		ProductDTO dto=new ProductDTO();
 		dto.setBno(bno);
 		dto.setShipping(shipping);
 		
+		model.addAttribute("currPage", currPage);
+		
 		adminPageService.smodifyresult(dto);
 		
 		return "redirect:/order";
+	}
+	
+	@RequestMapping("smodifyresult/{bno}")
+	public String smodifyresult(@PathVariable int bno, @RequestParam String shipping, @RequestParam int currPage, @RequestParam int cno, Model model) {
+		
+		ProductDTO dto=new ProductDTO();
+		dto.setBno(bno);
+		dto.setShipping(shipping);
+		
+		model.addAttribute("currPage", currPage);
+		model.addAttribute("cno", cno);
+		
+		adminPageService.smodifyresult(dto);
+		
+		return "redirect:/order/"+cno;
 	}
 	
 	@RequestMapping(value="/ordercancel")

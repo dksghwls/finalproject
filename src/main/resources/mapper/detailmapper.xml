@@ -34,6 +34,16 @@
     
     </select>
     
+    <delete id="replydelete2" parameterType="com.bitcamp.DTO.ReplyDTO">
+    delete from reply
+    where rno=#{rno}
+    
+    
+    
+    </delete>
+    
+    
+    
     
     
     </mapper>

@@ -109,9 +109,9 @@ function update(pno)
   
   <form method="get" action="../adminproduct?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
-		<option value="pno">상품번호</option>
+		<!-- <option value="pno">상품번호</option> -->
 		<option value="pname">상품이름</option>
-		<option value="cno">카테고리번호</option>
+		<!-- <option value="cno">카테고리번호</option> -->
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">
