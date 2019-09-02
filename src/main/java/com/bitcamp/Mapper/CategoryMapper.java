@@ -63,5 +63,7 @@ public interface CategoryMapper {
 
 	public List<CategoryDTO> imgTest();
 
+	public int imgdel(int pno);
+
 	
 }

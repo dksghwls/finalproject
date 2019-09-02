@@ -55,5 +55,7 @@ public interface CategoryService {
 
 	public List<CategoryDTO> imgTest();
 
+	public int imgdel(int pno);
+
 	
 }

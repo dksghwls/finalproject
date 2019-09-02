@@ -230,6 +230,14 @@ public class CategoryServiceImple implements CategoryService{
 		return mapper.imgTest();
 	}
 
+
+	@Override
+	public int imgdel(int pno) {
+		
+		return mapper.imgdel(pno);
+		
+	}
+
 	
 
 

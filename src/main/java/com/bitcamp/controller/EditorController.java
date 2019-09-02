@@ -39,6 +39,8 @@ public class EditorController {
 	public String addresult(HttpServletRequest request,CategoryDTO dto,Model model, FileVo vo)
 	{
 		
+		/*int cno = Integer.parseInt(no);*/
+		
 		MultipartFile multi = vo.getFile1();
 		 try {
 			 
