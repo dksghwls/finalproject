@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <!-- <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
    
      <!--href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
   <style>
@@ -29,10 +29,14 @@
         .p{
         	font-weight: bold;
         }
+        .container{
+       	margin: auto
+       }
   </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 </head>
 <body>
 <c:set var="member" value="${ sessionScope.user }"></c:set>
@@ -45,25 +49,25 @@
             <ul class="nav nav-pills">
       
           <li data-tab="info" class="nav-item" id="default">
-                <a class="nav-link active" href="../mypage/${member.no}">³ªÀÇ Á¤º¸</a>
+                <a class="nav-link active" href="../mypage/${member.no}">ë‚˜ì˜ ì •ë³´</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../product?no=${member.no}">³ªÀÇ ÁÖ¹® ³»¿ª</a>
+                <a class="nav-link" href="../product?no=${member.no}">ë‚˜ì˜ ì£¼ë¬¸ ë‚´ì—­</a>
               </li>
               <li data-tab="product2" class="nav-item">
-                <a class="nav-link" href="../cancellist?no=${member.no }">³ªÀÇ Ãë¼Ò ³»¿ª</a>
+                <a class="nav-link" href="../cancellist?no=${member.no }">ë‚˜ì˜ ì·¨ì†Œ ë‚´ì—­</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="../review/${member.no}">³ªÀÇ ¸®ºä</a>
+                <a class="nav-link" data-toggle="tab" href="../review/${member.no}">ë‚˜ì˜ ë¦¬ë·°</a>
               </li>
 
           </ul>
      </div>
           <br><br>
           
-<!--<h2>¸¶ÀÌ ¸®ºä</h2>-->
+<!--<h2>ë§ˆì´ ë¦¬ë·°</h2>-->
 <div class="container">
-  <p>${member.nickname } ´ÔÀÇ ±¸¸Å »óÇ° ¸®ºä ¸ğÀ½ÀÔ´Ï´Ù.</p>
+  <p>${member.nickname } ë‹˜ì˜ êµ¬ë§¤ ìƒí’ˆ ë¦¬ë·° ëª¨ìŒì…ë‹ˆë‹¤.</p>
   <br>
  
   <!--<ul>
@@ -78,8 +82,8 @@
             <td>
             	<div class="s">
             		<p class="p">${item.pname}</p><br>
-        			<li><span>ÆÇ¸Å°¡: </span>${item.dprice}¿ø</li>
-        			<li><span>¸¶°¨ÀÏ: </span>${item.deadline}</li><br>
+        			<li><span>íŒë§¤ê°€: </span>${item.dprice}ì›</li>
+        			<li><span>ë§ˆê°ì¼: </span>${item.deadline}</li><br>
         			<p>${item.rcontent}</p><br>
                 </div>
             </td>

@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>Bootstrap 4</title>
-    <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
     <!--href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
     <style>
       .nav-link { 
@@ -17,9 +17,12 @@
         p{
             font-weight: bold;
         }
+         .container{
+       	margin: auto
+       }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <script>
     function sample4_execDaumPostcode() {
@@ -155,6 +158,7 @@
   </form>
 </div>
       </div>
+      <br><br>
  <script>
 		var pw_passed = true;  // 추후 벨리데이션 처리시에 해당 인자값 확인을 위해
 	
