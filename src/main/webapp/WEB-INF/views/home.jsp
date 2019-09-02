@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.container {
+		padding-top: 20px;
+	}
+</style>
 </head>
 <body>
-	
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		관리자 로그인
-	</sec:authorize>
-	
 	
 	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	    <!-- Indicators -->
@@ -62,6 +62,22 @@
 	    </a>
 	  </div>
 
+	<div class="container"> 
+	 <div class="row">
+	 <h1>최신 등록상품<a href="../AllCategory"><small>더보기</small></a></h1>
+	 <c:forEach var="list" items="${ clist }">
+	 	<div class="col-sm-6 col-md-3 ">
+	      <div class="thumbnail">
+	        <img src="${ list.imgname }">
+	          <div class="caption">
+	            <h3>${ list.pname }</h3>
+	            <p><a href="../detail/${list.pno}" class="btn btn-primary" role="button">상품보기</a></p>
+	        </div>
+	      </div>
+	    </div>
+	 </c:forEach>
+	 </div>  
+	</div>
 	
 </body>
 </html>
