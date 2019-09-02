@@ -17,9 +17,6 @@
 	        <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
 	      </div>
 	    </div>
-	    <div class="col-sm-offset-5 col-sm-6">
-	        <div id="result2"></div>
-	    </div>
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="pwd">Password:</label>
 	      <div class="col-sm-8">          
