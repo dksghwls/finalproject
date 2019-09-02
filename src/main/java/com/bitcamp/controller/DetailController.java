@@ -51,6 +51,20 @@ public class DetailController {
 		return "templete.jsp?page=detail";
 		
 	}
+	@RequestMapping("/replydelete2/{rno}")
+	public String replydelete(@PathVariable int rno, @RequestParam int pno){
+		int result = service.replydelete2(rno);
+		
+		System.out.println("´ñ±Û¹øÈ£"+rno);
+		return "redirect:/detail/"+pno;
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
