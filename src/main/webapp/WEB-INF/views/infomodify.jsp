@@ -12,13 +12,22 @@
     <!--href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
     <style>
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
-        p{
+        /* p{
             font-weight: bold;
-        }
+        } */
          .container{
        	margin: auto
+       }
+       p{
+       	font-size: 15px;
+       }
+       #nick{
+       	color: blue;
+       }
+       .content{
+       	font-size: 15px;
        }
     </style>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -88,7 +97,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>My Page</h2>
+          <h1>My Page</h1>
          </div>
             <ul class="nav nav-pills">
              <!--<li data-tab="tab1" class='nav-item' id="default"><a href="#">menu1</a></li>
@@ -108,48 +117,57 @@
                 <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
               </li>
           </ul>
-          <br>
+          <br><br>
           
 <div class="container">
-  <h3>개인 정보 수정 페이지</h3>
+  <!-- <h3>개인 정보 수정 페이지</h3> -->
+  <p><span id="nick">${member.nickname }</span> 님의 회원 정보를 수정할 수 있습니다.</p>
   <br>
   
   <form action="../modifyresult" class="was-validated" onsubmit="return submitCheck()" name="frm">
   <c:forEach var="item" items="${mlist }">
     <div class="form-group">
-       <label for="roadAddress">이메일</label>
+       <label for="roadAddress"><div class="content">이메일</div></label>
    	   <input type="text" id="email" value="${item.email }" class="form-control" style="width: 700px;" name="email" readonly="readonly">
     </div>
+    <br>
     <div class="form-group">
-      <label for="nickname">닉네임</label>
+      <label for="nickname"><div class="content">닉네임</div></label>
       <input type="text" class="form-control" id="nickname" value="${item.nickname }" style="width: 700px;" name="nickname">
     </div>
+    <br>
     <div class="form-group">
-      <label for="name">이름</label>
+      <label for="name"><div class="content">이름</div></label>
       <input type="text" class="form-control" id="name" value="${item.name }" style="width: 700px;" name="name">
     </div>
+    <br>
     <div class="form-group">
       <button type="button" id="sample4_postcode" onclick="sample4_execDaumPostcode()" class="btn btn-primary">우편번호 찾기</button>
    	</div>
    	<div class="form-group">
-   		<label for="roadAddress">주소</label>
+   		<label for="roadAddress"><div class="content">주소</div></label>
    		<input type="text" id="sample4_roadAddress" value="${item.addr }" class="form-control" style="width: 700px;" name="addr" readonly="readonly">
    	</div>
+   	<br>
    	<div class="form-group">
-		<label for="name">상세주소</label>
+		<label for="name"><div class="content">상세주소</div></label>
 		<input type="text" id="sample4_detailAddress" value="${item.detailaddr }"  class="form-control" style="width: 700px;" name="detailaddr">
    	</div>
+   	<br>
     <div class="form-group">
-      <label for="phone">전화번호</label>
+      <label for="phone"><div class="content">전화번호</div></label>
       <input type="text" class="form-control" id="phone" value="${item.phone }" style="width: 700px;" name="phone">
     </div>
+    <br>
     <div class="form-group">
-      <label for="cpwd">비밀번호</label>
+      <label for="cpwd"><div class="content">비밀번호</div></label>
       <input type="password" class="form-control" id="cpwd" placeholder="기존 또는 새 비밀번호를 입력하세요" style="width: 700px;" name="cpwd" maxlength="20">
     </div>
+    <br>
      <div class="col-sm-offset-6 col-sm-6">
 	        <div id="result"></div>
 	  </div>
+	  <br>
      <input type="hidden" id="no" name="no" value="${item.no }"/>
      <button type="submit" class="btn btn-info">확인</button>
     <a href="../mypage/${item.no }" class="btn btn-danger">취소</a>

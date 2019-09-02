@@ -11,10 +11,24 @@
     
      <style>
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
        .container{
        	margin: auto
+       }
+       .a{
+       	font-weight: bold;
+       	line-height: 50px;
+       }
+       .content{
+       	font-size: 15px;
+       	line-height: 50px;
+       }
+       p{
+       	font-size: 15px;
+       }
+       #nick{
+       	color: blue;
        }
     </style>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -54,7 +68,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>My Page</h2>
+          <h1>My Page</h1>
          </div>
             <ul class="nav nav-pills">
       
@@ -72,15 +86,15 @@
               </li>
 
           </ul>
-     </div>
+     <!-- </div> -->
           <br><br>
           <!-- <div id="tabcontent"></div>
       </div> -->
 	
 <div class="container">
-  <p>${member.nickname } 님의 회원 정보입니다.</p>
+  <p><span id="nick">${member.nickname }</span> 님의 회원 정보입니다.</p>
   <br>            
-  <table class="table">
+  <table class="table table-striped">
     <!--<thead>
       <tr>
         <th>Firstname</th>
@@ -92,28 +106,28 @@
     
    <c:forEach var="item" items="${mlist }">
       <tr>
-        <td class="a">닉네임</td>
-        <td>${item.nickname }</td>
+        <td class="a"><div class="content">닉네임</div></td>
+        <td><div class="content">${item.nickname }</div></td>
       </tr>
       <tr>
-        <td class="a">이메일</td>
-        <td>${item.email }</td>
+        <td class="a"><div class="content">이메일</div></td>
+        <td><div class="content">${item.email }</div></td>
       </tr>
       <tr>
-        <td class="a">이름</td>
-        <td>${item.name }</td>
+        <td class="a"><div class="content">이름</div></td>
+        <td><div class="content">${item.name }</div></td>
       </tr>
       <tr>
-        <td class="a">주소</td>
-        <td>${item.addr }</td>
+        <td class="a"><div class="content">주소</div></td>
+        <td><div class="content">${item.addr }</div></td>
       </tr>
       <tr>
-        <td class="a">상세주소</td>
-        <td>${item.detailaddr }</td>
+        <td class="a"><div class="content">상세주소</div></td>
+        <td><div class="content">${item.detailaddr }</div></td>
       </tr>
       <tr>
-        <td class="a">전화번호</td>
-        <td>${item.phone }</td>
+        <td class="a"><div class="content">전화번호</div></td>
+        <td><div class="content">${item.phone }</div></td>
       </tr>
       
     </tbody>
@@ -148,6 +162,7 @@
     </div>
   </div>
   </c:forEach>
+</div>
 </div>
 </body>
 </html>
