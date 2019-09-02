@@ -5,19 +5,22 @@
 <html>
 <head>
 <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>Bootstrap 4</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
     
      <style>
       .nav-link { 
           font-size: 20px;
         }
+       .container{
+       	margin: auto
+       }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
   
   <!-- <script>
 	$(function() {
@@ -55,7 +58,7 @@
          </div>
             <ul class="nav nav-pills">
       
-          <li data-tab="info" class="nav-item" id="default">
+          <li data-tab="info" class="nav-item">
                 <a class="nav-link" href="../mypage/${member.no }">나의 정보</a>
               </li>
               <li data-tab="product" class="nav-item">
