@@ -123,8 +123,8 @@
     	
   		<insert id="addresult" parameterType="com.bitcamp.DTO.CategoryDTO">
     	
-    		insert into product(pname, dprice, oprice, cno, content)
-    		 values(#{pname}, #{dprice}, #{oprice}, #{cno}, #{content})
+    		insert into product(pname, dprice, oprice, cno, content, regist , deadline, sellcount, stock)
+    		 values(#{pname}, #{dprice}, #{oprice}, #{cno}, #{content}, sysdate(), #{deadline}, 0, #{stock})
     		 
     	 	
     	 
@@ -178,7 +178,7 @@
   <select id="list" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
   		 <!-- select *
   		from product  -->
-  		select p.pno, p.pname, p.dprice, p.oprice, i.imgname
+  		select p.pno, p.pname, p.dprice, p.oprice, i.imgname, p.regist, p.deadline,p.stock, p.sellcount
   		from product p, img i
               <where>
               p.pno = i.pno
@@ -197,7 +197,7 @@
 			</if>
 			
 	</where>
-	order by pno
+	order by pno desc
 	limit #{startRow}, 10
   </select>
     	

@@ -13,7 +13,15 @@ public class CategoryDTO {
 	private String deadline;
 	private String regist;
 	private int stock;
+	private int sellcount;
 	
+	
+	public int getSellcount() {
+		return sellcount;
+	}
+	public void setSellcount(int sellcount) {
+		this.sellcount = sellcount;
+	}
 	private int imgno;
 	private String imgname;
 	

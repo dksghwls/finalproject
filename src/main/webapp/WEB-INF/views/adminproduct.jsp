@@ -94,9 +94,9 @@ function update(pno)
         <td><c:out value="${dto.pname }"></c:out></td>
         <td><c:out value="${dto.oprice }"></c:out></td>
         <td><c:out value="${dto.dprice }"></c:out></td>
-        <td>null</td>
-        <td>null</td>
-        <td>null</td>
+        <td><c:out value="${dto.sellcount }"></c:out></td>
+        <td><c:out value="${dto.stock }"></c:out></td>
+        <td></td>
         <td><c:out value="${dto.regist }"></c:out></td>
         <td><c:out value="${dto.deadline }"></c:out></td>
         <td><input type="button" value="삭제" onclick="del(${dto.pno})"></td>
