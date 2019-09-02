@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -174,10 +175,11 @@ public class AllCategoryController {
 	}
 	
 	@RequestMapping("delete/{pno}")
+	@Transactional
 	public String delete(@PathVariable int pno)
 	{
 		int result = service.delete(pno);
-		
+		int result2 = service.imgdel(pno);
 		return "redirect:/adminproduct";
 	}
 	

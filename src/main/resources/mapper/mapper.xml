@@ -148,7 +148,11 @@
     		delete from product where pno = #{pno}
     	
     	</delete>
+    	<delete id="imgdel" parameterType="int">
     	
+    		delete from img where pno=#{pno}
+    	
+    	</delete>
     	 
  <select id="totalCount" parameterMap="hashmap" resultType="int">
   	  		
