@@ -6,11 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	.container {
-		padding-top: 20px;
-	}
-</style>
 </head>
 <body>
 	
