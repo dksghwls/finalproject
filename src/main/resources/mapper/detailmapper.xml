@@ -42,14 +42,14 @@
     
     </delete>
     <select id="replydetail2" resultType="com.bitcamp.DTO.ReplyDTO">
-    select rcontent,no
+    select pno,rno,rcontent,no
     from reply
     where rno=#{rno}
     
     
     
     </select>
-    <update id="replyupdate2" parameterType="com.bitcamp.DTO.ReplyDTO">
+    <update id="replymodify" parameterType="com.bitcamp.DTO.ReplyDTO" >
     
     update reply
     set rcontent=#{rcontent}

@@ -24,14 +24,19 @@ public class DetailController {
 	
 	
 	@RequestMapping("/detail/{pno}")
-	public String Detail(@PathVariable int pno,Model model,@RequestParam(required=false) String rcontent,@RequestParam(required=false, defaultValue="0") int no)
+	public String Detail(@PathVariable int pno,Model model,@RequestParam(required=false, defaultValue="0") int rno,@RequestParam(required=false) String rcontent,@RequestParam(required=false) String modifycontent,@RequestParam(required=false, defaultValue="0") int no)
 	{
-		
 		
 		if(rcontent!=null)
 		{
 			service.replyinsert2(no, pno, rcontent);
 		}
+		
+		if(modifycontent!=null)
+		{
+			service.replymodify(rno, modifycontent);
+		}
+		
 		
 		
 		List<ProductDTO> dto = service.detaillist(pno);
@@ -83,15 +88,16 @@ public class DetailController {
 	
 		return "templete.jsp?page=replyupdate";
 	}
-	@RequestMapping("/replyupdateresult2") 
+	/*@RequestMapping("/replyupdateresult2") 
 	public String replyupdateresult(@PathVariable int rno,@RequestParam int pno, @RequestParam(required=false) String rcontent,ReplyDTO dto){
 		
 		int result = service.replyupdate2(dto);
 		
-		
+		System.out.println("값을 받아라"+dto);
 		return "redirect:/detail/"+pno;
-	}
-	
+		
+		
+	}*/
 	
 	
 	

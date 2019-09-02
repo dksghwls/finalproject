@@ -59,9 +59,13 @@ public class DetailServiceImple implements DetailService {
 		
 	}
 	@Override
-	public int replyupdate2(ReplyDTO dto) {
+	public int replymodify(int rno, String modifycontent) {
 		
-		return detailmapper.replyupdate2(dto);
+		HashMap<String, Object> o = new HashMap<>();
+		o.put("rno", rno);
+		o.put("rcontent", modifycontent);
+		
+		return detailmapper.replymodify(o);
 		
 	}
 	
