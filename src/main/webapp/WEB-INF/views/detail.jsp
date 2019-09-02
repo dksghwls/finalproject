@@ -170,7 +170,12 @@
    <c:forEach var="list" items="${replylist}">
     
      ${ list.rcontent}<br>
+     ${list.no }
+     <br>
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
+     <a href="/replydetail2/${list.rno}">수정하기</a>
+     
+     
      ${list.pno }
  
  

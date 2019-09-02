@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,7 @@ public class DetailController {
 	@RequestMapping("/detail/{pno}")
 	public String Detail(@PathVariable int pno,Model model,@RequestParam(required=false) String rcontent,@RequestParam(required=false, defaultValue="0") int no)
 	{
-		System.out.println(pno);
+		
 		
 		if(rcontent!=null)
 		{
@@ -59,6 +60,38 @@ public class DetailController {
 		return "redirect:/detail/"+pno;
 		
 	}
+	@RequestMapping("/replydetail2/{rno}")
+	public String replydetail(@PathVariable int rno, Model model) {
+		
+		
+		ReplyDTO dto = service.replydetail2(rno);
+		model.addAttribute("dto",dto);
+		
+		
+		return "templete.jsp?page=replydetail";
+		
+		
+	}
+	
+	
+	
+	@RequestMapping("/replyupdate2/{rno}")
+	public String replyupdate(@PathVariable int rno, Model model) {
+		
+		ReplyDTO dto = service.replydetail2(rno);
+		model.addAttribute("dto", dto);
+	
+		return "templete.jsp?page=replyupdate";
+	}
+	@RequestMapping("/replyupdateresult2") 
+	public String replyupdateresult(@PathVariable int rno,@RequestParam int pno, @RequestParam(required=false) String rcontent,ReplyDTO dto){
+		
+		int result = service.replyupdate2(dto);
+		
+		
+		return "redirect:/detail/"+pno;
+	}
+	
 	
 	
 	

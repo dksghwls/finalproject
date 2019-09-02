@@ -41,6 +41,26 @@
     
     
     </delete>
+    <select id="replydetail2" resultType="com.bitcamp.DTO.ReplyDTO">
+    select rcontent,no
+    from reply
+    where rno=#{rno}
+    
+    
+    
+    </select>
+    <update id="replyupdate2" parameterType="com.bitcamp.DTO.ReplyDTO">
+    
+    update reply
+    set rcontent=#{rcontent}
+    where rno=#{rno}
+    
+    
+    
+    
+    </update>
+    
+    
     
     
     
