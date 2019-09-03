@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
 	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	    <!-- Indicators -->
 	    <ol class="carousel-indicators">
@@ -66,7 +66,22 @@
 	        <img src="${ list.imgname }">
 	          <div class="caption">
 	            <h3>${ list.pname }</h3>
-	            <p><a href="../detail/${list.pno}" class="btn btn-primary" role="button">상품보기</a></p>
+				<jsp:useBean id="toDay" class="java.util.Date" />
+				<fmt:parseDate value="${ list.deadline }" pattern="yyyy-MM-dd" var="endDate" /> 
+				<fmt:parseNumber value="${ toDay.time / (1000*60*60*24) }" integerOnly="true" var="nowDay"/>
+				<fmt:parseNumber value="${ endDate.time / (1000*60*60*24) }" integerOnly="true" var="endDay"/>
+				<c:if test="${ (endDay - nowDay + 1) == 0 }">
+					오늘 마감
+					<p><a href="../detail/${list.pno}" class="btn btn-primary" role="button">상품보기</a></p>
+				</c:if>
+				<c:if test="${ (endDay - nowDay + 1) > 0 }">
+					${ endDay - nowDay + 1 }일 남았습니다
+					<p><a href="../detail/${list.pno}" class="btn btn-primary" role="button">상품보기</a></p>
+				</c:if>
+				<c:if test="${ (endDay - nowDay + 1) < 0 }">
+					마감
+					<p><button class="btn btn-primary" role="button" disabled="disabled">상품보기</button></p>
+				</c:if>
 	        </div>
 	      </div>
 	    </div>

@@ -27,7 +27,7 @@
     	</select>
     	
     	<select id="getList" resultType="com.bitcamp.DTO.CategoryDTO">
-    		select p.pno, pname, dprice, imgname
+    		select p.pno, pname, dprice, imgname, deadline
 			from product p inner join img i
 			on p.pno = i.pno
 			order by pno desc
