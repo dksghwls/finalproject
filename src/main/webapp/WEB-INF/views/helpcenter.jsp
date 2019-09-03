@@ -36,7 +36,7 @@
 	.bg-2 {
 		/* background-color: #474e5d; /* Dark Blue */
 		/* color: #ffffff;  */
-		color: #FFD732;
+		color: white;
 		font-weight: 200px;
 		text-shadow: 5px 5px 10px black;
 	}
