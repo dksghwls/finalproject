@@ -16,12 +16,10 @@
 <div class="container">
   <h2>작성자</h2>
   <div class="well">회원번호:${dto.no }</div>
-  ${dto.rcontent }
   
-  ${ dto.rno}
 </div>
 <div class="container">
-  <h2>작성자</h2>
+  <h2>내용</h2>
   <div class="well">${dto.rcontent }</div>
 </div>
 <a href="/replyupdate2/${dto.rno }" class="btn btn-info" role="button">수정하기</a>

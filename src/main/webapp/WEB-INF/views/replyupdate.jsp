@@ -14,11 +14,11 @@
 <body>
 
 
-  <form action="/replyupdateresult2" method="POST">
-    
-      <label for="comment">Comment:</label>
+  <form action="/detail/${dto.pno}" method="POST">
+      <input type="hidden" value="${ dto.rno }" name="rno">
+      <label for="comment">댓글을 수정하자</label>
       <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
-      <textarea class="form-control" rows="5" id="comment">${dto.rcontent }</textarea>
+      <textarea class="form-control" rows="5" id="comment" name="modifycontent">${dto.rcontent }</textarea>
       <input type="submit" class="btn btn-info" value="수정하기">
       <input type="reset" class="btn btn-info" value="취소하기">
     

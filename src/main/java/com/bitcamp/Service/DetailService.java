@@ -14,7 +14,7 @@ public interface DetailService {
 	public List<ReplyDTO> replylist(int pno);
 	public int replydelete2(int rno);
 	public ReplyDTO replydetail2(int rno);
-	public int replyupdate2(ReplyDTO dto);
+	public int replymodify(int rno, String modifycontent);
 	
 	
 }
