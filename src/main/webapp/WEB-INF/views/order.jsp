@@ -13,7 +13,7 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
         .p1{
         	color: blue;
@@ -23,6 +23,16 @@
         }
         .container{
        		margin: auto
+       }
+       p{
+       	font-size: 15px;
+       }
+       .content1{
+       	font-size: 15px;
+       	line-height: 30px;
+       }
+       .content2{
+       	font-size: 15px;
        }
 </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -70,7 +80,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>Administrator Page</h2>
+          <h1>Administrator Page</h1>
          </div>
             <ul class="nav nav-pills">
       
@@ -90,7 +100,7 @@
                 <a class="nav-link" href="../ordercancel">주문 취소</a>
               </li>
           </ul>
-     </div>
+     <!-- </div> -->
           <br><br>
           
 <div class="container">
@@ -111,32 +121,30 @@
 <br>
 <table class="table">
     <thead>
-      <tr>
-        <th>주문 번호</th>
-        <th>상품 이미지</th>
-        <th>상품 번호</th>
-        <th>상품명</th>
-        <th>주문자 이메일</th>
-        <th>주문 수량</th>
-        <th>주문 금액</th>
-        <th>주문 일자</th>
-        <th>배송 상태</th>
-        <th>배송 상태 수정</th>
-        <th>회원 상태</th>
+      <tr class="info">
+        <th><div class="content1">주문 번호</div></th>
+        <th><div class="content1">상품 이미지</div></th>
+        <th><div class="content1">상품명</div></th>
+        <th><div class="content1">주문자 이메일</div></th>
+        <th><div class="content1">주문 수량</div></th>
+        <th><div class="content1">주문 금액</div></th>
+        <th><div class="content1">주문 일자</div></th>
+        <th><div class="content1">배송 상태</div></th>
+        <th><div class="content1">배송 상태 수정</div></th>
+        <th><div class="content1">회원 상태</div></th>
       </tr>
     </thead>
     <tbody>
     <c:forEach var="item" items="${olist }">
       <tr>
-        <td><c:out value="${item.bno }"></c:out></td>
-        <td><a href="#"><img src="../img/Jellyfish.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
-        <td><c:out value="${item.pno }"></c:out></td>
-        <td><c:out value="${item.pname }"></c:out></td>
-        <td><c:out value="${item.email }"></c:out></td>
-        <td><c:out value="${item.bcount }"></c:out></td>
-        <td><c:out value="${item.pay }"></c:out></td>
-        <td><c:out value="${item.bdate }"></c:out></td>
-        <td><c:out value="${item.shipping }"></c:out></td>
+        <td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
+        <td><a href="#"><img src="../img/Jellyfish.jpg" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
+        <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.email }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.shipping }"></c:out></div></td>
         <td><c:if test="${item.no!='0'}"><button id="modify_btn" type="button" class="btn btn-info" data-bno="${item.bno}" data-toggle="modal" data-target="#myModal">수정</button></c:if></td>
         <td>
         	<c:choose>
@@ -242,6 +250,7 @@
   </ul>
   </div>
   
+</div>
 </div>
 </body>
 </html>

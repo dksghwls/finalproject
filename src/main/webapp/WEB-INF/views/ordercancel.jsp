@@ -13,10 +13,20 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
         .container{
        		margin: auto
+       }
+       p{
+       	font-size: 15px;
+       }
+       .content1{
+       	font-size: 15px;
+       	line-height: 30px;
+       }
+       .content2{
+       	font-size: 15px;
        }
 </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -30,7 +40,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>Administrator Page</h2>
+          <h1>Administrator Page</h1>
          </div>
             <ul class="nav nav-pills">
       
@@ -48,7 +58,7 @@
               </li>
 
           </ul>
-     </div>
+     <!-- </div> -->
           <br><br>
           
 <div class="container">
@@ -69,26 +79,26 @@
 <br>
 <table class="table">
     <thead>
-      <tr>
-        <th>상품 이미지</th>
-        <th>상품명</th>
-        <th>주문 번호</th>
-        <th>주문자 이메일</th>
-        <th>주문 일자</th>
-        <th>구매 가격</th>
-        <th>취소 일자</th>
+      <tr class="info">
+      	<th><div class="content1">주문 번호</div></th>
+        <th><div class="content1">상품 이미지</div></th>
+        <th><div class="content1">상품명</div></th>
+        <th><div class="content1">주문자 이메일</div></th>
+        <th><div class="content1">주문 일자</div></th>
+        <th><div class="content1">구매 가격</div></th>
+        <th><div class="content1">취소 일자</div></th>
       </tr>
     </thead>
     <tbody>
     <c:forEach var="item" items="${oclist }">
       <tr>
-      	<td><a href="#"><img src="../img/Penguins.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
-        <td><c:out value="${item.pname }"></c:out></td>
-        <td><c:out value="${item.bno }"></c:out></td>
-        <td><c:out value="${item.email }"></c:out></td>
-        <td><c:out value="${item.bdate }"></c:out></td>
-        <td><c:out value="${item.dprice }"></c:out></td>
-        <td><c:out value="${item.cdate }"></c:out></td>
+      	<td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
+      	<td><a href="#"><img src="../img/Penguins.jpg" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
+        <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.email }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.cdate }"></c:out></div></td>
       </tr>
      </c:forEach>
     </tbody>
@@ -139,8 +149,7 @@
   </li>
   </ul>
   </div>
-  
-  
+</div>
 </div>
 </body>
 </html>

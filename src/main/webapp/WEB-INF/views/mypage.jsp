@@ -18,11 +18,11 @@
        }
        .a{
        	font-weight: bold;
-       	line-height: 50px;
+       	line-height: 40px;
        }
        .content{
        	font-size: 15px;
-       	line-height: 50px;
+       	line-height: 40px;
        }
        p{
        	font-size: 15px;
