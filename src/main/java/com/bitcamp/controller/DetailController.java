@@ -70,9 +70,7 @@ public class DetailController {
 	    model.addAttribute("replylist", replylist);
 		model.addAttribute("dto", dto);
 		model.addAttribute("img",img);
-		
-		
-		
+	
 		
 		return "templete.jsp?page=detail";
 		
@@ -108,23 +106,6 @@ public class DetailController {
 	
 		return "templete.jsp?page=replyupdate";
 	}
-	/*@RequestMapping("/replyupdateresult2") 
-	public String replyupdateresult(@PathVariable int rno,@RequestParam int pno, @RequestParam(required=false) String rcontent,ReplyDTO dto){
-		
-		int result = service.replyupdate2(dto);
-		
-		System.out.println("값을 받아라"+dto);
-		return "redirect:/detail/"+pno;
-		
-		
-	}*/
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

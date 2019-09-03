@@ -53,7 +53,7 @@
 
 <c:set var="member" value="${ sessionScope.user }"></c:set>
 
-${ deadline }일
+
 
  <c:forEach var="item" items="${dto}">
     
@@ -78,8 +78,10 @@ ${ deadline }일
      <c:forEach var="item" items="${dto}">
      ${item.pno }<br>
      ${item.pname }<br>
-      ${item.dprice }
-    
+      ${item.dprice }<br>
+      
+      
+   남은기간: ${ deadline }일
       </c:forEach>
      
     </div>
@@ -106,9 +108,17 @@ ${ deadline }일
     
     
      <c:forEach var="item" items="${dto}">
+     
+     <c:if test="${deadline >=0 }">
     <a href="../Payment/${item.pno }"><button type="button" class="btn btn-primary btn-md">결제</button></a>
+      </c:if>
+      
+      <c:if test="${deadline < 0 }">
+      <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
+      
+      </c:if>
       </c:forEach>
-   
+    
   </div>
   <div class="links">
   
