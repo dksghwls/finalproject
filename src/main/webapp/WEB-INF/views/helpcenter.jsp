@@ -83,8 +83,10 @@
 		padding-top: 3px;
 		padding-bottom: 6px;
 		margin-bottom: 30px;
-		width:20%;
-		border-radius: 15px;
+		width:22%;
+		border-radius: 20px;
+		color:black;
+		text-align: center;
 	}
  	</style>
 </head>
