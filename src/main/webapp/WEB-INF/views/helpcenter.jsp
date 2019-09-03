@@ -88,8 +88,10 @@
 		color:black;
 		text-align: center;
 	}
+	 
  	</style>
 </head>
+ 
 <body>
 	<!-- Second Container -->
 	<div class="container-fluid bg-2 text-center" id="helpcenterbg">
@@ -157,7 +159,10 @@
 				<br>
 				<div id="map" style="width: 100%; height: 400px;"></div>
 			</div>
-			</div>
+			<div>
+		
+		</div>
+		</div>
 		</div>
 		</div>
 	<!-- 지도 api  -->
