@@ -32,7 +32,7 @@
   	</where>
   </select>
   <select id="plist" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
-  		select p.pno, p.pname, p.dprice, p.oprice, i.imgname
+  		select p.pno, p.pname, p.dprice, p.oprice, i.imgname, p.deadline
   		from product p, img i
   		
               <where>
@@ -52,7 +52,7 @@
 			</if>
 			
 	</where>
-	order by pno
+	order by pno desc
 	limit #{startRow}, 10 <!-- #{endRow} --> 
   </select>
   
@@ -90,7 +90,7 @@
 			</if>
 			
 	
-	order by pno
+	order by pno desc
 	limit #{startRow}, 10
     	
     	</select>
@@ -255,7 +255,7 @@
 			</if>
 			
 	
-			order by p.pno
+			order by p.pno desc
 			limit #{startRow}, 10
     	</select>
     	<select id="adminsubCount" parameterMap="hashmap" resultType="int">

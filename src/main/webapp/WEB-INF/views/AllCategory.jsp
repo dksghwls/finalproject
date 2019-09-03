@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,6 +99,19 @@
         ${dto.pname}
         ${dto.dprice}
         ${dto.oprice}
+        <jsp:useBean id="toDay" class="java.util.Date" />
+				<fmt:parseDate value="${ dto.deadline }" pattern="yyyy-MM-dd" var="endDate" /> 
+				<fmt:parseNumber value="${ toDay.time / (1000*60*60*24) }" integerOnly="true" var="nowDay"/>
+				<fmt:parseNumber value="${ endDate.time / (1000*60*60*24) }" integerOnly="true" var="endDay"/>
+				<c:if test="${ (endDay - nowDay + 1) == 0 }">
+					오늘 마감
+				</c:if>
+				<c:if test="${ (endDay - nowDay + 1) > 0 }">
+					${ endDay - nowDay + 1 }일 남았습니다
+				</c:if>
+				<c:if test="${ (endDay - nowDay + 1) < 0 }">
+					마감
+				</c:if>
         <br>
       </div>   
       </c:forEach> 
