@@ -87,8 +87,13 @@
 		border-radius: 20px;
 		color:black;
 		text-align: center;
+		border-style: none; 
+		
 	}
 	 
+	 .trysearch:focus{
+	 	outline: none;
+	 }
  	</style>
 </head>
  
