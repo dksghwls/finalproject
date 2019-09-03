@@ -13,10 +13,20 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
         .container{
        		margin: auto
+       }
+       p{
+       	font-size: 15px;
+       }
+       .content1{
+       	font-size: 15px;
+       	line-height: 30px;
+       }
+       .content2{
+       	font-size: 15px;
        }
 </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -39,7 +49,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>Administrator Page</h2>
+          <h1>Administrator Page</h1>
          </div>
             <ul class="nav nav-pills">
       
@@ -60,7 +70,7 @@
               </li>
 
           </ul>
-     </div>
+     <!-- </div> -->
           <br><br>
           
 <div class="container">
@@ -81,27 +91,27 @@
 <br>
 <table class="table">
     <thead>
-      <tr>
-        <th>회원 번호</th>
-        <th>닉네임</th>
-        <th>이메일</th>
-        <th>이름</th>
-        <th>주소</th>
-        <th>상세 주소</th>
-        <th>전화번호</th>
-        <th>회원 삭제</th>
+      <tr class="info">
+        <th><div class="content1">회원 번호</div></th>
+        <th><div class="content1">닉네임</div></th>
+        <th><div class="content1">이메일</div></th>
+        <th><div class="content1">이름</div></th>
+        <th><div class="content1">주소</div></th>
+        <th><div class="content1">상세 주소</div></th>
+        <th><div class="content1">전화번호</div></th>
+        <th><div class="content1">회원 삭제</div></th>
       </tr>
     </thead>
     <tbody>
     <c:forEach var="item" items="${plist}">
       <tr>
-        <td><c:out value="${item.no }"></c:out></td>
-        <td><c:out value="${item.nickname }"></c:out></td>
-        <td><c:out value="${item.email }"></c:out></td>
-        <td><c:out value="${item.name }"></c:out></td>
-        <td><c:out value="${item.addr }"></c:out></td>
-        <td><c:out value="${item.detailaddr }"></c:out></td>
-        <td><c:out value="${item.phone }"></c:out></td>
+        <td><div class="content2"><c:out value="${item.no }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.nickname }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.email }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.name }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.addr }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.detailaddr }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.phone }"></c:out></div></td>
         <td><button id="cancel_btn" type="button" class="btn btn-danger" data-mem="${item.no}" data-toggle="modal" data-target="#myModal">삭제</button></td>
       </tr>
       <div class="modal fade" id="myModal">
@@ -195,6 +205,7 @@
   </ul>
   </div>
   
+</div>
 </div>
 </body>
 </html>
