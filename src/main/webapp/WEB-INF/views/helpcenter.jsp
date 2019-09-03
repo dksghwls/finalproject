@@ -93,13 +93,13 @@
 		<h1 class="margin">사람들이 시작하는 오늘의 혜택</h1>
 		 <p class="p1">Help Center</p> 
 		<br>
-		<%-- <form method="get" action="faq?currPage=${page.startBlock }" class="searchform"> --%>
+		<form method="get" action="faq?currPage=${page.startBlock }" class="searchform">
 				<input type="hidden" name="search" value="all">
 					<input type="text" class="trysearch" name="keyword">
 					<button class="btn btn-default" type="submit" id="hbtn">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
-		<!-- </form> -->
+		</form>
 	</div>
 	<!-- Third Container (Grid) -->
 	<div class="container-fluid bg-3 text-center" id="helpcenter">
