@@ -72,18 +72,9 @@
 		원가:<input type="text" name="oprice" id="oprice" class="form-control input-lg" style="width: 700px;"><br>
 		할인가:<input type="text" name="dprice" id="dprice" class="form-control input-lg" style="width: 700px;"><br>
 		상품설명:<textarea name="content" id="content" class="form-control" style="width: 700px; height: 400px;"></textarea>
-	<!-- 	등록일:<input type="text" name="regist" id="regist" class="form-control input-lg" style="width: 700px;"><br>
-		마감일:<input type="text" name="deadline" id="deadline" class="form-control input-lg" style="width: 700px;"><br> -->
 		<input type="text" name="deadline" id="date3" size="12" readonly="readonly"/>
 		<input type="button" value="달력" onclick="$('#date3').datepicker('show');" /><br><br>
 		재고:<input type="text" name="stock" class="form-control input-lg" style="width: 700px;">
-		
-		
-		
-		
-		<!-- <label for="filename">파일명</label>
-		<input type="text" name="filename" id="filename" class="form-control input-lg" style="width: 700px;"><br> -->
-		
 		<input type="file" name="file1" id="file1" class="form-control input-lg" style="width: 700px;"><br>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <input type="button" id="insertBoard" value="등록" class="btn btn-primary btn-lg" />

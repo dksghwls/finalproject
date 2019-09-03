@@ -183,27 +183,7 @@ public class AllCategoryController {
 		return "redirect:/adminproduct";
 	}
 	
-	@RequestMapping("update/{pno}")
-	public String update(@PathVariable int pno, Model model)
-	{
-		CategoryDTO dto = service.update(pno);
-		model.addAttribute("dto", dto);
-		
-		
-		return "update";
-	}
-	@RequestMapping("/updateresult")
-	public String updateresult(CategoryDTO dto)
-	{
-		
-		
-		int result = service.updateresult(dto);
-		
-		
-		return "redirect:/adminproduct";
-	}
-	
-	
+
 	
 	@RequestMapping("adminproduct/{cno}")
 	public String adminselect(@PathVariable int cno
