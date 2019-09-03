@@ -89,20 +89,6 @@ public class CategoryServiceImple implements CategoryService{
 
 
 	@Override
-	public CategoryDTO update(int pno) {
-		
-		return mapper.update(pno);
-	}
-
-
-	@Override
-	public int updateresult(CategoryDTO dto) {
-		
-		return mapper.updateresult(dto);
-	}
-
-
-	@Override
 	public List<CategoryDTO> adminAllList() {
 		
 		return mapper.admincategorylist();

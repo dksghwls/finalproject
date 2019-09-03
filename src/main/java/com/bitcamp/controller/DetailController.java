@@ -57,7 +57,7 @@ public class DetailController {
 		        long diff = endDate.getTime() - beginDate.getTime();
 		        long diffDays = diff / (24 * 60 * 60 * 1000);
 
-		        System.out.println("날짜차이=" + diffDays);
+		        
 		        
 		        model.addAttribute("deadline", diffDays);
 		        

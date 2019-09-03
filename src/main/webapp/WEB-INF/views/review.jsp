@@ -24,13 +24,23 @@
           margin-bottom: 0px;
       }
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
         .p{
         	font-weight: bold;
+        	font-size: 15px;
         }
         .container{
        	margin: auto
+       }
+        p{
+       	font-size: 15px;
+       }
+        #nick{
+       	color: blue;
+       }
+       li{
+       	font-size: 15px;
        }
   </style>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -62,12 +72,12 @@
               </li>
 
           </ul>
-     </div>
+     <!-- </div> -->
           <br><br>
           
 <!--<h2>마이 리뷰</h2>-->
 <div class="container">
-  <p>${member.nickname } 님의 구매 상품 리뷰 모음입니다.</p>
+  <p><span id="nick">${member.nickname }</span> 님의 구매 상품 리뷰 모음입니다.</p>
   <br>
  
   <!--<ul>
@@ -88,11 +98,11 @@
                 </div>
             </td>
             </tr>
-            </c:forEach>
-            
+            </c:forEach>   
          </tbody>
     </table>
     <br><br>
    </div>
+  </div>
 </body>
 </html>

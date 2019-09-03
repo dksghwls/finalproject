@@ -25,17 +25,11 @@ public interface CategoryMapper {
 
 	public int delete(int pno);
 
-	//public int addimg(String imgname);
-
 	public List<CategoryDTO> adplist();
 
 	public int totalCount(HashMap<String, Object> o);
 
 	public List<CategoryDTO> list(HashMap<String, Object> o);
-
-	public CategoryDTO update(int pno);
-
-	public int updateresult(CategoryDTO dto);
 
 	public List<CategoryDTO> admincategorylist();
 
