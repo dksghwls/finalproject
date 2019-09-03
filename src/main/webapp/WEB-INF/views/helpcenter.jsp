@@ -23,10 +23,11 @@
 	}	
 	.p1{
 	font-size: 50px;
+
 	}
 	
 	.margin {
-	margin-top: 10px;
+	margin-top: 0px;
 	margin-bottom: 70px;
 	}
 	
@@ -36,8 +37,9 @@
 	.bg-2 {
 		/* background-color: #474e5d; /* Dark Blue */
 		/* color: #ffffff;  */
-		color: black;
+		color: #FFD732;
 		font-weight: 200px;
+		text-shadow: 5px 5px 10px black;
 	}
 	
 	#helpcenterbg{
@@ -48,7 +50,7 @@
 	
 	.bg-3 {
 		background-color: #ffffff; /* White */
-		color: black;
+		color: #008299;
 	}
 	
 	.helppsize {
@@ -109,8 +111,8 @@
 			<div class="test"></div>
 				<p class="p1">FAQ</p>
 				<p class="helppsize">자주 묻는 질문을 모아둔 페이지입니다.</p>
-				<br> <a href="/faq" data-toggle="tooltip" title="Click FAQ!"><img
-					src="img/faqimg.jpg" class="img-responsive margin"
+				<br> <a href="/faq" data-toggle="tooltip" title="Click FAQ!">
+				<img src="img/faq.png" class="img-responsive margin"
 					style="width: 100%; height: 400px;"  alt="Image"></a>
 			</div>
 			<div class="col-sm-4">
@@ -150,14 +152,14 @@
 				<p class="p1">Map</p>
 				<p class="helppsize">오시는 길을 검색할 수 있습니다.</p>
 				<br>
-				<div id="map" style="width: 500px; height: 400px;"></div>
+				<div id="map" style="width: 100%; height: 400px;"></div>
 			</div>
 			</div>
 		</div>
 		</div>
 	<!-- 지도 api  -->
-	<!-- 	
-	<script>
+		
+	<!-- <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.570493, 126.985315), // 지도의 중심좌표
