@@ -20,7 +20,6 @@
 		font: '돋움', Dotum, Helvetica, Sans-serif;
 		line-height: 1.5;
 		color: #f5f6f7;
-		
 	}	
 	.p1{
 	font-size: 50px;
@@ -29,12 +28,10 @@
 	.margin {
 	margin-top: 10px;
 	margin-bottom: 70px;
-	 
-		 
 	}
+	
 	.searchform {
 		margin-bottom: 50px;
-		 
 	}
 	.bg-2 {
 		/* background-color: #474e5d; /* Dark Blue */
@@ -44,15 +41,12 @@
 	}
 	
 	#helpcenterbg{
-	background-image: url("img/helpmain.jpg");
+	background-image: url("img/helpmain2.jpg");
   	background-size: 100%; 
   	background-repeat: no-repeat;
- 
-     
 	}
 	
 	.bg-3 {
-		 
 		background-color: #ffffff; /* White */
 		color: black;
 	}
@@ -87,11 +81,9 @@
 	.trysearch{
 		padding-top: 3px;
 		padding-bottom: 6px;
+		margin-bottom: 30px;
 	}
-	
-
  	</style>
-
 </head>
 <body>
 	<!-- Second Container -->
@@ -99,25 +91,26 @@
 		<h1 class="margin">사람들이 시작하는 오늘의 혜택</h1>
 		 <p class="p1">Help Center</p> 
 		<br>
-		<form method="get" action="faq?currPage=${page.startBlock }" class="searchform">
+		<%-- <form method="get" action="faq?currPage=${page.startBlock }" class="searchform"> --%>
 				<input type="hidden" name="search" value="all">
 					<input type="text" class="trysearch" name="keyword">
-					<button class="btn btn-default" type="submit">
+					<button class="btn btn-default" type="submit" id="hbtn">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
-		</form>
+		<!-- </form> -->
 	</div>
-
 	<!-- Third Container (Grid) -->
 	<div class="container-fluid bg-3 text-center" id="helpcenter">
 		<h3 class="margin"></h3>
 		<br>
+		
 		<div class="row">
 			<div class="col-sm-4">
+			<div class="test"></div>
 				<p class="p1">FAQ</p>
 				<p class="helppsize">자주 묻는 질문을 모아둔 페이지입니다.</p>
 				<br> <a href="/faq" data-toggle="tooltip" title="Click FAQ!"><img
-					src="img/test.jpg" class="img-responsive margin"
+					src="img/faqimg.jpg" class="img-responsive margin"
 					style="width: 100%; height: 400px;"  alt="Image"></a>
 			</div>
 			<div class="col-sm-4">
@@ -125,7 +118,6 @@
 				<p class="helppsize">원하는 질문이 없다면 이 페이지를 이용하세요.</p>
 				<br> 
 				<sec:authorize access="isAnonymous()">
-			   
 		     <!-- Modal -->
   			<div class="modal fade" id="myModal4" role="dialog">
  		  	 <div class="modal-dialog modal-sm">
@@ -144,12 +136,12 @@
     		</div>
   			</div>
   			<a href="#" data-toggle="modal" data-target="#myModal4"> 
-					<img src="img/test.jpg"	class="img-responsive margin" 
+					<img src="img/contact.png"	class="img-responsive margin" 
 					style="width: 100%; height: 400px;" alt="Image"></a>
   				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 				<a href="/contact" data-toggle="tooltip" title="Click Contact Us!">
-				<img src="img/test.jpg"	class="img-responsive margin" 
+				<img src="img/contact.png"	class="img-responsive margin" 
 					style="width: 100%; height: 400px;" alt="Image"></a>
 				</sec:authorize>
 				   					
@@ -160,8 +152,9 @@
 				<br>
 				<div id="map" style="width: 500px; height: 400px;"></div>
 			</div>
+			</div>
 		</div>
-	</div>
+		</div>
 	<!-- 지도 api  -->
 	<!-- 	
 	<script>

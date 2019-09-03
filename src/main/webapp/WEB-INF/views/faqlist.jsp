@@ -124,7 +124,6 @@
 	});
 </script>
 <title>Insert title here</title>
-
 </head>
 <body>
 	<div class="container">
@@ -134,7 +133,7 @@
 		<a href="faqinsert">
 		<input type="button" class="btn btn-default" id="insertbtn" value="글쓰기"></a>
 		</sec:authorize>
-				</h2>
+		</h2>
 		<br>
 		<ul class="nav nav-pills">
 			<li class="active"><a data-toggle="pill" onclick="location.href='/faq'">전체</a></li>
