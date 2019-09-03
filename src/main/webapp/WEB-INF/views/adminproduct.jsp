@@ -86,7 +86,6 @@ function update(pno)
         <th>등록일</th>
         <th>마감일</th>
         <th>삭제</th>
-        <th>수정</th>
       </tr>
     </thead>
     <tbody>
@@ -99,11 +98,10 @@ function update(pno)
         <td><c:out value="${dto.dprice }"></c:out></td>
         <td><c:out value="${dto.sellcount }"></c:out></td>
         <td><c:out value="${dto.stock }"></c:out></td>
-        <td></td>
+        <td><c:out value="${dto.sellcount * dto.dprice }"></c:out></td>
         <td><c:out value="${dto.regist }"></c:out></td>
         <td><c:out value="${dto.deadline }"></c:out></td>
         <td><input type="button" value="삭제" onclick="del(${dto.pno})"></td>
-        <td><input type="button" value="수정" onclick="update(${dto.pno})"></td>
       </tr>
       
        </c:forEach>
