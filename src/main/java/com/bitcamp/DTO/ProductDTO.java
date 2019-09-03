@@ -25,6 +25,20 @@ public class ProductDTO {
 	private String paying;
 	private int pno;
 	private String deadline;
+	private int oprice;
+	public int getOprice() {
+		return oprice;
+	}
+	public void setOprice(int oprice) {
+		this.oprice = oprice;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	private int stock;
 	
 	public String getDeadline() {
 		return deadline;

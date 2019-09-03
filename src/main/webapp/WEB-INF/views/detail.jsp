@@ -81,7 +81,11 @@
       ${item.dprice }<br>
       
       
-   남은기간: ${ deadline }일
+   남은기간: ${ deadline }일<br>
+    가격: ${item.oprice }<br>
+    스탁: ${item.stock }
+   
+   
       </c:forEach>
      
     </div>
@@ -155,13 +159,6 @@
       
       <div role="tabpanel" class="tab-pane" id="reviewpage">
       
-    
-  
-   
-    <div class="search">
-      <input type="text" class="search" size="20" placeholder="Search" required> <button type="button" class="btn btn-danger">검색하기</button>  
-    </div>
- 
 
            <!-- Trigger the modal with a button -->
 
@@ -195,7 +192,7 @@
     <br>
      
      <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
-    <c:if test="${ member.no == list.no}"> 
+    <c:if test="${ member.no == list.no || member.no==1 }"> 
     
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      <a href="/replydetail2/${list.rno}">수정하기</a>
