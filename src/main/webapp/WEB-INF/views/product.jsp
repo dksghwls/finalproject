@@ -10,7 +10,7 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 <style>
       .dropdown-item{
-          font-size: 22px;
+          font-size: 15px;
       }
       .nav-link { 
           font-size: 22px;

@@ -13,10 +13,13 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
         .container{
        	margin: auto
+       }
+       p{
+       	font-size: 15px;
        }
 </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -30,7 +33,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>My Page</h2>
+          <h1>My Page</h1>
          </div>
             <ul class="nav nav-pills">
       
@@ -48,7 +51,7 @@
               </li>
 
           </ul>
-     </div>
+    <!--  </div> -->
           <br><br>
           
 <div class="container">
@@ -158,6 +161,7 @@
   </ul>
   </div> -->
   
+</div>
 </div>
 </body>
 </html>
