@@ -69,7 +69,7 @@
 <br>
 <table class="table">
     <thead>
-      <tr>
+      <tr class="info">
         <th>상품 이미지</th>
         <th>상품명</th>
         <th>주문 번호</th>

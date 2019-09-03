@@ -10,10 +10,10 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 <style>
       .dropdown-item{
-          font-size: 15px;
+          font-size: 22px;
       }
       .nav-link { 
-          font-size: 20px;
+          font-size: 22px;
         }
         .p{
         	color: red;
@@ -21,6 +21,23 @@
         .container{
        	margin: auto
        }
+       .success{
+       	font-size: 15px;
+       }
+       #nick{
+       	color: blue;
+       }
+       p{
+       	font-size: 15px;
+       }
+       .content1{
+       	font-size: 15px;
+       	line-height: 40px;
+       }
+       .content2{
+       	font-size: 15px;
+       }
+       
 </style>
 <script>
 
@@ -42,7 +59,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>My Page</h2>
+          <h1>My Page</h1>
          </div>
             <ul class="nav nav-pills">
       
@@ -60,11 +77,11 @@
               </li>
 
           </ul>
-     </div>
+     <!-- </div> -->
           <br><br>
           
 <div class="container">
-  <p>${member.nickname } 님의 주문 완료 상품입니다</p>
+  <p><span id="nick">${member.nickname }</span> 님의 주문 완료 상품입니다</p>
   <p class="p">(* 배송 준비 상품만 주문 취소할 수 있습니다).</p>
 
 <form>
@@ -82,27 +99,27 @@
 <br>
 <table class="table">
     <thead>
-      <tr>
-        <th>상품 이미지</th>
-        <th>상품명</th>
-        <th>주문 번호</th>
-        <th>주문 일자</th>
-        <th>구매 가격</th>
-        <th>배송 주소</th>
-        <th>배송 상태</th>
-        <th>주문 취소</th>
+      <tr class="info">
+        <th><div class="content1">상품 이미지</div></th>
+        <th><div class="content1">상품명</div></th>
+        <th><div class="content1">주문 번호</div></th>
+        <th><div class="content1">주문 일자</div></th>
+        <th><div class="content1">구매 가격</div></th>
+        <th><div class="content1">배송 주소</div></th>
+        <th><div class="content1">배송 상태</div></th>
+        <th><div class="content1">주문 취소</div></th>
       </tr>
     </thead>
     <tbody>
     <c:forEach var="item" items="${plist }">
       <tr>
-      	<td><a href="#"><img src="../img/Penguins.jpg" class="rounded" alt="Cinque Terre" width="100" height="75"></a></td>
-        <td><c:out value="${item.pname }"></c:out></td>
-        <td><c:out value="${item.bno }"></c:out></td>
-        <td><c:out value="${item.bdate }"></c:out></td>
-        <td><c:out value="${item.dprice }"></c:out></td>
-        <td><c:out value="${item.addr }"></c:out><br><c:out value="${item.detailaddr }"></c:out></td>
-        <td><c:out value="${item.shipping }"></c:out></td>
+      	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
+        <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.addr }"></c:out><br><c:out value="${item.detailaddr }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.shipping }"></c:out></div></td>
         <td>
         	<c:if test="${item.shipping=='배송 준비' }">
         		<button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button>
@@ -227,6 +244,7 @@ ${searchtxt}"><c:out value="${index }"/></a>
   </ul>
   </div> -->
   
+</div>
 </div>
 </body>
 </html>
