@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>Insert title here</title>
   <style>
       .dropdown-item{
@@ -28,8 +28,8 @@
        }
 </style>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"> -->
-</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script> -->
 <script>
 function del(pno)
 {
@@ -95,7 +95,7 @@ function update(pno)
         <th><div class="content1">총 판매액</div></th>
         <th><div class="content1">등록일</div></th>
         <th><div class="content1">마감일</div></th>
-        <th>삭제</th>
+        <th><div class="content1">삭제</div></th>
       </tr>
     </thead>
     <tbody>
@@ -111,7 +111,7 @@ function update(pno)
         <td><div class="content2"><c:out value="${dto.sellcount * dto.dprice }"></c:out></div></td>
         <td><div class="content2"><c:out value="${dto.regist }"></c:out></div></td>
         <td><div class="content2"><c:out value="${dto.deadline }"></c:out></div></td>
-        <td><input type="button" value="삭제" onclick="del(${dto.pno})"></td>
+        <td><button type="button" class="btn btn-danger" onclick="del(${dto.pno})">삭제</td>
       </tr>
       
        </c:forEach>
@@ -132,11 +132,14 @@ function update(pno)
   
   <div class="text-center">
   <ul class="pagination">
+  	<li class="page-item">
     <c:if test="${page.prev }">
-	<a href="../adminproduct?currPage=${page.startBlock-1 }&search=${search}&searxhtxt=${searchtxt}">
+	<a class="page-link" href="../adminproduct?currPage=${page.startBlock-1 }&search=${search}&searxhtxt=${searchtxt}">
 	<c:out value="이전"></c:out>
 	</a>
 	</c:if>
+	</li>
+	<li class="page-item">
   <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
   	<c:choose>
   	<c:when test="${index }==${page.currPage }">
@@ -146,16 +149,18 @@ function update(pno)
   		<a href="../adminproduct/${cno }?currPage=${index }&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
   		</c:otherwise>
   	</c:choose>
-		
-	
 </c:forEach>
+</li>
+<li class="page-item">
   <c:if test="${page.next }">
-<a href="../adminproduct?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
+<a class="page-link" href="../adminproduct?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
 <c:out value="다음"/>
 </a>
 </c:if>
+</li>
   </ul>
   </div>
+  
 </div>
 </div>
 
