@@ -74,6 +74,8 @@
      
     </div>
     
+    
+    <!-- 폼으로 작성하기 -->
     <select id="countitem" name="countitem" > 
     
     
@@ -169,13 +171,16 @@
 	
    <c:forEach var="list" items="${replylist}">
     
-     ${ list.rcontent}<br>
-     ${list.no }
+     ${ list.rcontent}
      <br>
+     
+     <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
+    <c:if test="${ member.no == list.no}"> 
+    
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      <a href="/replydetail2/${list.rno}">수정하기</a>
      
-     
+     </c:if>
      ${list.pno }
  
  
