@@ -9,6 +9,7 @@ import com.bitcamp.DTO.CategoryDTO;
 import com.bitcamp.DTO.MemberDTO;
 import com.bitcamp.DTO.ProductDTO;
 import com.bitcamp.DTO.payMemberDTO;
+import com.bitcamp.DTO.paymentDTO;
 
 @Mapper
 public interface CategoryMapper {
@@ -41,10 +42,6 @@ public interface CategoryMapper {
 
 	public int addallresult(HashMap<String, Object> hm);
 
-	public void payok(MemberDTO dto);
-
-	public int payallok(HashMap<String, Object> pm);
-
 	public int subpage(HashMap<String, Object> hm);
 
 	public List<CategoryDTO> cpList(HashMap<String, Object> o);
@@ -59,5 +56,7 @@ public interface CategoryMapper {
 
 	public int imgdel(int pno);
 
-	
+	public int payok(MemberDTO dto);
+
+	public int payallok(paymentDTO pao);
 }

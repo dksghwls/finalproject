@@ -95,7 +95,7 @@
      <c:forEach var="item" items="${dto}">
      <c:if test="${deadline >=0 }">
 	     <form action="../Payment/${item.pno }">
-		     <select id="countitem" name="countitem" > 
+		     <select id="countitem" name="bcount" > 
 			    <option value="1">1
 			    <option value="2">2
 			    <option value="3">3

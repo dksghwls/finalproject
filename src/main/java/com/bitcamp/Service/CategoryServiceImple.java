@@ -29,31 +29,12 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-/*	@Override
-	public List<CategoryDTO> pList() {
-		
-		return mapper.pList();
-	}*/
 	@Override
 	public List<CategoryDTO> allList() {
 		
 		return mapper.allList();
 	}
 	
-
-	/*@Override
-	public List<CategoryDTO> cpList(int cno) {
-		
-		return mapper.cpList(cno);
-	}
-*/
-
-	/*@Override
-	public int addresult(CategoryDTO dto) {
-		
-		return mapper.addresult(dto);
-	}
-*/
 
 	@Override
 	public int delete(int pno) {
@@ -138,21 +119,6 @@ public class CategoryServiceImple implements CategoryService{
 		  return  mapper.addallresult(hm);
 	}
 
-
-	@Override
-	public int payok(MemberDTO dto, paymentDTO pao) {
-		
-		mapper.payok(dto);
-		
-		HashMap<String, Object> pm=new HashMap<>();
-		pm.put("pao",pao);
-		
-		
-		 return mapper.payallok(pm);
-	}
-
-
-
 	@Override
 	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno) {
 		
@@ -210,18 +176,26 @@ public class CategoryServiceImple implements CategoryService{
 	}
 
 
-	@Override
-	public List<CategoryDTO> imgTest() {
-		
-		return mapper.imgTest();
-	}
-
 
 	@Override
 	public int imgdel(int pno) {
 		
 		return mapper.imgdel(pno);
 		
+	}
+
+
+	@Override
+	public int payok(MemberDTO dto) {
+		
+		return mapper.payok(dto);
+	}
+
+
+	@Override
+	public int payallok(paymentDTO pao) {
+		
+		return mapper.payallok(pao);
 	}
 
 	
