@@ -24,7 +24,14 @@ public class ProductDTO {
 	private int dprice;
 	private String paying;
 	private int pno;
+	private String deadline;
 	
+	public String getDeadline() {
+		return deadline;
+	}
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
 	public int getNo() {
 		return no;
 	}

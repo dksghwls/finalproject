@@ -27,9 +27,10 @@
     </insert>
     <select id="replylist" resultType="com.bitcamp.DTO.ReplyDTO">
     
-    select *
-    from reply
-    where pno=#{pno}
+    
+     select pno,rno,rcontent,r.no,nickname 
+   from reply r inner join member m
+   on r.no=m.no
     order by rno
     
     </select>
@@ -42,9 +43,10 @@
     
     </delete>
     <select id="replydetail2" resultType="com.bitcamp.DTO.ReplyDTO">
-    select pno,rno,rcontent,no
-    from reply
+   select pno,rno,rcontent,no
+   from reply
     where rno=#{rno}
+    
     
     
     

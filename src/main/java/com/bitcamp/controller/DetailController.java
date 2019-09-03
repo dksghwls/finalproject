@@ -1,12 +1,13 @@
 package com.bitcamp.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,14 +41,33 @@ public class DetailController {
 		
 		
 		List<ProductDTO> dto = service.detaillist(pno);
-	
+		
+		 SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+		    Date time = new Date();
+		    String start = format1.format(time);
+		    String end = dto.get(0).getDeadline();
+
+		    // 두날짜의 차이 구하기   
+		    try {
+		        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		        Date beginDate = formatter.parse(start);
+		        Date endDate = formatter.parse(end);
+
+		        long diff = endDate.getTime() - beginDate.getTime();
+		        long diffDays = diff / (24 * 60 * 60 * 1000);
+
+		        System.out.println("날짜차이=" + diffDays);
+		        
+		        model.addAttribute("deadline", diffDays);
+		        
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+		
 		imgDTO img = service.getimage(pno);
 	    List<ReplyDTO> replylist = service.replylist(pno);
-		
+
 	    model.addAttribute("replylist", replylist);
-	    
-	    
-	    
 		model.addAttribute("dto", dto);
 		model.addAttribute("img",img);
 		

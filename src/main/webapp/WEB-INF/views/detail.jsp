@@ -53,6 +53,15 @@
 
 <c:set var="member" value="${ sessionScope.user }"></c:set>
 
+${ deadline }일
+
+ <c:forEach var="item" items="${dto}">
+    
+     ${item.pname }
+    
+      </c:forEach>
+
+
 <div class="container">
 <div class="row">
   <div class="col-sm-8">
@@ -67,13 +76,16 @@
   <div class="col-sm-4">
     <div class="well">
      <c:forEach var="item" items="${dto}">
-     ${item.pno }
-     ${item.pname }
+     ${item.pno }<br>
+     ${item.pname }<br>
+      ${item.dprice }
     
       </c:forEach>
      
     </div>
     
+    
+    <!-- 폼으로 작성하기 -->
     <select id="countitem" name="countitem" > 
     
     
@@ -169,14 +181,17 @@
 	
    <c:forEach var="list" items="${replylist}">
     
-     ${ list.rcontent}<br>
-     ${list.no }
-     <br>
+     ${ list.rcontent} ${list.nickname }
+    <br>
+     
+     <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
+    <c:if test="${ member.no == list.no}"> 
+    
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      <a href="/replydetail2/${list.rno}">수정하기</a>
      
-     
-     ${list.pno }
+     </c:if>
+    
  
  
 </c:forEach>
