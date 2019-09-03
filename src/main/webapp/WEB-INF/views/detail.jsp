@@ -53,7 +53,7 @@
 
 <c:set var="member" value="${ sessionScope.user }"></c:set>
 
-${ deadline }
+${ deadline }일
 
  <c:forEach var="item" items="${dto}">
     
