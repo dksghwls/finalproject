@@ -83,11 +83,15 @@
 		padding-top: 3px;
 		padding-bottom: 6px;
 		margin-bottom: 30px;
-		width:20%;
-		border-radius: 15px;
+		width:22%;
+		border-radius: 20px;
+		color:black;
+		text-align: center;
 	}
+	 
  	</style>
 </head>
+ 
 <body>
 	<!-- Second Container -->
 	<div class="container-fluid bg-2 text-center" id="helpcenterbg">
@@ -155,7 +159,10 @@
 				<br>
 				<div id="map" style="width: 100%; height: 400px;"></div>
 			</div>
-			</div>
+			<div>
+		
+		</div>
+		</div>
 		</div>
 		</div>
 	<!-- 지도 api  -->
