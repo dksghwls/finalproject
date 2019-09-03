@@ -12,17 +12,9 @@ public interface CategoryService {
 
 	public List<CategoryDTO> AllList();
 
-	//public List<CategoryDTO> pList();
-
-	//public List<CategoryDTO> cpList(int cno);
-
 	public List<CategoryDTO> allList();
 
-	//public int addresult(CategoryDTO dto);
-
 	public int delete(int pno);
-
-	//public int addimg(String imgname);
 
 	public int totalCount(String search, String searchtxt);
 
@@ -38,8 +30,6 @@ public interface CategoryService {
 
 	public int addresult(CategoryDTO dto, String uploadpath);
 
-	public int payok(MemberDTO dto, paymentDTO pao);
-
 	public int subpage(String search, String searchtxt, int cno);
 	public List<CategoryDTO> cpList(String search, String searchtxt, int startRow, int endRow, int cno);
 
@@ -49,9 +39,11 @@ public interface CategoryService {
 
 	public List<ProductDTO> paymentProduct(int pno);
 
-	public List<CategoryDTO> imgTest();
-
 	public int imgdel(int pno);
+
+	public int payok(MemberDTO dto);
+
+	public int payallok(paymentDTO pao);
 
 	
 }

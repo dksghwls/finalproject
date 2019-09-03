@@ -66,20 +66,21 @@ public class EditorController {
 		return "redirect:/adminproduct";
 	}
 	@RequestMapping("/Payment/{pno}")
-	public String payment(@PathVariable int pno ,Model model, @RequestParam String countitem)
+	public String payment(@PathVariable int pno ,Model model, @RequestParam String bcount)
 	{
-		System.out.println(countitem);
+
 		List<ProductDTO> dto = service.paymentProduct(pno);
+		model.addAttribute("bcount",bcount);
 		model.addAttribute("dto", dto);
 		return "templete.jsp?page=Payment";
 	}
 	
 	@Transactional
 	@RequestMapping("payok")
-	public String payok(HttpServletRequest request, MemberDTO dto, paymentDTO pao)
+	public String payok(MemberDTO dto, paymentDTO pao)
 	{
-		int result = service.payok(dto, pao);
-		
+		int result = service.payok(dto);
+		int result2 = service.payallok(pao);
 		return "redirect:/paysuccess";
 	}
 	

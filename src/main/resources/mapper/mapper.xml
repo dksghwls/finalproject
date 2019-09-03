@@ -264,27 +264,33 @@
     	
     	
     	</select>
- 
+    	<select id="paymentProduct" resultType="com.bitcamp.DTO.ProductDTO" parameterType="int">
     	
-    	<insert id="payok" parameterType="com.bitcamp.DTO.payMemberDTO">
+    		select p.pname, p.dprice, i.imgname
+    		from product p, img i 
+    		where p.pno = i.pno 
+    		and p.pno=#{pno}
+    		
+    	</select>
+    	<insert id="payallok" parameterType="com.bitcamp.DTO.paymentDTO">
     	
-    		insert into member()
+    	insert into pay(no, pno, bdate, bcount, email)
+    	value(#{no}, #{pno}, sysdate(), #{bcount}, #{email})
     	
     	
     	</insert>
     	
-    	<select id="paymentProduct" resultType="com.bitcamp.DTO.ProductDTO" parameterType="int">
-    	
-    		select * 
-    		from product
-    		where pno=#{pno}
+    	<update id="payok" parameterType="com.bitcamp.DTO.MemberDTO">
     		
-    	</select>
-    	<select id="imgTest" resultType="com.bitcamp.DTO.CategoryDTO">
+    		update member
+    		set  addr = #{addr}
+    		 	,detailaddr = #{detailaddr}
+    		where no = #{no}
+    		
+    	</update>
     	
-    	select * from img
     	
     	
-    	</select>
+    	
     	
     </mapper>
