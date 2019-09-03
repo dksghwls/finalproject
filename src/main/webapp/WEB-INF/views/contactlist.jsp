@@ -38,7 +38,8 @@
 	}
 	
 	#integration-list ul>li:hover {
-		background: #EFF5FB;
+		/* background: #EFF5FB; */
+		background: #37C3C3;
 	}
 	
 	#insertbtn:hover {
@@ -93,9 +94,27 @@
 	
 	.recolor{
 	 
-  border-left: 6px solid red;
+  border-left: 6px solid #FFA8A5;
   background-color: white;
 	}	
+
+	.refont1{ /* 완료 */
+	color:#FFA8A5;
+	}
+	
+	.refont2{ /* 대기 */
+	color:#37C3C3;
+	}
+	
+	#myTable tr:hover{
+	background: #EFF5FB;
+	
+	}
+	
+	.fontcolor{
+	color:gray;
+	}
+ 
 </style>
 
 <head>
@@ -131,14 +150,14 @@
 					</div>
 			</form>	<br>
 		<!-- <input class="form-control" id="myInput" type="text" placeholder="검색어를 입력하세요"> -->
-	 <table class="table table-hover">
+	 <table class="table">
 		<thead>
 			<tr>
-		  		<th>답변</th>
-				<th>회원명</th>
+		  		<th>회원명</th>
 				<th>글제목</th>
 				<th>작성일</th>
-				<th>답변상태</th>
+				<th>처리상태</th>
+				<th>답변보기</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -147,21 +166,21 @@
 		<tbody id="myTable">
 		  	<c:forEach var="i" items="${dto }">
 				<tr>
-			  		<td><span class="glyphicon glyphicon-plus plusIcon"></span>
-					<span class="glyphicon glyphicon-minus plusIcon"
-								style="display: none"></span>
 					<td><c:out value="${i.nickname }"></c:out></td>
 					<td>
 					<c:if test="${ member.no==i.no }"><a href="/contactdetail/${i.hno }"></c:if>
 					<c:if test="${ member.no==1 }"><a href="/contactdetail/${i.hno }"></c:if>
 					<c:out value="${i.htitle }"></c:out></a>
 					</td>
-					<td><c:out value="${i.hdate }"></c:out></td>
+					<td><p class="fontcolor"><c:out value="${i.hdate }"></c:out><p></td>
 					<td><c:if test="${i.recontent != null }">
-					<c:out value="완료"></c:out></c:if>
+					<p class="refont1"><c:out value="완료" ></c:out><p></c:if>
 					<c:if test="${i.recontent == null }">
-					<c:out value="대기"></c:out></c:if>
+					<p class="refont2"><c:out value="대기"></c:out></p></c:if>
 					</td>				
+					<td><span class="glyphicon glyphicon-plus plusIcon"></span>
+					<span class="glyphicon glyphicon-minus plusIcon"
+								style="display: none"></span>
 			<!-- 관리자 로그인 시 나타나게 하기!! -->
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<td>

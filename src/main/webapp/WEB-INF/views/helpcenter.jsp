@@ -23,12 +23,11 @@
 	}	
 	.p1{
 	font-size: 50px;
-
 	}
 	
 	.margin {
 	margin-top: 0px;
-	margin-bottom: 70px;
+	margin-bottom: 40px;
 	}
 	
 	.searchform {
@@ -54,7 +53,7 @@
 	}
 	
 	.helppsize {
-		font-size: 15px;
+		font-size: 20px;
 		color: gray;
 		margin : 20px 0px;
 	}
@@ -84,6 +83,8 @@
 		padding-top: 3px;
 		padding-bottom: 6px;
 		margin-bottom: 30px;
+		width:20%;
+		border-radius: 15px;
 	}
  	</style>
 </head>
@@ -137,7 +138,7 @@
      		 </div>
     		</div>
   			</div>
-  			<a href="#" data-toggle="modal" data-target="#myModal4"> 
+  			<a href="#" data-toggle="modal" data-toggle="tooltip" title="Click Contact Us!" data-target="#myModal4"> 
 					<img src="img/contact.png"	class="img-responsive margin" 
 					style="width: 100%; height: 400px;" alt="Image"></a>
   				</sec:authorize>

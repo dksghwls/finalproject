@@ -6,6 +6,12 @@
 
 <!DOCTYPE html>
 <html>
+<style>
+	.container>.panel-default>.panel-heading {
+    background-color: #EFF5FB;
+    }
+    
+</style>
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet"
@@ -20,9 +26,9 @@
 	<br>
 	<div class="container">
 		<div class="panel panel-default">
-			<div class="panel-heading">회원번호: ${dto.no }</div>
-			<div class="panel-heading">제목: ${dto.htitle }</div>
-			<div class="panel-body">내용: ${dto.hcontent }</div>
+			<%-- <div class="panel-heading">회원번호: ${dto.no }</div> --%>
+			<div class="panel-heading"><h4>제목: ${dto.htitle }</h4></div>
+			<div class="panel-body"><h4>내용: ${dto.hcontent }</h4></div>
 		</div>
 		<a href=/contact><input type="button" class="btn btn-default" value="목록"></a>
 		<input type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" value="수정">
