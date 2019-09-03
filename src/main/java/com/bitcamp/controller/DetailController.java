@@ -43,7 +43,7 @@ public class DetailController {
 	
 		imgDTO img = service.getimage(pno);
 	    List<ReplyDTO> replylist = service.replylist(pno);
-		
+	    
 	    model.addAttribute("replylist", replylist);
 	    
 	    
