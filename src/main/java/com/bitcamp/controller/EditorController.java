@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.DTO.CategoryDTO;
@@ -65,8 +66,9 @@ public class EditorController {
 		return "redirect:/adminproduct";
 	}
 	@RequestMapping("/Payment/{pno}")
-	public String payment(@PathVariable int pno ,Model model)
+	public String payment(@PathVariable int pno ,Model model, @RequestParam String countitem)
 	{
+		System.out.println(countitem);
 		List<ProductDTO> dto = service.paymentProduct(pno);
 		model.addAttribute("dto", dto);
 		return "templete.jsp?page=Payment";
