@@ -23,12 +23,11 @@
 	}	
 	.p1{
 	font-size: 50px;
-
 	}
 	
 	.margin {
 	margin-top: 0px;
-	margin-bottom: 70px;
+	margin-bottom: 40px;
 	}
 	
 	.searchform {
@@ -54,7 +53,7 @@
 	}
 	
 	.helppsize {
-		font-size: 15px;
+		font-size: 20px;
 		color: gray;
 		margin : 20px 0px;
 	}
@@ -84,22 +83,28 @@
 		padding-top: 3px;
 		padding-bottom: 6px;
 		margin-bottom: 30px;
+		width:22%;
+		border-radius: 20px;
+		color:black;
+		text-align: center;
 	}
+	 
  	</style>
 </head>
+ 
 <body>
 	<!-- Second Container -->
 	<div class="container-fluid bg-2 text-center" id="helpcenterbg">
 		<h1 class="margin">사람들이 시작하는 오늘의 혜택</h1>
 		 <p class="p1">Help Center</p> 
 		<br>
-		<%-- <form method="get" action="faq?currPage=${page.startBlock }" class="searchform"> --%>
+		<form method="get" action="faq?currPage=${page.startBlock }" class="searchform">
 				<input type="hidden" name="search" value="all">
 					<input type="text" class="trysearch" name="keyword">
 					<button class="btn btn-default" type="submit" id="hbtn">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
-		<!-- </form> -->
+		</form>
 	</div>
 	<!-- Third Container (Grid) -->
 	<div class="container-fluid bg-3 text-center" id="helpcenter">
@@ -137,7 +142,7 @@
      		 </div>
     		</div>
   			</div>
-  			<a href="#" data-toggle="modal" data-target="#myModal4"> 
+  			<a href="#" data-toggle="modal" data-toggle="tooltip" title="Click Contact Us!" data-target="#myModal4"> 
 					<img src="img/contact.png"	class="img-responsive margin" 
 					style="width: 100%; height: 400px;" alt="Image"></a>
   				</sec:authorize>
@@ -154,7 +159,10 @@
 				<br>
 				<div id="map" style="width: 100%; height: 400px;"></div>
 			</div>
-			</div>
+			<div>
+		
+		</div>
+		</div>
 		</div>
 		</div>
 	<!-- 지도 api  -->

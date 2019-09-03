@@ -4,18 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-	$(document).on("click", "#reviewbtn", function() {
-		var dto = $(this).data('dto');
-		$.ajax({
-			url : '/replyinsertresult/',
-			success : function(data) {
-			$('#outputt .row2').empty().append(data);
-			}
-		});
-	});
-</script> -->
+
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,8 +96,11 @@
 			    <option value="9">9
 			    <option value="10">10
 		 	 </select>
+		 	 <sec:authorize access="isAuthenticated()">
 	     <input type="submit" class="btn btn-primary btn-md" value="결제">
+	    </sec:authorize>
 	     </form>
+	     
       </c:if>
       
       <c:if test="${deadline < 0 }">
@@ -120,8 +112,7 @@
   </div>
   <div class="links">
   
-  <!-- <img src="img/google.png">
-  <img src="img/twitter.png"> -->
+  
   </div>
   
   
@@ -204,8 +195,6 @@
       </div>
       
     </div>
-    </div>
-    </div>
-    </div>
+   
 </body>
 </html>

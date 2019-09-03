@@ -57,7 +57,7 @@ public class DetailController {
 		        long diff = endDate.getTime() - beginDate.getTime();
 		        long diffDays = diff / (24 * 60 * 60 * 1000);
 
-		        System.out.println("날짜차이=" + diffDays);
+		        
 		        
 		        model.addAttribute("deadline", diffDays);
 		        
@@ -80,7 +80,7 @@ public class DetailController {
 	public String replydelete(@PathVariable int rno, @RequestParam int pno){
 		int result = service.replydelete2(rno);
 		
-		System.out.println("댓글번호"+rno);
+		
 		return "redirect:/detail/"+pno;
 		
 	}
