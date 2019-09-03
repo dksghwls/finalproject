@@ -196,8 +196,9 @@
         <h2>${dto.pname }</h2>
     </c:forEach>
    </section>
+   <c:forEach var="dto" items="${dto }">
   <img src="../img/Jellyfish.jpg" alt="a" id="shopping" style="width: 200px; height: 200px; position: relative; left: 50px;"> 
-   
+   </c:forEach>
   
 <div class="container-fluid text-center" id="orderdetail">    
   <div class="row content">
