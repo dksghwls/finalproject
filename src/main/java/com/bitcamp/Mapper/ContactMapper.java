@@ -18,6 +18,7 @@ public interface ContactMapper {
 	public int contactmodify(ContactDTO dto);
 	public int count(HashMap<String, Object> hm);
 	public int recontentmodify(ContactDTO dto);
+	 
 	
  
 

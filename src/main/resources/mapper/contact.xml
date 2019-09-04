@@ -83,6 +83,6 @@
 		set  recontent=#{recontent} 
 		where hno=#{hno}
 	</update>
- 
+  
 
 </mapper>

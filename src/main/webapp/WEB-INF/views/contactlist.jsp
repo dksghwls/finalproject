@@ -212,8 +212,8 @@
 			 </c:if>
 			 <c:if test="${ member.no==1 }">
 			  <td colspan="1">답변:</td>
-			 <td colspan="7"><c:out value="${i.recontent }"></c:out></td>
-			 </c:if>
+			 <td colspan="7"><c:out value="${i.recontent }"> </c:out></td>
+			  </c:if>
 			 
 			</tr>
 		</c:forEach>

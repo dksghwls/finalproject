@@ -13,8 +13,6 @@ public interface ContactService {
 	public int contactcount(String search, String keyword);
 	public int recontentmodify(ContactDTO dto);
 
-	
-
 	 
 
 }
