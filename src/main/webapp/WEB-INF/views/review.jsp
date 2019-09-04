@@ -54,7 +54,7 @@
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
-          <h2>My Page</h2>
+          <h1>My Page</h1>
          </div>
             <ul class="nav nav-pills">
       
@@ -87,7 +87,7 @@
         <c:forEach var="item" items="${dlist }">
          <tr>
             <td class="t">
-              <a href="#"><img src="../img/Tulips.jpg" alt="Card image" class="img-rounded" style="width:100%"></a>
+              <a href="../detail/${item.pno }"><img src="${item.imgname }" alt="Card image" class="img-rounded" style="width:100%"></a>
             </td>
             <td>
             	<div class="s">

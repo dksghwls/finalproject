@@ -32,7 +32,7 @@
        }
        .content1{
        	font-size: 15px;
-       	line-height: 40px;
+       	line-height: 30px;
        }
        .content2{
        	font-size: 15px;
@@ -100,9 +100,9 @@
 <table class="table">
     <thead>
       <tr class="info">
+      	<th><div class="content1">주문 번호</div></th>
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
-        <th><div class="content1">주문 번호</div></th>
         <th><div class="content1">주문 일자</div></th>
         <th><div class="content1">구매 가격</div></th>
         <th><div class="content1">배송 주소</div></th>
@@ -113,9 +113,9 @@
     <tbody>
     <c:forEach var="item" items="${plist }">
       <tr>
+      	<td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
       	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.addr }"></c:out><br><c:out value="${item.detailaddr }"></c:out></div></td>
@@ -170,6 +170,7 @@
   
   <div class="text-center">
   <ul class="pagination">
+  
   <li class="page-item">
     <c:if test="${page.prev }">
     <%-- <c:if test="${page.startBlock>1 }"> --%>
@@ -178,28 +179,8 @@
 	</a>
 	</c:if>
   </li>
-  <li class="page-item">
   
-  <%-- <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
-  	
-		<a class="page-link" href="product?currPage=${index }&search=
-
-${search}&searchtxt=${searchtxt}">
-		<c:out value="${index }"/>
-		</a>
-  </c:forEach> --%>
-  
-  <%-- <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
-    <c:if test="${index==currpage}">
-      <c:out value="${index}"></c:out>
-    </c:if>
-    <c:if test="${index!=currpage }">
-     <a class="page-link" href="product?currpage=${index}&search=${search}&searchtxt=
-
-${searchtxt}"><c:out value="${index }"/></a>
-    </c:if>
-   </c:forEach> --%>
-   
+  <li class="page-item"> 
    <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
 			<c:when test="${index}==${page.currPage}">
@@ -211,10 +192,8 @@ ${searchtxt}"><c:out value="${index }"/></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
-   
-   
-   
   </li>
+  
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>
@@ -223,27 +202,9 @@ ${searchtxt}"><c:out value="${index }"/></a>
 	</a>
   </c:if>
   </li>
+  
   </ul>
   </div>
-  
-  <!-- <div class="text-center">
-  <ul class="pagination">
-   <li><a href="#">이전</a></li>
-   <li><a href="#">1</a></li>
-   <li><a href="#">2</a></li>
-   <li><a href="#">3</a></li>
-   <li><a href="#">4</a></li>
-   <li><a href="#">5</a></li>
-   <li><a href="#">다음</a></li>
-   
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-  </div> -->
-  
 </div>
 </div>
 </body>

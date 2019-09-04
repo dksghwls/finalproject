@@ -85,9 +85,9 @@
     	
     	<select id="orderlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select p2.bno, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
-  			from product p1, pay p2
-  			where p1.pno=p2.pno
+  			select p2.bno, i.imgname, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
+  			from product p1, pay p2, img i
+  			where p1.pno=p2.pno and p2.pno=i.pno
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -147,9 +147,9 @@
   		
   		<select id="suborderlist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select p2.bno, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
-  			from product p1, pay p2
-  			where p1.pno=p2.pno and p1.cno=#{cno}
+  			select p2.bno, i.imgname, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
+  			from product p1, pay p2, img i
+  			where p1.pno=p2.pno and  p2.pno=i.pno and p1.cno=#{cno}
   			
   			<!-- select p2.bno, p2.pno, p1.pname, m.nickname, p2.bcount, p2.pay, p2.bdate, p2.shipping
   			from product p1, pay p2, member m
