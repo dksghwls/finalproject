@@ -61,14 +61,17 @@
       {
       	margin-left: 10px;
       }
+      #maincontext
+      {
+      	position: relative;
+      	left: 200px;
+      }
   </style>
 </head>
 <body>
 <form method="get" action="../AllCategory?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
-		<!-- <option value="pno">상품번호</option> -->
 		<option value="pname">상품이름</option>
-		<!-- <option value="cno">카테고리번호</option> -->
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<button type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -76,7 +79,6 @@
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav" id="sidemenu">
-     
       <ul class="nav nav-pills nav-stacked">
       <li class="active"><a href="../AllCategory">All Category</a></li>
       	<c:forEach var="item" items="${list }">
@@ -85,17 +87,13 @@
       		${item.cname }</a>
       	</li>
       	</c:forEach>
-        
       </ul><br>
     </div>
-   
    <div id="imgbox" class="container">
-   <div class="row">
+   <div class="row" id="maincontext">
       <c:forEach var="dto" items="${dto}">
       <div class="col-sm-3" id="iimg">
-		
         <a href="../detail/${dto.pno}"><img src="${ dto.imgname }"></a><br> 
-        <%-- <a href="../detail/${dto.pno}"><img alt="a" src="../img/Penguins.jpg"></a><br> --%>
         ${dto.pname}
         ${dto.dprice}
         ${dto.oprice}
@@ -138,10 +136,6 @@
   		<c:out value="${index }"/></a>
   		</c:otherwise>
   	</c:choose>
-		
-		
-		
-		
 </c:forEach>
   <c:if test="${page.next }">
 <a href="../AllCategory?currPage=${page.endBlock+1 }&search=${search}&searxhtxt=${searchtxt}">
