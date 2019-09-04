@@ -74,10 +74,6 @@ public class MyPageServiceImple implements MyPageService {
 		o.put("endRow", endRow);
 		o.put("no", no);
 
-		/*
-		 * System.out.println(startRow); System.out.println(endRow);
-		 */
-
 		return myPageMapper.list(o);
 	}
 
