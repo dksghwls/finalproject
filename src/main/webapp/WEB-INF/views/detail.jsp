@@ -160,13 +160,16 @@
 	<sec:authorize access="isAuthenticated()">
  		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea>
    		<button id="reviewbtn"> 입력하기 </button>
-   		
-   		
-   		
 	</sec:authorize>
 	</div>
   <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
   
+   <%-- 수정 예정
+  <input type="hidden" value="${item.pname }" name="pname"/>
+  <input type="hidden" value="${item.deadline }" name="deadline"/>
+  <input type="hidden" value="${item.dprice }" name="dprice"/>
+  DetailController의 "/detail/{pno}"으로 넘김 --%>
+    
   </form>
   </c:forEach>
 </div>

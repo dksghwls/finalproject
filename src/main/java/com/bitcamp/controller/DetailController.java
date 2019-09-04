@@ -32,14 +32,15 @@ public class DetailController {
 		if(rcontent!=null)
 		{
 			service.replyinsert2(no, pno, rcontent);
+			
+			/*추후 수정 예정
+			service.replyinsert2(no, pno, rcontent, pname, deadline, dprice);*/
 		}
 		
 		if(modifycontent!=null)
 		{
 			service.replymodify(rno, modifycontent);
 		}
-		
-		
 		
 		List<ProductDTO> dto = service.detaillist(pno);
 		
