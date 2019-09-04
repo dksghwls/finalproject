@@ -5,6 +5,17 @@
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
+  <style>
+  .btn
+  {
+  position:relative;
+  left:390px;
+  
+  }
+  
+  </style>
+  
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -15,7 +26,8 @@
 
 <div class="container">
   <h2>작성자</h2>
-  <div class="well">회원번호:${dto.no }</div>
+  <c:set var="member" value="${ sessionScope.user }"></c:set>
+  <div class="well">${member.nickname }</div>
   
 </div>
 <div class="container">

@@ -44,10 +44,10 @@
 
 
 
- <c:forEach var="item" items="${dto}">
-    
-     ${item.pname }
-    
+      <c:forEach var="item" items="${dto}">
+       <div class="container">
+         <h3> ${item.pname }</h3>
+       </div>    
       </c:forEach>
 
 
@@ -64,15 +64,15 @@
   </div> 
   <div class="col-sm-4">
     <div class="well">
-     <c:forEach var="item" items="${dto}">
-     ${item.pno }<br>
-     ${item.pname }<br>
-      ${item.dprice }<br>
+     <c:forEach var="item" items="${dto}">   
+    상품명: ${item.pname }<br>
+  원가: ${item.oprice }<br> 
+  할인된 가격: ${item.dprice }<br>
       
       
    남은기간: ${ deadline }일<br>
-    가격: ${item.oprice }<br>
-    스탁: ${item.stock }
+    
+    남은 개수: ${item.stock }
    
    
       </c:forEach>
@@ -84,7 +84,7 @@
      <c:forEach var="item" items="${dto}">
      <c:if test="${deadline >=0 }">
 	     <form action="../Payment/${item.pno }">
-		     <select id="countitem" name="bcount" > 
+		    구매개수: <select id="countitem" name="bcount" > 
 			    <option value="1">1
 			    <option value="2">2
 			    <option value="3">3
@@ -96,6 +96,7 @@
 			    <option value="9">9
 			    <option value="10">10
 		 	 </select>
+		 	 
 		 	 <sec:authorize access="isAuthenticated()">
 	     <input type="submit" class="btn btn-primary btn-md" value="결제">
 	    </sec:authorize>
@@ -104,7 +105,7 @@
       </c:if>
       
       <c:if test="${deadline < 0 }">
-      <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
+     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
       
       </c:if>
       </c:forEach>
@@ -151,14 +152,14 @@
    <c:forEach var="item" items="${dto}">
   <form action="/detail/${item.pno }" method="POST">
     <div class="form-group">
-      <label for="comment">Comment:</label>
+      <label for="comment"><h4>상품 리뷰를 남겨주세요</h4></label>
       <input type="hidden" value="${ member.no }" name="no">
     <sec:authorize access="isAnonymous()">
 	  <textarea class="form-control" rows="5" id="comment" name="rcontent" disabled="disabled"></textarea>
 	  <button id="reviewbtn" disabled="disabled"> 입력하기 </button>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
- 		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea>
+ 		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea><br>
    		<button id="reviewbtn"> 입력하기 </button>
 	</sec:authorize>
 	</div>
@@ -177,14 +178,15 @@
    <c:forEach var="list" items="${replylist}">
     
      ${ list.rcontent} ${list.nickname }
-    <br>
+    
      
      <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
     <c:if test="${ member.no == list.no || member.no==1 }"> 
     
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      <a href="/replydetail2/${list.rno}">수정하기</a>
-     
+     <br>
+     <hr>
      </c:if>
     
  
