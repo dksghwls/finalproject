@@ -47,14 +47,6 @@ public class MyPageController {
 		return "templete.jsp?page=mypage";
 	}
 	
-	/*
-	 * @RequestMapping(value="/product") public String product(Model model) {
-	 * List<ProductDTO> plist=myPageService.productlist();
-	 * model.addAttribute("plist", plist);
-	 * 
-	 * return "templete.jsp?page=product"; }
-	 */
-	
 	@RequestMapping(value="/product")
 	public String list(@RequestParam int no, @RequestParam(required=false, defaultValue="1") int currPage
 						,@RequestParam(required=false, defaultValue="") String search
@@ -83,8 +75,6 @@ public class MyPageController {
 		
 		
 		int totalCount = myPageService.totalCount(search, searchtxt, no);
-		
-		System.out.println("totalCount 1: "+totalCount);
 		
 		int pageSize=10;
 		int blockSize=5;
@@ -209,7 +199,6 @@ public class MyPageController {
 		
 		ProductDTO dto=myPageService.cancelselect(bno, no);
 		myPageService.cancelinsert(dto);
-		System.out.println(bno);
 		myPageService.cancelpay(bno);
 		model.addAttribute("no", no);
 		

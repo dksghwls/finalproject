@@ -28,7 +28,7 @@
     <h2>주문 취소가 완료되었습니다.</h2>      
     <!-- <p>그동안 저희 사이트를 이용해주셔서 감사합니다.</p> -->
   </div>
-	<center><button type="button" class="btn btn-primary" onclick="location.href='../product?no=${member.no}'">주문 내역으로</button></center> 
+	<center><button type="button" class="btn btn-primary" onclick="location.href='../cancellist?no=${member.no}'">나의 취소 내역으로</button></center> 
 </div>
 </body>
 </html>
