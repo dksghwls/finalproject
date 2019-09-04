@@ -110,54 +110,28 @@
             }
         }).open();
     }
-      
-      
-      
-    
     </script>
 
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-     /*  background-color: #f1f1f1; */
       height: 100%;
     }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
+
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-      .row.content {height:auto;} 
+      .row.content
+       {height:auto;} 
     }
-   
-   /*   img
-      {
-          width: 200px;
-          height: 200px;
-          position: relative;
-          left: 50px;
-         
-          
-      } */
+  
       section
       {
           position: relative;
@@ -169,20 +143,20 @@
      	position: relative;
 		left:500px;
      }
+     #orderdetail
+     {
+     	position: relative;
+		left:500px;
+     }
      #sideorder
     {
    		 position: relative;
    		 right:100px;
     }
-    #shopping
-    {
-    	position: relative;
-		left:300px;
-    }
     section h2
     {
     	position: relative;
-		left:200px;
+		left:500px;
     }
     
   </style>
@@ -197,18 +171,30 @@
     </c:forEach>
    </section>
    <c:forEach var="dto" items="${dto }">
-  <img src="${dto.imgname }" alt="a" id="shopping" style="width: 200px; height: 200px; position: relative; left: 50px;"> 
+  <img src="${dto.imgname }" alt="a" id="shopping" style="width: 200px; height: 200px; position: relative; left: 500px;"> 
    </c:forEach>
   
 <div class="container-fluid text-center" id="orderdetail">   
 <form action="/payok" method="post" name="frm"> 
+  <div class="col-sm-2 sidenav" id="sideorder">
+     <h3>Order Detail</h3>
+      <p>운송 및 취급:택배</p>
+      <c:forEach var="dto" items="${dto }">
+      <p>총금액:${dto.dprice * bcount }</p>
+      </c:forEach>
+      <hr>
+      <h3>결제수단</h3>
+      <input type="radio" value="신용카드" checked>신용카드<br><br> 
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+      <button type="button" class="btn btn-primary btn-lg" id="check_module">결제하기</button>
+      
+    </div> 
   <div class="row content">
     <div class="col-sm-8 text-left" id="addresinfo">
     <input type="hidden" name="no" value="${member.no }">
     <c:forEach var="dto" items="${dto }">
     	<input type="hidden" name="pno" value="${dto.pno }">
     <%-- 	<input type="hidden" name="pay" value="${dto.pay }"> --%>
-
     </c:forEach>
     	<input type="hidden" name="bcount" value="${bcount }">
     	<label for="name">이름</label><br>
@@ -224,22 +210,9 @@
            <span id="guide" style="color:#999;display:none"></span>
            <input type="text" id="sample4_detailAddress" name="addrdetail" placeholder="상세주소" class="form-control" style="width: 700px;">
            <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" class="form-control" style="width: 700px;"><br><br>
+   <input type="submit" class="btn btn-primary btn-lg" value="구매완료" id="paysubmit" style="position: relative; left: 10px;" >
     </div>
-    <div class="col-sm-2 sidenav" id="sideorder">
-     <h3>Order Detail</h3>
-      <p>운송 및 취급:택배</p>
-      <c:forEach var="dto" items="${dto }">
-      
-      <p>총금액:${dto.dprice * bcount }</p>
-      </c:forEach>
-      <hr>
-      <h3>결제수단</h3>
-      <input type="radio" value="신용카드" checked>신용카드<br><br> 
-      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-      <button type="button" class="btn btn-primary btn-lg" id="check_module">결제하기</button>
-    </div> 
   </div>
-<input type="submit" class="btn btn-primary btn-lg" value="구매완료" >
 </form>
 <br><br>
 </div>
