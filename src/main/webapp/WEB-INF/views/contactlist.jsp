@@ -114,6 +114,17 @@
 	.fontcolor{
 	color:gray;
 	}
+	
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
  
 </style>
 
@@ -184,7 +195,7 @@
 			<!-- 관리자 로그인 시 나타나게 하기!! -->
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<td>
-					  <input type="button" class="btn btn-default" id="rebtn" data-toggle="modal"
+					  <input type="button" class="button button2" id="rebtn" data-toggle="modal"
 						   data-no="${i.hno}" data-target="#myModal2" value="답변작성">
 				</sec:authorize>
 		

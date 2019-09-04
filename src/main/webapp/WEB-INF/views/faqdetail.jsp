@@ -5,6 +5,12 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
+<style>
+
+	.container>.panel-default>.panel-heading {
+    background-color: #EFF5FB;
+    }
+</style>
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
