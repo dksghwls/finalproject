@@ -69,13 +69,14 @@
   </style>
 </head>
 <body>
-<form method="get" action="../AllCategory?currPage=${page.currPage }">
+<%-- <form method="get" action="../AllCategory?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option value="pname">상품이름</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<button type="submit"><span class="glyphicon glyphicon-search"></span></button>
-    </form>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    </form> --%>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav" id="sidemenu">
