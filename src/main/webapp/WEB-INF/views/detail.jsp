@@ -8,7 +8,7 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+ 
   <style>
     /* Add a gray background color and some padding to the footer */
     
@@ -38,16 +38,60 @@
     
   </style>
 </head>
-<body>
+  <body onload="init();">
+
+<script>
+	var sell_price;
+	
+	var bcount;
+
+	
+	
+	function init () {
+		sell_price = document.form.sell_price.value;
+		bcount = document.form.bcount.value;
+		document.form.sum.value = sell_price;
+		change();
+	}
+	
+	function add () {
+		hm = document.form.bcount;
+		sum = document.form.sum;
+		hm.value ++ ;
+	
+		sum.value = parseInt(hm.value) * sell_price;
+	}
+	
+	function del () {
+		hm = document.form.bcount;
+		sum = document.form.sum;
+			if (hm.value > 1) {
+				hm.value -- ;
+				sum.value = parseInt(hm.value) * sell_price;
+			}
+	}
+	
+	function change () {
+		hm = document.form.bcount;
+		sum = document.form.sum;
+	
+			if (hm.value < 0) {
+				hm.value = 0;
+			}
+		sum.value = parseInt(hm.value) * sell_price;
+	}  
+</script>
+
+
 
 <c:set var="member" value="${ sessionScope.user }"></c:set>
 
 
 
- <c:forEach var="item" items="${dto}">
-    
-     ${item.pname }
-    
+      <c:forEach var="item" items="${dto}">
+       <div class="container">
+         <h3> ${item.pname }</h3>
+       </div>    
       </c:forEach>
 
 
@@ -64,47 +108,57 @@
   </div> 
   <div class="col-sm-4">
     <div class="well">
-     <c:forEach var="item" items="${dto}">
-     ${item.pno }<br>
-     ${item.pname }<br>
-      ${item.dprice }<br>
+     <c:forEach var="item" items="${dto}">   
+    상품명: ${item.pname }<br>
+  원가: ${item.oprice }<br> 
+  할인된 가격: ${item.dprice }<br>
       
       
    남은기간: ${ deadline }일<br>
-    가격: ${item.oprice }<br>
-    스탁: ${item.stock }
+    
+    남은 개수: ${item.stock }
    
+  
    
       </c:forEach>
-     
+       
+
     </div>
     
     
     <!-- 폼으로 작성하기 -->
      <c:forEach var="item" items="${dto}">
      <c:if test="${deadline >=0 }">
-	     <form action="../Payment/${item.pno }">
-		     <select id="countitem" name="bcount" > 
-			    <option value="1">1
-			    <option value="2">2
-			    <option value="3">3
-			    <option value="4">4
-			    <option value="5">5
-			    <option value="6">6
-			    <option value="7">7
-			    <option value="8">8
-			    <option value="9">9
-			    <option value="10">10
-		 	 </select>
-		 	 <sec:authorize access="isAuthenticated()">
+     	 <c:if test="${item.stock==0 }">
+               <p>해당 상품은 품절되었습니다. 다른 상품을 이용해주세요.</p>
+               <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
+        </c:if>
+        <c:if test="${item.stock>0 }">
+	    
+	     <form action="../Payment/${item.pno }" name="form" method="get">
+		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
+      <input type="text" name="bcount" value="1" size="3" onchange="change();">
+         <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+
+             금액 : <input type="text" name="sum" size="11" readonly>원
+
+		
+		
+		 	 <sec:authorize access="isAuthenticated()"> 
+		 	 <c:if test="${item.stock>0 }">
 	     <input type="submit" class="btn btn-primary btn-md" value="결제">
-	    </sec:authorize>
+	       </c:if>
+	     </sec:authorize>
+	     <sec:authorize access="isAnonymous()">
+	     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
+	     </sec:authorize>
 	     </form>
+	     </c:if>
 	     
       </c:if>
       
       <c:if test="${deadline < 0 }">
-      <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
+     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
       
       </c:if>
       </c:forEach>
@@ -151,22 +205,25 @@
    <c:forEach var="item" items="${dto}">
   <form action="/detail/${item.pno }" method="POST">
     <div class="form-group">
-      <label for="comment">Comment:</label>
+      <label for="comment"><h4>상품 리뷰를 남겨주세요</h4></label>
       <input type="hidden" value="${ member.no }" name="no">
     <sec:authorize access="isAnonymous()">
 	  <textarea class="form-control" rows="5" id="comment" name="rcontent" disabled="disabled"></textarea>
 	  <button id="reviewbtn" disabled="disabled"> 입력하기 </button>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
- 		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea>
+ 		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea><br>
    		<button id="reviewbtn"> 입력하기 </button>
-   		
-   		
-   		
 	</sec:authorize>
 	</div>
   <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
   
+   <%-- 수정 예정
+  <input type="hidden" value="${item.pname }" name="pname"/>
+  <input type="hidden" value="${item.deadline }" name="deadline"/>
+  <input type="hidden" value="${item.dprice }" name="dprice"/>
+  DetailController의 "/detail/{pno}"으로 넘김 --%>
+    
   </form>
   </c:forEach>
 </div>
@@ -174,14 +231,15 @@
    <c:forEach var="list" items="${replylist}">
     
      ${ list.rcontent} ${list.nickname }
-    <br>
+    
      
      <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
     <c:if test="${ member.no == list.no || member.no==1 }"> 
     
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      <a href="/replydetail2/${list.rno}">수정하기</a>
-     
+     <br>
+     <hr>
      </c:if>
     
  

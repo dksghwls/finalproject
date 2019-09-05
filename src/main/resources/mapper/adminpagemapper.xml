@@ -66,6 +66,12 @@
   	  		select count(bno)
   	  		from product p1, pay p2
   			where p1.pno=p2.pno
+  			
+  			<!-- pay 테이블 수정 시 바꿀 쿼리문
+  			select count(bno)
+  			from pay
+  			아래 조건도 수정
+  			p1.pname -> pname, p2.bno -> bno, p2.email -> email -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>
@@ -88,6 +94,13 @@
   			select p2.bno, i.imgname, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
   			from product p1, pay p2, img i
   			where p1.pno=p2.pno and p2.pno=i.pno
+  			
+  			<!-- pay 테이블 수정 시 바꿀 쿼리문
+  			select p.bno, i.imgname, p.pno, p.pname, p.email, p.bcount, p.pay, p.bdate, p.shipping, p.no
+  			from pay p, img i
+  			where p.pno=i.pno
+  			아래 조건도 수정
+  			p1.pname -> p.pname, p2.bno -> p.bno, p2.email -> p.email -->
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -126,6 +139,14 @@
   	  		<!-- select count(bno)
   	  		from product p1, pay p2, member m
   	  		where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno} -->
+  	  		
+  	  		<!-- pay 테이블 수정 시 바꿀 쿼리문
+  			select count(bno)
+  			from pay
+  			where cno=#{cno}
+  			아래 조건도 수정
+  			p1.pname -> pname, p2.bno -> bno, p2.email -> email -->
+  			
   		<!-- 	<where> -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
@@ -149,11 +170,18 @@
   			
   			select p2.bno, i.imgname, p2.pno, p1.pname, p2.email, p2.bcount, p2.pay, p2.bdate, p2.shipping, p2.no
   			from product p1, pay p2, img i
-  			where p1.pno=p2.pno and  p2.pno=i.pno and p1.cno=#{cno}
+  			where p1.pno=p2.pno and p2.pno=i.pno and p1.cno=#{cno}
   			
   			<!-- select p2.bno, p2.pno, p1.pname, m.nickname, p2.bcount, p2.pay, p2.bdate, p2.shipping
   			from product p1, pay p2, member m
   			where p1.pno=p2.pno and p2.no=m.no and p1.cno=#{cno} -->
+  			
+  			<!-- pay 테이블 수정 시 바꿀 쿼리문
+  			select p.bno, i.imgname, p.pno, p.pname, p.email, p.bcount, p.pay, p.bdate, p.shipping, p.no
+  			from pay p, img i
+  			where p.pno=i.pno and p.cno=#{cno}
+  			아래 조건도 수정
+  			p1.pname -> p.pname, p2.bno -> p.bno, p2.email -> p.email -->
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
