@@ -9,7 +9,7 @@
 #MOVE_TOP_BTN {
     position: fixed;
     right: 2%;
-    bottom: 50px;
+    bottom: 95px;
     display: none;
     z-index: 999;
     color:black;
@@ -37,7 +37,7 @@
 <body>
 	<!-- top 버튼  -->
 		<div>
-		<a id="MOVE_TOP_BTN" href="#" ><img src="../img/topicon.png"></a>
+		<a id="MOVE_TOP_BTN" href="#" ><img src="../img/up.png"></a>
 		</div>
 	<footer>
 		<p>비트캠프 종로센터</p>
