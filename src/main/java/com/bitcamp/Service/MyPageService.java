@@ -53,6 +53,8 @@ public interface MyPageService {
 	public int scatotalCount(String search, String searchtxt, int no, int cno);
 
 	public List<ProductDTO> scancellist(String search, String searchtxt, int startRow, int endRow, int cno, int no);
+
+	public void cancelproduct(int pno, int bcount);
 	
 	
 }

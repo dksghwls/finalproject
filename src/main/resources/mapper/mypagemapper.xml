@@ -87,7 +87,7 @@
     		from category c, product p1, pay p2, member m
   			where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and m.no=#{no} -->
   			
-  			select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname
+  			select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname, p2.bcount, p2.pay
   			from product p1, pay p2, member m, img i
   			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno and p2.no=#{no}
   			
@@ -146,7 +146,7 @@
     	
     	<select id="adcpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
     	
-    		select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname
+    		select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname, p2.bcount, p2.pay
   			from product p1, pay p2, member m, img i
   			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno and p2.no=#{no} and p1.cno=#{cno}
     		
@@ -179,15 +179,15 @@
     	</delete>
     	
     	<select id="cancelselect" resultType="com.bitcamp.DTO.ProductDTO" parameterType="hashmap">
-    		select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, p2.no, p1.cno, m.email
+    		select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, p2.no, p1.cno, m.email, p2.bcount, p2.pay
     		from product p1, pay p2, member m
     		where p1.pno=p2.pno and m.no=p2.no and p2.no=#{no} and p2.bno=#{bno}
     		
     	</select>
     	
     	<insert id="cancelinsert" parameterType="com.bitcamp.DTO.ProductDTO">
-    		insert into cancel(no, pno, pname, bno, bdate, dprice, cno, cdate)
-    		values( #{no}, #{pno}, #{pname}, #{bno}, #{bdate}, #{dprice}, #{cno}, now())
+    		insert into cancel(no, pno, pname, bno, bdate, dprice, cno, bcount, pay, cdate)
+    		values( #{no}, #{pno}, #{pname}, #{bno}, #{bdate}, #{dprice}, #{cno}, #{bcount}, #{pay}, now())
     	</insert>
     	
     	<delete id="cancelpay" parameterType="int">
@@ -218,7 +218,7 @@
   		</select>
   		
   		<select id="cancellist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
-    		select c.bno, i.imgname, c.pname, c.bdate, c.dprice, c.cdate
+    		select c.bno, i.imgname, c.pname, c.bdate, c.bcount, c.pay, c.cdate
     		from cancel c, img i
     		where c.pno=i.pno and c.no=#{no}
     		<if test="searchtxt!=null and searchtxt!=''">
@@ -275,5 +275,13 @@
   			order by c.bno
 			limit #{startRow}, 10
     	</select>
+    	
+    	 <update id="cancelproduct" parameterType="hashmap">
+          update product
+           set  
+               stock=stock+#{bcount}
+              , sellcount=sellcount-#{bcount}
+           where pno=#{pno}    
+    	</update>
   		
     </mapper>
