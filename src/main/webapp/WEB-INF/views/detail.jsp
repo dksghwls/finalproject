@@ -292,14 +292,14 @@
 		    if (/\D/.test(this.value)) {
 		        this.value = this.value.replace(/\D/g, '')
 		        this.value = 1;
-		        $('#result').text("숫자를 입력하세요.");
+		       
 		    }
 		    if (this.value == 0) {
 		    	this.value = 1;
 			}
 		    if (this.value > ${stock}) {
 			      this.value = ${stock};
-			      $('#result').text("재고초과");
+			      
 			  }
 			});
    </script>
