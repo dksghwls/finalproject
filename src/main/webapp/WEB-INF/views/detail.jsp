@@ -74,6 +74,10 @@
     
     남은 개수: ${item.stock }
    
+   <c:if test="${item.stock==0 }">
+     
+     
+   </c:if>
    
       </c:forEach>
      
@@ -97,9 +101,12 @@
 			    <option value="10">10
 		 	 </select>
 		 	 
-		 	 <sec:authorize access="isAuthenticated()">
+		 	 <sec:authorize access="isAuthenticated()"> 
 	     <input type="submit" class="btn btn-primary btn-md" value="결제">
-	    </sec:authorize>
+	     </sec:authorize>
+	     <sec:authorize access="isAnonymous()">
+	     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
+	     </sec:authorize>
 	     </form>
 	     
       </c:if>
