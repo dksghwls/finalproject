@@ -38,11 +38,6 @@
     		from product p, img i, reply r
     		where p.pno=i.pno and p.pno=r.pno and r.no=#{no}
     		
-    		<!-- 추후 수정 예정
-    		select r.pname, r.dprice, r.deadline, r.rcontent, i.imgname
-    		from reply r, img i
-    		where r.pno=i.pno and r.no=#{no} -->
-    		
     	</select>
     	
     	<delete id="deletelist" parameterType="int">
@@ -66,13 +61,6 @@
   	  		select count(bno)
   	  		from product p1, pay p2
   	  		where p1.pno=p2.pno and p2.no=#{no}
-  	  		
-  	  		<!-- pay 테이블 수정 후 바꿀 쿼리문
-  			select count(bno)
-  			from pay
-  			where no=#{no}
-  			아래 조건도 수정
-  			p1.pname -> p.pname, p2.bno -> p.bno -->
   	  		
   		<!-- 	<where> -->
   				
@@ -102,13 +90,6 @@
   			select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname
   			from product p1, pay p2, member m, img i
   			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno and p2.no=#{no}
-  			
-  			<!-- pay 테이블 수정 후 바꿀 쿼리문
-  			select p.pno. p.pname, p.bno, p.bdate, p.dprice, p.addr, p.detailaddr, p.shipping, i.imgname
-  			from pay p, img i
-  			where p.pno=i.pno and p.no=#{no}
-  			아래 조건도 수정
-  			p1.pname -> p.pname, p2.bno -> p.bno -->
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -146,13 +127,6 @@
   	  		from product p1, pay p2
   	  		where p1.pno=p2.pno and p2.no=#{no} and p1.cno=#{cno}
   	  		
-  	  		<!-- pay 테이블 수정 후 바꿀 쿼리문
-  			select count(bno)
-  			from pay
-  			where no=#{no} and cno=#{cno}
-  			아래 조건도 수정
-  			p1.pname -> p.pname, p2.bno -> p.bno -->
-  	  		
   		<!-- 	<where> -->
   				
   				<if test="searchtxt!=null and searchtxt!=''">
@@ -179,14 +153,7 @@
     		<!-- select p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, p2.shipping
     		from category c, product p1, pay p2, member m
     		where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and p2.no=#{no} and p1.cno = #{cno} -->
-    		
-    		<!-- pay 테이블 수정 후 바꿀 쿼리문
-  			select p.pno. p.pname, p.bno, p.bdate, p.dprice, p.addr, p.detailaddr, p.shipping, i.imgname
-  			from pay p, img i
-  			where p.pno=i.pno and p.no=#{no} and p.cno=#{cno}
-  			아래 조건도 수정
-  			p1.pname -> p.pname, p2.bno -> p.bno -->
-    		
+    	
     		<!-- <where> -->
     			
 				<if test="searchtxt!=null and searchtxt!=''">
@@ -215,11 +182,6 @@
     		select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, p2.no, p1.cno, m.email
     		from product p1, pay p2, member m
     		where p1.pno=p2.pno and m.no=p2.no and p2.no=#{no} and p2.bno=#{bno}
-    		
-    		<!-- pay 테이블 수정 후 바꿀 쿼리문
-    		select pno, pname, bno, bdate, dprice, no, cno, email
-    		from pay
-    		where no=#{no} and bno=#{bno} -->
     		
     	</select>
     	
