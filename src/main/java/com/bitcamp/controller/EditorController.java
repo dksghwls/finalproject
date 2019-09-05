@@ -66,21 +66,28 @@ public class EditorController {
 		return "redirect:/adminproduct";
 	}
 	@RequestMapping("/Payment/{pno}")
-	public String payment(@PathVariable int pno ,Model model, @RequestParam String bcount)
+	public String payment(@PathVariable int pno ,Model model, @RequestParam String bcount, @RequestParam String sum, @RequestParam String no)
 	{
-
 		List<ProductDTO> dto = service.paymentProduct(pno);
 		model.addAttribute("bcount",bcount);
 		model.addAttribute("dto", dto);
+		model.addAttribute("sum", sum);
+		model.addAttribute("no", no);
+		model.addAttribute("pno", pno);
 		return "templete.jsp?page=Payment";
 	}
 	
 	@Transactional
 	@RequestMapping("payok")
-	public String payok(MemberDTO dto, paymentDTO pao, String email, int bcount)
+	public String payok(MemberDTO dto, paymentDTO pao, int no, int pno, String name, String phone, String email, int bcount, int pay)
 	{
-		System.out.println(email);
-		System.out.println(bcount);
+		System.out.println("회원번호: " + no);
+		System.out.println("상품번호: " + pno);
+		System.out.println("이름: " + name);
+		System.out.println("전화번호: " + phone);
+		System.out.println("이메일: " + email);
+		System.out.println("구매량: " + bcount);
+		System.out.println("총금액: " + pay);
 		int result = service.payok(dto);
 		int result2 = service.payallok(pao);
 		return "redirect:/paysuccess";
