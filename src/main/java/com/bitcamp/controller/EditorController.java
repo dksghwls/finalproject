@@ -79,10 +79,12 @@ public class EditorController {
 	
 	@Transactional
 	@RequestMapping("payok")
-	public String payok(MemberDTO dto, paymentDTO pao, int no, int pno, String email, int bcount, int pay)
+	public String payok(MemberDTO dto, paymentDTO pao, int no, int pno, String name, String phone, String email, int bcount, int pay)
 	{
 		System.out.println("회원번호: " + no);
 		System.out.println("상품번호: " + pno);
+		System.out.println("이름: " + name);
+		System.out.println("전화번호: " + phone);
 		System.out.println("이메일: " + email);
 		System.out.println("구매량: " + bcount);
 		System.out.println("총금액: " + pay);

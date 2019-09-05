@@ -33,6 +33,10 @@
         console.log(bcount);
         var sum = ${sum};
         console.log(sum);
+        var name = document.frm.name.value;
+        console.log(name);
+        var phone = document.frm.phone.value;
+        console.log(phone);
         var addr = document.frm.addr.value;
         console.log(addr);
         var detailaddr = document.frm.detailaddr.value;
@@ -73,6 +77,8 @@
 			        url : "/payok",
 			        data : {"no" : no,
 			        		"pno" : pno,
+			        		"name" : name,
+			        		"phone" : phone,
 			        		"email" : email,
 			        		"bcount" : bcount,
 			        		"pay" : sum,
