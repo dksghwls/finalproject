@@ -82,7 +82,7 @@
 			        		"email" : email,
 			        		"bcount" : bcount,
 			        		"pay" : sum,
-			        		"addr" : detailaddr,
+			        		"addr" : addr,
 			        		"detailaddr" : detailaddr
 			        }
 			    });
@@ -242,12 +242,12 @@
     	<input type="email" id="email" name="email"  placeholder="email" class="form-control" style="width: 700px;" value="${member.email}" readonly="readonly" ><br>
            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary btn-lg" >
            <input type="hidden" id="sample4_postcode" placeholder="우편번호" class="form-control" style="width: 700px;">
-           <input type="text" name="addr" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" readonly="readonly" style="width: 700px;">
+           <input type="text" name="addr" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" readonly="readonly"  value="${member.addr}" style="width: 700px;">
            <input type="hidden" id="sample4_jibunAddress"  placeholder="지번주소" class="form-control" style="width: 700px;">
            <span id="guide" style="color:#999;display:none"></span>
-           <input type="text" name="detailaddr" id="sample4_detailAddress" name="addrdetail" placeholder="상세주소" class="form-control" style="width: 700px;">
+           <input type="text" name="detailaddr" id="sample4_detailAddress" name="addrdetail" placeholder="상세주소" class="form-control" value="${member.detailaddr}" style="width: 700px;">
            <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" class="form-control" style="width: 700px;"><br><br>
-   <input type="submit" class="btn btn-primary btn-lg" value="구매완료" id="paysubmit" style="position: relative; left: 10px;" >
+  
     </div>
   </div>
 </form>
