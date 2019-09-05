@@ -75,6 +75,7 @@
     남은 개수: ${item.stock }
    
    
+   
       </c:forEach>
      
     </div>
@@ -97,9 +98,21 @@
 			    <option value="10">10
 		 	 </select>
 		 	 
-		 	 <sec:authorize access="isAuthenticated()">
+		 	 <c:if test="${item.stock==0 }">
+     
+               <p>해당 상품은 품절되었습니다. 다른 상품을 이용해주세요.</p>
+     
+        <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>  
+     
+        </c:if>
+		 	 
+		 	 
+		 	 <sec:authorize access="isAuthenticated()"> 
 	     <input type="submit" class="btn btn-primary btn-md" value="결제">
-	    </sec:authorize>
+	     </sec:authorize>
+	     <sec:authorize access="isAnonymous()">
+	     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
+	     </sec:authorize>
 	     </form>
 	     
       </c:if>

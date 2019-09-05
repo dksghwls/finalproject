@@ -29,12 +29,13 @@
     values(#{no}, #{pno}, #{rcontent}, #{pname}, #{deadline}, #{dprice}) -->
     
     </insert>
-    <select id="replylist" resultType="com.bitcamp.DTO.ReplyDTO">
+    <select id="replylist" parameterType="int" resultType="com.bitcamp.DTO.ReplyDTO">
     
     
      select pno,rno,rcontent,r.no,nickname 
    from reply r inner join member m
    on r.no=m.no
+   where pno=#{pno}
     order by rno
     
     </select>
