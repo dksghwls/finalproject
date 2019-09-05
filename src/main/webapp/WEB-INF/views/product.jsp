@@ -106,7 +106,8 @@
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
         <th><div class="content1">주문 일자</div></th>
-        <th><div class="content1">구매 가격</div></th>
+        <th><div class="content1">주문 수량</div></th>
+        <th><div class="content1">주문 금액</div></th>
         <th><div class="content1">배송 주소</div></th>
         <th><div class="content1">배송 상태</div></th>
         <th><div class="content1">주문 취소</div></th>
@@ -119,7 +120,8 @@
       	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.addr }"></c:out><br><c:out value="${item.detailaddr }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.shipping }"></c:out></div></td>
         <td>
