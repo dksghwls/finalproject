@@ -275,5 +275,13 @@
   			order by c.bno
 			limit #{startRow}, 10
     	</select>
+    	
+    	 <update id="cancelproduct" parameterType="hashmap">
+          update product
+           set  
+               stock=stock+#{bcount}
+              , sellcount=sellcount-#{bcount}
+           where pno=#{pno}    
+    	</update>
   		
     </mapper>

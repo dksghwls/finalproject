@@ -205,7 +205,12 @@ public class MyPageServiceImple implements MyPageService {
 
 	@Override
 	public void cancelproduct(int pno, int bcount) {
-		// TODO Auto-generated method stub
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("pno", pno);
+		hm.put("bcount", bcount);
+		
+		myPageMapper.cancelproduct(hm);
 		
 	}
 

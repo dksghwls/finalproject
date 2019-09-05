@@ -66,7 +66,7 @@ public class EditorController {
 		return "redirect:/adminproduct";
 	}
 	@RequestMapping("/Payment/{pno}")
-	public String payment(@PathVariable int pno ,Model model, @RequestParam String bcount, @RequestParam String sum, @RequestParam String no)
+	public String payment(@PathVariable int pno ,Model model, @RequestParam String bcount, @RequestParam String sum, @RequestParam String no, @RequestParam String pname)
 	{
 		List<ProductDTO> dto = service.paymentProduct(pno);
 		model.addAttribute("bcount",bcount);
@@ -74,6 +74,7 @@ public class EditorController {
 		model.addAttribute("sum", sum);
 		model.addAttribute("no", no);
 		model.addAttribute("pno", pno);
+		model.addAttribute("pname", pname);
 		return "templete.jsp?page=Payment";
 	}
 	
