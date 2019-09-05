@@ -77,8 +77,10 @@ public class EditorController {
 	
 	@Transactional
 	@RequestMapping("payok")
-	public String payok(MemberDTO dto, paymentDTO pao)
+	public String payok(MemberDTO dto, paymentDTO pao, String email, int bcount)
 	{
+		System.out.println(email);
+		System.out.println(bcount);
 		int result = service.payok(dto);
 		int result2 = service.payallok(pao);
 		return "redirect:/paysuccess";
