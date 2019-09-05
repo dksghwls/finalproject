@@ -137,6 +137,11 @@
 
     </div>
     
+    <div>
+	        <div id="result"></div>
+	    </div>
+    
+    
     
     <!-- 폼으로 작성하기 -->
      <c:forEach var="item" items="${dto}">
@@ -219,7 +224,7 @@
 
 <div class="container">
    <c:forEach var="item" items="${dto}">
-  <form action="/detail/${item.pno }" method="POST">
+  <form action="/detail/${item.pno }" method="POST" onsubmit="return submitCheck()" name="frm"   >
     <div class="form-group">
       <label for="comment"><h4>상품 리뷰를 남겨주세요</h4></label>
       <input type="hidden" value="${ member.no }" name="no">
@@ -228,7 +233,7 @@
 	  <button id="reviewbtn" disabled="disabled"> 입력하기 </button>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
- 		<textarea class="form-control" rows="5" id="comment" name="rcontent" required="required"></textarea><br>
+ 		<textarea class="form-control" rows="5" id="comment" name="rcontent"></textarea><br>
    		<button id="reviewbtn"> 입력하기 </button>
 	</sec:authorize>
 	</div>
@@ -269,17 +274,32 @@
       </div>
       
     </div>
+   <script>
+   function submitCheck() {
+	   var rcontent = document.frm.rcontent.value;
+	   if(rcontent.length == 0) {
+			frm.rcontent.focus();
+			return false;
+		}
+   
+   }
+   </script>
+   
+   
    
    <script type="text/javascript">
 	   $('#bcount').on('keyup', function() {
 		    if (/\D/.test(this.value)) {
 		        this.value = this.value.replace(/\D/g, '')
 		        this.value = 1;
-		        alert('숫자만 입력가능합니다.');
+		        $('#result').text("숫자를 입력하세요.");
 		    }
+		    if (this.value == 0) {
+		    	this.value = 1;
+			}
 		    if (this.value > ${stock}) {
 			      this.value = ${stock};
-			      alert('재고 초과');
+			      $('#result').text("재고초과");
 			  }
 			});
    </script>
