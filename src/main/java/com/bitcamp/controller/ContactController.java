@@ -114,5 +114,5 @@ public class ContactController {
 		 
 		return "redirect:contact";
 	}
-	
+	 
 }

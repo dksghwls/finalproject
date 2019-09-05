@@ -172,7 +172,7 @@
 		</div>
 	<!-- 지도 api  -->
 		
-	<!-- <script>
+	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.570493, 126.985315), // 지도의 중심좌표
@@ -204,6 +204,6 @@
 
 		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 		infowindow.open(map, marker);
-	</script> -->
+	</script>
 </body>
 </html>
