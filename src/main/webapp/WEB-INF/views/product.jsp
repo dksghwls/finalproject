@@ -44,8 +44,10 @@
 	$(document).on("click", "#cancel_btn", function () { 
 		var bno = $(this).data('id');
 		var mno = $(this).data('mem');
+		var pno=$(this).data('pno');
+		var bcount=$(this).data('bcount');
 		/* onclick="location.href='../cancel/11?no=${member.no}'" */
-		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../cancel/" + bno+ "?no=" + mno + "'");
+		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../cancel/" + bno+ "?no=" + mno + "&pno="+pno+"&bcount="+bcount+"'");
     });
 </script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -122,7 +124,7 @@
         <td><div class="content2"><c:out value="${item.shipping }"></c:out></div></td>
         <td>
         	<c:if test="${item.shipping=='배송 준비' }">
-        		<button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button>
+        		<button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-pno="${item.pno}" data-bcount="${item.bcount}" data-toggle="modal" data-target="#myModal">취소</button>
         	</c:if>
         </td>
       </tr> 

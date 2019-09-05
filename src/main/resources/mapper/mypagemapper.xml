@@ -87,7 +87,7 @@
     		from category c, product p1, pay p2, member m
   			where c.cno = p1.cno and p1.pno=p2.pno and m.no=p2.no and m.no=#{no} -->
   			
-  			select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname
+  			select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname, p2.bcount
   			from product p1, pay p2, member m, img i
   			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno and p2.no=#{no}
   			
@@ -146,7 +146,7 @@
     	
     	<select id="adcpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
     	
-    		select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname
+    		select p1.pno, p1.pname, p2.bno, p2.bdate, p1.dprice, m.addr, m.detailaddr, p2.shipping, i.imgname, p2.bcount
   			from product p1, pay p2, member m, img i
   			where p1.pno=p2.pno and p2.no=m.no and p1.pno=i.pno and p2.no=#{no} and p1.cno=#{cno}
     		

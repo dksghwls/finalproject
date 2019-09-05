@@ -203,4 +203,10 @@ public class MyPageServiceImple implements MyPageService {
 		return myPageMapper.scancellist(o);
 	}
 
+	@Override
+	public void cancelproduct(int pno, int bcount) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
