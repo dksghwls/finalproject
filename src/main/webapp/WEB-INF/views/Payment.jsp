@@ -22,10 +22,21 @@
         var IMP = window.IMP; 
         IMP.init("imp64882191"); 
         
+        /* ajax로 보낼 정보 */
+        var no = ${no};
+        console.log(no);
+        var pno = ${pno};
+        console.log(pno);
         var email = document.frm.email.value;
         console.log(email);
         var bcount = ${bcount};
         console.log(bcount);
+        var sum = ${sum};
+        console.log(sum);
+        var addr = document.frm.addr.value;
+        console.log(addr);
+        var detailaddr = document.frm.detailaddr.value;
+        console.log(detailaddr);
         
         IMP.request_pay({
             pg: 'inicis', 
@@ -57,10 +68,16 @@
                 var msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 
+                /* ajax부분 예시 */
                 $.ajax({
 			        url : "/payok",
-			        data : {"email" : email,
-			        		"bcount" : bcount
+			        data : {"no" : no,
+			        		"pno" : pno,
+			        		"email" : email,
+			        		"bcount" : bcount,
+			        		"pay" : sum,
+			        		"addr" : detailaddr,
+			        		"detailaddr" : detailaddr
 			        }
 			    });
                 
@@ -194,7 +211,7 @@
      <h3>Order Detail</h3>
       <p>운송 및 취급:택배</p>
       <c:forEach var="dto" items="${dto }">
-      <p>총금액:${dto.dprice * bcount }</p>
+      <p>총금액:${ sum }</p>
       </c:forEach>
       <hr>
       <h3>결제수단</h3>
@@ -219,10 +236,10 @@
     	<input type="email" id="email" name="email"  placeholder="email" class="form-control" style="width: 700px;" value="${member.email}" readonly="readonly" ><br>
            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary btn-lg" >
            <input type="hidden" id="sample4_postcode" placeholder="우편번호" class="form-control" style="width: 700px;">
-           <input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" readonly="readonly" style="width: 700px;">
-           <input type="hidden" id="sample4_jibunAddress" name="addr" placeholder="지번주소" class="form-control" style="width: 700px;">
+           <input type="text" name="addr" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" readonly="readonly" style="width: 700px;">
+           <input type="hidden" id="sample4_jibunAddress"  placeholder="지번주소" class="form-control" style="width: 700px;">
            <span id="guide" style="color:#999;display:none"></span>
-           <input type="text" id="sample4_detailAddress" name="addrdetail" placeholder="상세주소" class="form-control" style="width: 700px;">
+           <input type="text" name="detailaddr" id="sample4_detailAddress" name="addrdetail" placeholder="상세주소" class="form-control" style="width: 700px;">
            <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" class="form-control" style="width: 700px;"><br><br>
    <input type="submit" class="btn btn-primary btn-lg" value="구매완료" id="paysubmit" style="position: relative; left: 10px;" >
     </div>

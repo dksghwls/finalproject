@@ -152,7 +152,8 @@
 		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
       <input type="text" name="bcount" value="1" size="3" onchange="change();">
          <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
-
+		<input type="hidden" name="no" value="${ member.no }">
+		<input type="hidden" name="pno" value="${ item.pno }">
              금액 : <input type="text" name="sum" size="11" readonly>원
          </sec:authorize>
 		
