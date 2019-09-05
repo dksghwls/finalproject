@@ -274,6 +274,7 @@
 	   $('#bcount').on('keyup', function() {
 		    if (/\D/.test(this.value)) {
 		        this.value = this.value.replace(/\D/g, '')
+		        this.value = 1;
 		        alert('숫자만 입력가능합니다.');
 		    }
 		    if (this.value > ${stock}) {
