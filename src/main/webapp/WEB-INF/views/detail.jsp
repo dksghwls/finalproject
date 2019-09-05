@@ -57,8 +57,10 @@
 	function add () {
 		hm = document.form.bcount;
 		sum = document.form.sum;
-		hm.value ++ ;
-	
+		if (hm.value < ${stock}) {
+			hm.value ++ ;
+		}
+		
 		sum.value = parseInt(hm.value) * sell_price;
 	}
 	
