@@ -7,8 +7,9 @@ public class ReviewDTO {
 	private String imgname;
 	private String pname;
 	private int dprice;
-	private Date deadline;
+	private String deadline;
 	private String rcontent;
+	private int pno;
 	
 	public String getImgname() {
 		return imgname;
@@ -28,10 +29,10 @@ public class ReviewDTO {
 	public void setDprice(int dprice) {
 		this.dprice = dprice;
 	}
-	public Date getDeadline() {
+	public String getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(Date deadline) {
+	public void setDeadline(String deadline) {
 		this.deadline = deadline;
 	}
 	public String getRcontent() {
@@ -39,6 +40,12 @@ public class ReviewDTO {
 	}
 	public void setRcontent(String rcontent) {
 		this.rcontent = rcontent;
+	}
+	public int getPno() {
+		return pno;
+	}
+	public void setPno(int pno) {
+		this.pno = pno;
 	}
 	
 }
