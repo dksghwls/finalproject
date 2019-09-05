@@ -113,8 +113,18 @@
   원가: ${item.oprice }<br> 
   할인된 가격: ${item.dprice }<br>
       
-      
-   남은기간: ${ deadline }일<br>
+    <c:if test="${deadline > 0}">
+    남은기간: ${deadline}일<br>
+    </c:if>
+    
+    <c:if test="${deadline < 0}">
+    남은기간: 마감<br>
+    </c:if>
+    <c:if test="${deadline == 0}">
+    남은기간: 오늘 마감<br>
+    </c:if>
+    
+    
     
     남은 개수: ${item.stock }
    
@@ -133,6 +143,9 @@
                <p>해당 상품은 품절되었습니다. 다른 상품을 이용해주세요.</p>
                <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
         </c:if>
+        
+        
+        
         <c:if test="${item.stock>0 }">
 	    <sec:authorize access="isAuthenticated()"> 
 	     <form action="../Payment/${item.pno }" name="form" method="get">
