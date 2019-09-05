@@ -137,6 +137,11 @@
 
     </div>
     
+    <div>
+	        <div id="result"></div>
+	    </div>
+    
+    
     
     <!-- 폼으로 작성하기 -->
      <c:forEach var="item" items="${dto}">
@@ -275,11 +280,11 @@
 		    if (/\D/.test(this.value)) {
 		        this.value = this.value.replace(/\D/g, '')
 		        this.value = 1;
-		        alert('숫자만 입력가능합니다.');
+		        $('#result').text("숫자를 입력하세요.");
 		    }
 		    if (this.value > ${stock}) {
 			      this.value = ${stock};
-			      alert('재고 초과');
+			      $('#result').text("재고초과");
 			  }
 			});
    </script>
