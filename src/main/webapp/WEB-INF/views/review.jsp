@@ -146,7 +146,7 @@
     <br><br>
    </div>
    <c:if test="${dlist!=null }">
-   <div id="js-btn-wrap" class="btn-wrap"><a href="javascript:;" class="btn btn-info" style="width:300px">리뷰 더 보기</a></div>
+   	<div id="js-btn-wrap" class="btn-wrap"><a href="javascript:;" class="btn btn-info" style="width:300px">리뷰 더 보기</a></div>
    </c:if>
 	<br><br>
   </div>

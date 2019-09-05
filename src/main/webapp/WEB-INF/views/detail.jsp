@@ -57,8 +57,10 @@
 	function add () {
 		hm = document.form.bcount;
 		sum = document.form.sum;
-		hm.value ++ ;
-	
+		if (hm.value < ${stock}) {
+			hm.value ++ ;
+		}
+		
 		sum.value = parseInt(hm.value) * sell_price;
 	}
 	
@@ -150,7 +152,7 @@
 	    <sec:authorize access="isAuthenticated()"> 
 	     <form action="../Payment/${item.pno }" name="form" method="get">
 		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
-      <input type="text" name="bcount" value="1" size="3" onchange="change();">
+      <input type="text" name="bcount" id="bcount" value="1" size="3" onchange="change();">
          <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
 		<input type="hidden" name="no" value="${ member.no }">
 		<input type="hidden" name="pno" value="${ item.pno }">
@@ -267,6 +269,20 @@
       </div>
       
     </div>
+   
+   <script type="text/javascript">
+	   $('#bcount').on('keyup', function() {
+		    if (/\D/.test(this.value)) {
+		        this.value = this.value.replace(/\D/g, '')
+		        this.value = 1;
+		        alert('숫자만 입력가능합니다.');
+		    }
+		    if (this.value > ${stock}) {
+			      this.value = ${stock};
+			      alert('재고 초과');
+			  }
+			});
+   </script>
    
 </body>
 </html>

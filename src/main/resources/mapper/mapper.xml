@@ -274,8 +274,8 @@
     	</select>
     	<insert id="payallok" parameterType="com.bitcamp.DTO.paymentDTO">
     	
-    	insert into pay(no, pno, bdate, bcount, email)
-    	value(#{no}, #{pno}, sysdate(), #{bcount}, #{email})
+    	insert into pay(no, pno, bdate, bcount, pay, email, shipping)
+    	value(#{no}, #{pno}, sysdate(), #{bcount}, #{pay}, #{email}, '배송 준비')
     	
     	
     	</insert>
