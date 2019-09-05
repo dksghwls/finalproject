@@ -49,9 +49,9 @@
            
             merchant_uid: 'merchant_' + new Date().getTime(),
            
-            name: '주문명:결제테스트',
+			name: '${pname}',
             
-            amount: 100, 
+            amount: ${sum}, 
             //가격 
             buyer_email: document.frm.email.value,
             buyer_name: document.frm.name.value,
