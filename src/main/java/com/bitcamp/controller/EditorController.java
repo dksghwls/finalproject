@@ -90,6 +90,7 @@ public class EditorController {
 		System.out.println("ÃÑ±Ý¾×: " + pay);
 		int result = service.payok(dto);
 		int result2 = service.payallok(pao);
+		int result3 = service.stockadmin(pno, bcount);
 		return "redirect:/paysuccess";
 	}
 	
@@ -100,6 +101,12 @@ public class EditorController {
 		return "templete.jsp?page=paysuccess";
 	}
 	
+	@RequestMapping("payfail")
+	public String payfail()
+	{
+		
+		return "templete.jsp?page=payfail";
+	}
 	
 	
 

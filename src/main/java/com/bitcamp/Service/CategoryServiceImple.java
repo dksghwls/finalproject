@@ -198,6 +198,17 @@ public class CategoryServiceImple implements CategoryService{
 		return mapper.payallok(pao);
 	}
 
+
+	@Override
+	public int stockadmin(int pno, int bcount) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("pno", pno);
+		hm.put("bcount", bcount);
+		
+		return mapper.stockadmin(hm);
+	}
+
 	
 
 

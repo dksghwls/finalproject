@@ -59,4 +59,6 @@ public interface CategoryMapper {
 	public int payok(MemberDTO dto);
 
 	public int payallok(paymentDTO pao);
+
+	public int stockadmin(HashMap<String, Object> hm);
 }

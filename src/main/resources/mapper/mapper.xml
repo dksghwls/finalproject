@@ -288,7 +288,14 @@
     		where no = #{no}
     		
     	</update>
+    	<update id="stockadmin" parameterMap="hashmap">
     	
+    		update product
+    		set stock = stock - #{bcount}
+    		    ,sellcount = sellcount + #{bcount}
+    		where pno = #{pno}
+    	
+    	</update>
     	
     	
     	

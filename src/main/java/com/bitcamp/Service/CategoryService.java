@@ -45,5 +45,7 @@ public interface CategoryService {
 
 	public int payallok(paymentDTO pao);
 
+	public int stockadmin(int pno, int bcount);
+
 	
 }
