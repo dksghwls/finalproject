@@ -222,9 +222,9 @@
   		
   		<select id="ordercancel" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select c.no, c.pname, c.bno, c.bdate, c.dprice, c.cno, c.cdate, m.email
-  			from cancel c, member m
-  			where c.no=m.no
+  			select c.no, c.pname, c.bno, c.bdate, c.dprice, c.cno, c.cdate, m.email, i.imgname
+  			from cancel c, member m, img i
+  			where c.no=m.no and c.pno=i.pno
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
@@ -278,9 +278,9 @@
   		
   		<select id="subordercancel" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select c.no, c.pname, c.bno, c.bdate, c.dprice, c.cno, c.cdate, m.email
-  			from cancel c, member m
-  			where c.no=m.no and c.cno=#{cno}
+  			select c.no, c.pname, c.bno, c.bdate, c.dprice, c.cno, c.cdate, m.email, i.imgname
+  			from cancel c, member m, img i
+  			where c.no=m.no and c.pno=i.pno and c.cno=#{cno}
   			
             <!-- <where> -->
            	<if test="searchtxt!=null">
