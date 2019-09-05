@@ -13,6 +13,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script>
     $(document).ready(function(){
          
@@ -20,7 +21,12 @@
     $("#check_module").click(function(){
         var IMP = window.IMP; 
         IMP.init("imp64882191"); 
-       
+        
+        var email = document.frm.email.value;
+        console.log(email);
+        var bcount = ${bcount};
+        console.log(bcount);
+        
         IMP.request_pay({
             pg: 'inicis', 
            
@@ -50,6 +56,14 @@
             } else {
                 var msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
+                
+                $.ajax({
+			        url : "/payok",
+			        data : {"email" : email,
+			        		"bcount" : bcount
+			        }
+			    });
+                
             }
             alert(msg);
         });
