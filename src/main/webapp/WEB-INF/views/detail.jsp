@@ -8,7 +8,7 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+ 
   <style>
     /* Add a gray background color and some padding to the footer */
     
@@ -38,7 +38,51 @@
     
   </style>
 </head>
-<body>
+  <body onload="init();">
+
+<script>
+	var sell_price;
+	
+	var bcount;
+
+	
+	
+	function init () {
+		sell_price = document.form.sell_price.value;
+		bcount = document.form.bcount.value;
+		document.form.sum.value = sell_price;
+		change();
+	}
+	
+	function add () {
+		hm = document.form.bcount;
+		sum = document.form.sum;
+		hm.value ++ ;
+	
+		sum.value = parseInt(hm.value) * sell_price;
+	}
+	
+	function del () {
+		hm = document.form.bcount;
+		sum = document.form.sum;
+			if (hm.value > 1) {
+				hm.value -- ;
+				sum.value = parseInt(hm.value) * sell_price;
+			}
+	}
+	
+	function change () {
+		hm = document.form.bcount;
+		sum = document.form.sum;
+	
+			if (hm.value < 0) {
+				hm.value = 0;
+			}
+		sum.value = parseInt(hm.value) * sell_price;
+	}  
+</script>
+
+
 
 <c:set var="member" value="${ sessionScope.user }"></c:set>
 
@@ -74,46 +118,42 @@
     
     남은 개수: ${item.stock }
    
-   
+  
    
       </c:forEach>
-     
+       
+
     </div>
     
     
     <!-- 폼으로 작성하기 -->
      <c:forEach var="item" items="${dto}">
      <c:if test="${deadline >=0 }">
-	     <form action="../Payment/${item.pno }">
-		    구매개수: <select id="countitem" name="bcount" > 
-			    <option value="1">1
-			    <option value="2">2
-			    <option value="3">3
-			    <option value="4">4
-			    <option value="5">5
-			    <option value="6">6
-			    <option value="7">7
-			    <option value="8">8
-			    <option value="9">9
-			    <option value="10">10
-		 	 </select>
-		 	 
-		 	 <c:if test="${item.stock==0 }">
-     
+     	 <c:if test="${item.stock==0 }">
                <p>해당 상품은 품절되었습니다. 다른 상품을 이용해주세요.</p>
-     
-        <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>  
-     
+               <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
         </c:if>
-		 	 
-		 	 
+        <c:if test="${item.stock>0 }">
+	    
+	     <form action="../Payment/${item.pno }" name="form" method="get">
+		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
+      <input type="text" name="bcount" value="1" size="3" onchange="change();">
+         <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+
+             금액 : <input type="text" name="sum" size="11" readonly>원
+
+		
+		
 		 	 <sec:authorize access="isAuthenticated()"> 
+		 	 <c:if test="${item.stock>0 }">
 	     <input type="submit" class="btn btn-primary btn-md" value="결제">
+	       </c:if>
 	     </sec:authorize>
 	     <sec:authorize access="isAnonymous()">
 	     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
 	     </sec:authorize>
 	     </form>
+	     </c:if>
 	     
       </c:if>
       
