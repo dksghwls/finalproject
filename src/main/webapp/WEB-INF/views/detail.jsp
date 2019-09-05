@@ -134,14 +134,14 @@
                <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
         </c:if>
         <c:if test="${item.stock>0 }">
-	    
+	    <sec:authorize access="isAuthenticated()"> 
 	     <form action="../Payment/${item.pno }" name="form" method="get">
 		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
       <input type="text" name="bcount" value="1" size="3" onchange="change();">
          <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
 
              금액 : <input type="text" name="sum" size="11" readonly>원
-
+         </sec:authorize>
 		
 		
 		 	 <sec:authorize access="isAuthenticated()"> 
