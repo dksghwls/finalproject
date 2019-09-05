@@ -41,6 +41,8 @@ public class DetailController {
 		
 		List<ProductDTO> dto = service.detaillist(pno);
 		
+		int stock =  dto.get(0).getStock();
+		
 		 SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
 		    Date time = new Date();
 		    String start = format1.format(time);
@@ -69,7 +71,7 @@ public class DetailController {
 	    model.addAttribute("replylist", replylist);
 		model.addAttribute("dto", dto);
 		model.addAttribute("img",img);
-	
+		model.addAttribute("stock", stock);
 		
 		return "templete.jsp?page=detail";
 		
