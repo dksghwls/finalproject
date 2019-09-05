@@ -42,7 +42,49 @@
        li{
        	font-size: 15px;
        }
+       
+       /* 추가 */
+       .js-load {
+    	display: none;
+		}
+		.js-load.active {
+    	display: block;
+		}
+		.is_comp.js-load:after {
+    	display: none;
+		}
+		.btn-wrap, .lists, .main {
+    	display: block;
+		}
+		.btn-wrap {
+    	text-align: center;
+		}
+		.button{
+		color: white;
+		}
+       
   </style>
+  <script>
+  $(window).on('load', function () {
+	    load('#js-load', '3');
+	    $("#js-btn-wrap .btn").on("click", function () {
+	        load('#js-load', '3', '#js-btn-wrap');
+	    })
+	});
+	 
+	function load(id, cnt, btn) {
+	    var item_list = id + " .js-load:not(.active)";
+	    var item_length = $(item_list).length;
+	    var item_total_cnt;
+	    if (cnt < item_length) {
+	        item_total_cnt = cnt;
+	    } else {
+	        item_total_cnt = item_length;
+	        /* $('.button').hide() */
+	    }
+	    $(item_list + ":lt(" + item_total_cnt + ")").addClass("active");
+	}
+  </script>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -82,10 +124,10 @@
  
   <!--<ul>
     <li>-->
-     <table>
-        <tbody>
+     <table id="js-load" class="main">
+        <tbody class="lists">
         <c:forEach var="item" items="${dlist }">
-         <tr>
+         <tr class="lists__item js-load">
             <td class="t">
               <a href="../detail/${item.pno }"><img src="${item.imgname }" alt="Card image" class="img-rounded" style="width:100%"></a>
             </td>
@@ -103,6 +145,10 @@
     </table>
     <br><br>
    </div>
+   <c:if test="${dlist!=null }">
+   <div id="js-btn-wrap" class="btn-wrap"><a href="javascript:;" class="btn btn-info" style="width:300px">리뷰 더 보기</a></div>
+   </c:if>
+	<br><br>
   </div>
 </body>
 </html>

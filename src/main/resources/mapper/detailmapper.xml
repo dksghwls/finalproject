@@ -24,10 +24,6 @@
     insert into reply(no, pno, rcontent)
     values(#{no}, #{pno}, #{rcontent})
     
-    <!-- 추후 수정 예정
-    insert into reply(no, pno, rcontent, pname, deadline, dprice)
-    values(#{no}, #{pno}, #{rcontent}, #{pname}, #{deadline}, #{dprice}) -->
-    
     </insert>
     <select id="replylist" parameterType="int" resultType="com.bitcamp.DTO.ReplyDTO">
     
