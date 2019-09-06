@@ -15,6 +15,12 @@
       .nav-link { 
           font-size: 22px;
         }
+        .p1{
+        	color: blue;
+        }
+        .p2{
+        	color: red;
+        }
         .container{
        		margin: auto
        }
@@ -83,10 +89,12 @@
       	<th><div class="content1">주문 번호</div></th>
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
-        <th><div class="content1">주문자 이메일</div></th>
+        <th><div class="content1">주문회원 이메일</div></th>
         <th><div class="content1">주문 일자</div></th>
-        <th><div class="content1">구매 가격</div></th>
+        <th><div class="content1">취소 수량(개)</div></th>
+        <th><div class="content1">취소 금액(원)</div></th>
         <th><div class="content1">취소 일자</div></th>
+        <th><div class="content1">회원 상태</div></th>
       </tr>
     </thead>
     <tbody>
@@ -97,8 +105,19 @@
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.email }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.cdate }"></c:out></div></td>
+        <td>
+        	<c:choose>
+        		<c:when test="${item.no!='0'}">
+        			<p class="p1">가입 회원</p>
+        		</c:when>
+        		<c:otherwise>
+        			<p class="p2">탈퇴 회원</p>
+        		</c:otherwise>
+        	</c:choose> 
+        </td>
       </tr>
      </c:forEach>
     </tbody>
@@ -109,7 +128,7 @@
 		<option>검색 조건 </option>
 		<option value="pname">상품명</option>
 		<option value="bno">주문 번호</option>
-		<option value="email">주문자 이메일</option>
+		<option value="email">주문회원 이메일</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">

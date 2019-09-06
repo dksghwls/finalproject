@@ -86,8 +86,8 @@
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
         <th><div class="content1">주문 일자</div></th>
-        <th><div class="content1">취소 수량</div></th>
-        <th><div class="content1">취소 금액</div></th>
+        <th><div class="content1">취소 수량(개)</div></th>
+        <th><div class="content1">취소 금액(원)</div></th>
         <th><div class="content1">취소 일자</div></th>
       </tr>
     </thead>

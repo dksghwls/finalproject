@@ -26,9 +26,9 @@
 	      <ul class="nav navbar-nav">
 	        <li><a href="../AllCategory">상품</a></li>
 	        <li><a href="../helpcenter">고객센터</a></li>
-	        <sec:authorize access="hasRole('ROLE_ADMIN')">
+	        <%-- <sec:authorize access="hasRole('ROLE_ADMIN')">
 				<li><a href="../adminpage">관리자 페이지</a></li>
-			</sec:authorize>
+			</sec:authorize> --%>
 	      </ul>
 	      
 	    <ul class="nav navbar-nav navbar-right">  
@@ -38,11 +38,29 @@
 		</sec:authorize>
 	    <sec:authorize access="isAuthenticated()">
 	    	<li>
-		    	<a href="../mypage/${ member.no }"><span class="glyphicon glyphicon-user"></span>
+	    		<c:choose>
+	    			<c:when test="${member.no=='1' }">
+	    			<sec:authorize access="hasRole('ROLE_ADMIN')">
+	    				<a href="../adminpage"><span class="glyphicon glyphicon-user"></span>
+							<c:out value="${ member.nickname }님"></c:out>
+						</a>
+					</sec:authorize>	
+	    			</c:when>
+	    			<c:otherwise>
+	    				<a href="../mypage/${ member.no }"><span class="glyphicon glyphicon-user"></span>
+		    				<c:if test="${ member != null }">
+								<c:out value="${ member.nickname }님"></c:out>
+							</c:if>
+						</a>
+	    			</c:otherwise>
+	    		</c:choose>
+	    	
+		    	<%-- <a href="../mypage/${ member.no }"><span class="glyphicon glyphicon-user"></span>
 		    		<c:if test="${ member != null }">
 						<c:out value="${ member.nickname }님"></c:out>
 					</c:if>
-				</a>
+				</a> --%>
+				
 			</li>
 			<li><a href="#" onclick="document.getElementById('logout-form').submit();"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 			<form id="logout-form" action='<c:url value='/logout'/>' method="POST">
