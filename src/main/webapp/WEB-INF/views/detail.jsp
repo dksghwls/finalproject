@@ -34,6 +34,12 @@
       
     
     }
+    .centerkey{
+    position:relative;
+    left:500px;
+    
+    }
+    
     
     
   </style>
@@ -88,19 +94,23 @@
 
 <c:set var="member" value="${ sessionScope.user }"></c:set>
 
-
-
+        
+        
       <c:forEach var="item" items="${dto}">
+       
+       
        <div class="container">
-         <h3> ${item.pname }</h3>
+         <div class="centerkey">
+         <h3><b>${item.pname }</b></h3>
+         </div>
        </div>    
       </c:forEach>
 
 
-<div class="container">
-<div class="row">
-  <div class="col-sm-8">
-  <div class="inner">
+   <div class="container">
+     <div class="row">
+     <div class="col-sm-8">
+     <div class="inner">
    
      <img src="${img.imgname}"> 
    
@@ -111,24 +121,24 @@
   <div class="col-sm-4">
     <div class="well">
      <c:forEach var="item" items="${dto}">   
-    상품명: ${item.pname }<br>
-  원가: ${item.oprice }<br> 
-  할인된 가격: ${item.dprice }<br>
+    상품명: <b>${item.pname }</b><br>
+  원가: <b>${item.oprice }원</b><br> 
+  할인된 가격: <b>${item.dprice }원</b><br>
       
     <c:if test="${deadline > 0}">
-    남은기간: ${deadline}일<br>
+    남은 기간: <b>${deadline}일</b><br>
     </c:if>
     
     <c:if test="${deadline < 0}">
-    남은기간: 마감<br>
+    남은 기간: 마감<br>
     </c:if>
     <c:if test="${deadline == 0}">
-    남은기간: 오늘 마감<br>
+    남은 기간: 오늘 마감<br>
     </c:if>
     
     
     
-    남은 개수: ${item.stock }
+    남은 개수: <b>${item.stock }개</b>
    
   
    
@@ -168,7 +178,7 @@
 		
 		 	 <sec:authorize access="isAuthenticated()"> 
 		 	 <c:if test="${item.stock>0 }">
-	     <input type="submit" class="btn btn-primary btn-md" value="결제">
+	    <input type="submit" class="btn btn-primary btn-md" value="결제">
 	       </c:if>
 	     </sec:authorize>
 	     <sec:authorize access="isAnonymous()">
@@ -231,11 +241,13 @@
       <input type="hidden" value="${ member.no }" name="no">
     <sec:authorize access="isAnonymous()">
 	  <textarea class="form-control" rows="5" id="comment" name="rcontent" disabled="disabled"></textarea>
-	  <button id="reviewbtn" disabled="disabled"> 입력하기 </button>
+	  <button id="reviewbtn" disabled="disabled" class="btn btn-default"> 입력하기 </button> 
+	  
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
  		<textarea class="form-control" rows="5" id="comment" name="rcontent"></textarea><br>
-   		<button id="reviewbtn"> 입력하기 </button>
+   		<button id="reviewbtn" class="btn btn-default"> 입력하기 </button>
+   		
 	</sec:authorize>
 	</div>
   <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
