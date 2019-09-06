@@ -12,6 +12,7 @@
       }
       .nav-link { 
           font-size: 22px;
+          font-weight: bold;
         }
         .container{
        		margin: auto

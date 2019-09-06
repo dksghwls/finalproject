@@ -26,6 +26,7 @@
       }
       .nav-link { 
           font-size: 22px;
+          font-weight: bold;
         }
         /* .p{
         	font-weight: bold;
@@ -129,7 +130,7 @@
 <!--<h2>마이 리뷰</h2>-->
 <div class="container">
   <p><span id="nick">${member.nickname }</span> 님의 구매 상품 리뷰 모음입니다.</p>
-  <br>
+  <br><br>
  
   <!--<ul>
     <li>-->
@@ -138,7 +139,7 @@
         <c:forEach var="item" items="${dlist }">
          <tr class="lists__item js-load">
             <td class="t">
-              <a href="../detail/${item.pno }"><img src="${item.imgname }" alt="Card image" class="img-rounded" style="width:100%"></a>
+              <a href="../detail/${item.pno }"><img src="${item.imgname }" alt="Card image" class="img-rounded" width="300" height="192.66"></a>
             </td>
             <td>
             	<div class="s">

@@ -14,6 +14,7 @@
       }
       .nav-link { 
           font-size: 22px;
+          font-weight: bold;
         }
         .container{
        	margin: auto
@@ -95,7 +96,7 @@
     <c:forEach var="item" items="${cancellist }">
       <tr>
       	<td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
-      	<td><a href="#"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
+      	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
