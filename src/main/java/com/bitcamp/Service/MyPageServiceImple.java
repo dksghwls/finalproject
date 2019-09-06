@@ -203,4 +203,15 @@ public class MyPageServiceImple implements MyPageService {
 		return myPageMapper.scancellist(o);
 	}
 
+	@Override
+	public void cancelproduct(int pno, int bcount) {
+		
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("pno", pno);
+		hm.put("bcount", bcount);
+		
+		myPageMapper.cancelproduct(hm);
+		
+	}
+
 }

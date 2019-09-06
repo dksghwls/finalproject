@@ -86,7 +86,8 @@
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
         <th><div class="content1">주문 일자</div></th>
-        <th><div class="content1">구매 가격</div></th>
+        <th><div class="content1">취소 수량</div></th>
+        <th><div class="content1">취소 금액</div></th>
         <th><div class="content1">취소 일자</div></th>
       </tr>
     </thead>
@@ -97,7 +98,8 @@
       	<td><a href="#"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.cdate }"></c:out></div></td>
       </tr>
      </c:forEach>
