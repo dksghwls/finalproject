@@ -186,8 +186,8 @@
     	</select>
     	
     	<insert id="cancelinsert" parameterType="com.bitcamp.DTO.ProductDTO">
-    		insert into cancel(no, pno, pname, bno, bdate, dprice, cno, bcount, pay, cdate)
-    		values( #{no}, #{pno}, #{pname}, #{bno}, #{bdate}, #{dprice}, #{cno}, #{bcount}, #{pay}, now())
+    		insert into cancel(no, pno, pname, bno, bdate, dprice, cno, bcount, pay, email, cdate)
+    		values( #{no}, #{pno}, #{pname}, #{bno}, #{bdate}, #{dprice}, #{cno}, #{bcount}, #{pay}, #{email}, now())
     	</insert>
     	
     	<delete id="cancelpay" parameterType="int">
@@ -218,7 +218,7 @@
   		</select>
   		
   		<select id="cancellist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
-    		select c.bno, i.imgname, c.pname, c.bdate, c.bcount, c.pay, c.cdate
+    		select c.bno, i.imgname, c.pname, c.bdate, c.bcount, c.pay, c.email, c.cdate
     		from cancel c, img i
     		where c.pno=i.pno and c.no=#{no}
     		<if test="searchtxt!=null and searchtxt!=''">
@@ -259,7 +259,7 @@
   		</select>
   		
   		<select id="scancellist" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
-    		select c.bno, i.imgname, c.pname, c.bdate, c.dprice, c.cdate
+    		select c.bno, i.imgname, c.pname, c.bdate, c.bcount, c.pay, c.email, c.cdate
     		from cancel c, img i
     		where c.pno=i.pno and c.no=#{no} and c.cno=#{cno}
     		<if test="searchtxt!=null and searchtxt!=''">

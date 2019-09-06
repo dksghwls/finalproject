@@ -125,9 +125,9 @@
         <th><div class="content1">주문 번호</div></th>
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
-        <th><div class="content1">주문자 이메일</div></th>
-        <th><div class="content1">주문 수량</div></th>
-        <th><div class="content1">주문 금액</div></th>
+        <th><div class="content1">주문회원 이메일</div></th>
+        <th><div class="content1">주문 수량(개)</div></th>
+        <th><div class="content1">주문 금액(원)</div></th>
         <th><div class="content1">주문 일자</div></th>
         <th><div class="content1">배송 상태</div></th>
         <th><div class="content1">배송 상태 수정</div></th>
@@ -208,7 +208,7 @@
 		<option>검색 조건 </option>
 		<option value="pname">상품명</option>
 		<option value="bno">주문 번호</option>
-		<option value="email">주문자 이메일</option>
+		<option value="email">주문회원 이메일</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">
