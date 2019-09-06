@@ -22,25 +22,34 @@
       .s{
           margin-left: 40px;
           margin-bottom: 0px;
+          line-height: 200%;
       }
       .nav-link { 
           font-size: 22px;
         }
-        .p{
+        /* .p{
         	font-weight: bold;
         	font-size: 15px;
-        }
+        } */
         .container{
        	margin: auto
        }
         p{
        	font-size: 15px;
+       	margin-bottom: -25px;
        }
         #nick{
        	color: blue;
        }
        li{
        	font-size: 15px;
+       }
+       .sp{
+       	font-weight: bold;
+       }
+       ul{
+       	list-style:none;
+   		padding-left:0px;
        }
        
        /* 추가 */
@@ -133,10 +142,13 @@
             </td>
             <td>
             	<div class="s">
-            		<p class="p">${item.pname}</p><br>
-        			<li><span>판매가: </span>${item.dprice}원</li>
-        			<li><span>마감일: </span>${item.deadline}</li><br>
-        			<p>${item.rcontent}</p><br>
+            		<%-- <p class="p">${item.pname}</p><br> --%>
+            		<h3>${item.pname}</h3><br>
+            		<ul>
+        				<li><span class="sp">판매가: &nbsp;</span>${item.dprice}원</li>
+        				<li><span class="sp">마감일: &nbsp;</span>${item.deadline}</li>
+        			</ul>
+        			<p class="rc">${item.rcontent}</p><br>
                 </div>
             </td>
             </tr>
