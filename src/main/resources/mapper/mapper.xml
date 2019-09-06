@@ -65,10 +65,7 @@
     	
     	<select id="cpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
     	
-    	<!-- select *
-  		from category c, product p 
-    	where c.cno = p.cno 
-    	and p.cno = #{cno}  -->
+    	
     	select i.imgname, p.pno, p.pname, p.oprice, p.dprice
   		from category c, product p, img i 
     	where c.cno = p.cno 
@@ -224,13 +221,13 @@
 				<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
 					<when test="search=='pno'">
-						and p.pno=#{searchtxt}
+						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and p.pname like upper('%'|| #{searchtxt}||'%')
+						and pname like upper('%'|| #{searchtxt}||'%')
 					</when>
 					<when test="search=='cno'">
-						and p.cno=#{searchtxt}
+						and cno=#{searchtxt}
 					</when>
 				</choose>
 			</if>

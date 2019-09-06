@@ -38,12 +38,12 @@ public class AllCategoryController {
 		
 		model.addAttribute("list", clist);
 		
-		Pattern p = Pattern.compile("(^[0-9]*$)"); // 
-		
+		/*Pattern p = Pattern.compile("(^[0-9]*$)"); // 
+*/		
 		if(search=="pno"||search.equals("pno")
 				|| search=="cno"||search.equals("cno"))
 		{
-			Matcher m = p.matcher(searchtxt);
+			/*Matcher m = p.matcher(searchtxt);
 			if(!m.find())
 			{
 				searchtxt="";
@@ -51,9 +51,9 @@ public class AllCategoryController {
 				
 			}
 			else
-			{
+			{*/
 				model.addAttribute("searchtxt", searchtxt);
-			}
+			/*}*/
 		}
 		
 		
@@ -90,11 +90,11 @@ public class AllCategoryController {
 		
 		model.addAttribute("list", calist);
 		
-		Pattern p = Pattern.compile("(^[0-9]*$)");
+		/*Pattern p = Pattern.compile("(^[0-9]*$)");*/
 		if(search=="pno"||search.equals("pno")
 				|| search=="cno"||search.equals("cno"))
 		{
-			Matcher m = p.matcher(searchtxt);
+		/*	Matcher m = p.matcher(searchtxt);
 			if(!m.find())
 			{
 				searchtxt="";
@@ -102,9 +102,9 @@ public class AllCategoryController {
 				
 			}
 			else
-			{
+			{*/
 				model.addAttribute("searchtxt", searchtxt);
-			}
+			/*}*/
 		}
 		
 		int totalCount = service.subpage(search, searchtxt, cno);
@@ -136,12 +136,12 @@ public class AllCategoryController {
 		model.addAttribute("clist", clist);
 		
 		
-		Pattern p = Pattern.compile("(^[0-9]*$)"); // 
-		
+	/*	Pattern p = Pattern.compile("(^[0-9]*$)"); // 
+*/		
 		if(search=="pno"||search.equals("pno")
 				|| search=="cno"||search.equals("cno"))
 		{
-			Matcher m = p.matcher(searchtxt);
+			/*Matcher m = p.matcher(searchtxt);
 			if(!m.find())
 			{
 				searchtxt="";
@@ -149,9 +149,9 @@ public class AllCategoryController {
 				
 			}
 			else
-			{
+			{*/
 				model.addAttribute("searchtxt", searchtxt);
-			}
+			/*}*/
 		}
 		
 		
@@ -197,12 +197,12 @@ public class AllCategoryController {
 		model.addAttribute("clist", scalist);
 		
 		
-		Pattern p = Pattern.compile("(^[0-9]*$)"); // 
-		
+		/*Pattern p = Pattern.compile("(^[0-9]*$)"); // 
+		*/
 		if(search=="pno"||search.equals("pno")
 				|| search=="cno"||search.equals("cno"))
 		{
-			Matcher m = p.matcher(searchtxt);
+			/*Matcher m = p.matcher(searchtxt);
 			if(!m.find())
 			{
 				searchtxt="";
@@ -210,9 +210,9 @@ public class AllCategoryController {
 				
 			}
 			else
-			{
+			{*/
 				model.addAttribute("searchtxt", searchtxt);
-			}
+			/*}*/
 		}
 		
 		
