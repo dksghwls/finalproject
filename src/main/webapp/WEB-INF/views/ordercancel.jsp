@@ -13,7 +13,7 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
           font-weight: bold;
         }
         .p1{
@@ -61,7 +61,7 @@
                 <a class="nav-link" href="../order">주문 완료</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../ordercancel">주문 취소</a>
+                <a class="nav-link" href="../ordercancel" style="background-color: #6799FF; color: #FFFFFF;">주문 취소</a>
               </li>
 
           </ul>
@@ -74,11 +74,18 @@
 <form>
     <div class="form-group" style="width: 150px; float: right;">
       <select class="form-control" id="sel1" onchange="location.href=this.value">
-        <option>카테고리</option>
-        <option value="../ordercancel">전체</option>
+        <!-- <option>카테고리</option> -->
+        <option value="../order">전체</option>
         <c:forEach var="item" items="${clist }">
-        	<option value="../ordercancel/${item.cno }">${item.cname }</option>
-        </c:forEach>
+        	<c:choose>
+        		<c:when test="${cno==item.cno}">
+        			<option value="../order/${item.cno }" selected>${item.cname }</option>
+        		</c:when>
+        		<c:otherwise>
+        			<option value="../order/${item.cno }">${item.cname }</option>
+        		</c:otherwise>
+        	</c:choose>
+  		</c:forEach>
       </select>
     </div>
     </form>
@@ -126,10 +133,24 @@
   
   <form method="get" action="../ordercancel/${cno}?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
-		<option>검색 조건 </option>
-		<option value="pname">상품명</option>
-		<option value="bno">주문 번호</option>
-		<option value="email">주문회원 이메일</option>
+		<!-- <option>검색 조건 </option> -->
+		<c:choose>
+			<c:when test="${search=='pname'||search==''}">
+				<option value="pname" selected>상품명</option>
+				<option value="bno">주문 번호</option>
+				<option value="email">회원 이메일</option>
+			</c:when>
+			<c:when test="${search=='bno'}">
+				<option value="pname">상품명</option>
+				<option value="bno" selected>주문 번호</option>
+				<option value="email">회원 이메일</option>
+			</c:when>
+			<c:when test="${search=='email'}">
+				<option value="pname">상품명</option>
+				<option value="bno">주문 번호</option>
+				<option value="email" selected>회원 이메일</option>
+			</c:when>
+		</c:choose>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">

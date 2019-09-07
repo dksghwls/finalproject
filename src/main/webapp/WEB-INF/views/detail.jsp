@@ -162,20 +162,21 @@
         </c:if>
         
         
-        
+        <div>
         <c:if test="${item.stock>0 }">
 	    <sec:authorize access="isAuthenticated()"> 
 	     <form action="../Payment/${item.pno }" name="form" method="get">
 		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
       <input type="text" name="bcount" id="bcount" value="1" size="3" onchange="change();">
-         <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+         <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br><br>
 		<input type="hidden" name="no" value="${ member.no }">
 		<input type="hidden" name="pno" value="${ item.pno }">
 		<input type="hidden" name="pname" value="${item.pname }">
              금액 : <input type="text" name="sum" size="11" readonly>원
          </sec:authorize>
-		
-		
+		</div>
+		<br><br>
+		<div>
 		 	 <sec:authorize access="isAuthenticated()"> 
 		 	 <c:if test="${item.stock>0 }">
 	    <input type="submit" class="btn btn-primary btn-md" value="결제">
@@ -184,12 +185,14 @@
 	     <sec:authorize access="isAnonymous()">
 	     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
 	     </sec:authorize>
+	     </div>
 	     </form>
 	     </c:if>
 	     
       </c:if>
       
       <c:if test="${deadline < 0 }">
+      
      <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
       
       </c:if>

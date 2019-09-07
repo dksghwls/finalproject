@@ -11,7 +11,7 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
           font-weight: bold;
         }
         .container{
@@ -53,7 +53,7 @@ function update(pno)
                 <a class="nav-link active" href="../adminpage">회원 관리</a>
               </li>
               <li data-tab="goods" class="nav-item">
-                <a class="nav-link" href="../adminproduct">상품 관리</a>
+                <a class="nav-link" href="../adminproduct" style="background-color: #6799FF; color: #FFFFFF;">상품 관리</a>
               </li>
               <li data-tab="order" class="nav-item">
                 <a class="nav-link" href="../order">주문 완료</a>
@@ -74,10 +74,17 @@ function update(pno)
     <div class="form-group" style="width: 150px; float: right;">
     
       <select class="form-control" id="sel1" onchange="location.href=this.value">
-      	<option>선택하세요
-      	<option value="../adminproduct">전체
+      	<!-- <option>선택하세요 -->
+      	<option value="../adminproduct">전체</option>
         <c:forEach var="item" items="${clist }">
-        <option value="../adminproduct/${item.cno }">${item.cname }
+        	<c:choose>
+        		<c:when test="${cno==item.cno}">
+        			<option value="../adminproduct/${item.cno }" selected>${item.cname }</option>
+        		</c:when>
+        		<c:otherwise>
+        			<option value="../adminproduct/${item.cno }">${item.cname }</option>
+        		</c:otherwise>
+        	</c:choose>
         </c:forEach>
       </select>
     </div>
@@ -122,7 +129,7 @@ function update(pno)
   <form method="get" action="../adminproduct?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<!-- <option value="pno">상품번호</option> -->
-		<option value="pname">상품이름</option>
+		<option value="pname">상품명</option>
 		<!-- <option value="cno">카테고리번호</option> -->
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">

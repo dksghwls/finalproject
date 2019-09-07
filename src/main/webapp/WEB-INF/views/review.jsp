@@ -25,7 +25,7 @@
           line-height: 200%;
       }
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
           font-weight: bold;
         }
         /* .p{
@@ -90,7 +90,7 @@
 	        item_total_cnt = cnt;
 	    } else {
 	        item_total_cnt = item_length;
-	        /* $('.button').hide() */
+	        $('.btn-wrap').hide();
 	    }
 	    $(item_list + ":lt(" + item_total_cnt + ")").addClass("active");
 	}
@@ -120,7 +120,7 @@
                 <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="../review/${member.no}">나의 리뷰</a>
+                <a class="nav-link" data-toggle="tab" href="../review/${member.no}" style="background-color: #6799FF; color: #FFFFFF;">나의 리뷰</a>
               </li>
 
           </ul>
@@ -159,7 +159,7 @@
     <br><br>
    </div>
    <c:if test="${dlist!=null }">
-   	<div id="js-btn-wrap" class="btn-wrap"><a href="javascript:;" class="btn btn-info" style="width:300px">리뷰 더 보기</a></div>
+   	<div id="js-btn-wrap" class="btn-wrap"><a href="javascript:;" class="btn btn-danger" style="width:300px">리뷰 더 보기</a></div>
    </c:if>
 	<br><br>
   </div>
