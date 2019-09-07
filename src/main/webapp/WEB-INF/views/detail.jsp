@@ -30,7 +30,7 @@
     }
     .well
     {
-      height:200px;
+      height:300px;
       
     
     }
@@ -101,7 +101,7 @@
        
        <div class="container">
          <div class="centerkey">
-         <h3><b>${item.pname }</b></h3>
+        <%--  <h3><b>${item.pname }</b></h3> --%>
          </div>
        </div>    
       </c:forEach>
@@ -121,24 +121,24 @@
   <div class="col-sm-4">
     <div class="well">
      <c:forEach var="item" items="${dto}">   
-    상품명: <b>${item.pname }</b><br>
-  원가: <b>${item.oprice }원</b><br> 
-  할인된 가격: <b>${item.dprice }원</b><br>
+   <h3><b>${item.pname }</b></h3><br><br>
+ <div class="glyphicon glyphicon-usd"></div> 원가: <b>${item.oprice }원</b><br> <br>
+ <div class="glyphicon glyphicon-triangle-bottom"></div> 할인된 가격: <b>${item.dprice }원</b><br><br>
       
     <c:if test="${deadline > 0}">
-    남은 기간: <b>${deadline}일</b><br>
+   <div class="glyphicon glyphicon-calendar"> </div>남은 기간: <b>${deadline}일</b><br><br>
     </c:if>
     
     <c:if test="${deadline < 0}">
-    남은 기간: 마감<br>
+    남은 기간: 마감<br><br>
     </c:if>
     <c:if test="${deadline == 0}">
-    남은 기간: 오늘 마감<br>
+    남은 기간: 오늘 마감<br><br>
     </c:if>
     
     
     
-    남은 개수: <b>${item.stock }개</b>
+    <div class="glyphicon glyphicon-shopping-cart"></div>남은 개수: <b>${item.stock }개</b><br>
    
   
    
@@ -166,13 +166,13 @@
         <c:if test="${item.stock>0 }">
 	    <sec:authorize access="isAuthenticated()"> 
 	     <form action="../Payment/${item.pno }" name="form" method="get">
-		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
+		<div class="glyphicon glyphicon-ok"></div>   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
       <input type="text" name="bcount" id="bcount" value="1" size="3" onchange="change();">
          <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
 		<input type="hidden" name="no" value="${ member.no }">
 		<input type="hidden" name="pno" value="${ item.pno }">
 		<input type="hidden" name="pname" value="${item.pname }">
-             금액 : <input type="text" name="sum" size="11" readonly>원
+            <div class="glyphicon glyphicon-hand-right"></div> 금액 : <input type="text" name="sum" size="11" readonly>원
          </sec:authorize>
 		
 		
@@ -215,7 +215,7 @@
 
 <ul class="nav nav-tabs" role="tablist" id="myTab">
       
-      <li role="presentation"><a href="#detailpage" aria-controls="detailpage" role="tab" data-toggle="tab">상세페이지</a></li>
+      <li role="presentation"><a href="#detailpage" aria-controls="detailpage" role="tab" data-toggle="tab">상세설명</a></li>
       <li role="presentation"><a href="#reviewpage" aria-controls="reviewpage" role="tab" data-toggle="tab">리뷰작성</a></li>
       
     </ul>
@@ -264,7 +264,7 @@
 	
    <c:forEach var="list" items="${replylist}">
     
-     ${ list.rcontent} ${list.nickname }
+     <p>${ list.rcontent} ${list.nickname }</p>
     
      
      <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
