@@ -22,7 +22,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  					and pname like '%'||upper(#{searchtxt})||'%'     
+  					<!-- and pname like '%'||upper(#{searchtxt})||'%' -->
+  					and pname like CONCAT('%', #{searchtxt}, '%')  
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
@@ -43,7 +44,8 @@
 						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
 						and cno=#{searchtxt}
@@ -78,7 +80,8 @@
 						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
 						and cno=#{searchtxt}
@@ -107,7 +110,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  				 and pname like '%'||upper(#{searchtxt})||'%'     
+  				and pname like CONCAT('%', #{searchtxt}, '%')  
+  				 <!-- and pname like '%'||upper(#{searchtxt})||'%' -->     
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
@@ -162,7 +166,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  					and pname like '%'||upper(#{searchtxt})||'%'     
+  				and pname like CONCAT('%', #{searchtxt}, '%')  
+  					<!-- and pname like '%'||upper(#{searchtxt})||'%'  -->    
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
@@ -185,7 +190,8 @@
 						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
 						and cno=#{searchtxt}
@@ -224,7 +230,8 @@
 						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
 						and cno=#{searchtxt}
@@ -250,7 +257,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  				 and pname like '%'||upper(#{searchtxt})||'%'     
+  				and pname like CONCAT('%', #{searchtxt}, '%')  
+  				<!--  and pname like '%'||upper(#{searchtxt})||'%'  -->    
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
