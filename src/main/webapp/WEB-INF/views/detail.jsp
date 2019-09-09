@@ -161,6 +161,7 @@
          <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
 		<input type="hidden" name="no" value="${ member.no }">
 		<input type="hidden" name="pno" value="${ item.pno }">
+		<input type="hidden" name="pname" value="${item.pname }">
              금액 : <input type="text" name="sum" size="11" readonly>원
          </sec:authorize>
 		
