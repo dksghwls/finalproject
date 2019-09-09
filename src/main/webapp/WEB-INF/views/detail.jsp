@@ -111,7 +111,7 @@
      <div class="row">
      <div class="col-sm-8">
      <div class="inner">
-   
+     <br>
      <img src="${img.imgname}"> 
    
   
@@ -119,6 +119,7 @@
     
   </div> 
   <div class="col-sm-4">
+  <br>
     <div class="well">
      <c:forEach var="item" items="${dto}">   
    <h3><b>${item.pname }</b></h3><br><br>
@@ -263,16 +264,18 @@
     
   </form>
   </c:forEach>
-</div>
+   </div>
 	
    <c:forEach var="list" items="${replylist}">
     
-     <p>${ list.rcontent} ${list.nickname }</p>
-    
+     <c:if test="${ member.no != list.no && member.no!=1 }">
+     <p>${ list.rcontent}<br>  작성자 : ${list.nickname }</p>
+     <hr>
+     </c:if>
      
      <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
     <c:if test="${ member.no == list.no || member.no==1 }"> 
-    
+       <p>${ list.rcontent}<br>  작성자 : ${list.nickname }</p>
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      <a href="/replydetail2/${list.rno}">수정하기</a>
      <br>
