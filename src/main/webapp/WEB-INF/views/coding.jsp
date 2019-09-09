@@ -58,7 +58,7 @@
 </head>
 <body>
 	<div id="codingform">
-	<form action="insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data" >
+	<form action="insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data" onsubmit="return submitCheck()" name="frm" >
 		카테고리:<select id="cno" name="cno" class="form-control" style="width: 700px;">
 				<option value="1">시계
 				<option value="2">스포츠용품
@@ -76,9 +76,54 @@
 		<input type="button" value="달력" onclick="$('#date3').datepicker('show');" /><br><br>
 		재고:<input type="text" name="stock" class="form-control input-lg" style="width: 700px;">
 		<input type="file" name="file1" id="file1" class="form-control input-lg" style="width: 700px;"><br>
+		 <div id="result"></div>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <input type="button" id="insertBoard" value="등록" class="btn btn-primary btn-lg" />
+	       
     </form>
     </div>
+    <script>
+    function submitCheck() {
+    	var pname  = document.frm.pname.value; // 상품이름
+    	var oprice  = document.frm.oprice.value; //원가
+    	var dprice  = document.frm.dprice.value; //할인가
+    	var content  = document.frm.content.value; //상품설명
+    	var deadline  = document.frm.deadline.value; //마감일
+    	var stock  = document.frm.stock.value; //재고수량
+    	
+    	if(pname.length == 0) {
+			$('#result').text("상품명을 입력해주세요.");
+			frm.pname.focus();
+			return false;
+		}
+    	if(oprice.length == 0) {
+			$('#result').text("원가를 입력해주세요.");
+			frm.oprice.focus();
+			return false;
+		}
+    	if(dprice.length == 0) {
+			$('#result').text("할인가를 입력해주세요.");
+			frm.dprice.focus();
+			return false;
+		}
+    	
+    	if(content.length == 0) {
+			$('#result').text("원가를 입력해주세요.");
+			frm.content.focus();
+			return false;
+		}
+    	if(deadline.length == 0) {
+			$('#result').text("원가를 입력해주세요.");
+			frm.deadline.focus();
+			return false;
+		}
+    	if(stock.length == 0) {
+			$('#result').text("재고수량을 입력해주세요.");
+			frm.stock.focus();
+			return false;
+		}
+    	
+    }
+    </script>
 </body>
 </html>
