@@ -195,8 +195,9 @@ public class MyPageController {
 	
 	@RequestMapping("cancel/{bno}")
 	@Transactional
-	public String cancel(@PathVariable int bno, @RequestParam int no, Model model) {
+	public String cancel(@PathVariable int bno, @RequestParam int no, @RequestParam int pno, @RequestParam int bcount, Model model) {
 		
+		myPageService.cancelproduct(pno, bcount);
 		ProductDTO dto=myPageService.cancelselect(bno, no);
 		myPageService.cancelinsert(dto);
 		myPageService.cancelpay(bno);

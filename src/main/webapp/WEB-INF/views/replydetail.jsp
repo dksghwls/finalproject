@@ -35,7 +35,7 @@
   <div class="well">${dto.rcontent }</div>
 </div>
 <a href="/replyupdate2/${dto.rno }" class="btn btn-info" role="button">수정하기</a>
-<a href="/detail/${dto.rno}" class="btn btn-info" role="button">돌아가기</a>
+<a href="/detail/${dto.pno}" class="btn btn-info" role="button">돌아가기</a>
 
 
 </body>

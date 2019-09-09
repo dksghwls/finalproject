@@ -22,7 +22,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  					and pname like '%'||upper(#{searchtxt})||'%'     
+  					<!-- and pname like '%'||upper(#{searchtxt})||'%' -->
+  					and pname like CONCAT('%', #{searchtxt}, '%')  
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
@@ -43,7 +44,8 @@
 						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
 						and cno=#{searchtxt}
@@ -65,10 +67,7 @@
     	
     	<select id="cpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
     	
-    	<!-- select *
-  		from category c, product p 
-    	where c.cno = p.cno 
-    	and p.cno = #{cno}  -->
+    	
     	select i.imgname, p.pno, p.pname, p.oprice, p.dprice
   		from category c, product p, img i 
     	where c.cno = p.cno 
@@ -81,7 +80,8 @@
 						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
 						and cno=#{searchtxt}
@@ -110,7 +110,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  				 and pname like '%'||upper(#{searchtxt})||'%'     
+  				and pname like CONCAT('%', #{searchtxt}, '%')  
+  				 <!-- and pname like '%'||upper(#{searchtxt})||'%' -->     
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
@@ -165,7 +166,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  					and pname like '%'||upper(#{searchtxt})||'%'     
+  				and pname like CONCAT('%', #{searchtxt}, '%')  
+  					<!-- and pname like '%'||upper(#{searchtxt})||'%'  -->    
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
@@ -188,7 +190,8 @@
 						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
 						and cno=#{searchtxt}
@@ -224,13 +227,14 @@
 				<if test="searchtxt!=null and searchtxt!=''">
 				<choose>
 					<when test="search=='pno'">
-						and p.pno=#{searchtxt}
+						and pno=#{searchtxt}
 					</when>
 					<when test="search=='pname'">
-						and p.pname like upper('%'|| #{searchtxt}||'%')
+					and pname like CONCAT('%', #{searchtxt}, '%')  
+						<!-- and pname like upper('%'|| #{searchtxt}||'%') -->
 					</when>
 					<when test="search=='cno'">
-						and p.cno=#{searchtxt}
+						and cno=#{searchtxt}
 					</when>
 				</choose>
 			</if>
@@ -253,7 +257,8 @@
   				and pno=#{searchtxt}
   				</when>
   				<when test="search=='pname'">
-  				 and pname like '%'||upper(#{searchtxt})||'%'     
+  				and pname like CONCAT('%', #{searchtxt}, '%')  
+  				<!--  and pname like '%'||upper(#{searchtxt})||'%'  -->    
   				</when>
   				<when test="search=='cno'">
   				and cno=#{searchtxt}
@@ -274,8 +279,8 @@
     	</select>
     	<insert id="payallok" parameterType="com.bitcamp.DTO.paymentDTO">
     	
-    	insert into pay(no, pno, bdate, bcount, pay, email, shipping)
-    	value(#{no}, #{pno}, sysdate(), #{bcount}, #{pay}, #{email}, '배송 준비')
+    	insert into pay(no, pno, bdate, bcount, pay, email, addr, detailaddr, shipping)
+    	value(#{no}, #{pno}, sysdate(), #{bcount}, #{pay}, #{email}, #{addr}, #{detailaddr}, '배송 준비')
     	
     	
     	</insert>

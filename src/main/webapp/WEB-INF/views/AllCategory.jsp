@@ -60,6 +60,8 @@
       #iimg
       {
       	margin-left: 10px;
+      	margin-bottom: 10px;
+      	border: 1px solid silver;
       }
       #maincontext
       {
@@ -69,14 +71,14 @@
   </style>
 </head>
 <body>
-<%-- <form method="get" action="../AllCategory?currPage=${page.currPage }">
+<form method="get" action="../AllCategory?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
 		<option value="pname">상품이름</option>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<button type="submit"><span class="glyphicon glyphicon-search"></span></button>
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-    </form> --%>
+    </form>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav" id="sidemenu">
@@ -95,10 +97,11 @@
       <c:forEach var="dto" items="${dto}">
       <div class="col-sm-3" id="iimg">
         <a href="../detail/${dto.pno}"><img src="${ dto.imgname }"></a><br> 
-        ${dto.pname}
-        ${dto.dprice}
-        ${dto.oprice}
+        <h3>${dto.pname}</h3><br>
+        <div class="glyphicon glyphicon-usd"></div> 원가:${dto.oprice}<br>
+        <div class="glyphicon glyphicon-triangle-bottom"></div> 할인된 가격:<b>${dto.dprice}</b><br>
         <jsp:useBean id="toDay" class="java.util.Date" />
+         <div class="glyphicon glyphicon-calendar"> </div>남은 기간:
 				<fmt:parseDate value="${ dto.deadline }" pattern="yyyy-MM-dd" var="endDate" /> 
 				<fmt:parseNumber value="${ toDay.time / (1000*60*60*24) }" integerOnly="true" var="nowDay"/>
 				<fmt:parseNumber value="${ endDate.time / (1000*60*60*24) }" integerOnly="true" var="endDay"/>
@@ -116,9 +119,9 @@
       </c:forEach> 
       </div>
     </div>
-    <div class="btns">
+   <!--  <div class="btns">
   
-    </div>
+    </div> -->
     </div>
   <div class="text-center">
   <ul class="pagination">

@@ -11,7 +11,8 @@
     
      <style>
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
+          font-weight: bold;
         }
        .container{
        	margin: auto
@@ -49,7 +50,7 @@
             <ul class="nav nav-pills">
       
           <li data-tab="info" class="nav-item">
-                <a class="nav-link" href="../mypage/${member.no }">나의 정보</a>
+                <a class="nav-link" href="../mypage/${member.no }" style="background-color: #6799FF; color: #FFFFFF;">나의 정보</a>
               </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>

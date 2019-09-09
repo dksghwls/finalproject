@@ -8,6 +8,8 @@ public class paymentDTO {
 	private int bcount;
 	private int pay;
 	private String email;
+	private String addr;
+	private String detailaddr;
 	
 	public String getEmail() {
 		return email;
@@ -50,6 +52,18 @@ public class paymentDTO {
 	}
 	public void setPay(int pay) {
 		this.pay = pay;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getDetailaddr() {
+		return detailaddr;
+	}
+	public void setDetailaddr(String detailaddr) {
+		this.detailaddr = detailaddr;
 	}
 	
 	

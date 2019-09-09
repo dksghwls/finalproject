@@ -55,5 +55,7 @@ public interface MyPageMapper {
 
 	public List<ProductDTO> scancellist(HashMap<String, Object> o);
 
+	public void cancelproduct(HashMap<String, Object> hm);
+
 
 }

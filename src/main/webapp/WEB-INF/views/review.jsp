@@ -22,25 +22,35 @@
       .s{
           margin-left: 40px;
           margin-bottom: 0px;
+          line-height: 200%;
       }
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
+          font-weight: bold;
         }
-        .p{
+        /* .p{
         	font-weight: bold;
         	font-size: 15px;
-        }
+        } */
         .container{
        	margin: auto
        }
         p{
        	font-size: 15px;
+       	margin-bottom: -25px;
        }
         #nick{
        	color: blue;
        }
        li{
        	font-size: 15px;
+       }
+       .sp{
+       	font-weight: bold;
+       }
+       ul{
+       	list-style:none;
+   		padding-left:0px;
        }
        
        /* 추가 */
@@ -80,7 +90,7 @@
 	        item_total_cnt = cnt;
 	    } else {
 	        item_total_cnt = item_length;
-	        /* $('.button').hide() */
+	        $('.btn-wrap').hide();
 	    }
 	    $(item_list + ":lt(" + item_total_cnt + ")").addClass("active");
 	}
@@ -110,7 +120,7 @@
                 <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="../review/${member.no}">나의 리뷰</a>
+                <a class="nav-link" data-toggle="tab" href="../review/${member.no}" style="background-color: #6799FF; color: #FFFFFF;">나의 리뷰</a>
               </li>
 
           </ul>
@@ -120,7 +130,7 @@
 <!--<h2>마이 리뷰</h2>-->
 <div class="container">
   <p><span id="nick">${member.nickname }</span> 님의 구매 상품 리뷰 모음입니다.</p>
-  <br>
+  <br><br>
  
   <!--<ul>
     <li>-->
@@ -129,14 +139,17 @@
         <c:forEach var="item" items="${dlist }">
          <tr class="lists__item js-load">
             <td class="t">
-              <a href="../detail/${item.pno }"><img src="${item.imgname }" alt="Card image" class="img-rounded" style="width:100%"></a>
+              <a href="../detail/${item.pno }"><img src="${item.imgname }" alt="Card image" class="img-rounded" width="300" height="192.66"></a>
             </td>
             <td>
             	<div class="s">
-            		<p class="p">${item.pname}</p><br>
-        			<li><span>판매가: </span>${item.dprice}원</li>
-        			<li><span>마감일: </span>${item.deadline}</li><br>
-        			<p>${item.rcontent}</p><br>
+            		<%-- <p class="p">${item.pname}</p><br> --%>
+            		<h3>${item.pname}</h3><br>
+            		<ul>
+        				<li><span class="sp">판매가: &nbsp;</span>${item.dprice}원</li>
+        				<li><span class="sp">마감일: &nbsp;</span>${item.deadline}</li>
+        			</ul>
+        			<p class="rc">${item.rcontent}</p><br>
                 </div>
             </td>
             </tr>
@@ -146,7 +159,7 @@
     <br><br>
    </div>
    <c:if test="${dlist!=null }">
-   	<div id="js-btn-wrap" class="btn-wrap"><a href="javascript:;" class="btn btn-info" style="width:300px">리뷰 더 보기</a></div>
+   	<div id="js-btn-wrap" class="btn-wrap"><a href="javascript:;" class="btn btn-danger" style="width:300px">리뷰 더 보기</a></div>
    </c:if>
 	<br><br>
   </div>

@@ -30,10 +30,16 @@
     }
     .well
     {
-      height:200px;
+      height:300px;
       
     
     }
+    .centerkey{
+    position:relative;
+    left:500px;
+    
+    }
+    
     
     
   </style>
@@ -88,20 +94,24 @@
 
 <c:set var="member" value="${ sessionScope.user }"></c:set>
 
-
-
+        
+        
       <c:forEach var="item" items="${dto}">
+       
+       
        <div class="container">
-         <h3> ${item.pname }</h3>
+         <div class="centerkey">
+        <%--  <h3><b>${item.pname }</b></h3> --%>
+         </div>
        </div>    
       </c:forEach>
 
 
-<div class="container">
-<div class="row">
-  <div class="col-sm-8">
-  <div class="inner">
-   
+   <div class="container">
+     <div class="row">
+     <div class="col-sm-8">
+     <div class="inner">
+     <br>
      <img src="${img.imgname}"> 
    
   
@@ -109,26 +119,27 @@
     
   </div> 
   <div class="col-sm-4">
+  <br>
     <div class="well">
      <c:forEach var="item" items="${dto}">   
-    상품명: ${item.pname }<br>
-  원가: ${item.oprice }<br> 
-  할인된 가격: ${item.dprice }<br>
+   <h3><b>${item.pname }</b></h3><br><br>
+ <div class="glyphicon glyphicon-usd"></div> 원가: <b>${item.oprice }원</b><br> <br>
+ <div class="glyphicon glyphicon-triangle-bottom"></div> 할인된 가격: <b>${item.dprice }원</b><br><br>
       
     <c:if test="${deadline > 0}">
-    남은기간: ${deadline}일<br>
+   <div class="glyphicon glyphicon-calendar"> </div>남은 기간: <b>${deadline}일</b><br><br>
     </c:if>
     
     <c:if test="${deadline < 0}">
-    남은기간: 마감<br>
+    남은 기간: 마감<br><br>
     </c:if>
     <c:if test="${deadline == 0}">
-    남은기간: 오늘 마감<br>
+    남은 기간: 오늘 마감<br><br>
     </c:if>
     
     
     
-    남은 개수: ${item.stock }
+    <div class="glyphicon glyphicon-shopping-cart"></div>남은 개수: <b>${item.stock }개</b><br>
    
   
    
@@ -152,34 +163,37 @@
         </c:if>
         
         
-        
+        <div>
         <c:if test="${item.stock>0 }">
 	    <sec:authorize access="isAuthenticated()"> 
 	     <form action="../Payment/${item.pno }" name="form" method="get">
-		   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
+		<div class="glyphicon glyphicon-ok"></div>   수량 : <input type=hidden name="sell_price" value="${item.dprice }">
       <input type="text" name="bcount" id="bcount" value="1" size="3" onchange="change();">
-         <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+         <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br><br>
 		<input type="hidden" name="no" value="${ member.no }">
 		<input type="hidden" name="pno" value="${ item.pno }">
 		<input type="hidden" name="pname" value="${item.pname }">
-             금액 : <input type="text" name="sum" size="11" readonly>원
+            <div class="glyphicon glyphicon-hand-right"></div> 금액 : <input type="text" name="sum" size="11" readonly>원
          </sec:authorize>
-		
-		
+		</div>
+		<br><br>
+		<div>
 		 	 <sec:authorize access="isAuthenticated()"> 
 		 	 <c:if test="${item.stock>0 }">
-	     <input type="submit" class="btn btn-primary btn-md" value="결제">
+	    <input type="submit" class="btn btn-primary btn-md" value="결제">
 	       </c:if>
 	     </sec:authorize>
 	     <sec:authorize access="isAnonymous()">
 	     <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
 	     </sec:authorize>
+	     </div>
 	     </form>
 	     </c:if>
 	     
       </c:if>
       
       <c:if test="${deadline < 0 }">
+      
      <button type="button" class="btn btn-primary btn-md" disabled="disabled">결제</button>
       
       </c:if>
@@ -205,7 +219,7 @@
 
 <ul class="nav nav-tabs" role="tablist" id="myTab">
       
-      <li role="presentation"><a href="#detailpage" aria-controls="detailpage" role="tab" data-toggle="tab">상세페이지</a></li>
+      <li role="presentation"><a href="#detailpage" aria-controls="detailpage" role="tab" data-toggle="tab">상세설명</a></li>
       <li role="presentation"><a href="#reviewpage" aria-controls="reviewpage" role="tab" data-toggle="tab">리뷰작성</a></li>
       
     </ul>
@@ -231,11 +245,13 @@
       <input type="hidden" value="${ member.no }" name="no">
     <sec:authorize access="isAnonymous()">
 	  <textarea class="form-control" rows="5" id="comment" name="rcontent" disabled="disabled"></textarea>
-	  <button id="reviewbtn" disabled="disabled"> 입력하기 </button>
+	  <button id="reviewbtn" disabled="disabled" class="btn btn-default"> 입력하기 </button> 
+	  
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
  		<textarea class="form-control" rows="5" id="comment" name="rcontent"></textarea><br>
-   		<button id="reviewbtn"> 입력하기 </button>
+   		<button id="reviewbtn" class="btn btn-default"> 입력하기 </button>
+   		
 	</sec:authorize>
 	</div>
   <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
@@ -248,16 +264,18 @@
     
   </form>
   </c:forEach>
-</div>
+   </div>
 	
    <c:forEach var="list" items="${replylist}">
     
-     ${ list.rcontent} ${list.nickname }
-    
+     <c:if test="${ member.no != list.no && member.no!=1 }">
+     <p>${ list.rcontent}<br>  작성자 : ${list.nickname }</p>
+     <hr>
+     </c:if>
      
      <!-- 현재 접속중인 사람과 댓글 작성자 비교 -->
     <c:if test="${ member.no == list.no || member.no==1 }"> 
-    
+       <p>${ list.rcontent}<br>  작성자 : ${list.nickname }</p>
      <a href="/replydelete2/${list.rno}?pno=${list.pno}">삭제하기</a>
      <a href="/replydetail2/${list.rno}">수정하기</a>
      <br>

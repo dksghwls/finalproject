@@ -13,7 +13,8 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
+          font-weight: bold;
         }
         .container{
        	margin: auto
@@ -54,7 +55,7 @@
                 <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
               </li>
               <li data-tab="product2" class="nav-item">
-                <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
+                <a class="nav-link" href="../cancellist?no=${member.no }" style="background-color: #6799FF; color: #FFFFFF;">나의 취소 내역</a>
               </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../review/${member.no }">나의 리뷰</a>
@@ -70,11 +71,22 @@
 <form>
     <div class="form-group" style="width: 150px; float: right;">
       <select class="form-control" id="sel1" onchange="location.href=this.value">
-        <option>카테고리</option>
+        <!-- <option>카테고리</option> -->
         <option value="../cancellist?no=${member.no }">전체</option>
         <c:forEach var="item" items="${clist }">
-        	<option value="../cancellist/${item.cno }?no=${member.no}">${item.cname }</option>
+        	<c:choose>
+        		<c:when test="${cno==item.cno}">
+        			<option value="../cancellist/${item.cno }?no=${member.no}" selected>${item.cname }</option>
+        		</c:when>
+        		<c:otherwise>
+        			<option value="../cancellist/${item.cno }?no=${member.no}">${item.cname }</option>
+        		</c:otherwise>
+        	</c:choose>
         </c:forEach>
+        
+        
+        
+        
       </select>
     </div>
     </form>
@@ -86,7 +98,8 @@
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
         <th><div class="content1">주문 일자</div></th>
-        <th><div class="content1">구매 가격</div></th>
+        <th><div class="content1">취소 수량(개)</div></th>
+        <th><div class="content1">취소 금액(원)</div></th>
         <th><div class="content1">취소 일자</div></th>
       </tr>
     </thead>
@@ -94,10 +107,11 @@
     <c:forEach var="item" items="${cancellist }">
       <tr>
       	<td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
-      	<td><a href="#"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
+      	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.cdate }"></c:out></div></td>
       </tr>
      </c:forEach>
@@ -106,9 +120,17 @@
   
   <form method="get" action="../cancellist/${cno}?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
-		<option>검색 조건 </option>
-		<option value="pname">상품명</option>
-		<option value="bno">주문 번호</option>
+		<!-- <option>검색 조건 </option> -->
+		<c:choose>
+			<c:when test="${search=='pname'}">
+				<option value="pname" selected>상품명</option>
+				<option value="bno">주문 번호</option>
+			</c:when>
+			<c:otherwise>
+				<option value="pname">상품명</option>
+				<option value="bno" selected>주문 번호</option>
+			</c:otherwise>
+		</c:choose>
 	</select>
 	<input type="hidden" id="no" name="no" value="${member.no }"/>
 	<input type="text" name="searchtxt" style="height: 30px;">

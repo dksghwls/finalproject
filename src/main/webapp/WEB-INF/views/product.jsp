@@ -13,7 +13,8 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
+          font-weight: bold;
         }
         .p{
         	color: red;
@@ -44,8 +45,10 @@
 	$(document).on("click", "#cancel_btn", function () { 
 		var bno = $(this).data('id');
 		var mno = $(this).data('mem');
+		var pno=$(this).data('pno');
+		var bcount=$(this).data('bcount');
 		/* onclick="location.href='../cancel/11?no=${member.no}'" */
-		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../cancel/" + bno+ "?no=" + mno + "'");
+		document.getElementById("yes_btn").setAttribute("onclick", "location.href='../cancel/" + bno+ "?no=" + mno + "&pno="+pno+"&bcount="+bcount+"'");
     });
 </script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -67,7 +70,7 @@
                 <a class="nav-link active" href="../mypage/${member.no }">나의 정보</a>
               </li>
               <li data-tab="product" class="nav-item">
-                <a class="nav-link" href="../product?no=${member.no }">나의 주문 내역</a>
+                <a class="nav-link" href="../product?no=${member.no }" style="background-color: #6799FF; color: #FFFFFF;">나의 주문 내역</a>
               </li>
               <li data-tab="product2" class="nav-item">
                 <a class="nav-link" href="../cancellist?no=${member.no }">나의 취소 내역</a>
@@ -87,10 +90,17 @@
 <form>
     <div class="form-group" style="width: 150px; float: right;">
       <select class="form-control" id="sel1" onchange="location.href=this.value">
-        <option>카테고리</option>
+        <!-- <option>카테고리</option> -->
         <option value="../product?no=${member.no }">전체</option>
         <c:forEach var="item" items="${clist }">
-        	<option value="../product/${item.cno }?no=${member.no}">${item.cname }</option>
+        	<c:choose>
+        		<c:when test="${cno==item.cno}">
+        			<option value="../product/${item.cno }?no=${member.no}" selected>${item.cname }</option>
+        		</c:when>
+        		<c:otherwise>
+        			<option value="../product/${item.cno }?no=${member.no}">${item.cname }</option>
+        		</c:otherwise>
+        	</c:choose>
         </c:forEach>
       </select>
     </div>
@@ -104,7 +114,8 @@
         <th><div class="content1">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
         <th><div class="content1">주문 일자</div></th>
-        <th><div class="content1">구매 가격</div></th>
+        <th><div class="content1">주문 수량(개)</div></th>
+        <th><div class="content1">주문 금액(원)</div></th>
         <th><div class="content1">배송 주소</div></th>
         <th><div class="content1">배송 상태</div></th>
         <th><div class="content1">주문 취소</div></th>
@@ -117,12 +128,13 @@
       	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.dprice }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.addr }"></c:out><br><c:out value="${item.detailaddr }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.shipping }"></c:out></div></td>
         <td>
         	<c:if test="${item.shipping=='배송 준비' }">
-        		<button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-toggle="modal" data-target="#myModal">취소</button>
+        		<button id="cancel_btn" type="button" class="btn btn-danger" data-id= "${item.bno}" data-mem="${member.no}" data-pno="${item.pno}" data-bcount="${item.bcount}" data-toggle="modal" data-target="#myModal">취소</button>
         	</c:if>
         </td>
       </tr> 
@@ -158,9 +170,17 @@
   
   <form method="get" action="../product/${cno}?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
-		<option>검색 조건 </option>
-		<option value="pname">상품명</option>
-		<option value="bno">주문 번호</option>
+		<!-- <option>검색 조건 </option> -->
+		<c:choose>
+			<c:when test="${search=='pname'}">
+				<option value="pname" selected>상품명</option>
+				<option value="bno">주문 번호</option>
+			</c:when>
+			<c:otherwise>
+				<option value="pname">상품명</option>
+				<option value="bno" selected>주문 번호</option>
+			</c:otherwise>
+		</c:choose>
 	</select>
 	<input type="hidden" id="no" name="no" value="${member.no }"/>
 	<input type="text" name="searchtxt" style="height: 30px;">

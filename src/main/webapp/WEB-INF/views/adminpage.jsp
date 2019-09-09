@@ -13,7 +13,8 @@
           font-size: 15px;
       }
       .nav-link { 
-          font-size: 22px;
+          font-size: 20px;
+          font-weight: bold;
         }
         .container{
        		margin: auto
@@ -54,7 +55,7 @@
             <ul class="nav nav-pills">
       
           <li data-tab="info" class="nav-item" id="default">
-                <a class="nav-link active" href="../adminpage">회원 관리</a>
+                <a class="nav-link active" href="../adminpage" style="background-color: #6799FF; color: #FFFFFF;">회원 관리</a>
               </li>
               <li data-tab="product" class="nav-item">
                 <a class="nav-link" href="../adminproduct">상품 관리</a>
@@ -143,9 +144,17 @@
   
   <form method="get" action="adminpage?currPage=${page.currPage }">
 	<select name="search" style="width: 100px;height: 30px;">
-		<option>검색 조건 </option>
-		<option value="email">이메일</option>
-		<option value="nickname">닉네임</option>
+		<!-- <option>검색 조건 </option> -->
+		<c:choose>
+			<c:when test="${search=='email'}">
+				<option value="email" selected>이메일</option>
+				<option value="nickname">닉네임</option>
+			</c:when>
+			<c:otherwise>
+				<option value="email">이메일</option>
+				<option value="nickname">닉네임</option>
+			</c:otherwise>
+		</c:choose>
 	</select>
 	<input type="text" name="searchtxt" style="height: 30px;">
 	<input type="submit" class="btn btn-info" value="검색">
