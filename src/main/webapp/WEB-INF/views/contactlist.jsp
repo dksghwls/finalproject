@@ -150,8 +150,8 @@
 			<!-- 검색 -->
 			<form method="get" action="contact?currPage=${page.startBlock }">
 			<select name="search" class="form-control" id="sel1" style="width: 15%;">
-					<option value="b.nickname">회원명</option>
-					<option value="all">제목+내용</option>
+					<option value="b.nickname" <c:if test="${search eq 'b.nickname'}"> selected</c:if>>회원명</option>
+					<option value="all" <c:if test="${search eq 'all'}"> selected</c:if>>제목+내용</option>
 				</select>
 					 	<div class="input-group">
 						<input type="text" class="form-control" placeholder="search"

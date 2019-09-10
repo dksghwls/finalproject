@@ -182,9 +182,9 @@
 				<!-- 검색 -->
 			<form method="get" action="faq?currPage=${page.startBlock }">
 				<select name="search" class="form-control" id="sel1" style="width: 15%;">
-					<option value="ftitle">제목</option>
-					<option value="fcontent">내용</option>
-					<option value="all">제목+내용</option>
+					<option value="ftitle" <c:if test="${search eq 'ftitle'}"> selected</c:if>>제목</option>
+ 					<option value="fcontent" <c:if test="${search eq 'fcontent'}"> selected</c:if>>내용</option>
+ 					<option value="all" <c:if test="${search eq 'all'}"> selected</c:if>>제목+내용</option>
 				</select>
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="검색어를 입력하세요"
