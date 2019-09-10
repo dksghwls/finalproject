@@ -39,6 +39,15 @@
        	font-size: 15px;
        }
        
+       
+  
+    
+    
+       
+       
+       
+       
+       
 </style>
 <script>
 
@@ -58,7 +67,13 @@
 </head>
 <body>
 <c:set var="member" value="${ sessionScope.user }"></c:set>
+
+
+
+
 <div class="container">
+
+
       <!--<div class="row">
         <div class="col">-->
          <div class="alert alert-primary">
