@@ -86,6 +86,7 @@ public class AdminPageController {
 	public String delete(@RequestParam int no, Model model)
 	{
 		adminPageService.updateno(no);
+		adminPageService.updateno2(no);
 		adminPageService.memberdelete(no);
 		
 		return "deleteresult";

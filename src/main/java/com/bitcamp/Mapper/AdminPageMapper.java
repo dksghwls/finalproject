@@ -48,5 +48,7 @@ public interface AdminPageMapper {
 
 	public List<ProductDTO> subordercancel(HashMap<String, Object> o);
 
+	public void updateno2(int no);
+
 	
 }

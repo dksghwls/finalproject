@@ -180,6 +180,13 @@ public class AdminPageServiceImple implements AdminPageService {
 		return adminMapper.subordercancel(o);
 	}
 
+	@Override
+	public void updateno2(int no) {
+		
+		adminMapper.updateno2(no);
+		
+	}
+
 	
 
 }

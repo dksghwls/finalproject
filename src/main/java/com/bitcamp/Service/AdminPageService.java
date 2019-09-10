@@ -44,5 +44,7 @@ public interface AdminPageService {
 	public int subctotalCount(String search, String searchtxt, int cno);
 
 	public List<ProductDTO> subordercancel(String search, String searchtxt, int startRow, int endRow, int cno);
+
+	public void updateno2(int no);
 	
 }

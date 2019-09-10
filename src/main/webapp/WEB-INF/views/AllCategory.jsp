@@ -83,11 +83,10 @@
   <div class="row content">
     <div class="col-sm-3 sidenav" id="sidemenu">
       <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="../AllCategory">All Category</a></li>
+     	<li class="active"><a href="../AllCategory">All Category</a></li>
       	<c:forEach var="item" items="${list }">
       	<li>
-      		<a href="../AllCategory/${item.cno }">
-      		${item.cname }</a>
+      		<a href="../AllCategory/${item.cno }">${item.cname }</a>
       	</li>
       	</c:forEach>
       </ul><br>

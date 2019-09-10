@@ -192,6 +192,13 @@
           where no=#{no}   
     	</update>
     	
+    	<update id="updateno2" parameterType="int">
+          update   cancel
+           set  
+               no=0
+          where no=#{no}   
+    	</update>
+    	
     	<select id="ccategorylist" resultType="com.bitcamp.DTO.ProductDTO">
     	
     		select cno, cname from category
