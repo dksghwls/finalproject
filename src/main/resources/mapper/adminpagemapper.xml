@@ -229,7 +229,7 @@
   		
   		<select id="ordercancel" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select c.no, c.pname, c.bno, c.bdate, c.bcount, c.pay, c.cno, c.cdate, c.email, i.imgname
+  			select c.no, c.pname, c.bno, c.bdate, c.bcount, c.pay, c.cno, c.cdate, c.email, i.imgname, c.pno
   			from cancel c, img i
   			where c.pno=i.pno
   			
@@ -285,7 +285,7 @@
   		
   		<select id="subordercancel" parameterMap="hashmap" resultType="com.bitcamp.DTO.ProductDTO">
   			
-  			select c.no, c.pname, c.bno, c.bdate, c.bcount, c.pay, c.cno, c.cdate, c.email, i.imgname
+  			select c.no, c.pname, c.bno, c.bdate, c.bcount, c.pay, c.cno, c.cdate, c.email, i.imgname, c.pno
   			from cancel c, img i
   			where c.pno=i.pno and c.cno=#{cno}
   			
