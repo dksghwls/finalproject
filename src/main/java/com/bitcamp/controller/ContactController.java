@@ -33,9 +33,9 @@ public class ContactController {
 								,@RequestParam(required=false, defaultValue="")String keyword
 								,Model model) {
 		
-		System.out.println(keyword);
+	
 		int totalCount = contactservice.contactcount(search, keyword);
-		System.out.println("totalCount: " + totalCount);
+		
 		
 		int pageSize = 3;
 		int blockSize = 5;
@@ -46,9 +46,9 @@ public class ContactController {
 		model.addAttribute("dto", dto);
 		model.addAttribute("page", page);
 		model.addAttribute("search",search);
-		System.out.println("searchtest: "+search);
+		
 		model.addAttribute("keyword",keyword);
-		System.out.println("keywordtest: "+keyword);
+		
 		return "templete.jsp?page=contactlist";
 	}
 
@@ -61,7 +61,7 @@ public class ContactController {
 	@RequestMapping("/contactok")
 	public String contactok(ContactDTO dto) {
 		int result = contactservice.contactinsert(dto);
-		System.out.println("resulttest: " + result);
+		
 		 
 		return "redirect:contact";
 	}
@@ -71,7 +71,7 @@ public class ContactController {
 
 		ContactDTO dto = contactservice.contactdetail(no);
 		model.addAttribute("dto", dto);
-		System.out.println("contactdtotest: " + dto);
+		
 
 		return "templete.jsp?page=contactdetail";
 	}
@@ -103,14 +103,14 @@ public class ContactController {
 		System.out.println("no값 출력: "+no);
 		ContactDTO dto = contactservice.contactdetail(no);
 		model.addAttribute("dto",dto);
-		System.out.println("답변저장dto: "+dto);
+		
 		return "recontentform";
 	}
 	
 	@RequestMapping("/recontentok")
 	public String recontentok(ContactDTO dto) {
 		int result = contactservice.recontentmodify(dto);
-		System.out.println("답변저장테스트: " + result);
+		
 		 
 		return "redirect:contact";
 	}
