@@ -62,8 +62,6 @@ public class CategoryServiceImple implements CategoryService{
 		o.put("startRow", startRow );
 		o.put("endRow", endRow);
 		
-		System.out.println(startRow);
-		System.out.println(endRow);
 		
 		return mapper.list(o);
 	}
@@ -100,8 +98,6 @@ public class CategoryServiceImple implements CategoryService{
 		o.put("startRow", startRow );
 		o.put("endRow", endRow);
 		
-		System.out.println(startRow);
-		System.out.println(endRow);
 		
 		return mapper.plist(o);
 	}
@@ -115,7 +111,7 @@ public class CategoryServiceImple implements CategoryService{
 		  HashMap<String, Object> hm=new HashMap<>();
 		  hm.put("path", uploadpath);
 		
-		 System.out.println(uploadpath);
+	
 		  return  mapper.addallresult(hm);
 	}
 
