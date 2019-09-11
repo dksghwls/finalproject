@@ -36,10 +36,10 @@ public class FaqController {
 						,@RequestParam(required=false, defaultValue="")String keyword,
 						Model model) {
 		
-		System.out.println(keyword);
+		
 		
 		int totalCount = faqservice.faqcount(search, keyword);
-		System.out.println("totalCount: " + totalCount);
+		
 
 		int pageSize = 5;
 		int blockSize = 5;
@@ -51,25 +51,25 @@ public class FaqController {
 		model.addAttribute("page", page);
 		model.addAttribute("search",search);
 		model.addAttribute("keyword",keyword);
-		System.out.println("pagetest: " + page);
+		
 
 		List<FaqDTO> shiplist = faqservice.shiplist(page.getStartRow(), page.getEndRow());
 		model.addAttribute("shiplist", shiplist);
 		System.out.println("shiptest: " + shiplist);
 		model.addAttribute("page", page);
-		System.out.println("pagetest2: " + page);
+		
 
 		List<FaqDTO> orderlist = faqservice.orderlist(page.getStartRow(), page.getEndRow());
 		model.addAttribute("orderlist", orderlist);
-		System.out.println("ordertest: " + orderlist);
+	
 		model.addAttribute("page", page);
-		System.out.println("pagetest3: " + page);
+	
 
 		List<FaqDTO> cuslist = faqservice.cuslist(page.getStartRow(), page.getEndRow());
 		model.addAttribute("cuslist", cuslist);
-		System.out.println("custest: " + cuslist);
+		
 		model.addAttribute("page", page);
-		System.out.println("pagetest4: " + page);
+	
 
 		return "templete.jsp?page=faqlist";
 
@@ -85,7 +85,7 @@ public class FaqController {
 	public String faqinsertok(FaqDTO dto) {
 
 		int result = faqservice.faqinsert(dto);
-		System.out.println("resulttest: " + result);
+	
 		return "redirect:faq";
 	}
 

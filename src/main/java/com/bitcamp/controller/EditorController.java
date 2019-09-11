@@ -53,8 +53,7 @@ public class EditorController {
 				 model.addAttribute("filename", vo.getFile1().getOriginalFilename());
 				 model.addAttribute("uploadpath", path);*/
 		
-				 System.out.println(path+"!!!");
-				 System.out.println(vo.getFile1().getOriginalFilename());
+				 
 				int result = service.addresult(dto,path+"/"+vo.getFile1().getOriginalFilename());
 				 
 				 return "redirect:/adminproduct";
