@@ -25,7 +25,7 @@
 	    <div class="form-group">
 		    <div align="center">
 		    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="button" class="btn btn-warning" id="btn" value="전송">
+				<input type="button" class="btn btn-success" id="btn" value="Submit">
 		    </div>
 	    </div>
 	  </form>
