@@ -59,7 +59,7 @@ public class AllCategoryController {
 		
 		int totalCount = service.totalCountcount(search, searchtxt);
 		
-		int pageSize=10;
+		int pageSize=9;
 		int blockSize=5;
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
@@ -109,7 +109,7 @@ public class AllCategoryController {
 		
 		int totalCount = service.subpage(search, searchtxt, cno);
 		
-		int pageSize=10;
+		int pageSize=9;
 		int blockSize=5;
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
@@ -157,7 +157,7 @@ public class AllCategoryController {
 		
 		int totalCount = service.totalCount(search, searchtxt);
 		
-		int pageSize=10;
+		int pageSize=9;
 		int blockSize=5;
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
@@ -218,7 +218,7 @@ public class AllCategoryController {
 		
 		int totalCount = service.adminsubCount(search, searchtxt ,cno);
 		
-		int pageSize=10;
+		int pageSize=9;
 		int blockSize=5;
 		
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
