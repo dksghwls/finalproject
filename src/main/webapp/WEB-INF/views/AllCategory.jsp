@@ -68,6 +68,11 @@
       	position: relative;
       	left: 200px;
       }
+      .linethrough
+      {
+      text-decoration:line-through;
+      
+      }
   </style>
 </head>
 <body>
@@ -97,7 +102,7 @@
       <div class="col-sm-3" id="iimg">
         <a href="../detail/${dto.pno}"><img src="${ dto.imgname }"></a><br> 
         <h3>${dto.pname}</h3><br>
-        <div class="glyphicon glyphicon-usd"></div> 원가:${dto.oprice}<br>
+        <div class="glyphicon glyphicon-usd"></div> 원가:<b class="linethrough">${dto.oprice}</b><br>
         <div class="glyphicon glyphicon-triangle-bottom"></div> 할인된 가격:<b>${dto.dprice}</b><br>
         <jsp:useBean id="toDay" class="java.util.Date" />
          <div class="glyphicon glyphicon-calendar"> </div>남은 기간:

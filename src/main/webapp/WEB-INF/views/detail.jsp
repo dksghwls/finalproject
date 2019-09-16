@@ -39,7 +39,11 @@
     left:500px;
     
     }
+    .linethrough
+    {
+    text-decoration:line-through;
     
+    }
     
     
   </style>
@@ -123,7 +127,7 @@
     <div class="well">
      <c:forEach var="item" items="${dto}">   
    <h3><b>${item.pname }</b></h3><br><br>
- <div class="glyphicon glyphicon-usd"></div> 원가: <b>${item.oprice }원</b><br> <br>
+ <div class="glyphicon glyphicon-usd"></div> 원가: <b class="linethrough">${item.oprice }원</b><br> <br>
  <div class="glyphicon glyphicon-triangle-bottom"></div> 할인된 가격: <b>${item.dprice }원</b><br><br>
       
     <c:if test="${deadline > 0}">
