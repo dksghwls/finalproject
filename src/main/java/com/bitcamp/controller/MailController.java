@@ -83,7 +83,7 @@ public class MailController {
 			System.out.println(e);
 		}
    
-		return "redirect:/mailForm";
+		return "redirect:/login";
 	}
 
 } 
