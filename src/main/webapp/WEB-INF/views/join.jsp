@@ -179,7 +179,7 @@
 	
 	        var pattern1 = /[0-9]/;
 	        var pattern2 = /[a-zA-Z]/;
-	        var pattern3 = /[~!@\#$%<>^&*]/; // 원하는 특수문자 추가 제거
+	        var pattern3 = /[!@#$%^&*-=?~]/; // 원하는 특수문자 추가 제거
 	        
 			if(email.length == 0) {
 				$('#result').text("이메일을 입력해주세요.");
