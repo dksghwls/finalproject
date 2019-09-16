@@ -1,5 +1,6 @@
 package com.bitcamp.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,14 @@ public class MemberServiceImple implements MemberService {
 	@Override
 	public List<CategoryDTO> getList() {
 		return mapper.getList();
+	}
+
+	@Override
+	public int pwdChange(String email, String pwd) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("email", email);
+		hm.put("pwd", pwd);
+		return mapper.pwdChange(hm);
 	}
 
 

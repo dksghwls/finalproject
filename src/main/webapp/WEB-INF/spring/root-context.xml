@@ -10,14 +10,30 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
 	<context:property-placeholder location="classpath:db.properties"/>
+	
 	<bean name="dbconf" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${db.driver}"></property>
 	    <property name="jdbcUrl" value="${db.url}"></property>
 	    <property name="username" value="${db.user}"></property>
 	    <property name="password" value="${db.pwd}"></property>
   	</bean>
+  	
+  	 <!-- 메일보내기 -->
+	<bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="${email.account}" />
+		<property name="password" value="${email.password}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
     
     <bean name="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="dbconf"></constructor-arg>
@@ -34,6 +50,5 @@
     </bean>
     
 	<tx:annotation-driven/> 
-	
 
 </beans>

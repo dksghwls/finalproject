@@ -1,5 +1,6 @@
 package com.bitcamp.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -17,5 +18,7 @@ public interface MemberMapper {
 	public MemberDTO getMember(String email);
 
 	public List<CategoryDTO> getList();
+
+	public int pwdChange(HashMap<String, Object> hm);
 	
 }

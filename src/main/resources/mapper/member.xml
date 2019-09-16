@@ -34,4 +34,10 @@
 			limit 4
     	</select>
     	
+    	<update id="pwdChange">
+    		update member
+			set pwd=#{pwd}
+			where email=#{email} 
+    	</update>
+    	
     </mapper>

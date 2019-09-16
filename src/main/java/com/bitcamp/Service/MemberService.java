@@ -15,4 +15,6 @@ public interface MemberService {
 
 	public List<CategoryDTO> getList();
 
+	public int pwdChange(String email, String pwd);
+
 }
