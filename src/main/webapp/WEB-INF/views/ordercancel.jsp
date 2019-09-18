@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
         	color: blue;
         }
         .p2{
-        	color: red;
+        	color: #8C8C8C;
         }
         .container{
        		margin: auto
@@ -69,20 +70,20 @@
           <br><br>
           
 <div class="container">
-  <p>주문 취소 내역을 확인할 수 있습니다.</p>
+  <p>주문 취소 내역을 확인할 수 있습니다(이미지 클릭 시 상품 페이지로 이동).</p>
 
 <form>
     <div class="form-group" style="width: 150px; float: right;">
       <select class="form-control" id="sel1" onchange="location.href=this.value">
         <!-- <option>카테고리</option> -->
-        <option value="../order">전체</option>
+        <option value="../ordercancel">전체</option>
         <c:forEach var="item" items="${clist }">
         	<c:choose>
         		<c:when test="${cno==item.cno}">
-        			<option value="../order/${item.cno }" selected>${item.cname }</option>
+        			<option value="../ordercancel/${item.cno }" selected>${item.cname }</option>
         		</c:when>
         		<c:otherwise>
-        			<option value="../order/${item.cno }">${item.cname }</option>
+        			<option value="../ordercancel/${item.cno }">${item.cname }</option>
         		</c:otherwise>
         	</c:choose>
   		</c:forEach>
@@ -95,9 +96,9 @@
     <thead>
       <tr class="info">
       	<th><div class="content1">주문 번호</div></th>
-        <th><div class="content1">상품 이미지</div></th>
+        <th><div class="content1" style="margin-left: 35px;">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
-        <th><div class="content1">주문회원 이메일</div></th>
+        <th><div class="content1" style="margin-left: 10px;">주문회원 이메일</div></th>
         <th><div class="content1">주문 일자</div></th>
         <th><div class="content1">취소 수량(개)</div></th>
         <th><div class="content1">취소 금액(원)</div></th>
@@ -108,23 +109,25 @@
     <tbody>
     <c:forEach var="item" items="${oclist }">
       <tr>
-      	<td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
+      	<td><div class="content2" style="margin-left: 20px;"><c:out value="${item.bno }"></c:out></div></td>
       	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.email }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
+        <td><div class="content2" style="margin-left: 30px;"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2" style="margin-left: 15px;"><fmt:formatNumber value="${item.pay }" pattern="#,###"/></div></td>
         <td><div class="content2"><c:out value="${item.cdate }"></c:out></div></td>
         <td>
         	<c:choose>
         		<c:when test="${item.no!='0'}">
+        			<span class="glyphicon glyphicon-user" style="display: block; color: blue; font-size: 30px; margin-left: 15px; margin-bottom: 10px;"></span>
         			<p class="p1">가입 회원</p>
         		</c:when>
         		<c:otherwise>
+        			<span class="glyphicon glyphicon-user" style="display: block; color: #8C8C8C; font-size: 30px; margin-left: 15px; margin-bottom: 10px;"></span>
         			<p class="p2">탈퇴 회원</p>
         		</c:otherwise>
-        	</c:choose> 
+        	</c:choose>  
         </td>
       </tr>
      </c:forEach>
@@ -165,21 +168,19 @@
 	</a>
 	</c:if>
   </li>
-  <li class="page-item">
   
   <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
-			<c:when test="${index}==${page.currPage}">
-				<c:out value="${index}"></c:out>
+			<c:when test="${index==page.currPage}">
+				<li class="active"><a href=""><c:out value="${index}"></c:out></a></li>
 			</c:when>
 			<c:otherwise>
-				<a href="../ordercancel/${cno}?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
-				<c:out value="${index}"/></a>
+				<li><a href="../ordercancel/${cno}?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<c:out value="${index}"/></a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
-   
-  </li>
+  
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>

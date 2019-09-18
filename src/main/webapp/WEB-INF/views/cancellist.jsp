@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +67,7 @@
           <br><br>
           
 <div class="container">
-  <p><span id="nick">${member.nickname }</span> 님의 주문 취소 상품입니다.</p>
+  <p><span id="nick">${member.nickname }</span> 님의 주문 취소 상품입니다(이미지 클릭 시 상품 페이지로 이동).</p>
 
 <form>
     <div class="form-group" style="width: 150px; float: right;">
@@ -83,10 +84,7 @@
         		</c:otherwise>
         	</c:choose>
         </c:forEach>
-        
-        
-        
-        
+       
       </select>
     </div>
     </form>
@@ -95,7 +93,7 @@
     <thead>
       <tr class="info">
       	<th><div class="content1">주문 번호</div></th>
-        <th><div class="content1">상품 이미지</div></th>
+        <th><div class="content1" style="margin-left: 35px;">상품 이미지</div></th>
         <th><div class="content1">상품명</div></th>
         <th><div class="content1">주문 일자</div></th>
         <th><div class="content1">취소 수량(개)</div></th>
@@ -106,12 +104,12 @@
     <tbody>
     <c:forEach var="item" items="${cancellist }">
       <tr>
-      	<td><div class="content2"><c:out value="${item.bno }"></c:out></div></td>
+      	<td><div class="content2" style="margin-left: 25px;"><c:out value="${item.bno }"></c:out></div></td>
       	<td><a href="../detail/${item.pno}"><img src="${item.imgname }" class="rounded" alt="Cinque Terre" width="150" height="112"></a></td>
         <td><div class="content2"><c:out value="${item.pname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.bdate }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.bcount }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.pay }"></c:out></div></td>
+        <td><div class="content2" style="margin-left: 35px;"><c:out value="${item.bcount }"></c:out></div></td>
+        <td><div class="content2" style="margin-left: 20px;"><fmt:formatNumber value="${item.pay }" pattern="#,###"/></div></td>
         <td><div class="content2"><c:out value="${item.cdate }"></c:out></div></td>
       </tr>
      </c:forEach>
@@ -122,13 +120,13 @@
 	<select name="search" style="width: 100px;height: 30px;">
 		<!-- <option>검색 조건 </option> -->
 		<c:choose>
-			<c:when test="${search=='pname'}">
-				<option value="pname" selected>상품명</option>
-				<option value="bno">주문 번호</option>
-			</c:when>
-			<c:otherwise>
+			<c:when test="${search=='bno'}">
 				<option value="pname">상품명</option>
 				<option value="bno" selected>주문 번호</option>
+			</c:when>
+			<c:otherwise>
+				<option value="pname" selected>상품명</option>
+				<option value="bno">주문 번호</option>
 			</c:otherwise>
 		</c:choose>
 	</select>
@@ -148,15 +146,14 @@
 	</c:if>
   </li>
   
-  <li class="page-item">
   <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
-			<c:when test="${index}==${page.currPage}">
-				<c:out value="${index}"></c:out>
+			<c:when test="${index==page.currPage}">
+				<li class="active"><a href=""><c:out value="${index}"></c:out></a></li>
 			</c:when>
 			<c:otherwise>
-				<a href="../cancellist/${cno}?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
-				<c:out value="${index}"/></a>
+				<li><a href="../cancellist/${cno}?no=${member.no }&currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<c:out value="${index}"/></a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

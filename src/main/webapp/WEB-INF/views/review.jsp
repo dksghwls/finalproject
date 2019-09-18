@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -129,7 +130,7 @@
           
 <!--<h2>마이 리뷰</h2>-->
 <div class="container">
-  <p><span id="nick">${member.nickname }</span> 님의 구매 상품 리뷰 모음입니다.</p>
+  <p><span id="nick">${member.nickname }</span> 님의 구매 상품 리뷰 모음입니다(이미지 클릭 시 상품 페이지로 이동).</p>
   <br><br>
  
   <!--<ul>
@@ -146,7 +147,7 @@
             		<%-- <p class="p">${item.pname}</p><br> --%>
             		<h3>${item.pname}</h3><br>
             		<ul>
-        				<li><span class="sp">판매가: &nbsp;</span>${item.dprice}원</li>
+        				<li><span class="sp">판매가: &nbsp;</span><fmt:formatNumber value="${item.dprice }" pattern="#,###"/>원</li>
         				<li><span class="sp">마감일: &nbsp;</span>${item.deadline}</li>
         			</ul>
         			<p class="rc">${item.rcontent}</p><br>

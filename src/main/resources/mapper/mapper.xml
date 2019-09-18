@@ -201,7 +201,7 @@
 			
 	</where>
 	order by pno desc
-	limit #{startRow}, 9
+	limit #{startRow}, 10
   </select>
     	
     	
@@ -218,7 +218,7 @@
     		
     	</select>
     	<select id="adcpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
-    	select i.imgname, p.pno, p.pname, p.oprice, p.dprice
+    	select p.pno, p.pname, p.dprice, p.oprice, i.imgname, p.regist, p.deadline,p.stock, p.sellcount
   		from category c, product p, img i 
     	where c.cno = p.cno 
   		and p.pno = i.pno
@@ -241,7 +241,7 @@
 			
 	
 			order by p.pno desc
-			limit #{startRow}, 9
+			limit #{startRow}, 10
     	</select>
     	<select id="adminsubCount" parameterMap="hashmap" resultType="int">
     		select count(*)

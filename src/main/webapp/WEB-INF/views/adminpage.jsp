@@ -95,25 +95,24 @@
       <tr class="info">
         <th><div class="content1">회원 번호</div></th>
         <th><div class="content1">닉네임</div></th>
-        <th><div class="content1">이메일</div></th>
+        <th><div class="content1" style="margin-left: 40px;">이메일</div></th>
         <th><div class="content1">이름</div></th>
-        <th><div class="content1">주소</div></th>
-        <th><div class="content1">상세 주소</div></th>
-        <th><div class="content1">전화번호</div></th>
+        <th><div class="content1" style="margin-left: 90px;">주소</div></th>
+        <!-- <th><div class="content1">상세 주소</div></th> -->
+        <th><div class="content1" style="margin-left: 15px;">전화번호</div></th>
         <th><div class="content1">회원 삭제</div></th>
       </tr>
     </thead>
     <tbody>
     <c:forEach var="item" items="${plist}">
       <tr>
-        <td><div class="content2"><c:out value="${item.no }"></c:out></div></td>
+        <td><div class="content2" style="margin-left: 25px;"><c:out value="${item.no }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.nickname }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.email }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.name }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.addr }"></c:out></div></td>
-        <td><div class="content2"><c:out value="${item.detailaddr }"></c:out></div></td>
+        <td><div class="content2"><c:out value="${item.addr }"></c:out>&nbsp;&nbsp;<c:out value="${item.detailaddr }"></c:out></div></td>
         <td><div class="content2"><c:out value="${item.phone }"></c:out></div></td>
-        <td><button id="cancel_btn" type="button" class="btn btn-danger" data-mem="${item.no}" data-toggle="modal" data-target="#myModal">삭제</button></td>
+        <td><button id="cancel_btn" type="button" class="btn btn-danger" data-mem="${item.no}" data-toggle="modal" data-target="#myModal" style="margin-left: 8px;">삭제</button></td>
       </tr>
       <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
@@ -147,12 +146,12 @@
 		<!-- <option>검색 조건 </option> -->
 		<c:choose>
 			<c:when test="${search=='email'}">
-				<option value="email" selected>이메일</option>
 				<option value="nickname">닉네임</option>
+				<option value="email" selected>이메일</option>
 			</c:when>
 			<c:otherwise>
+				<option value="nickname" selected>닉네임</option>
 				<option value="email">이메일</option>
-				<option value="nickname">닉네임</option>
 			</c:otherwise>
 		</c:choose>
 	</select>
@@ -170,39 +169,19 @@
 	</a>
 	</c:if>
   </li>
-  <li class="page-item">
-  
-  <%-- <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
-  	
-		<a class="page-link" href="product?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
-		<c:out value="${index }"/>
-		</a>
-  </c:forEach> --%>
-  
-  <%-- <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
-    <c:if test="${index==currpage}">
-      <c:out value="${index}"></c:out>
-    </c:if>
-    <c:if test="${index!=currpage }">
-     <a class="page-link" href="product?currpage=${index}&search=${search}&searchtxt=${searchtxt}"><c:out value="${index }"/></a>
-    </c:if>
-   </c:forEach> --%>
    
    <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
 		<c:choose>
-			<c:when test="${index}==${page.currPage}">
-				<c:out value="${index}"></c:out>
+			<c:when test="${index==page.currPage}">
+				<li class="active"><a href=""><c:out value="${index}"></c:out></a></li>
 			</c:when>
 			<c:otherwise>
-				<a href="adminpage?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
-				<c:out value="${index}"/></a>
+				<li><a href="adminpage?currPage=${index}&search=${search}&searchtxt=${searchtxt}">
+				<c:out value="${index}"/></a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
    
-   
-   
-  </li>
   <li class="page-item">
   <c:if test="${page.next }">
   <%-- <c:if test="${page.endBlock<totalPage }"> --%>

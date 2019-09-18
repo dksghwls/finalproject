@@ -30,6 +30,9 @@
        .content{
        	font-size: 15px;
        }
+       #result{
+       	color: red;
+       }
     </style>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
@@ -165,9 +168,9 @@
       <input type="password" class="form-control" id="cpwd" placeholder="기존 또는 새 비밀번호를 입력하세요" style="width: 700px;" name="cpwd" maxlength="20">
     </div>
     <br>
-     <div class="col-sm-offset-6 col-sm-6">
+     <!-- <div class="col-sm-offset-6 col-sm-6"> -->
 	        <div id="result"></div>
-	  </div>
+	  <!-- </div> -->
 	  <br>
      <input type="hidden" id="no" name="no" value="${item.no }"/>
      <button type="submit" class="btn btn-info">확인</button>

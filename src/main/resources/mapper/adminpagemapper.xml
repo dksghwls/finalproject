@@ -221,7 +221,7 @@
 						and c.bno=#{searchtxt}
 					</when>
 					<when test="search=='email'">
-						and m.email like CONCAT('%', #{searchtxt}, '%')
+						and c.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
   					</choose>
   				</if>
@@ -245,7 +245,7 @@
 						and c.bno=#{searchtxt}
 					</when>
 					<when test="search=='email'">
-						and m.email like CONCAT('%', #{searchtxt}, '%')
+						and c.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
 				</choose>
 			</if>
@@ -277,7 +277,7 @@
 						and c.bno=#{searchtxt}
 					</when>
 					<when test="search=='email'">
-						and m.email like CONCAT('%', #{searchtxt}, '%')
+						and c.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
   					</choose>
   				</if>
@@ -301,7 +301,7 @@
 						and c.bno=#{searchtxt}
 					</when>
 					<when test="search=='email'">
-						and m.email like CONCAT('%', #{searchtxt}, '%')
+						and c.email like CONCAT('%', #{searchtxt}, '%')
 					</when>
 				</choose>
 			</if>
