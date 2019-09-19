@@ -200,7 +200,8 @@
 							<c:out value="이전"></c:out></a>
 						</c:if></li>
 					<c:forEach var="i" begin="${page.startBlock }" end="${page.endBlock }">
-						<li><c:choose>
+					
+						<%-- <li><c:choose>
 								<c:when test="${i }==${page.currPage }">
 									<c:out value="${i }"></c:out>
 								</c:when>
@@ -208,7 +209,18 @@
 							<a href="faq?currPage=${i }&search=${search}&keyword=${keyword}">
 							<c:out value="${i}"></c:out></a>
 								</c:otherwise>
-							</c:choose></li>
+							</c:choose></li> --%>
+							
+							<c:choose>
+								<c:when test="${i==page.currPage }">
+									<li class="active"><c:out value="${i }"></c:out></li>
+								</c:when>
+								<c:otherwise>
+							<li><a href="faq?currPage=${i }&search=${search}&keyword=${keyword}">
+							<c:out value="${i}"></c:out></a></li>
+								</c:otherwise>
+							</c:choose>
+							
 					</c:forEach>
 					<li><c:if test="${page.next }">
 						<a href="faq?currPage=${page.endBlock+1 }&search=${search}&keyword=${keyword}">
