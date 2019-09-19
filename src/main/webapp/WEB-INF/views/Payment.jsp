@@ -64,12 +64,6 @@
             console.log(rsp);
             if (rsp.success) {
             	
-            	
-            	
-                location.href = "/paysuccess";
-            } else {
-            	
-            	
             	/* ajax부분 예시 */
                 $.ajax({
 			        url : "/payok",
@@ -84,6 +78,10 @@
 			        		"detailaddr" : detailaddr
 			        }
 			    });
+            	
+                location.href = "/paysuccess";
+            } else {
+            	
             	
             	 location.href = "/payfail";
             }
