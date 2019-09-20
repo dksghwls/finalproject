@@ -207,9 +207,12 @@
     	
     	<select id="ctotalCount" parameterMap="hashmap" resultType="int">
   	  		
-  	  		select count(bno)
+  	  		<!-- select count(bno)
   	  		from cancel c, member m
-  	  		where c.no=m.no
+  	  		where c.no=m.no -->
+  	  		
+  	  		select count(bno)
+  	  		from cancel
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>
@@ -263,9 +266,13 @@
     	
     	<select id="subctotalCount" parameterMap="hashmap" resultType="int">
   	  		
-  	  		select count(bno)
+  	  		<!-- select count(bno)
   	  		from cancel c, member m
-  	  		where c.no=m.no and c.cno=#{cno}
+  	  		where c.no=m.no and c.cno=#{cno} -->
+  	  		
+  	  		select count(bno)
+  	  		from cancel c
+  	  		where c.cno=#{cno}
   				
   				<if test="searchtxt!=null and searchtxt!=''">
   					<choose>

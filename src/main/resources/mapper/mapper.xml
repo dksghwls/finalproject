@@ -68,7 +68,7 @@
     	<select id="cpList" parameterMap="hashmap" resultType="com.bitcamp.DTO.CategoryDTO">
     	
     	
-    	select i.imgname, p.pno, p.pname, p.oprice, p.dprice
+    	select i.imgname, p.pno, p.pname, p.oprice, p.dprice, p.deadline
   		from category c, product p, img i 
     	where c.cno = p.cno 
   		and p.pno = i.pno

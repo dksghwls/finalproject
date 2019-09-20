@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
     <!--href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
-    <style>
+    <style>    
       .nav-link { 
           font-size: 20px;
           font-weight: bold;
