@@ -97,10 +97,10 @@
 					        success : function (data) {
 					            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
 					            if (data) {
-					            	$('#result').text('사용할 수 없는 아이디 입니다.');
+					            	$('#result').text('이미 가입한 이메일 입니다.');
 					            	$("#submit").attr("disabled", "disabled");
 					            } else {
-					            	$('#result').text('사용할 수 있는 아이디 입니다.');
+					            	$('#result').text('사용할 수 있는 이메일 입니다.');
 					            	$("#submit").removeAttr("disabled");
 					            }
 					        }
@@ -152,10 +152,10 @@
 			        data : {"email" : email},
 			        success : function (data) {
 			            if (data) {
-			            	$('#result').text('사용할 수 없는 아이디 입니다.');
+			            	$('#result').text('이미 가입한 이메일 입니다.');
 			            	$("#submit").attr("disabled", "disabled");
 			            } else {
-			            	$('#result').text('사용할 수 있는 아이디 입니다.');
+			            	$('#result').text('사용할 수 있는 이메일 입니다.');
 			            	$("#submit").removeAttr("disabled");
 			            }             
 			        }
